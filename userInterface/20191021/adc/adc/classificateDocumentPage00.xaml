@@ -1,0 +1,40 @@
+﻿<Page x:Class="adc.setTagPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:adc"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="setTagPage">
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal"  HorizontalAlignment="Center" VerticalAlignment="Center"  >
+            <Button x:Name="gotoMain" Content="이전단계" HorizontalAlignment="Center" Margin= "20,0,0,0"  Width="75" />
+            <Button x:Name="strartTag" Content="다음단계" HorizontalAlignment="Center" Margin= "20,0,0,0" Width="75" Click="strartTag_Click" />
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center"  >
+            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source ="/Resources/dt_icon.png"/>
+            <TextBlock Text="문서 분류" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
+        <Label Content="문서를 분류하고자 하는 대상 폴더를 선택하세요. (하위 폴더 미포함) " HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30"/>
+        <Label Content="https://ilbbang.tistory.com/entry/FolderBrowserDialog-보다-괜찮은-폴더-선택-화면-CommonOpenFileDialog 이용하여 폴더 지정 기능 구현" HorizontalAlignment="Left" Margin="10,45,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+
+    </Grid>
+
+</Page>

@@ -56,12 +56,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="classificateDocumentPage00.xaml.cs">
+      <DependentUpon>classificateDocumentPage00.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="searchDocumentPage01.xaml.cs">
+      <DependentUpon>searchDocumentPage01.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="searchDocumentPage00.xaml.cs">
+      <DependentUpon>searchDocumentPage00.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="searchDocumentPage.xaml.cs">
+      <DependentUpon>searchDocumentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="classificateDocumentPage.xaml.cs">
+      <DependentUpon>classificateDocumentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="setTagPage.xaml.cs">
       <DependentUpon>setTagPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="classificateDocumentPage00.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -78,6 +97,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="searchDocumentPage01.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="searchDocumentPage00.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="searchDocumentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="classificateDocumentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="setTagPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
