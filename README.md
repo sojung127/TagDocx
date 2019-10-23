@@ -1,3 +1,3 @@
-# AutomaticFileCategorizeService
+# AutomaticDocumentCategorizeService
 
-파일 자동 분류 
+문서 자동 분류 
