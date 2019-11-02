@@ -1,0 +1,39 @@
+﻿<Page x:Class="adc.searchDocumentPage01"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:adc"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="searchDocumentPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"  >
+            <Button x:Name="gotoMain" Content="이전단계" Margin= "0,0,0,0"  Width="75" Click="BtnPreStep" />
+            <Button x:Name="strartTag" Content="다음단계" Margin= "0,0,0,0" Width="75" Click="BtnNextStep" VerticalAlignment="Center" />
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center"  >
+            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="/Resources/dt_icon.png"/>
+            <TextBlock Text="문서 검색" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
+        <TextBox HorizontalAlignment="Left" Height="40" Margin="20,50,0,0" Grid.Row="1" TextWrapping="Wrap" Text="키워드" VerticalAlignment="Top" Width="100" TextAlignment="Center"/>
+        <Label Content="1. 사용자 입력 태그 (문서 검색 키워드를 입력하세요. ex) 지원서, 학교 " HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30"/>
+        <Label Content="2. 선택지 선택 태그 (제시된 태그 목록 중 검색 할 문서 검색 키워드를 선택하세요.) " HorizontalAlignment="Left" Margin="10,122,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30"/>
+
+    </Grid>
+</Page>
