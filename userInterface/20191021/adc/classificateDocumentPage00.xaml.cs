@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Microsoft.WindowsAPICodePack.Dialogs; 
 
 namespace adc
 {
@@ -24,5 +25,17 @@ namespace adc
 
         }
 
+        private void BtnFindFolder(object sender, RoutedEventArgs e)
+        {
+            // CommonOpenFileDialog 클래스 생성
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            // 처음 보여줄 폴더 설정(안해도 됨)
+            //dialog.InitialDirectory = "";
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                folderName.Text = dialog.FileName; // 테스트용, 폴더 선택이 완료되면 선택된 폴더를 label에 출력
+            }
+        }
     }
 }

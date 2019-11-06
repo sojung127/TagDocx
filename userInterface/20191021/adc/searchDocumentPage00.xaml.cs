@@ -16,8 +16,6 @@ namespace adc
 
         private void BtnNextStep(object sender, RoutedEventArgs e)
         {
-            searchDocumentPage01 page = new searchDocumentPage01();
-            NavigationService.Navigate(page);
         }
 
         private void BtnPreStep(object sender, RoutedEventArgs e)

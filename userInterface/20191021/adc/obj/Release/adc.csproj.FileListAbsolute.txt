@@ -25,3 +25,4 @@ C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Release\A.D.C
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Release\adc.csproj.GenerateResource.cache
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Release\AutomaticDocumentClassificationSystem.exe
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Release\AutomaticDocumentClassificationSystem.pdb
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Release\adc.csprojAssemblyReference.cache

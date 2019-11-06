@@ -30,7 +30,7 @@
             <Button x:Name="strartTag" Content="시작하기" HorizontalAlignment="Center" Margin= "40,0,0,0" Width="75" Click="BtnNextStep" />
 
         </StackPanel>
-        <TextBlock  HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="태그 달기 기능에 대한 설명" VerticalAlignment="Top" Height="116" Width="196"/>
+        <TextBlock  HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="116" Width="780" FontSize="20"><Run Text="태그가 지정되지 않은 문서를 찾아 태"/><Run Text="그를 할당합니다."/></TextBlock>
 
     </Grid>
 </Page>

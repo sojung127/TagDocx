@@ -30,8 +30,7 @@
             <Button x:Name="strartTag" Content="시작하기" HorizontalAlignment="Right" Margin= "0,0,0,0" Width="75" Click="BtnNextStep" />
 
         </StackPanel>
-        <TextBlock  HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="문서 분류 기능에 대한 설명" VerticalAlignment="Top" Height="116" Width="196"/>
-
+        <TextBlock  HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="문서에 할당된 태그를 이용하여 자동 문서 분류 기능을 제공합니다. 형식 태그 별로 폴더를 생성하여 문서를 분류합니다." VerticalAlignment="Top" Height="116" Width="610" FontSize="20"/>
     </Grid>
 
 </Page>

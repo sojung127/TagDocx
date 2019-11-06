@@ -19,7 +19,6 @@ C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\Home.baml
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\classificateDocumentPage00.g.cs
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\Home.g.cs
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\MainWindow.g.cs
-C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\searchDocumentPage01.g.cs
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\searchDocumentPage00.g.cs
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\searchDocumentPage.g.cs
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\classificateDocumentPage.g.cs
@@ -27,7 +26,6 @@ C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\setTagP
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\App.g.cs
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\classificateDocumentPage00.baml
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\Home.baml
-C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\searchDocumentPage01.baml
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\searchDocumentPage00.baml
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\searchDocumentPage.baml
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\classificateDocumentPage.baml
@@ -44,3 +42,8 @@ C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\A.D.C.S
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\AutomaticDocumentClassificationSystem.exe
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\AutomaticDocumentClassificationSystem.pdb
 C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\adc.csprojAssemblyReference.cache
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\adc.csproj.CopyComplete
