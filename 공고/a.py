@@ -1,14 +1,17 @@
-import olefile
+# import olefile
+#import hwp5
 
-test_file=olefile.OleFileIO('2020년 아산다솜장학생 선발안내.hwp')
+# test_file=olefile.OleFileIO('2020년 아산다솜장학생 선발안내.hwp')
 
-#encoded_text = test_file.openstream('PrvText').read()
+# encoded_text = test_file.openstream('PrvText').read()
 
-lines=encoded_text.decode('UTF-16').split('\n')
+# lines=encoded_text.decode('UTF-16').split('\n')
 
-print(lines)
+# hwp5.hwp5txt('2020년 아산다솜장학생 선발안내.hwp','test.txt')
 
-fp = open('아산장학생.txt','r',encoding='utf-8-sig')
+# print(lines)
+
+fp = open('글로벌소통교육실 계약직원 채용공고.txt','r',encoding='utf-8')
 lines = fp.readlines()
 fp.close()
 fp = open ('feature.txt','r',encoding='utf-8-sig')
@@ -30,19 +33,28 @@ for i in range(len(lines)):
 
 index=0
 isFind=False
+
+sum=0
+value=0
 for word in featureList:
     for line in lines:
-            for w in word:
-                if w in line:
-                    scoreList[index]=scoreList[index]+1
+            for i in range(len(word)):
+                if word[i] in line:
+                    if i ==0  :
+                        value=5
+                    else:
+                        value=1
+                    scoreList[index]=scoreList[index]+value
+                    sum=sum+value #합값생성
 
                     
         
     index=index+1
     isFind=False
 
+print()
 print(scoreList)
+print(sum)
 
     
 
-#print(lines)
