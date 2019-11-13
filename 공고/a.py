@@ -36,15 +36,20 @@ isFind=False
 
 sum=0
 value=0
-for word in featureList:
+for i in range(len(featureList)):
+    if i == 0  :
+        value=5
+    elif i == 1  :
+        value=3
+    else:
+        value=1
     for line in lines:
-            for i in range(len(word)):
-                if word[i] in line:
-                    if i ==0  :
-                        value=5
-                    else:
-                        value=1
-                    scoreList[index]=scoreList[index]+value
+            for w in featureList[i]:
+                if w in line:
+                    scoreList[index]=scoreList[index]+1*value
+                    print(i)
+                    print(w,value)
+                    print(scoreList)
                     sum=sum+value #합값생성
 
                     
