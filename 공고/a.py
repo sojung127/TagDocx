@@ -1,33 +1,36 @@
+import olefile
 
-fp = open('겨울방학 현장실습 지원.txt','r',encoding='UTF8')
+test_file=olefile.OleFileIO('2020년 아산다솜장학생 선발안내.hwp')
+
+#encoded_text = test_file.openstream('PrvText').read()
+
+lines=encoded_text.decode('UTF-16').split('\n')
+
+print(lines)
+
+fp = open('아산장학생.txt','r',encoding='utf-8-sig')
 lines = fp.readlines()
+fp.close()
+fp = open ('feature.txt','r',encoding='utf-8-sig')
+features = fp.readlines()
+fp.close()
 
 scoreList=[]#10개
+featureList=[]
 
-for i in range(10):
+for i in range(len(features)):
     scoreList.append(0)
+    features[i]=features[i].strip()
+    featureList.append(features[i].split())
 
-# for i in range(len(lines)):
-#     lines[i]=lines[i].replace(" ","")
+print(featureList)
 
-wordList=[
-    ['공고','모집'],
-    ['기간','일정','접수','마감일'],
-    ['선정자발표'], # 발표 류의 단어 더 추가하기
-    ['자격요건','대상','응시자격'],
-    ['제출서류'],
-    ['지원방법','선발방법'],
-    ['유의사항','문의','참고사항','주의사항'],
-    ['수신'],
-    ['경유'],
-    ['제목'],
-    ['붙임','첨부'],
-    ['귀사'],
-    ['무궁한발전을기원'],
-]
+for i in range(len(lines)):
+    lines[i]=lines[i].replace(" ","")
+
 index=0
 isFind=False
-for word in wordList:
+for word in featureList:
     for line in lines:
             for w in word:
                 if w in line:
