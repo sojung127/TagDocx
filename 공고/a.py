@@ -1,16 +1,17 @@
 import olefile
 
-test_file=olefile.OleFileIO('2020년 아산다솜장학생 선발안내.hwp')
+# test_file=olefile.OleFileIO('2020년 아산다솜장학생 선발안내.hwp')
 
-#encoded_text = test_file.openstream('PrvText').read()
+# encoded_text = test_file.openstream('PrvText').readlines()
+# #print(encoded_text)
+# print(len(encoded_text))
+# lines=encoded_text.decode('UTF-16').split('\n')
 
-lines=encoded_text.decode('UTF-16').split('\n')
+# print(lines)
 
-print(lines)
-
-fp = open('아산장학생.txt','r',encoding='utf-8-sig')
-lines = fp.readlines()
-fp.close()
+# fp = open('아산장학생.txt','r',encoding='utf-8-sig')
+# lines = fp.readlines()
+# fp.close()
 fp = open ('feature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
 fp.close()
