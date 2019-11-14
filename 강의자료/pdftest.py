@@ -1,11 +1,11 @@
+
+'''
 from pdfminer.pdfinterp import PDFResourceManager, process_pdf
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from io import StringIO
 from io import open
 from urllib.request import urlopen
-
-import logging
 
 def read_pdf_file(pdfFile):
 
@@ -27,6 +27,21 @@ def read_pdf_file(pdfFile):
 pdf_file = open("ch06 Counting.pdf", "rb")                                       # 로컬 PC에 있는 pdf 파일도 읽을 수 있음
 contents = read_pdf_file(pdf_file)
 lines=contents.split('\n')
+
+'''
+# 좀 더 짧은 코드로 pdf 파일을 읽을 수 있음
+# 파일을 페이지 별로 읽음 
+# 위의 방법으로 읽히지 않는 pdf파일 중 몇개의 파일이 읽힘
+import PyPDF2
+
+pdf_file = open("ch06 Counting.pdf", "rb")
+
+pdfReader = PyPDF2.PdfFileReader(pdf_file)
+count = pdfReader.numPages
+for i in range(count):
+    page = pdfReader.getPage(i)
+    print(page.extractText())
+
 
 fp=open('ClassFeature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
