@@ -5,7 +5,10 @@ from io import StringIO
 from io import open
 from urllib.request import urlopen
 
+import logging
+
 def read_pdf_file(pdfFile):
+
     rsrcmgr = PDFResourceManager()
     retstr = StringIO()
     laparams = LAParams()
@@ -18,9 +21,11 @@ def read_pdf_file(pdfFile):
     retstr.close()
     return content
 
-pdf_file = open("L8_SWDesign_Simulink_실습_s (1).pdf", "rb")                                       # 로컬 PC에 있는 pdf 파일도 읽을 수 있음
-contents = read_pdf_file(pdf_file)
+# logging.propagate = False 
+# logging.getLogger().setLevel(logging.ERROR)
 
+pdf_file = open("ch06 Counting.pdf", "rb")                                       # 로컬 PC에 있는 pdf 파일도 읽을 수 있음
+contents = read_pdf_file(pdf_file)
 lines=contents.split('\n')
 
 fp=open('ClassFeature.txt','r',encoding='utf-8-sig')
@@ -54,3 +59,4 @@ for i in range(len(featureList)):
 pdf_file.close()
 
 print(scoreList)
+print(max(scoreList))
