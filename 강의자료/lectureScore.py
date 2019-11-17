@@ -34,14 +34,17 @@ lines=contents.split('\n')
 # 위의 방법으로 읽히지 않는 pdf파일 중 몇개의 파일이 읽힘
 import PyPDF2
 
-pdf_file = open("ch06 Counting.pdf", "rb")
+# pdf_file = open("Chap2 Application Layer.pdf", "rb")
+# lines=[]
+# pdfReader = PyPDF2.PdfFileReader(pdf_file)
+# count = pdfReader.numPages
+# for i in range(count):
+#     page = pdfReader.getPage(i)
+#     lines.append(page.extractText())
 
-pdfReader = PyPDF2.PdfFileReader(pdf_file)
-count = pdfReader.numPages
-for i in range(count):
-    page = pdfReader.getPage(i)
-    print(page.extractText())
-
+fp=open('C:\\Users\\소정\\Desktop\\졸업프로젝트\\project\\AutomaticFileCategorizeService\\공고\\글로벌소통교육실 계약직원 채용공고.txt','r',encoding='utf-8-sig')
+lines=fp.readlines()
+fp.close()
 
 fp=open('ClassFeature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
@@ -71,7 +74,7 @@ for i in range(len(featureList)):
                 sum=sum+value
     index=index+1
 
-pdf_file.close()
+#pdf_file.close()
 
 print(scoreList)
 print(max(scoreList))
