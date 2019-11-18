@@ -4,9 +4,9 @@ from tensorflow.keras.preprocessing.text import text_to_word_sequence
 
 '''
 #txt
-doc = open("C:\\Users\\YooJin\\Desktop\\project\\dataSet\\P2.txt",mode='rt').read()
-
+doc = open("C:\\Users\\YooJin\\Desktop\\project\\dataSet\\P11.txt",mode='rt', encoding='utf-8').read()
 '''
+
 '''
 #docx
 import docx2txt
@@ -25,6 +25,8 @@ doc = parser.from_file("C:\\Users\\YooJin\\Desktop\\project\\dataSet\\N1.pdf")
 doc = doc["content"]
 print(doc)
 '''
+
+
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
@@ -53,52 +55,62 @@ def convert_pdf_to_txt(path):
     retstr.close()
     return text
     
-extracted_text = convert_pdf_to_txt("C:\\Users\\YooJin\\Desktop\\project\\dataSet\\N1.pdf")
-#print(type(extracted_text))
+extracted_text = convert_pdf_to_txt("C:\\Users\\YooJin\\Documents\\GitHub\\AutomaticFileCategorizeService\\강의자료\\dataset\\B10.pdf")
+print(extracted_text)
+
 
 doc = extracted_text
 
+
 import re
 
-shortword = re.compile(r'[▶‟“”…„0-9]')
+shortword = re.compile(r'[→%"‘’▶◆‟“”…„0-9]')
 
 doc = shortword.sub('', doc)
 #print(type(doc))
 
-'''
+w = ['기자', '뉴스']
+
 items = re.findall('\(([^)]+)',doc)
-items_2 = re.findall(r'\[[^)]*\]',doc)
-print(items)
-print(items_2)
-'''
+items.append(doc[doc.find("[")+1 : doc.find("]")])
+#print(items)
 
-print(doc[doc.find("[")+1 : doc.find("]")])
- 
+s = 0
 
+for item in items:
+    for word in w:
+        #print(type(item))
+        if word in item:
+            print(word)
+            s += 5
+
+
+print("s :", s)
+
+
+#한자인식을 가능하게 해서 한자가 나올수록 점수를 더한다든가,,,
 #doc.find('인쇄')
-#if '['
-
-'''
-'''
-shortword = re.compile(r'\W*\b\w{1,2}\b')
-doc = shortword.sub('', doc)
-'''
 
 tokens = text_to_word_sequence(doc)
 
 tokens.sort()
+length = len(tokens)
+print("length", length)
+
+tokens = list(set(tokens))
 
 #print(tokens)
 
-from konlpy.tag import Okt
-okt=Okt()
-okt = okt.nouns(doc)
-okt.sort()
-#print(okt)
+'''
+train = open("C:\\Users\\YooJin\\Desktop\\project\\Nmapping.txt",mode='rt', encoding='utf-8').read()
+train = text_to_word_sequence(train)
+#print(train)
+'''
 
 import pandas as pd
+ 
+train = pd.read_csv(r'C:\\Users\\YooJin\\Desktop\\project\\Nmapping.csv')
 
-train = pd.read_csv(r'C:\\Users\\YooJin\\Desktop\\project\\mapping.csv')
 
 #train.sort()
 
@@ -113,15 +125,14 @@ for i in range(len(train_words)):
     train.update({a : b})
 
 
-s = 0
 
 for x in tokens:
     
     if x in train:
-        #print(x)
+        print(x)
         s+=train.get(x)
 
-print(s)
 
+        
+print(s/length)
 
-'''
