@@ -34,10 +34,10 @@
 
   ### 2. 구현 언어
 1) C++(Visual Studio 2017)
-- 윈도우즈 데스크탑 응용 프로그램 개발
+  윈도우즈 데스크탑 응용 프로그램 개발
 2) python 
-- 문서 검색하는 기능에서 태그끼리의 유사도를 확인하여 여러 문서를 한 대표 태그로 묶어주는 기능
-- 문서를 분석하여 키워드를 추출하는 모델
+  - 문서 검색하는 기능에서 태그끼리의 유사도를 확인하여 여러 문서를 한 대표 태그로 묶어주는 기능
+  - 문서를 분석하여 키워드를 추출하는 모델
 
   ### 3. 구체적인 기능 구현 방법
 
@@ -82,7 +82,7 @@
 
 ## 3. 인터페이스
   ![main](https://user-images.githubusercontent.com/29905149/69696918-7a812400-1124-11ea-80cb-b1e608300f53.PNG)
-  ![set_tag][(https://user-images.githubusercontent.com/29905149/69696953-9ab0e300-1124-11ea-9886-6dbe258d8f74.PNG)
+  ![set_tag](https://user-images.githubusercontent.com/29905149/69696953-9ab0e300-1124-11ea-9886-6dbe258d8f74.PNG)
   ![search_doc](https://user-images.githubusercontent.com/29905149/69696981-b0260d00-1124-11ea-93a9-893dfcac5bb7.PNG)
   ![classifi_doc](https://user-images.githubusercontent.com/29905149/69696991-b7e5b180-1124-11ea-8320-55a2d12074ca.PNG)
   
