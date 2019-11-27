@@ -26,7 +26,7 @@
       2) 검색결과로 나온 파일들의 목록에서 파일에 마우스를 가져다 대고 오른쪽 버튼을 클릭하면 파일의 경로를 확인할 수 있다.
     3. 분류 : 파일들의 태그를 이용하여 유사한 내용, 주제를 가진 파일끼리 폴더에 분류하여 저장경로를 이동하는 기능
     
-## 구현 방법
+## 3. 구현 방법
 
   ### 1. 플랫폼
 -데스크톱 프로그램으로 제작
@@ -80,7 +80,7 @@
     1) Github
     2) Visual Studio Code
 
-## 3. 인터페이스
+## 4. 인터페이스
   ![main](https://user-images.githubusercontent.com/29905149/69696918-7a812400-1124-11ea-80cb-b1e608300f53.PNG)
   ![set_tag](https://user-images.githubusercontent.com/29905149/69696953-9ab0e300-1124-11ea-9886-6dbe258d8f74.PNG)
   ![search_doc](https://user-images.githubusercontent.com/29905149/69696981-b0260d00-1124-11ea-93a9-893dfcac5bb7.PNG)
