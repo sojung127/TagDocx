@@ -1,10 +1,11 @@
 from tensorflow.keras.preprocessing.text import text_to_word_sequence
 import pandas as pd
 
-
+'''
 #txt
 doc = open("C:\\Users\\YooJin\\Desktop\\project\\dataSet\\E3.txt",mode='rt', encoding="utf-8").read()
 
+'''
 '''
 #docx
 import docx2txt
@@ -82,12 +83,12 @@ def NP_scoring(path):
    # print(s / Length)
 
 
-'''
+
 #pdf
-extracted_text = convert_pdf_to_txt("C:\\Users\\YooJin\\Desktop\\project\\dataSet\\N20.pdf")
+extracted_text = convert_pdf_to_txt("C:\\Users\\YooJin\\Desktop\\project\\dataSet\\P1.pdf")
 #print(type(extracted_text))
 doc = extracted_text
-'''
+
 
 #점수
 N_score = 0
@@ -120,7 +121,7 @@ Length = len(tokens)
 if (Length > 3000) : N_flag = 0
 #print('length , flag:',Length, N_flag)
 
-
+############영어 text는 UPPER처리 해야할 필요 ㅇㅇㅇ
 if(P_flag == 1):
     #############이 코드는 논문이 영어일때만 고려!!!########
     shortword = re.compile(r'\W*\b\w{1,2}\b')
