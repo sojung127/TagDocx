@@ -75,7 +75,7 @@ for i in range(len(featureList)):
                 sum=sum+value
     index=index+1
 
-pdf_file.close()
+#pdf_file.close()
 
 print(scoreList)
 print(max(scoreList))
