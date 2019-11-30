@@ -85,7 +85,8 @@ def NP_scoring(path):
 
 
 #pdf
-extracted_text = convert_pdf_to_txt("C:\\Users\\YooJin\\Desktop\\project\\dataSet\\P1.pdf")
+document_pdf_source = "C:\\capston\\paper\\pdf\\P1.pdf"
+extracted_text = convert_pdf_to_txt(document_pdf_source)
 #print(type(extracted_text))
 doc = extracted_text
 
@@ -118,10 +119,12 @@ E_score = 0
 
 Length = len(tokens)
 
+### 문서가 3000자 이상일 경우 뉴스일 가능성을 제외한다.###
 if (Length > 3000) : N_flag = 0
 #print('length , flag:',Length, N_flag)
 
-############영어 text는 UPPER처리 해야할 필요 ㅇㅇㅇ
+
+
 if(P_flag == 1):
     #############이 코드는 논문이 영어일때만 고려!!!########
     shortword = re.compile(r'\W*\b\w{1,2}\b')
@@ -149,11 +152,12 @@ if(P_flag == 1):
     n = WordNetLemmatizer()
     tokens_NP = [n.lemmatize(w) for w in tokens_NP]
 
-    P_score = NP_scoring(r'C:\\Users\\YooJin\\Desktop\\project\\mapping.csv')
+    P_score = NP_scoring('C:\\capston\\test\\Pmapping.csv')
     print("P_score: ", P_score)
 
 else:
     P_score = 0
+
 
 if(N_flag == 1):
     w = ['사진', '기자', '뉴스']
@@ -172,8 +176,7 @@ if(N_flag == 1):
 
     #중복처리한 토큰들
     tokens_NP = list(set(tokens))
-
-    N_score += NP_scoring(r'C:\\Users\\YooJin\\Desktop\\project\\Nmapping.csv')
+    N_score += NP_scoring('C:\\capston\\test\\Nmapping.csv')
     print("N_score: ", N_score)
    
     
@@ -184,7 +187,8 @@ else:
 class_doc = doc.replace(" ","")
 
 if (L_flag == 1):
-    fp=open('C:\\Users\\YooJin\\Documents\\GitHub\\AutomaticFileCategorizeService\\강의자료\\ClassFeature.txt','r',encoding='utf-8-sig')
+    ### 강의자료 특성을 작성한 txt파일을 불러와서 L_score 계산한다.###
+    fp=open('C:\\capston\\AutomaticFileCategorizeService\\강의자료\\ClassFeature.txt','r',encoding='utf-8-sig')
     features = fp.readlines()
     fp.close()
 
@@ -214,7 +218,7 @@ if (L_flag == 1):
 else:
     pass
 
-fp = open ('C:\\Users\\YooJin\\Documents\\GitHub\\AutomaticFileCategorizeService\\공고\\NoticeFeature.txt','r',encoding='utf-8-sig')
+fp = open ('C:\\capston\\AutomaticFileCategorizeService\\공고\\NoticeFeature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
 fp.close()
 
@@ -235,9 +239,9 @@ isFind=False
 sum=0
 value=0
 for i in range(len(featureList)):
-    if i == 0  :
+    if i == 0:
         value=5
-    elif i == 1  :
+    elif i == 1:
         value=3
     else:
         value=1
