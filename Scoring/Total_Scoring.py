@@ -84,11 +84,20 @@ def NP_scoring(path):
 
 
 
-#pdf
-document_pdf_source = "C:\\capston\\paper\\pdf\\P1.pdf"
+#검사하는 문서를 불러오는 코드 - pdf version
+document_pdf_source = "C:\\capston\\paper\\pdf\\P2.pdf"
 extracted_text = convert_pdf_to_txt(document_pdf_source)
 #print(type(extracted_text))
 doc = extracted_text
+
+#검사하는 문서를 불러오는 코드 -txt version
+'''
+#txt
+document_txt_source = "C:\\capston\\AutomaticFileCategorizeService\\공고\\E1.txt"
+doc = open(document_txt_source,mode='rt', encoding="utf-8").read()
+
+'''
+
 
 
 #점수
@@ -124,7 +133,7 @@ if (Length > 3000) : N_flag = 0
 #print('length , flag:',Length, N_flag)
 
 
-
+# 논문 scoring
 if(P_flag == 1):
     #############이 코드는 논문이 영어일때만 고려!!!########
     shortword = re.compile(r'\W*\b\w{1,2}\b')
@@ -158,7 +167,7 @@ if(P_flag == 1):
 else:
     P_score = 0
 
-
+#뉴스 scoring
 if(N_flag == 1):
     w = ['사진', '기자', '뉴스']
 
@@ -180,14 +189,15 @@ if(N_flag == 1):
     print("N_score: ", N_score)
    
     
-    #print(N_score)
+    print(N_score)
 else:
     N_score = 0
 
 class_doc = doc.replace(" ","")
 
+# 강의자료 scoring
 if (L_flag == 1):
-    ### 강의자료 특성을 작성한 txt파일을 불러와서 L_score 계산한다.###
+    # 강의자료 특성을 작성한 txt파일을 불러와서 L_score 계산한다.
     fp=open('C:\\capston\\AutomaticFileCategorizeService\\강의자료\\ClassFeature.txt','r',encoding='utf-8-sig')
     features = fp.readlines()
     fp.close()
@@ -217,7 +227,7 @@ if (L_flag == 1):
     print("L_score: ", L_score)
 else:
     pass
-
+# 공고문 scoring
 fp = open ('C:\\capston\\AutomaticFileCategorizeService\\공고\\NoticeFeature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
 fp.close()
@@ -232,7 +242,7 @@ for i in range(len(features)):
 
 #print(featureList)
 
-
+### 각 문서의 형식에 부합하는 지 계산한 점수를 출력하는 코드 ###
 index=0
 isFind=False
 
@@ -257,7 +267,7 @@ print("E_score: ", E_score)
 
 
 Score_list = [P_score, N_score, L_score, E_score]
-
+print('문서 저장위치 = ', document_pdf_source)
 print(Score_list)
 
 
