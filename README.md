@@ -86,8 +86,8 @@
   ![search_doc](https://user-images.githubusercontent.com/29905149/69696981-b0260d00-1124-11ea-93a9-893dfcac5bb7.PNG)
   ![classifi_doc](https://user-images.githubusercontent.com/29905149/69696991-b7e5b180-1124-11ea-8320-55a2d12074ca.PNG)
   
- 
-[![Watch the video](https://youtu.be/qPtYTAtOxzg/0.png)](https://youtu.be/qPtYTAtOxzg)    
+
+{% include youtube.html id="qPtYTAtOxzg" %}  
 
 
   
