@@ -87,7 +87,7 @@
   ![classifi_doc](https://user-images.githubusercontent.com/29905149/69696991-b7e5b180-1124-11ea-8320-55a2d12074ca.PNG)
   
     인터페이스 시연 영상 
-    ![Video Label](https://www.youtube.com/watch?v=qPtYTAtOxzg)
+    [![Video Label](http://img.youtube.com/vi/https://www.youtube.com/watch?v=qPtYTAtOxzg/0.jpg)](https://www.youtube.com/watch?v=qPtYTAtOxzg)
 
   
 ## 5. 구현 영상
