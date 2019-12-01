@@ -1,0 +1,281 @@
+See discussions, stats, and author profiles for this publication at: https://www.researchgate.net/publication/317185136
+
+Deep Learning and Its Applications: A Review
+Conference Paper · October 2016
+
+CITATIONS
+
+READS
+
+0
+
+3,058
+
+3 authors:
+Nur Farhana Hordri
+
+Siti Yuhaniz
+
+Universiti Teknologi Malaysia
+
+Universiti Teknologi Malaysia
+
+8 PUBLICATIONS 15 CITATIONS
+
+35 PUBLICATIONS 556 CITATIONS
+
+SEE PROFILE
+
+SEE PROFILE
+
+Siti Mariyam Shamsuddin
+Universiti Teknologi Malaysia
+385 PUBLICATIONS 3,042 CITATIONS
+SEE PROFILE
+
+Some of the authors of this publication are also working on these related projects:
+
+Enhancement of artificial neural network learning using centripetal accelerated particle swarm optimization for medical diseases diagnosis View project
+
+quantum based meta-heuristic algorithm for elman recurrent neural network learning View project
+
+All content following this page was uploaded by Nur Farhana Hordri on 29 May 2017.
+The user has requested enhancement of the downloaded file.
+
+Deep Learning and Its Applications: A Review
+Nur Farhana Hordri*1, 2, Siti Sophiayati Yuhaniz1, 2, Siti Mariyam Shamsuddin2
+1
+
+Advanced Informatics School, Universiti Teknologi Malaysia, Jalan Sultan Yahya Petra, 54100 Kuala Lumpur, Malaysia.
+2
+UTM Big Data Centre, Universiti Teknologi Malaysia, Skudai, 81310, Johor, Malaysia.
+
+Abstract
+In the past few years, Deep Learning has becoming a trend. Since deep learning attempts to
+make a better analysis and can learn massive amounts of unlabeled data, deep learning has
+been applied to several of fields. Hence, this paper presents a review on deep learning and
+its applications over the years, with a goal of providing useful references to other researchers
+to get the idea for new application with deep learning in future research. There are seven
+applications that have been applied with deep learning were identified, namely automatic
+speech recognition, image recognition, natural language processing, drug discovery and
+toxicology, customer relationship management, recommendation systems and
+bioinformatics. For each of these, we discuss the results of the study and also point out the
+areas in need of further research.
+Keywords: Deep Learning, Applications
+1. Introduction
+Deep Learning (DL) or more commonly known as deep structured learning or hierarchical
+learning is a division of Machine Learning (ML) which is based on a set of algorithms that
+attempt to model high-level abstractions in data, [1, 2]. Such algorithms develop a layered,
+hierarchical architecture of learning and representing data. This hierarchical learning
+architecture is inspired by artificial intelligence emulating the deep, layered learning process
+of the primary sensorial areas of the neocortex in human brain, which automatically extracts
+features and abstractions from underlying data [3, 4, 5]. Based on [6, 7], DL algorithms are
+useful when it comes to dealing with large amounts of unsupervised data and naturally learn
+data representations in a greedy layer-wise method.
+In recent years, there are a number of researchers have applied DL algorithms to various
+different fields. Therefore, the purpose of this paper is to review and to discuss the
+applications that have been done over the years with DL algorithms. We will discuss further
+in Section 2, which may assists other researcher to study DL and its applications. Finally,
+the conclusion of this review is expressed in Section 3.
+
+* Corresponding author. E-mail address: nfarhana64@live.utm.my
+
+2.
+
+The Applications of Deep Learning
+
+This section describes the foundation of this review by discussing several of fields that have
+been applied with Deep Learning algorithm.
+Automatic Speech Recognition (ASR)
+Google has announced that Google voice search had taken a new turn by adopting Deep
+Neural Networks (DNN) as the core technology used to model the sounds of a language in
+2012 [8]. DNN replaced Gaussian Mixture Model which has been in the industry for 30
+years. DNN also has proved that it is better able to measure which sound a user is fabricating
+at every instant in time and with this they delivered prominently increased speech
+recognition accuracy.
+In 2013, DL has gained full momentum in both ASR and ML [9]. DL is basically linked to
+the use of multiple layers of nonlinear transformations to derive speech features, while
+learning with shallow layers comprises the use of exemplar-based representations for speech
+features which have high dimensionality but typically vacant entries.
+Image Recognition
+Deep max-pooling convolutional neural networks is used to detect mitosis in breast
+histology images was presented in [10]. Mitosis detection is very hard. In fact, mitosis is a
+complex process during which a cell nucleus undergoes various transformations. In this
+approach, DNN as powerful pixel classifier which operates on raw pixel values and no
+human input is needed. Hence, DNN automatically learns a set of visual features from the
+training data. DNN is tested on a publicly available dataset and significantly outperforms
+all competing techniques, with manageable computational effort: processing a 4MPixel
+image requires few minutes on a standard laptop.
+Large and deep convolutional neural network is trained to classify the 1.2 million highresolution images in the ImageNet LSVRC-2010 contest into 1000 different classes [11].
+On the test data, they achieved top-1 and top-5 error rates of 37.5% and 17.0% which is
+considerably better than the previous state-of-the-art. From all the experiments, the results
+can be improved simply by waiting for faster GPUs and bigger datasets to become available.
+Natural Language Processing
+Recently, deep learning methods have been successfully applied to a variety of language
+and information retrieval applications. By exploiting deep architectures, deep learning
+techniques are able to discover from training data the hidden structures and features at
+different levels of abstractions useful for the any tasks. In 2013, [12] proposed a series of
+Deep Structured Semantic Models (DSSM) for Web search. More specifically, they uses a
+DNN to rank a set of documents for a given query as follows. First, a non-linear projection
+is performed to map the query and the documents to a common semantic space. Then, the
+relevance of each document given the query is calculated as the cosine similarity between
+their vectors in that semantic space. The neural network models are discriminatively trained
+using the click-through data such that the conditional likelihood of the clicked document
+given the query is maximized. The new models are evaluated on a Web document ranking
+
+task using a real-world data set. Results show that the proposed model significantly
+outperforms other latent semantic models, which were considered state-of-the-art in the
+performance prior to the work presented in [12].
+Drug Discovery and Toxicology
+Quantitative Structure Analysis/Prediction Studies (QSAR/QSPR) attempt to build
+mathematical models relating physical and chemical properties of compounds to their
+chemical structure. In [13], multi-task learning is applied to QSAR using various neural
+network models. They used an artificial neural network to learn a function that predicts
+activities of compounds for multiple assays at the same time. The method is compared with
+alternative methods and reported that the neural nets with multi-tasking can lead to
+significantly improved results over baselines generated with random forests.
+In 2015, AtomNet has been introduced as first structure-based, deep convolutional neural
+network which designed to predict the bioactivity of small molecules for drug discovery
+applications [14]. This paper also demonstrates how to apply the convolutional concepts of
+feature locality and hierarchical composition to the modeling of bioactivity and chemical
+interactions. AtomNet outperforms previous docking approaches on a diverse set of
+benchmarks by a large margin, achieving an AUC greater than 0.9 on 57.8% of the targets
+in the DUDE benchmark.
+Customer Relationship Management
+A framework for autonomous control of a customer relationship management system been
+charted by [15].First, a modified version of the widely accepted Recency-FrequencyMonetary Value system of metrics can be used to define the state space of clients or donors
+is explored. Second, a procedure to determine the optimal direct marketing action in discrete
+and continuous action space for the given individual, based on his position in the state space
+is described. The procedure involves the use of model-free Q-learning to train a deep neural
+network that relates a client's position in the state space to rewards associated with possible
+marketing activities. The estimated value function over the client state space can be
+interpreted as customer lifetime value (CLV), and thus allows for a quick plug-in estimation
+of CLV for a given client. Experimental results are presented, based on Knowledge
+Discovery and Data Mining Tools Competition, mailing dataset of donation solicitations.
+Recommendation Systems
+Automatic music recommendation has become an increasingly relevant problem in recent
+years, since a lot of music is now sold and consumed digitally. Most recommender systems
+rely on collaborative filtering. In 2013, [16] proposed to use a latent factor model for
+recommendation, and predict the latent factors from music audio when they cannot be
+obtained from usage data. Traditional approach is compared using a bag-of-words
+representation of the audio signals with deep convolutional neural networks, and the
+predictions is evaluated by quantitatively and qualitatively on the Million Song Dataset. The
+result shows that the recent advances in DL translate very well to the music recommendation
+setting, with deep convolutional neural networks significantly outperforming the traditional
+approach.
+
+Recent online services rely heavily on automatic personalization to recommend relevant
+content to a large number of users. This requires systems to scale promptly to accommodate
+the stream of new users visiting the online services for the first time. Work by [17] in 2015
+proposed a content-based recommendation system to address both the recommendation
+quality and the system scalability. They also proposed to use a rich feature set to represent
+users, according to their web browsing history and search queries. They use a DL approach
+to map users and items to a latent space where the similarity between users and their
+preferred items is maximized. Scalability analysis show that the multi-view DNN model
+can easily scale to encompass millions of users and billions of item entries.
+Bioinformatics
+The annotation of genomic information is a major challenge in biology and bioinformatics.
+Existing databases of known gene functions are incomplete and prone to errors, and the
+bimolecular experiments needed to improve these databases are slow and costly. While
+computational methods are not a substitute for experimental verification, they can help in
+two ways: algorithms can aid in the curation of gene annotations by automatically
+suggesting inaccuracies, and they can predict previously-unidentified gene functions,
+accelerating the rate of gene function discovery. In this work [18], an algorithm that
+achieves both goals using deep auto encoder neural networks is developed. With
+experiments on gene annotation data from the Gene Ontology project, it shows that deep
+auto encoder networks achieve better performance than other standard machine learning
+methods, including the popular truncated singular value decomposition.
+3.
+
+Conclusion
+
+Based on Section 2, there are seven applications that have been applied with Deep Learning
+were identified. The applications are:
+a)
+Automatic Speech Recognition
+b)
+Image Recognition
+c)
+Natural Language Processing
+d)
+Drug Discovery and Toxicology
+e)
+Customer Relationship Management
+f)
+Recommendation Systems
+g)
+Bioinformatics
+Deep Learning is a fast-moving and proliferating discipline. It is not easy to form a wellbalanced and well-informed summary view of the newest developments in this field. Thus,
+it is still harder to have a vision of its future applications.
+Acknowledgement
+This work is funded by Fundamental Research Grant Scheme (FRGS) under the title
+“Enhancing Data Analytics Algorithms Using Deep Learning Approaches in Predicting Big
+Data Cyber-Enabled Crimes” with project number R.K130000.7838.4F877.
+
+References
+[1]
+Hinton, G. E., Osindero, S., & Teh, Y. W. (2006). A fast learning algorithm for deep belief
+nets. Neural computation, 18(7), 1527-1554.
+[2]
+Bengio, Y. (2009). Learning deep architectures for AI. Foundations and trends® in
+Machine Learning, 2(1), 1-127.
+[3]
+Bengio, Y., & LeCun, Y. (2007). Scaling learning algorithms towards AI. Large-scale
+kernel machines, 34(5).
+[4]
+Bengio, Y., Courville, A., & Vincent, P. (2013). Representation learning: A review and new
+perspectives. IEEE transactions on pattern analysis and machine intelligence, 35(8), 1798-1828.
+[5]
+Arel, I., Rose, D. C., & Karnowski, T. P. (2010). Deep machine learning-a new frontier in
+artificial intelligence research [research frontier]. IEEE Computational Intelligence Magazine, 5(4),
+13-18.
+[6]
+Hinton, G. E., Osindero, S., & Teh, Y. W. (2006). A fast learning algorithm for deep belief
+nets. Neural computation, 18(7), 1527-1554.
+[7]
+Bengio, Y., Lamblin, P., Popovici, D., & Larochelle, H. (2007). Greedy layer-wise training
+of deep networks. Advances in neural information processing systems, 19, 153.
+[8]
+Hasim Sak, Andrew Senior, Kanishka Rao, Françoise Beaufays and Johan Schalkwyk
+(September 2015): Google voice search: faster and more accurate.
+[9]
+Deng, L., & Li, X. (2013). Machine learning paradigms for speech recognition: An
+overview. IEEE Transactions on Audio, Speech, and Language Processing, 21(5), 1060-1089.
+[10]
+Ciresan, D. C., Giusti, A., Gambardella, L. M., & Schmidhuber, J. (2013, September).
+Mitosis detection in breast cancer histology images with deep neural networks. In International
+Conference on Medical Image Computing and Computer-assisted Intervention (pp. 411-418).
+Springer Berlin Heidelberg.
+[11]
+Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2012). Imagenet classification with deep
+convolutional neural networks. In Advances in neural information processing systems (pp. 10971105).
+[12]
+Huang, P. S., He, X., Gao, J., Deng, L., Acero, A., & Heck, L. (2013, October). Learning
+deep structured semantic models for web search using clickthrough data. In Proceedings of the 22nd
+ACM international conference on Conference on information & knowledge management (pp. 23332338). ACM.
+[13]
+Dahl, G. E., Jaitly, N., & Salakhutdinov, R. (2014). Multi-task neural networks for QSAR
+predictions. arXiv preprint arXiv:1406.1231.
+[14]
+Wallach, I., Dzamba, M., & Heifets, A. (2015). AtomNet: A Deep Convolutional Neural
+Network for Bioactivity Prediction in Structure-based Drug Discovery. arXiv preprint
+arXiv:1510.02855.
+[15]
+Tkachenko, Y. (2015). Autonomous CRM Control via CLV Approximation with Deep
+Reinforcement Learning in Discrete and Continuous Action Space. arXiv preprint
+arXiv:1504.01840.
+[16]
+Van den Oord, A., Dieleman, S., & Schrauwen, B. (2013). Deep content-based music
+recommendation. In Advances in Neural Information Processing Systems (pp. 2643-2651).
+[17]
+Elkahky, A. M., Song, Y., & He, X. (2015, May). A multi-view deep learning approach for
+cross domain user modeling in recommendation systems. In Proceedings of the 24th International
+Conference on World Wide Web (pp. 278-288). ACM.
+[18]
+Chicco, D., Sadowski, P., & Baldi, P. (2014, September). Deep autoencoder neural networks
+for gene ontology annotation predictions. In Proceedings of the 5th ACM Conference on
+Bioinformatics, Computational Biology, and Health Informatics (pp. 533-540). ACM.
+
+View publication stats
+
+

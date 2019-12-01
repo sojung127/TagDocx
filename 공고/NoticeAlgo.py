@@ -11,7 +11,7 @@
 
 # print(lines)
 
-fp = open('글로벌소통교육실 계약직원 채용공고.txt','r',encoding='utf-8')
+fp = open('P1.txt','r',encoding='utf-8')
 lines = fp.readlines()
 fp.close()
 fp = open ('NoticeFeature.txt','r',encoding='utf-8-sig')

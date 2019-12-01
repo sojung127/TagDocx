@@ -36,7 +36,7 @@ def convert_pdf_to_txt(path):
     retstr = StringIO()
     codec = 'utf-8'
     laparams = LAParams()
-    device = TextConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
+    device = TextConverter(rsrcmgr, retstr, laparams=laparams)
     fp = open(path, 'rb')
     interpreter = PDFPageInterpreter(rsrcmgr, device)
     password = ""
@@ -85,7 +85,7 @@ def NP_scoring(path):
 
 
 #pdf
-extracted_text = convert_pdf_to_txt("C:\\Users\\YooJin\\Desktop\\project\\dataSet\\P1.pdf")
+extracted_text = convert_pdf_to_txt("E2.pdf")
 #print(type(extracted_text))
 doc = extracted_text
 
@@ -149,7 +149,7 @@ if(P_flag == 1):
     n = WordNetLemmatizer()
     tokens_NP = [n.lemmatize(w) for w in tokens_NP]
 
-    P_score = NP_scoring(r'C:\\Users\\YooJin\\Desktop\\project\\mapping.csv')
+    P_score = NP_scoring(r'StandardWords\mapping.csv')
     print("P_score: ", P_score)
 
 else:
@@ -173,7 +173,7 @@ if(N_flag == 1):
     #중복처리한 토큰들
     tokens_NP = list(set(tokens))
 
-    N_score += NP_scoring(r'C:\\Users\\YooJin\\Desktop\\project\\Nmapping.csv')
+    N_score += NP_scoring(r'StandardWords\mapping.csv')
     print("N_score: ", N_score)
    
     
@@ -184,7 +184,7 @@ else:
 class_doc = doc.replace(" ","")
 
 if (L_flag == 1):
-    fp=open('C:\\Users\\YooJin\\Documents\\GitHub\\AutomaticFileCategorizeService\\강의자료\\ClassFeature.txt','r',encoding='utf-8-sig')
+    fp=open('Total_Scoring.py','r',encoding='utf-8-sig')
     features = fp.readlines()
     fp.close()
 
@@ -214,9 +214,10 @@ if (L_flag == 1):
 else:
     pass
 
-fp = open ('C:\\Users\\YooJin\\Documents\\GitHub\\AutomaticFileCategorizeService\\공고\\NoticeFeature.txt','r',encoding='utf-8-sig')
+fp = open ('NoticeFeature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
 fp.close()
+print("notice start")
 
 scoreList=[]#10개
 featureList=[]
@@ -230,7 +231,7 @@ for i in range(len(features)):
 
 
 index=0
-isFind=False
+
 
 sum=0
 value=0
@@ -242,10 +243,10 @@ for i in range(len(featureList)):
     else:
         value=1
     
-        for w in featureList[i]:
-            if w in class_doc:
-                scoreList[index]=scoreList[index]+1*value
-                sum=sum+value #합값생성
+    for w in featureList[i]:
+        if w in class_doc:
+            scoreList[index]=scoreList[index]+1*value
+            sum=sum+value #합값생성
     index=index+1
 
 E_score = sum
