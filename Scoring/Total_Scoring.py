@@ -85,7 +85,7 @@ def NP_scoring(path):
 
 
 #pdf
-extracted_text = convert_pdf_to_txt("E2.pdf")
+extracted_text = convert_pdf_to_txt("P2.pdf")
 #print(type(extracted_text))
 doc = extracted_text
 
@@ -217,7 +217,7 @@ else:
 fp = open ('NoticeFeature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
 fp.close()
-print("notice start")
+#print("notice start")
 
 scoreList=[]#10개
 featureList=[]
