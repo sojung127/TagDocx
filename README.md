@@ -1,4 +1,4 @@
-# AutomaticDocumentCategorizeService
+# Automatic_Document_Classification_Service
 
 ## 1. 프로젝트 소개
   이 프로젝트를 통해 해결/완화하고자하는 문제에 대해 기술
