@@ -84,10 +84,20 @@ def NP_scoring(path):
 
 
 
-#pdf
-extracted_text = convert_pdf_to_txt("P2.pdf")
+#검사하는 문서를 불러오는 코드 - pdf version
+document_pdf_source = "C:\\capston\\paper\\pdf\\P2.pdf"
+extracted_text = convert_pdf_to_txt(document_pdf_source)
 #print(type(extracted_text))
 doc = extracted_text
+
+#검사하는 문서를 불러오는 코드 -txt version
+'''
+#txt
+document_txt_source = "C:\\capston\\AutomaticFileCategorizeService\\공고\\E1.txt"
+doc = open(document_txt_source,mode='rt', encoding="utf-8").read()
+
+'''
+
 
 
 #점수
@@ -118,10 +128,12 @@ E_score = 0
 
 Length = len(tokens)
 
+### 문서가 3000자 이상일 경우 뉴스일 가능성을 제외한다.###
 if (Length > 3000) : N_flag = 0
 #print('length , flag:',Length, N_flag)
 
-############영어 text는 UPPER처리 해야할 필요 ㅇㅇㅇ
+
+# 논문 scoring
 if(P_flag == 1):
     #############이 코드는 논문이 영어일때만 고려!!!########
     shortword = re.compile(r'\W*\b\w{1,2}\b')
@@ -150,11 +162,13 @@ if(P_flag == 1):
     tokens_NP = [n.lemmatize(w) for w in tokens_NP]
 
     P_score = NP_scoring(r'StandardWords\mapping.csv')
+    P_score = NP_scoring('C:\\capston\\test\\Pmapping.csv')
     print("P_score: ", P_score)
 
 else:
     P_score = 0
 
+#뉴스 scoring
 if(N_flag == 1):
     w = ['사진', '기자', '뉴스']
 
@@ -174,17 +188,21 @@ if(N_flag == 1):
     tokens_NP = list(set(tokens))
 
     N_score += NP_scoring(r'StandardWords\mapping.csv')
+    N_score += NP_scoring('C:\\capston\\test\\Nmapping.csv')
     print("N_score: ", N_score)
    
     
-    #print(N_score)
+    print(N_score)
 else:
     N_score = 0
 
 class_doc = doc.replace(" ","")
 
+# 강의자료 scoring
 if (L_flag == 1):
     fp=open('Total_Scoring.py','r',encoding='utf-8-sig')
+    # 강의자료 특성을 작성한 txt파일을 불러와서 L_score 계산한다.
+    fp=open('C:\\capston\\AutomaticFileCategorizeService\\강의자료\\ClassFeature.txt','r',encoding='utf-8-sig')
     features = fp.readlines()
     fp.close()
 
@@ -215,6 +233,8 @@ else:
     pass
 
 fp = open ('NoticeFeature.txt','r',encoding='utf-8-sig')
+# 공고문 scoring
+fp = open ('C:\\capston\\AutomaticFileCategorizeService\\공고\\NoticeFeature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
 fp.close()
 #print("notice start")
@@ -229,16 +249,16 @@ for i in range(len(features)):
 
 #print(featureList)
 
-
+### 각 문서의 형식에 부합하는 지 계산한 점수를 출력하는 코드 ###
 index=0
 
 
 sum=0
 value=0
 for i in range(len(featureList)):
-    if i == 0  :
+    if i == 0:
         value=5
-    elif i == 1  :
+    elif i == 1:
         value=3
     else:
         value=1
@@ -254,7 +274,7 @@ print("E_score: ", E_score)
 
 
 Score_list = [P_score, N_score, L_score, E_score]
-
+print('문서 저장위치 = ', document_pdf_source)
 print(Score_list)
 
 
