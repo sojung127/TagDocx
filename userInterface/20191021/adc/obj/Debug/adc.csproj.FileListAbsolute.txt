@@ -1,0 +1,49 @@
+C:\Users\user\Desktop\cprogram\adc\adc\bin\Debug\adc.exe.config
+C:\Users\user\Desktop\cprogram\adc\adc\bin\Debug\adc.exe
+C:\Users\user\Desktop\cprogram\adc\adc\bin\Debug\adc.pdb
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\adc.csprojAssemblyReference.cache
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\MainWindow.g.cs
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\setTagPage.g.cs
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\App.g.cs
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\adc_MarkupCompile.cache
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\adc_MarkupCompile.lref
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\MainWindow.baml
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\setTagPage.baml
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\adc.g.resources
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\adc.Properties.Resources.resources
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\adc.csproj.GenerateResource.cache
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\adc.exe
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\adc.pdb
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\Home.g.cs
+C:\Users\user\Desktop\cprogram\adc\adc\obj\Debug\Home.baml
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\classificateDocumentPage00.g.cs
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\Home.g.cs
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\MainWindow.g.cs
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\searchDocumentPage00.g.cs
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\searchDocumentPage.g.cs
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\classificateDocumentPage.g.cs
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\setTagPage.g.cs
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\App.g.cs
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\classificateDocumentPage00.baml
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\Home.baml
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\searchDocumentPage00.baml
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\searchDocumentPage.baml
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\classificateDocumentPage.baml
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\setTagPage.baml
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\MainWindow.baml
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\adc.csproj.GenerateResource.cache
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\bin\Debug\AutomaticDocumentClassificationSystem.exe.config
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\bin\Debug\AutomaticDocumentClassificationSystem.exe
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\bin\Debug\AutomaticDocumentClassificationSystem.pdb
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\AutomaticDocumentClassificationSystem_MarkupCompile.cache
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\AutomaticDocumentClassificationSystem_MarkupCompile.lref
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\AutomaticDocumentClassificationSystem.g.resources
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\A.D.C.S.Properties.Resources.resources
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\AutomaticDocumentClassificationSystem.exe
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\AutomaticDocumentClassificationSystem.pdb
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\adc.csprojAssemblyReference.cache
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\adc.csproj.CopyComplete

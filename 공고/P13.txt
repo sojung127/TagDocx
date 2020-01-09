@@ -1,0 +1,645 @@
+Journal of the Korean Institute of Industrial Engineers
+Published Online, pp. 442-451, December 2018. © 2018 KIIE
+ISSN 1225-0988 | EISSN 2234-6457 <Original Research Paper>
+워드 임베딩과 단어 네트워크 분석을 활용한
+비지도학습 기반의 문서 다중 범주 가중치 산출 :
+휴대폰 리뷰 사례를 중심으로
+정재윤․모경현․서승완․김창엽․김해동․강필성†
+고려대학교 산업경영공학부
+Unsupervised Document Multi-Category Weight Extraction based
+on Word Embedding and Word Network Analysis :
+A Case Study on Mobile Phone Reviews
+Jaeyun Jeong․Kyoung Hyun Mo․Seungwan Seo․Czang Yeob Kim․Haedong Kim․Pilsung Kang
+School of Industrial Management Engineering, Korea University
+Due to the increased amounts of online documents, there is a growing demand for text categorization that
+categorizes documents into predefined categories. Many approaches to this problem are based on supervised
+machine learning which couldn’t be applied to unlabeled data. However, large number of documents, such as
+online cell phone reviews, have no category information and key categories are not predefined. To solve these
+problems, we propose unsupervised document multi-labeling method based on word embedding and word
+network analysis. After embedding words in a lower dimensional space using Word2Vec technique, we generate
+a weight matrix by calculating similarities between words. We create a word network using this matrix and
+extract the key categories from this network. With key category-weight matrix and co-occurrence matrix, we
+generate a document-category score matrix. To verify our proposed method, we collect 298,206 cell phone
+reviews from four review websites. Then, we compared the results of the proposed method with labeled
+documents from human cognitive perspective.
+†
+Keywords: Word Embedding, Unsupervised Learning, Word Network Analysis, Multi-Label Weight Extraction,
+Text Mining, Mobile Phone Reviews
+1. 서 론
+문서 범주화(text categorization)는 문서를 미리 정의한 범주
+(category)로 자동으로 분류하는 방법론이다(Sebastiani, 2002).
+최근 수많은 사람들이 각종 웹사이트에 남기는 문서의 수가 기
+하급수적으로 증가함에 따라 문서 범주화에 대한 필요성이 대
+두되고 있다. 효율적인 문서 범주화를 위해서는 특징 선택
+(feature selection)과 문서 분류(document classification)가 중요
+하다. 특징 선택은 대상 문서에서 생성되는 중요 특징을 추출하
+는 방법론으로 대상 문서들의 핵심 범주를 결정해주는 중요한 요
+이 논문은 2016년도 정부(미래창조과학부 및 교육부)의 재원으로 한국연구재단의 지원을 받아 수행된 기초연구사업임(NRF-2016R1D1A1B03930729).
+또한 이 논문은 정보통신기술진흥센터(No.2017-0-00349, QoE 정보를 이용한 머신러닝 미디어 스트리밍 최적화 시스템 개발)와 한국전력공사의 2018년
+착수 에너지 거점대학 클러스터 사업에 의해 지원되었음(과제번호R18XA05).
+†연락저자：강필성 교수, 02841, 서울시 성북구 안암로 145 고려대학교 산업경영공학부, Tel : 02-3290-3383, Fax : 02-929-5888,
+E-mail : pilsung_kang@korea.ac.kr
+2018년 6월 29일 접수, 2018년 10월 11일 수정본 접수, 2018년 10월 11일 게재 확정
+워드 임베딩과 단어 네트워크 분석을 활용한 비지도학습 기반의 문서 다중 범주 가중치 산출 443
+소이다. 이러한 중요성으로 인해 과거부터 특징 선택을 위한 다
+양한 방법론들이 제시되었으며(Yang and Pedersen, 1997), 이렇
+게 선택된 특징들을 바탕으로 기계학습 방법론을 이용하여 문
+서를 분류하는 여러 연구가 수행되어 왔다(Sebastiani, 2002). 최
+근 Mo et al.(2018)은 문서를 구성하고 있는 단어와 그 자소에 합
+성곱 신경망을 사용하여 문서를 분류하는 모델을 제안하였다.
+그러나 기존 문서 범주화 방법론들은 문서를 미리 정의된
+범주들 중 한 범주로 분류해야 한다는 한계점이 있다. 휴대폰
+리뷰처럼 대상 문서가 다양한 범주에 대한 내용이라면 어떤
+범주로 분류해야 할지 사전에 결정해야 한다. 사람이 직접 정
+성적인 방법으로 범주를 정할 경우 중요한 범주를 놓치거나
+중요하지 않은 범주를 정의하게 되는 문제점이 발생할 수 있
+다. 또한 문서 분류 측면에서도 해당 문서가 어떤 범주에 얼마
+나 가중치를 가지고 있는지 파악할 수 없다. Sebastiani(2002)는
+문서를 다중 레이블(multi label)로 분류할 때 어떤 레이블이 해
+당 문서에 가장 적합한지 판단할 수 없다는 점을 논의하였다.
+이에 더해 문서 분류는 교사 학습(supervised learning) 방법론
+을 사용하며 충분한 양의 정답을 알고 있는 학습 데이터가 필
+요하다는 한계점이 있다.
+본 연구에서는 이러한 한계점을 극복하기 위하여 분산 표상
+(distributed representation) 기법과 범주 정의를 위한 그래프 기반
+방법론들을 동시에 고려하는 비지도 학습(unsupervised learning)
+기반의 문서 핵심 범주 가중치 산출 방법론을 제안하고자
+한다. 먼저 충분한 수의 대상 문서를 수집한 뒤 분산 표상 기법인
+Word2Vec 모델을 사용하여 특정 공간에 임베딩(embedding)을
+수행한다. 하나의 단어가 미리 정의된 차원에서 연속형의 값을
+가지는 벡터로 표현되며 단어들과 문맥상의 의미가 최대한 보
+존될 수 있도록 학습하게 된다(Mikolov et al., 2013). 이 공간은
+어휘들의 문맥적 의미를 반영하여 생성된 것이므로 비슷한 의
+미를 가진 단어들은 같은 공간에 위치하게 된다. Han et al.
+(2018)는 이러한 word2vec의 특징을 활용하여 뉴스 기사의 문
+장 단위 별 어휘 차이를 파악한 연구를 수행하였다. 이후 임베딩
+결과물을 이용하여 각 단어간 거리가 가까울수록 큰 가중치를
+부여하는 가중치 행렬(weight matrix)을 산출하고 동시 발생 행
+렬(co-occurrence matrix)과 요소 별 곱하여 단어 네트워크를 구
+축하였다. 생성된 단어 네트워크에서 중심성 지표가 높은 단어
+들은 문서 전체를 대표하는 중요한 키워드라고 할 수 있다. 다음
+으로는 문서 용어 행렬(document-term matrix)과 추출한 중요 키
+워드만 포함된 가중치 행렬을 곱하여 문서 별 범주 가중치를 산
+출하였다. 산출한 문서 별 범주 가중치와 사람의 인지적 관점에
+서 판단했을 때의 문서 범주를 비교하여 제안하는 방법론의 성
+능을 평가하였다. 이를 위하여 루리웹 등 5개 제품 리뷰 사이트
+에서 얻은 30만 개 휴대폰 리뷰 문서를 대상으로 Word2Vec을
+적용하여 임베딩 하였다. 임베딩 된 행렬을 이용하여 단어 네트
+워크를 구축하고 리뷰 문서에서의 핵심 키워드를 추출하였다.
+각 문서별로 추출한 키워드에 해당하는 가중치 점수를 산출하
+여 가장 높은 점수를 가지는 기능을 문서에 할당하였다. 본 연구
+의 의의는 다음과 같다. 첫째, 분산 표상으로 나타난 단어 벡터
+들을 사용하여 단어의 문맥적 의미까지 고려한 단어 네트워크
+를 생성하고 해당 문서들에 대한 중요 범주를 추출하는 방법론
+을 제안하였다. 둘째, 이를 바탕으로 단순 일범주 문서 범주화
+가 아닌 각 문서의 다중 범주에 대한 가중치를 산출하여 문서에
+서 어떤 범주가 얼마나 중요한지 점수를 파악할 수 있다. 셋째,
+문서 범주에 대한 가중치 값을 이용하여 핵심 범주에 속하지 않
+는 문서들을 판별하여 중요한 문서들만 남길 수 있는 기능을 제
+공할 수 있다. 제안된 방법론은 본 연구에서 사용된 휴대폰 리뷰
+문서 뿐 아니라 더해 핵심 범주가 정해지지 않은 다양한 문서들
+에 대해 적용하는 데 확장할 수 있을 것으로 기대한다.
+본 논문의 구성은 다음과 같다. 제 2장에서는 문서 범주화와
+키워드 추출에 관한 선행연구를 소개한다. 제 3장에서는 연구
+에서 사용된 단어 기반 그래프 구축 및 Word2Vec 방법론에 대
+하여 간략히 소개한다. 제 4장에서는 제안하는 방법론을 검증
+하기 위한 실험 설계에 대하여 서술하고 제 5장에서는 실험 결
+과를 분석한다. 마지막으로 제 6장에서는 본 논문의 결론과 향
+후연구에 대하여 기술한다.
+2. 관련 연구
+2.1 문서 범주화
+문서 범주화를 위한 대표적인 통계 기반 특징 선택 방법론
+으로는 Yang and Pedersen(1997)이 있다. Yang and Pedersen
+(1997)은 문서 빈도수(document frequency), 정보 획득량(information
+gain), 상호 정보(mutual information), 카이 제곱 통계량
+( statistics) 등의 방법론을 사용하여 각 문서의 중요 특징을
+선별하고 k-NN 분류기(k-nearest neighbor classifier)와 LLSF(linear
+least squares fit mapping)를 사용하여 특징 선택 방법론을 비교
+하였다. Joachims(1998)는 지지 벡터 기계(support vector machine)
+를 사용하여 문서를 범주화 하였다. Tang et al.(2016)는 클래스
+별 특이 특징(class specific feature)를 따로 정의하고 베이지안
+분류기(Bayesian classifier)를 사용하였다. Tang et al.(2016)은
+나이브 베이지안 분류기(naïve Bayesian classifier)에 특화된 문서
+범주화를 위한 특징 선택 방법론에 대하여 연구하였다. Rousseau
+et al.(2015)은 기존 특징 선택 방법에서 많이 사용되는 n-gram
+기반의 bag-of-words 방식이 아닌 graph-of-words 방법론을 제
+안하였다. 이러한 문서 범주화 방법론들은 문서들을 범주로
+분류하는 과정에서 교사학습 방법론들을 사용하여 정답 데이
+터가 필요하다는 특징을 가지고 있다.
+2.2 그래프 모델 기반 키워드 추출
+그래프 모델(graph model)은 그래프 이론을 기반으로 하는 공간
+모델이다. 키워드 추출(keyword extraction)은 문서(document)의
+중요한 부분을 압축해서 표현하는 의미적으로 중요한 단어
+(representative term)를 추출하는 방법이다. Brin and Page(1998)는
+444 Jaeyun Jeong․Kyoung Hyun Mo․Seungwan Seo․Czang Yeob Kim․Haedong Kim․Pilsung Kang
+웹에서 더 중요한 페이지일수록 다른 사이트와 더 많이 연결된
+다는 관찰에 기초한 문서 중요도를 표현하는 PageRank 알고리
+즘을 제안하였다. Mihalcea and Tarau(2004)는 PageRank 알고리
+즘을 텍스트에 맞게 변형한 TextRank 알고리즘을 제안하였다.
+이 방법론은 같은 문서 내에서 동시 출현을 많이 할수록 밀접한
+연관이 있으며 다양한 단어와 동시에 등장한다는 점을 이용하
+였다. Palshikar(2007)는 동일 출현 관계를 고려하여 단어 네트
+워크를 구축하고 네트워크 중심성 지표(centrality measure)를 사
+용하여 중요 키워드를 추출하였다. Abilhoa and De Castro
+(2014)는 트위터 메시지에 중심성 지표를 사용한 키워드 추출
+방법론을 적용하고 사람이 뽑은 키워드와 비교하였다. 이러한
+방법론들은 단어들의 동시 출현 관계를 위주로 그래프 모델을
+구축하여 문맥상의 의미를 고려하지 않았다는 점에서 분산 표
+상 기법을 적용한 본 연구와 차이가 있다.
+3. 방법론
+3.1 Word2vec
+텍스트 데이터를 기계학습 알고리즘에 적용하기 위해 변환
+하는 방법에는 대표적으로 분산 표상(distributed representation)
+방법이 있다. 분산 표상 방법을 적용한 텍스트 데이터는
+단어의 의미와 구문 정보를 반영한 벡터로 표현된다는 장점이
+있다. Mikolov et al.(2013)은 연산량이 적으면서도 이러한 장
+점을 가지고 있는 Word2Vec 모델을 제안하였다. Word2Vec은
+간단한 인공신경망 모델을 활용하여 대량의 텍스트 데이터도
+효율적으로 벡터로 표현할 수 있으며, 전처리 과정이 거의 필요
+없고 표현된 단어 벡터가 문맥 정보를 포함하고 있다는 장점
+때문에 감성분석(sentiment analysis), 기계번역(machine translation)
+등 다양한 자연어 처리 분야 연구에서 활용되고 있다.
+Word2Vec 모델은 주변 window size만큼의 문맥 단어들로부터
+다음 단어를 예측하는 모델인 C-BOW(continuous bag-of-word)
+모델과 한 단어들로부터 주변 문맥 단어들을 예측하는 skipgram
+모델이 있다. <Figure 1>은 두 모델을 시각화한 것이다.
+Figure 1. The Architecture of CBOW & Skip-gram(reprinted from
+(Mikolov et al., 2013))
+C-BOW 모델의 단어 임베딩 절차는 다음과 같다. 먼저 모든
+단어를 one-hot-coding으로 벡터화한다. 문장에 있는 하나의 단
+어를 출력층으로 두고 해당 단어   의 앞 뒤로 개의 단어를
+입력층으로 둔다. 는 윈도우 크기(window size)이며 사용자가
+지정해야 하는 하이퍼 파라미터(hyperparameter)이다. 표현하
+고자 하는 단어 벡터의 차원 수가  , 전체 단어 수는  라고 했을
+때, 입력층의 단어 벡터는 가중치 행렬(T by N)과 곱하여 투
+영(projection)한다. 이후 은닉층과 출력층 사이의 가중치 행렬
+ ′(N by T)와 곱하면 출력층의 단어가 나온다. 출력층의 단어
+와 입력층의 단어가 나타날 확률을 최대화 하도록 학습하면 가
+중치 행렬  가 Word2Vec의 최종 결과물인 임베딩 행렬이 된
+다. Skip-gram은 입력층과 출력층만 다르고 모든 절차는 같다.
+3.2 핵심 범주 추출 및 범주 점수 산출
+단어 네트워크는 그래프 이론을 기반으로 하는 공간 모델이다.
+그래프 는 노드 집합  와 노드 사이를 연결하는 간선(Edge)
+들의 집합  로 이루어져 있다. 그래프 기반 모델에서, 문서는
+서로 연결된 단어들의 집합이라 할 수 있다(Jin and Srihari, 2007;
+Palshikar, 2007). 본 연구에서는 우선 대상이 되는 전체 문서에
+Word2Vec 기법을 적용하여 등장 단어들의 임베딩 행렬(embedding
+matrix)을 생성하였다. 이후 임베딩 행렬에 식 (1)을 사용
+하여 단어 간 거리가 가까울수록 큰 가중치를 부여하는 N by N
+크기의 가중치 행렬을 산출하였다.
+  
+    where node I and node j adjacent (1)
+   : distance between node i and node j
+이를 바탕으로 가중치 행렬과 단어 동시 발생 행렬을 요소
+별 곱해주어 최종적으로 단어 간 연관성이 높을수록 작은 값
+을 가지는 단어 네트워크를 생성하였다. 여기서 단어 동시 발
+생 행렬이란 한 문서 내에서 단어 와 가 동시에 발생한 빈도
+를 번째 행, 번째 열의 위치에 표시한 행렬이다. 생성된 단어
+네트워크에서 노드 의 중요성을 평가할 수 있는 식 (2)의 근접
+중심성(closeness centrality) 지표 
+를 계산하였다.
+
+ ∈
+ (2)
+ : shortest distance between node i and node j
+근접 중심성은 중요한 노드일수록 다른 노드까지 도달하는
+경로가 짧을 것이라는 가정을 기저에 두고 있다. 따라서 근접
+중심성이 높은 단어일수록 문서에서 중요한 단어라고 할 수 있
+다. 본 연구에서는 더욱 정확한 핵심 범주 추출을 위해 중심성 지
+표가 높은 단어들 중 가장 적합하다고 판단되는 단어를 사람이
+직접 정성적으로 평가하여 최종 핵심 범주 개를 산출하였다.
+Unsupervised Document Multi-Category Weight Extraction based on Word Embedding and Word Network Analysis 445
+Figure 2. Process of Key Category Extraction
+Figure 3. Process of Construct Document-Key Category Weight Matrix
+Figure 4. Framework of Proposed Method
+핵심 범주 추출 절차는 <Figure 2>와 같다. 가중치 행렬에서
+핵심 범주 개만 추출한 N by k 크기의 핵심 범주 가중치 행렬
+을 생성한다. 문서 용어 행렬에 생성된 행렬을 곱해주면 모든
+문서들의 핵심 범주에 대한 가중치를 산출한 문서 핵심가중치
+행렬을 생성할 수 있다. 산출된 각 문서의 범주 별 가중치 
+에는 식 (3)의 소프트맥스(softmax) 함수를 적용하여 총 합이 1
+이 될 수 있도록 가중치 로 변환하였다. 문서 핵심가중치 행
+렬 생성 절차는 <Figure 3>과 같다.
+  
+  
+ 
+
+
+
+for    ⋯  (3)
+4. 실험 설계
+본 연구는 <Figure 4>에 나타난 절차를 따라 다량의 사용자
+리뷰 문서에서 중요 키워드를 추출하고 이들이 어떤 기능에
+관한 리뷰인지 분류, 평가하였다. 각종 제품 리뷰 사이트에
+서 휴대폰 리뷰 텍스트 데이터를 수집하여 전처리한 뒤 각
+단어를 Word2Vec을 이용하여 저차원으로 임베딩하였다. 각
+단어들의 동시발생 행렬과 가중치 행렬을 구축한 뒤 거리기
+반 그래프를 생성하여 근접 중심성이 높은 단어를 제품 리뷰
+대상의 핵심 기능으로 정의하였다. 추출한 핵심 기능을 이
+용하여 각 리뷰가 어떤 기능에 대하여 중점적으로 설명하고
+446 정재윤․모경현․서승완․김창엽․김해동․강필성
+Table 1. Information About Each Cell Phone Review Data
+Keyword No. of docs Keyword No. of docs
+IM-A600S(팬택 시리우스) 17,837건 SHV-E120S(갤럭시S2 HD LTE) 2,799건
+IM-A650S(팬택 베가) 5,378건 SHV-E160S(갤럭시 노트1) 26,603건
+IM-A690S(팬택 미라크) 9,146건 SHV-E210S(갤럭시 S3) 41,047건
+IM-A730S(베가 S) 5,535건 SHV-E250S(갤럭시 노트2) 14,875건
+IM-A760S(베가레이서1) 22,375건 SHW-M100S(갤럭시 A) 3,039건
+IM-A800S(베가 LTE) 9,477건 SHW-M110S(갤럭시 S) 31,555건
+LG-F160S(옵티머스 LTE2) 15,794건 SHW-M180S(갤럭시 탭) 2,031건
+LG-SU660(옵티머스 2x) 6,592건 SHW-M190S(갤럭시 호핀) 1,195건
+LG-SU760(옵티머스 3d) 6,539건 SHW-M240S(갤럭시 에이스) 13,357건
+SCH-M715(옴니아 2) 16,719건 SHW-M250S(갤럭시 S2) 39,340건
+SHV-E110S(갤럭시S2 LTE) 2,358건 SHW-M440S(갤럭시 S3 3G) 4,615건
+Table 2. Examples of Kkma and Soynlp Tokenizer
+Example of review Kkma(python) Soynlp(python)
+디자인 너무 구림 ㅜ
+갤넥서스가 갤럭시 중엔 갑인듯
+디자인, 너무, 구림, ㅜ, 개, ㄹ, 넥서스, 가, 개, ㄹ,
+럭, 시중, 에, 는, 갑, 이, ㄴ, 듯
+디자인, 너무, 구림, ㅜ, 갤,
+넥서스, 가, 갤럭시, 중엔, 갑인듯
+전 갤럭시3 쓰고요
+뉴아이패드 하나 있네요
+전, 개, ㄹ, 럭, 시, 3, 쓰, 고요, 뉴, 아이, 패드,
+하나, 있, 네요
+전, 갤럭시, 3, 쓰고, 요,
+뉴아이패드, 하나, 있네요
+있는지 가중치를 산출하고 가장 높은 가중치를 가지는 기능으
+로 할당하였다. 이를 설문조사를 통해 수집한 실제 사람의 관
+점에서 판단한 리뷰의 기능과 비교하고 방법론의 효과를 검증
+하였다.
+4.1 데이터 수집
+본 연구에서는 루리웹, 뽐뿌, 세티즌, 클리앙, 플레이웨어즈
+홈페이지의 다섯 가지 리뷰 관련 사이트에서 총 298,206개의
+휴대폰 리뷰 데이터를 수집하였다. 각 리뷰 데이터에 대한 변
+수로는 사이트 이름, 대상 검색어, 리뷰 내용, 작성 날짜, 리뷰
+타입(본문, 댓글)까지 총 6개의 정보를 수집하였다. 분석 대상
+검색어와 리뷰 개수는 <Table 1>과 같다.
+4.2 문자열 토크나이징(tokenizing)
+본 연구에서 사용한 리뷰 데이터는 이모티콘, 비표준어, 비
+속어 등이 많이 포함된 문장들로 이루어져있고 띄어쓰기가 잘
+지켜지지 않아 일반적인 자연어 처리 라이브러리를 사용하면
+토큰화(tokenization) 정확도가 높지 않다는 문제점이 있다. 이
+는 말뭉치 기반으로 학습된 분석기를 사용할 경우, 학습 데이
+터에 등장하지 않았던 단어들을 제대로 인식하지 못하는 미등
+록어 문제(out-of-vocabulary problem)가 발생하기 때문이다. 따
+라서 이러한 데이터 토큰화에 강점을 갖는 한국어 자연어처리
+를 위한 파이썬 라이브러리인 soynlp를 사용하였다. 해당 라이
+브러리의 MaxScoreTokenizer는 식 (4)을 사용하여 연속된 글
+자의 연관성이 높을수록 단어일 가능성이 높다는 가정을 가지
+고 토큰화를 수행한다.
+   ⋯  
+     Π  
+   ⋯   ⋯  
+(4)
+<Table 2>는 꼬꼬마 분석기와 soynlp 분석기를 사용하여 분
+석한 결과를 비교한 예시이다.
+4.3 단어 임베딩
+먼저 6개의 리뷰 사이트에서 수집한 데이터에 Python의
+Gensim 모듈에 있는 Word2Vec을 사용하여 100차원 공간에 임
+베딩을 실시하였다. Skip-gram 방식을 사용하였으며 윈도우
+크기는 2로 설정하고 수렴할 수 있을 만큼 신경망 반복 횟수
+(epoch)는 100번 적용하여 충분히 수렴할 수 있도록 하였다.
+<Table 3>은 임베딩 결과의 일부분이다.
+Table 3. Coordinates of Words in 100 Dimensions
+Word   … 
+광탈 0.157 -0.021 … -0.441
+아쉽 -0.081 -0.202 … -1.096
+… … … … …
+소리 -0.465 0.135 … 0.256
+워드 임베딩과 단어 네트워크 분석을 활용한 비지도학습 기반의 문서 다중 범주 가중치 산출 447
+Table 5. Examples of Category Weight Distribution
+1
+시장가격과는 너무 가격차이가 나는 황당한 가격이네요
+가격 배터리 사진 카메라 액정 디자인
+0.604 0.078 0.078 0.078 0.079 0.082
+2
+베가 lte는 기피해야 겠군요 아무래도 lte 통신모듈에 hd해상도까지 있는데 배터리는 갤투 lte랑 비슷한 수준이니
+배터리 고자는 당연하겠지요 사실 갤투 lte도 lte를. 사용하면 배터리 그리 오래 못갑니다
+가격 배터리 사진 카메라 액정 디자인
+0.0167 0.915 0.016 0.018 0.017 0.017
+3
+사진을 잘 찍으신건지 s3가 좋은 건지 사진 멋지네요 ㅎㅎ
+가격 배터리 사진 카메라 액정 디자인
+0.08 0.08 0.594 0.082 0.081 0.082
+4
+폰카나 컴팩트카메라로 잘 찍고 싶은 욕심은 있지만 따로 전문가용 카메라를 사서 들고다니긴 선뜻 마음이
+가지 않네요 줌이 싸서 샀어요 ㅠㅠ 믿어주세요
+가격 배터리 사진 카메라 액정 디자인
+0.08 0.082 0.082 0.593 0.081 0.082
+5
+mrgom님 부모님 친구 교수님 등등 모두 액정이라고합니다 적어도 제 주위에서는요 공대 친구들도 스마트폰
+관심없는 애들은 삼성폰 써도 다 액정이라고해요
+가격 배터리 사진 카메라 액정 디자인
+0.002 0.002 0.002 0.003 0.988 0.003
+6
+스펙도 스펙이지만 디자인 정말 뭐 나와 봐야 알겠지만 이번에 공개된 디자인 솔직히 별루에요
+가격 배터리 사진 카메라 액정 디자인
+0.081 0.069 0.071 0.072 0.073 0.633
+7
+전국 서비스센터 진행하는건가요 지방도 되려나요
+가격 배터리 사진 카메라 액정 디자인
+0.167 0.167 0.167 0.167 0.167 0.167
+4.4 핵심 기능 추출
+분산 표상으로 나타낸 명사 벡터들에 식 (1)을 사용하여 단어
+들 간 가중치를 요소로 갖는 가중치 행렬을 생성하였다. 이후
+해당 행렬을 단어들의 동시발생 행렬과 요소별 곱하여 그래프
+행렬을 생성하고 이를 통해 단어와 각 단어 노드의 중심성을 측
+정하는 지표로는 근접 중심성을 사용하였다. 근접 중심성이 높
+은 단어들은 <Table 4>와 같다. 식 (1)의 하이퍼 파라미터는 다
+양하게 변형하며 실험하였지만 결과물이 큰 차이가 없어 는 2
+로 설정하였으며   는  거리를 사용하였다.
+Table 4. Samples of High Closeness Centrality Score Words
+Word
+느낌 시간 배터리 액정 터치
+가장 가격 만원 속도 어플
+지원 포함 화면 사진 카메라
+기기 처음 차이 디자인 성능
+추출된 상위 150개의 명사들을 살펴보면 성능, 속도, 터치
+등 다양한 휴대폰 성능 키워드들에 대한 단어들이 포함되어
+있다. 그러나 성능과 같이 너무 포괄적인 단어들과 속도, 터치
+처럼 휴대폰 성능의 구체적인 기능을 표현할 수 없다고 판단
+한 단어들을 제거하였다. 제외되지 단어 중 연구자가 정성적
+인 방식으로 평가했을 때 가장 핵심 범주로 판단할 수 있는 가
+격, 배터리, 사진, 카메라, 액정, 디자인 총 6개를 리뷰 텍스트
+에 대한 범주 키워드로 선택하였다. 이는 연구자가 임의로 선
+택한 핵심 범주이기에 해당 분야의 전문가가 추출한다면 결과
+가 달라질 수 있다.
+4.5 핵심 기능 행렬 생성
+마지막으로 문서 별 핵심 기능 점수 추출을 위하여 먼저 전
+체 토큰  개에 대한 N by N 크기의 가중치 행렬에서 6개 열에
+핵심 기능만 뽑아 N by 6 크기의 가중치 행렬을 만들었다. 이렇
+게 만든 가중치 행렬에 D by N 크기의 문서 용어 행렬을 곱하
+여 D by 6 크기의 핵심 기능 행렬을 생성하였다. 이 행렬은 개
+별 문서가 6개의 문서 분류 키워드에서 어떤 분포를 알 수 있
+는 핵심 기능별 점수로 구성되어 있다. 개별 문서에서 가장 큰
+점수를 가지는 키워드가 해당 문서의 범주가 된다. <Table 5>
+는 일부 문서들의 기능별 가중치 및 범주를 나타낸 것이다. 모
+든 범주에 대한 가중치가 균등하면 핵심 범주에 포함하지 않
+는 해당 없음 범주로 판단하였다.
+448 Jaeyun Jeong․Kyoung Hyun Mo․Seungwan Seo․Czang Yeob Kim․Haedong Kim․Pilsung Kang
+Table 6. Examples of Classification Process
+1
+예전 오마주 쓸때도 저게 참 별로였다죠 슬림형배터리 슬림형커버 끼우면 몸매로 슬림해지고 보기좋은데
+표준형배터리에 표준형커버 끼우면 배터리부분만 툭 튀어나와있었더라는
+Proposed Model Human Judgement Correct classification?
+배터리 배터리 Yes
+2
+구글 계정 만드시고 연락처에서 계정통합해서 구글로 통합하시면 구글 계정에 주소록 백업됩니다 사진 있으면
+사진도 구글에 저장되고요
+Proposed Model Human Judgement Correct classification?
+사진 해당 없음 No
+3
+오 저도 했는데 원래 23일날 해준다더니 22일에 개통해서 23일 오전에 받았네용 문자랑 전화가 용의해
+효도용으로는 그만인듯 ㅎㅎ
+Proposed Model Human Judgement Correct classification?
+해당 없음 해당 없음 Yes
+4
+가격이 가격인만큼 어쩔수 없다곤 하지만 가격 조금 더 올리고 고해상도로 나오는게 더 나을것 같은데
+Proposed Model Human Judgement Correct classification?
+가격 가격 Yes
+4.6 설문 조사
+본 방법론은 비지도 학습 기반이기에 각 문서에 대한 핵심
+범주 정답 레이블이 없는 결과물이 나오게 된다. 전체 약 30만
+개 문서의 정답 레이블을 정해줄 수 없기에 다음과 같은 방법
+으로 모델 성능을 평가하였다. 먼저 추출된 6개의 핵심 기능에
+대하여 각 기능별로 상위 스코어 150개의 문장을 추출하였다.
+여기에 더해 어떠한 기능에도 포함되지 않는 리뷰도 150개를
+추출하여 설문자가 하나의 리뷰를 읽고 총 7개의 설문 문항(가
+격, 디자인, 배터리, 사진, 액정, 카메라, 해당 없음) 중 하나를
+선택할 수 있게 하였다. 총 30명의 실험자를 대상으로 설문 조
+사를 진행하였으며 한 사람당 각 기능 당 15리뷰씩 총 105개의
+리뷰를 설문하게 하였다. 최종적으로 모든 리뷰는 세 명씩 설
+문하였으며, 가장 많은 투표를 받은 기능을 해당 리뷰의 기능
+으로 처리하여 모델 결과와 일치하면 정답으로 처리하였다.
+<Table 6>은 설문 조사 결과와 제안하는 방법론의 결과를 비
+교하여 모델이 제대로 분류했는지 나타내는 방법의 예시이다.
+4.7 성능 평가 지표
+<Table 7>은 성능 평가에서 활용하는 혼동 행렬(confusion
+matrix)이다. 범주 에 대하여 혼동 행렬의 행 방향은 사람의
+인지적 관점에서 분류한 범주이고 열 방향은 모델이 분류한
+범주이다. 범주화 성능 평가 지표로는 식 (5)~식 (9)의 단순 정
+확도(accuracy), 재현율(recall), 정밀도(precision) 그리고 F1-지
+표(F1-score)를 사용하였다.
+Table 7. Confusion Matrix of Category 
+Category 
+Classifier assignments
+Yes No
+Human
+assignments
+Yes A B
+No C D
+        
+   (5)
+  
+ (6)
+  
+ (7)
+      
+ ×   (8)
+5. 실험 결과
+5.1 모델 성능 평가
+설문 조사 결과를 정답 레이블로 놓고 제안한 방법론을 평
+가한 결과는 <Table 8>과 같다. 재현율의 경우 해당없음 범주
+를 제외하고는 전체적으로 높은 값이 산출되었다. 정밀도의
+경우 사진 범주를 제외하고는 높은 값이 나온 것을 확인할 수
+있다. F1 지표는 배터리 범주가 가장 높은 값이 산출되었다. 여
+섯 가지 핵심 범주에 대한 전체적인 정확도는 0.786이다. 본 연
+구에서 제안하는 방법론이 다범주 분류에서 좋은 성능을 보여
+주고 있음을 확인할 수 있다.
+Table 8. Model Performance for Each Category
+Category Overall
+accuracy Recall Precision F1-score
+가격
+0.786
+0.841 0.847 0.844
+배터리 0.964 0.887 0.924
+사진 1.000 0.373 0.544
+카메라 0.812 0.807 0.809
+액정 0.846 0.767 0.804
+디자인 0.889 0.913 0.901
+해당없음 0.511 0.907 0.654
+Unsupervised Document Multi-Category Weight Extraction based on Word Embedding and Word Network Analysis 449
+Table 9. Examples of Multi label Documents
+1
+아는애 어제 아이폰4 들고 왓더군요 32기가짜리 일단 오줌액정은 아니였습니다 디자인 일단 고급스러우면서 무
+게는 좀 많이 무겁더군요. 아이폰 3gs보다는 몬가 디자인은 어색했어요. 고급스럽긴하지만 데스그립존재하고요.
+실내 카메라 촬영시 가운데 초록색 확실히 있떠군요. 근데도 그런거 참을수 있다고 하더군요 쓰는애가. 역시 애
+플에 힘은 대단
+가격 배터리 사진 카메라 액정 디자인
+0.060 0.061 0.061 0.168 0.173 0.477
+2
+갤럭시 s4 나 넥서스5 말곤 크게 다른 선택지가 없겠네요. 가격대도 글코 또 안드로이드를 경험해보시겠다고하
+시고 카메라도 신경쓰셔야 하니 아니면 가격 싼 엑스페리아z1가 있는데 그거는 위에 다른 두 폰이랑 좀 다른종
+류의 폰이라고 해도 될만큼 달라서
+가격 배터리 사진 카메라 액정 디자인
+0.519 0.071 0.070 0.193 0.071 0.073
+3
+아이폰 정책 따라하나봐요. 다음세대 나오고 나면 기존 세대는 가격 낮춰팔기, 갤2플은 대놓고 갤2 재활용, 갤럭
+시팝도 갤2hd lte 액정 재활용 느낌이고 갤그랜드는 갤플70 액정 재활용 느낌이고 ap는 4412 재활용이고
+가격 배터리 사진 카메라 액정 디자인
+0.193 0.072 0.069 0.070 0.520 0.074
+4
+아몰레드가 번인 빼고는 lcd의 빛샘이랑 회색검정색보단 번인이 낫죠. 번인은 교체라도 해주지 빛샘이랑 회색같
+은 검정은 뭐 종특이니…어떤 폰은 녹테까지
+가격 배터리 사진 카메라 액정 디자인
+0.161 0.162 0.159 0.163 0.190 0.164
+Table 10. Review Documents of Uniform Distribution
+No. Document
+1 스하 갤스 친구가 쓰고있는데 죽을라하던데요ㅋㅋ 잘쓰신다니 다행입니다
+2 버벅임은 없으세요 제친구는 버벅여서 카톡도 못한다고 하던데 그건 핑계였군요 갈굼의 구실이 생겼네요
+3 나두 갤유전데 주변에 갤아는사람이 거의없다느거 ㅜㅜ 요번에 버스한번 제대로 타고 설움달래려구요 ㅋㅋ
+4 지인이 스마트폰 쓰시는데 벨소리랑 문자음 바꾸기가 너무 힘드시다고 하소연 하시네요 홈 만드실때 어떻게 연결해서
+쉽게 부탁드려요ㅠㅠ
+5 휴포에서 하도 이상한 글을 많이 봐서 저도 걱정을 조금 하긴 했습니다 욕 안 하시고 고마워하셔서 다행입니다 ㅎ
+6 저도 예전에 비슷한 경험을 했었죠 as기사님이 자기를 믿어달라고 해서 그러라고 하고는 동일증상으로 다시 방문할
+때 콜택시 불러다가 영수증 끊어서 왕복차비 받아온적 있습니다
+7 커널 개발하는 사람입니다 해당 문제 픽스소스를 좀봤는데 emmc쪽 드라이버에 추가된부분이 다소 있습니다 커널만
+교체하면 되긴합니다만 한번 커널만 컨버팅해서 넣어보시겠습니까
+<Table 8>에서 측정한 평가 지표들은 가중치가 가장 높은 범
+주 하나로 할당하였으나, 본 연구에서 제안하는 방법론은 하나
+의 리뷰 문서에 대해 여러 범주의 가중치를 동시에 확인할 수
+있다. <Table 9>는 설문 조사에 쓰인 리뷰 문서 중 다양한 기능
+에 대하여 설명하고 있는 리뷰 문서와 기능에 대한 가중치를 나
+타내고 있다. 첫 번째 리뷰의 경우 전체적으로 디자인에 대한
+문서이지만 실내 카메라 촬영 시 문제점이나 액정에 대한 내용
+도 포함되어 있다. 이에 따라 디자인은 0.4774의 높은 가중치를
+가지고 카메라와 액정은 각각 0.1676과 0.173의 값을 가지게 된
+다. 두 번째 리뷰와 세 번째 리뷰 모두 가장 높은 가중치를 가지
+는 범주가 주요 내용이고 다음으로 높은 가중치를 가지는 범주
+관련된 내용도 포함되어 있는 것을 확인할 수 있다. 이는 기존
+문서 범주화 방법론들은 범주 한 개에 대한 분류만 수행할 수
+있지만, 제안하는 방법론은 다중 범주 문서 파악 및 핵심 범주
+들에 대한 가중치까지 산출할 수 있음을 나타내는 예시이다. 마
+지막으로 네 번째 리뷰의 경우 액정이라는 특정 단어가 들어가
+있지 않지만 액정과 유사한 아몰레드, 번인, lcd, 빛샘, 녹테 등
+과 같은 단어들이 등장한다. 가장 중요한 핵심 범주 키워드가
+없어도 액정 범주에 대한 가중치가 0.1899로 가장 높은 것을 확
+인할 수 있다. 이 예시는 실험 문서를 대상으로 Word2Vec을 사
+용하여 분산 표상 기법으로 임베딩 후 생성한 가중치 행렬이 단
+어 사이의 문맥적 의미까지 충분히 고려하고 있음을 나타낸다.
+총 298,206개의 문서에서 97,083개의 문서가 해당 없음 범주
+로 분류되었다. <Table 10>은 모든 가중치가 0.163에서 0.169사
+이의 균등한 분포를 가지는 해당없음 범주에 속하는 문서들에
+대한 예시이다. 본 연구에서 제안하는 방법론을 사용하여 핵심
+범주, 즉 휴대폰 기능과는 전혀 상관없는 문서들을 걸러낼 수
+있음을 확인하였다.
+450 정재윤․모경현․서승완․김창엽․김해동․강필성
+6. 결론 및 활용방안
+본 연구는 다량의 문서에서 공통의 핵심 범주를 추출하고 개
+별 문서에 대한 범주 가중치를 산출하는 방법론을 제안하였
+다. 먼저 루리웹 등 5개 사이트에서 얻은 휴대폰 리뷰의 각 단
+어를 Word2Vec을 사용하여 분산 표상으로 나타내고 가중치
+행렬을 생성하였다. 이를 기반으로 단어 네트워크를 생성하고
+핵심 범주를 추출하였다. 핵심 범주에 해당하는 가중치 행렬
+과 문서 단어 행렬을 사용하여 각 문서 별 핵심 범주 가중치를
+산출했다. 제안된 방법론의 성능을 평가하기 위해 사람의 인
+지적 관점에서 평가한 문서의 범주와 가장 높은 가중치를 가
+지는 문서를 비교하여 각 범주 별 성능을 측정했다. 제안한 방
+법론이 단일 범주 분류 측면에서도 좋은 성능을 보이며 가중
+치를 통해 다중 범주의 가중치 비율을 산출할 수 있음을 확인
+하였다. 이를 통해 제안하는 방법론은 휴대폰 리뷰처럼 사용
+자들이 어떤 범주에 대하여 중요하게 말하고 있는지 파악하기
+어려운 경우 핵심 범주를 추출할 수 있음을 확인하였다. 또한
+모델을 따로 학습시키지 않고 정답 레이블이 달려있지 않은
+문서들의 핵심 가중치 비율을 산출할 수 있음을 확인하였다.
+이에 더해 핵심 범주에 포함되지 않는 불필요한 대다수의 문
+서를 제거할 수 있음을 확인하였다.
+본 연구에서는 휴대폰 리뷰 문서를 대상으로 실험을 진행하
+였지만, 다른 도메인에 대해서 적용하여 좋은 성능을 보임을 확
+인할 필요가 있다. 특히 정답 레이블이 없고 핵심 범주를 파악하
+지 못한 도메인에 좋은 성능을 낼 것으로 기대한다. 또한 분산 표
+상 기법으로 Word2Vec이 아닌 Glove(Pennington et al., 2014)와
+FastText(Bojanowski et al., 2016)를 사용한다면 개선의 여지가
+있을 것이다. 그리고 본 방법론은 중요 단어 산출 과정에서 중심성
+지표만 가지고 사람이 직접 정성적으로 중요도를 평가한다는
+한계점이 있다. 이를 보완하기 위하여 중심성 지표로 근접 중심
+성 지표만 보는 것이 아닌 TextRank(Mihalcea and Tarau, 2004) 등
+의 방법에서 사용하는 비슷한 노드를 합치는 군집화 방법 또한
+적용할 수 있다. 이를 통해 유사한 단어들을 자체적으로 한 번 더
+제거하거나 클러스터별로 중심성이 높은 단어들을 선택하여 정
+성적인 핵심 단어 선택 과정의 수고를 줄일 수 있을 것이다. 이에
+더해 해당 도메인의 전문가가 직접 알맞은 핵심 범주를 추출한
+다면 더욱 의미 있는 결과를 낼 수 있을 것이라 기대한다.
+참고문헌
+Abilhoa, W. D. and De Castro, L. N. (2014), A keyword extraction
+method from twitter messages represented as graphs, Applied Mathematics
+and Computation, 240, 308-325.
+Bojanowski, P., Grave, E., Joulin, A., and Mikolov, T. (2016), Enriching
+word vectors with subword information, arXiv preprint arXiv :
+1607. 04606.
+Brin, S. and Page, L. (1998), The anatomy of a large-scale hypertextual
+web search engine, Computer Networks and ISDN Systems, 30(1-7),
+107-117.
+Han, E., Chae, H., Woo, H., and Sohn, S. (2018), Word2vec algorithm
+applied to identify gender-related vocabulary appeared in news article,
+Journal of the Korean Institute of Industrial Engineers, 44(4), 272-
+282.
+Jin, W. and Srihari, R. K. (2007), Graph-based text representation and
+knowledge discovery, Paper presented at the Proceedings of the
+2007 ACM symposium on Applied computing.
+Joachims, T. (1998), Text categorization with support vector machines :
+Learning with many relevant features, Paper presented at the European
+conference on machine learning, 137-142.
+Mihalcea, R. and Tarau, P. (2004), Textrank : Bringing order into text,
+Paper presented at the Proceedings of the 2004 conference on
+empirical methods in natural language processing.
+Mikolov, T., Chen, K., Corrado, G., and Dean, J. (2013), Efficient estimation
+of word representations in vector space, arXiv preprint
+arXiv : 1301.3781.
+Mo, K., Park, J., Jang, M., and Kang, P. (2018), Text Classification
+based on Convolutional Neural Network with word and character
+level, Journal of the Korean Institute of Industrial Engineers, 44(3),
+180-188.
+Palshikar, G. K. (2007), Keyword extraction from a single document
+using centrality measures, Paper presented at the International Conference
+on Pattern Recognition and Machine Intelligence.
+Pennington, J., Socher, R., and Manning, C. (2014), Glove : Global
+vectors for word representation, Paper presented at the Proceedings
+of the 2014 conference on empirical methods in natural language
+processing (EMNLP).
+Rousseau, F., Kiagias, E., and Vazirgiannis, M. (2015), Text categorization
+as a graph classification problem. Paper presented at the Proceedings
+of the 53rd Annual Meeting of the Association for Computational
+Linguistics and the 7th International Joint Conference on
+Natural Language Processing (Vol. 1 : Long Papers).
+Sebastiani, F. (2002), Machine learning in automated text categorization,
+ACM Comput. Surv., 34(1), 1-47, doi : 10.1145/505282.505283.
+Tang, B., He, H., Baggenstoss, P. M., and Kay, S. (2016), A Bayesian
+classification approach using class-specific features for text categorization,
+IEEE Transactions on Knowledge and Data Engineering,
+28(6), 1602-1606.
+Tang, B., Kay, S., and He, H. (2016), Toward optimal feature selection
+in naive Bayes for text categorization, IEEE Transactions on Knowledge
+and Data Engineering, 28(9), 2508-2521.
+Yang, Y. and Pedersen, J. O. (1997). A comparative study on feature
+selection in text categorization, Paper presented at the Icml.
+저자소개
+정재윤 : 고려대학교 산업경영공학부에서 2017년 학사학위를
+취득하였다. 이후 동대학원에 진학하여 석사과정생으로 재학
+중이다. 연구분야는 정형 및 비정형데이터를 활용한 기계학습
+알고리즘 개발 및 응용이다.
+모경현 : 서울과학기술대학교 글로벌융합산업공학과에서 2016
+년 학사학위를 취득하였고 고려대학교 산업경영공학부에서
+2018년 석사학위를 취득하였다. 연구분야는 자연어처리와 텍
+스트마이닝을 활용한 문서 감성 분류 및 요약이다.
+워드 임베딩과 단어 네트워크 분석을 활용한 비지도학습 기반의 문서 다중 범주 가중치 산출 451
+서승완 : 서울과학기술대학교 ITM학과에서 2017년 학사학위
+를 취득하였고 고려대학교 산업경영공학부에서 석박통합과
+정으로 재학 중이다. 연구분야는 텍스트 분석을 활용한 고객
+의견 분석, 딥러닝에 대한 adversarial attack 등이 있다.
+김창엽 : 국민대학교 컴퓨터과학과에서 2006년 학사학위를 취득
+하였고 성균관대학교 정보보호학과에서 2009년 석사학위를 취
+득하였다. 이후 안랩에서 10년간 실무를 수행하였으며 현재는
+고려대학교 산업경영공학부에서 박사과정으로 재학 중이다. 연구
+분야는 머신러닝/딥러닝 기반의 보안 알고리즘 개발 및 응용이다.
+김해동 : 고려대학교 산업경영공학부에서 2016년 학사학위를
+취득하였고 동대학원에서 2018년 석사학위를 취득하였다. 연
+구 분야는 머신러닝과 최적화 알고리즘의 접목이다.
+강필성 : 서울대학교 산업공학과에서 2003년 학사, 2010년 박
+사학위를 취득하였다. 이후 현대카드 과장 및 서울과학기술대
+학교 조교수로 근무하였으며, 현재는 고려대학교 산업경영공
+학부 부교수로 재직 중이다. 연구분야는 정형 및 비정형 데이
+터를 활용한 데이터마이닝 및 기계학습 알고리즘 개발 및 제
+조/IT/공공분야 응용이다.
