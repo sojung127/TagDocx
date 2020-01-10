@@ -30,43 +30,15 @@ def convert_pdf_to_txt(path):
     retstr.close()
     return text
 
+from konlpy.tag import Twitter
+from konlpy import jvm
+
+jvm.init_jvm()
 pdf_file = "C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/강의자료/경영10/1차시 PR의 정의와 유형PR의 4모형.pdf"                                     # 로컬 PC에 있는 pdf 파일도 읽을 수 있음
 contents = convert_pdf_to_txt(pdf_file)
-lines=contents.split('\n')
 
+from konlpy.corpus import kobill
 
-scoreList=[]
-featureList=[]
-
-fp=open('forAlgorithm/ClassFeature.txt','r',encoding='utf-8-sig')
-features = fp.readlines()
-
-
-fp.close()
-
-
-for i in range(len(features)):
-    scoreList.append(0)
-    features[i]=features[i].strip()
-    featureList.append(features[i].split())
-
-for i in range(len(lines)):
-    lines[i]=lines[i].replace(" ","")
-
-index=0
-
-sum=0
-value=1
-
-for i in range(len(featureList)):
-    for line in lines:
-        for j in range(1,len(featureList[i])):
-            if featureList[i][j] in line.upper():
-                scoreList[index]=scoreList[index]+1*int(featureList[i][0])
-                sum=sum+value
-    index=index+1
-
-#pdf_file.close()
-
-print(scoreList)
-print(max(scoreList))
+from konlpy.tag import Okt
+t=Okt()
+tokens_ko=t.morphs(contents)
