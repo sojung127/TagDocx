@@ -233,11 +233,11 @@ else:
     pass
 
 # 공고문 scoring
-<<<<<<< HEAD
+
 fp = open(r'./NoticeFeature.txt','r',encoding='utf-8-sig')
-=======
+
 fp = open ('../forAlgorithm/NoticeFeature.txt','r',encoding='utf-8')
->>>>>>> 4babcc1a96fa4ed4f2116a8cf564cd9a1c57e5ba
+
 features = fp.readlines()
 fp.close()
 #print("notice start")
