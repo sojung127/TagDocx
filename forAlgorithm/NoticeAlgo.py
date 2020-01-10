@@ -1,22 +1,49 @@
-# import olefile
-#import hwp5
+#-*-coding:utf-8-*-
 
-# test_file=olefile.OleFileIO('2020년 아산다솜장학생 선발안내.hwp')
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.converter import TextConverter
+from pdfminer.layout import LAParams
+from pdfminer.pdfpage import PDFPage
+from io import StringIO
 
-# encoded_text = test_file.openstream('PrvText').read()
+#한글이 포함되어 있는 PDF 읽기
+def convert_pdf_to_txt(path):
+    rsrcmgr = PDFResourceManager()
+    retstr = StringIO()
+    codec = 'utf-8'
+    laparams = LAParams()
+    device = TextConverter(rsrcmgr, retstr, laparams=laparams)
+    fp = open(path, 'rb')
+    interpreter = PDFPageInterpreter(rsrcmgr, device)
+    password = ""
+    maxpages = 0
+    caching = True
+    pagenos = set()
 
-# lines=encoded_text.decode('UTF-16').split('\n')
+    for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages, password=password, caching=caching,
+                                  check_extractable=True):
+        interpreter.process_page(page)
+        text = retstr.getvalue()
 
-# hwp5.hwp5txt('2020년 아산다솜장학생 선발안내.hwp','test.txt')
+    fp.close()
+    device.close()
+    retstr.close()
+    return text
 
-# print(lines)
-
-fp = open('P1.txt','r',encoding='utf-8')
-lines = fp.readlines()
-fp.close()
-fp = open ('NoticeFeature.txt','r',encoding='utf-8-sig')
+path=input()
+lines=[]
+print(path[-3:]=='pdf')
+if path[-3:]=='pdf':
+    contents = convert_pdf_to_txt(path)
+   
+else:
+    fp = open(path,'r',encoding='utf-8')
+    contents=fp.readlines()
+    fp.close()
+fp = open ('forAlgorithm/NoticeFeature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
 fp.close()
+
 
 scoreList=[]#10개
 featureList=[]
@@ -28,31 +55,29 @@ for i in range(len(features)):
 
 print(featureList)
 
-for i in range(len(lines)):
-    lines[i]=lines[i].replace(" ","")
-
+if path.find('슈퍼루키')>=0:
+    print(contents.count('\n'))
+    contents=contents.replace('\n','')
+print(contents.count('\n'))
 index=0
 isFind=False
 
 sum=0
 value=0
-for i in range(len(featureList)):
-    if i == 0  :
-        value=5
-    elif i == 1  :
-        value=3
-    else:
-        value=1
-    for line in lines:
-            for w in featureList[i]:
-                if w in line:
-                    scoreList[index]=scoreList[index]+1*value
-                    print(i)
-                    print(w,value)
-                    print(scoreList)
-                    sum=sum+value #합값생성
 
-                    
+for i in range(len(featureList)):
+    value=1
+    for w in featureList[i]:
+        scoreList[index]+=contents.count(w)
+        sum=sum+value
+        '''
+        if w in contents:
+            scoreList[index]=scoreList[index]+1*value
+            print(i)
+            print(w,value)
+            print(scoreList)
+             #합값생성
+            '''
         
     index=index+1
     isFind=False
