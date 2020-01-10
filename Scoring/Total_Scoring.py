@@ -200,9 +200,8 @@ class_doc = doc.replace(" ","")
 
 # 강의자료 scoring
 if (L_flag == 1):
-    fp=open('Total_Scoring.py','r',encoding='utf-8-sig')
     # 강의자료 특성을 작성한 txt파일을 불러와서 L_score 계산한다.
-    fp=open('C:\\capston\\AutomaticFileCategorizeService\\강의자료\\ClassFeature.txt','r',encoding='utf-8-sig')
+    fp=open('Scoring\ClassFeature.txt','r',encoding='utf-8-sig')
     features = fp.readlines()
     fp.close()
 
@@ -232,9 +231,8 @@ if (L_flag == 1):
 else:
     pass
 
-fp = open ('NoticeFeature.txt','r',encoding='utf-8-sig')
 # 공고문 scoring
-fp = open ('C:\\capston\\AutomaticFileCategorizeService\\공고\\NoticeFeature.txt','r',encoding='utf-8-sig')
+fp = open ('Scoring\NoticeFeature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
 fp.close()
 #print("notice start")
