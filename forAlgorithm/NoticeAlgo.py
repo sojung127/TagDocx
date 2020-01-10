@@ -77,8 +77,12 @@ for i in range(5):
     for i in range(len(featureList)):
         value=1
         for w in featureList[i]:
-            for content in contents:
-                scoreList[index]+=content.count(w)
+            if path[-3:]=='txt':
+                for content in contents:
+                    scoreList[index]+=content.count(w)
+                    sum+=content.count(w)
+            else:
+                scoreList[index]+=contents.count(w)
                 sum+=contents.count(w)
             '''
             if w in contents:
