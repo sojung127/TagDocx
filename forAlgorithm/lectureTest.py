@@ -30,11 +30,11 @@ def convert_pdf_to_txt(path):
     retstr.close()
     return text
 
-from konlpy.tag import Twitter
+
 from konlpy import jvm
 
 jvm.init_jvm()
-pdf_file = "C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/강의자료/경영10/1차시 PR의 정의와 유형PR의 4모형.pdf"                                     # 로컬 PC에 있는 pdf 파일도 읽을 수 있음
+pdf_file = "C:/Users/pyj/MyWorks/AutomaticDocumentClassificationService/Dataset/강의자료/경영10/1차시 PR의 정의와 유형PR의 4모형.pdf"                                     # 로컬 PC에 있는 pdf 파일도 읽을 수 있음
 contents = convert_pdf_to_txt(pdf_file)
 
 from konlpy.corpus import kobill
@@ -42,3 +42,9 @@ from konlpy.corpus import kobill
 from konlpy.tag import Okt
 t=Okt()
 tokens_ko=t.morphs(contents)
+
+print(len(ko.tokens))       # returns number of tokens (document length)
+print(len(set(ko.tokens)))  # returns number of unique tokens
+ko.vocab()  
+
+ko.plot(50) 
