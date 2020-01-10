@@ -90,6 +90,7 @@ extracted_text = convert_pdf_to_txt(document_pdf_source)
 #print(type(extracted_text))
 doc = extracted_text
 
+total_score_list=[]
 #검사하는 문서를 불러오는 코드 -txt version
 '''
 #txt
@@ -225,14 +226,18 @@ if (L_flag == 1):
                     scoreList[index]=scoreList[index]+1*value
                     sum=sum+value
         index=index+1
-
+    total_score_list.append(scoreList)
     L_score = max(scoreList)
     print("L_score: ", L_score)
 else:
     pass
 
 # 공고문 scoring
+<<<<<<< HEAD
 fp = open(r'./NoticeFeature.txt','r',encoding='utf-8-sig')
+=======
+fp = open ('../forAlgorithm/NoticeFeature.txt','r',encoding='utf-8')
+>>>>>>> 4babcc1a96fa4ed4f2116a8cf564cd9a1c57e5ba
 features = fp.readlines()
 fp.close()
 #print("notice start")
@@ -266,7 +271,7 @@ for i in range(len(featureList)):
             scoreList[index]=scoreList[index]+1*value
             sum=sum+value #합값생성
     index=index+1
-
+total_score_list.append(scoreList)
 E_score = sum
 print("E_score: ", E_score)
 
