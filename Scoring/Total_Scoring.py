@@ -260,7 +260,6 @@ fp = open ('../forAlgorithm/NoticeFeature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
 fp.close()
 
-
 scoreList=[]#10개
 featureList=[]
 
@@ -269,7 +268,7 @@ for i in range(len(features)):
     features[i]=features[i].strip()
     featureList.append(features[i].split())
 
-print(featureList)
+#print(featureList)
 
 if path.find('슈퍼루키')>=0:
     print(contents.count('\n'))
