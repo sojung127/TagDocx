@@ -60,7 +60,7 @@ def NP_scoring(path):
 
     #r'C:\\capston\\test\\Nmapping.csv'
     #기사 mapping 기준 단어 csv파일 불러오기
-    train = pd.read_csv(path)
+    train = pd.read_csv(path, encoding='CP949')
 
     train_words = train['words'].dropna().tolist() #words 열 읽기
     train_score = train['score'].dropna().tolist() #score 열 읽기
@@ -85,7 +85,7 @@ def NP_scoring(path):
 
 
 #검사하는 문서를 불러오는 코드 - pdf version
-document_pdf_source = "Dataset\논문\공학\개인정보 노출에 대한 인터넷 사용자의 태도에 관한 연구.pdf"
+document_pdf_source = r"..\Dataset\공고\기업\(주)카카오페이지 채용 _ 마케팅 상반기 인턴 - 슈퍼루키.pdf"
 extracted_text = convert_pdf_to_txt(document_pdf_source)
 #print(type(extracted_text))
 doc = extracted_text
@@ -161,8 +161,8 @@ if(P_flag == 1):
     n = WordNetLemmatizer()
     tokens_NP = [n.lemmatize(w) for w in tokens_NP]
 
-    P_score = NP_scoring(r'Scoring\StandardWords\mapping.csv')
-    P_score = NP_scoring('forAlgorithm\Pmapping.xlsx')
+    P_score = NP_scoring(r'.\StandardWords\mapping.csv')
+    P_score = NP_scoring(r'..\forAlgorithm\Pmapping.csv')
     print("P_score: ", P_score)
 
 else:
@@ -187,8 +187,8 @@ if(N_flag == 1):
     #중복처리한 토큰들
     tokens_NP = list(set(tokens))
 
-    N_score += NP_scoring(r'Scoring\StandardWords\mapping.csv')
-    N_score += NP_scoring('C:\\capston\\test\\Nmapping.csv')
+    N_score += NP_scoring(r'.\StandardWords\mapping.csv')
+    N_score += NP_scoring(r'.\Nmapping.csv')
     print("N_score: ", N_score)
    
     
@@ -201,7 +201,7 @@ class_doc = doc.replace(" ","")
 # 강의자료 scoring
 if (L_flag == 1):
     # 강의자료 특성을 작성한 txt파일을 불러와서 L_score 계산한다.
-    fp=open('Scoring\ClassFeature.txt','r',encoding='utf-8-sig')
+    fp=open(r'.\ClassFeature.txt','r',encoding='utf-8-sig')
     features = fp.readlines()
     fp.close()
 
@@ -232,7 +232,7 @@ else:
     pass
 
 # 공고문 scoring
-fp = open('./NoticeFeature.txt','r',encoding='utf-8-sig')
+fp = open(r'./NoticeFeature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
 fp.close()
 #print("notice start")
