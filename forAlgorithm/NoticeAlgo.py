@@ -69,7 +69,7 @@ for i in range(len(featureList)):
     value=1
     for w in featureList[i]:
         scoreList[index]+=contents.count(w)
-        sum=sum+value
+        sum+=contents.count(w)
         '''
         if w in contents:
             scoreList[index]=scoreList[index]+1*value
