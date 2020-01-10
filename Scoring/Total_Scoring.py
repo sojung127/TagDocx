@@ -85,7 +85,7 @@ def NP_scoring(path):
 
 
 #검사하는 문서를 불러오는 코드 - pdf version
-document_pdf_source = "C:\\capston\\paper\\pdf\\P2.pdf"
+document_pdf_source = "Dataset\논문\공학\개인정보 노출에 대한 인터넷 사용자의 태도에 관한 연구.pdf"
 extracted_text = convert_pdf_to_txt(document_pdf_source)
 #print(type(extracted_text))
 doc = extracted_text
@@ -162,8 +162,8 @@ if(P_flag == 1):
     n = WordNetLemmatizer()
     tokens_NP = [n.lemmatize(w) for w in tokens_NP]
 
-    P_score = NP_scoring(r'StandardWords\mapping.csv')
-    P_score = NP_scoring('C:\\capston\\test\\Pmapping.csv')
+    P_score = NP_scoring(r'Scoring\StandardWords\mapping.csv')
+    P_score = NP_scoring('forAlgorithm\Pmapping.xlsx')
     print("P_score: ", P_score)
 
 else:
@@ -188,7 +188,7 @@ if(N_flag == 1):
     #중복처리한 토큰들
     tokens_NP = list(set(tokens))
 
-    N_score += NP_scoring(r'StandardWords\mapping.csv')
+    N_score += NP_scoring(r'Scoring\StandardWords\mapping.csv')
     N_score += NP_scoring('C:\\capston\\test\\Nmapping.csv')
     print("N_score: ", N_score)
    
