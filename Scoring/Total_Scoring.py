@@ -85,8 +85,19 @@ def NP_scoring(path):
 
 
 #검사하는 문서를 불러오는 코드 - pdf version
-document_pdf_source = r"..\Dataset\공고\기업\(주)카카오페이지 채용 _ 마케팅 상반기 인턴 - 슈퍼루키.pdf"
-extracted_text = convert_pdf_to_txt(document_pdf_source)
+path=input("문서경로:")
+lines=[]
+print(path[-3:]=='pdf')
+if path[-3:]=='pdf':
+    contents = convert_pdf_to_txt(path)
+   
+else:
+    fp = open(path,'r',encoding='utf-8')
+    contents=fp.readlines()
+    fp.close()
+
+#document_pdf_source = r"..\Dataset\공고\기업\(주)카카오페이지 채용 _ 마케팅 상반기 인턴 - 슈퍼루키.pdf"
+extracted_text = contents
 #print(type(extracted_text))
 doc = extracted_text
 
@@ -233,14 +244,22 @@ else:
     pass
 
 # 공고문 scoring
-
-fp = open(r'./NoticeFeature.txt','r',encoding='utf-8-sig')
-
-fp = open ('../forAlgorithm/NoticeFeature.txt','r',encoding='utf-8')
-
+'''
+path=input()
+lines=[]
+print(path[-3:]=='pdf')
+if path[-3:]=='pdf':
+    contents = convert_pdf_to_txt(path)
+   
+else:
+    fp = open(path,'r',encoding='utf-8')
+    contents=fp.readlines()
+    fp.close()
+    '''
+fp = open ('../forAlgorithm/NoticeFeature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
 fp.close()
-#print("notice start")
+
 
 scoreList=[]#10개
 featureList=[]
@@ -250,34 +269,43 @@ for i in range(len(features)):
     features[i]=features[i].strip()
     featureList.append(features[i].split())
 
-#print(featureList)
+print(featureList)
 
-### 각 문서의 형식에 부합하는 지 계산한 점수를 출력하는 코드 ###
+if path.find('슈퍼루키')>=0:
+    print(contents.count('\n'))
+    contents=contents.replace('\n','')
+print(contents.count('\n'))
 index=0
-
+isFind=False
 
 sum=0
 value=0
+
 for i in range(len(featureList)):
-    if i == 0:
-        value=5
-    elif i == 1:
-        value=3
-    else:
-        value=1
-    
+    value=1
     for w in featureList[i]:
-        if w in class_doc:
+        scoreList[index]+=contents.count(w)
+        sum+=contents.count(w)
+        '''
+        if w in contents:
             scoreList[index]=scoreList[index]+1*value
-            sum=sum+value #합값생성
+            print(i)
+            print(w,value)
+            print(scoreList)
+             #합값생성
+            '''
+        
     index=index+1
-total_score_list.append(scoreList)
+    isFind=False
+
+#print()
+#print(scoreList)
 E_score = sum
 print("E_score: ", E_score)
 
 
 Score_list = [P_score, N_score, L_score, E_score]
-print('문서 저장위치 = ', document_pdf_source)
+#print('문서 저장위치 = ', document_pdf_source)
 print(Score_list)
 
 
