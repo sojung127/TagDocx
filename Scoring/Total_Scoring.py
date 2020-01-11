@@ -1,35 +1,14 @@
 from tensorflow.keras.preprocessing.text import text_to_word_sequence
 import pandas as pd
-
-'''
-#txt
-doc = open("C:\\Users\\YooJin\\Desktop\\project\\dataSet\\E3.txt",mode='rt', encoding="utf-8").read()
-
-'''
-'''
-#docx
-import docx2txt
-doc = docx2txt.process("C:\\Users\\YooJin\\Desktop\\project\\dataSet\\Letter.docx")
-'''
-'''
-#doc
-import Document
-doc = Document.open("C:\\Users\\YooJin\\Desktop\\project\\dataSet\\Letter.docx")
-'''
-'''
-#pdf
-from tika import parser
-doc = parser.from_file("C:\\Users\\YooJin\\Desktop\\project\\dataSet\\N1.pdf")
-doc = doc["content"]
-print(doc)
-'''
-
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfpage import PDFPage
 from io import StringIO
-
+import os
+import re
+import Nscoring as N
+import Pscoring as P
 
 # 한글이 포함되어 있는 PDF 읽기
 def convert_pdf_to_txt(path):
@@ -55,81 +34,15 @@ def convert_pdf_to_txt(path):
     retstr.close()
     return text
 
-
-# 기사 Scoring
-def NP_scoring(path):
-    global tokens_NP
-
-    # r'C:\\capston\\test\\Nmapping.csv'
-    # 기사 mapping 기준 단어 csv파일 불러오기
-    train = pd.read_csv(path, encoding='CP949')
-
-    train_words = train['words'].dropna().tolist()  # words 열 읽기
-    train_score = train['score'].dropna().tolist()  # score 열 읽기
-
-    train = {}  # dictionary
-
-    score = 0
-
-    for i in range(len(train_words)):
-        a = train_words.pop()
-        b = train_score.pop()
-        train.update({a: b})
-
-    for x in tokens_NP:
-        if x in train:
-            # print(x)
-            score += train.get(x)
-
-    return score
-
-
-# print(s / Length)
-
-
-# 검사하는 문서를 불러오는 코드 - pdf version
-import os
-
-path_origin = input("문서경로:")
-file_list = os.listdir(path_origin)
-
-for i in range(5):
-    path = path_origin + file_list[i]
-    print(path)
-    lines = []
-    print(path[-3:] == 'pdf')
-    if path[-3:] == 'pdf':
-        contents = convert_pdf_to_txt(path)
-
-    else:
-        fp = open(path, 'r', encoding='utf-8')
-        contents = fp.readlines()
-        fp.close()
-
-    # document_pdf_source = r"..\Dataset\공고\기업\(주)카카오페이지 채용 _ 마케팅 상반기 인턴 - 슈퍼루키.pdf"
-    extracted_text = contents
-    # print(type(extracted_text))
-    doc = extracted_text
-
-    total_score_list = []
-    # 검사하는 문서를 불러오는 코드 -txt version
-    '''
-    #txt
-    document_txt_source = "C:\\capston\\AutomaticFileCategorizeService\\공고\\E1.txt"
-    doc = open(document_txt_source,mode='rt', encoding="utf-8").read()
-
-    '''
-
+def scoring(doc):
     # 점수
     N_score = 0
     P_score = 0
     L_score = 0
     E_score = 0
 
-    import re
-
     # 정규표현식으로 특수문자 및 숫자 없앰
-    shortword = re.compile(r'[→%"‘’▶‟“”…„0-9]')
+    shortword = re.compile(r'[→%‘’▶‟“”…„]')
     doc = shortword.sub('', doc)
 
     # 토큰화_1차
@@ -139,6 +52,8 @@ for i in range(5):
     N_flag = 1
     P_flag = 1
     L_flag = 1
+    E_flag = 1
+
 
     N_score = 0
     P_score = 0
@@ -153,6 +68,8 @@ for i in range(5):
 
     # 논문 scoring
     if (P_flag == 1):
+        P_score = P.Pscoring(doc=doc)
+        '''
         #############이 코드는 논문이 영어일때만 고려!!!########
         shortword = re.compile(r'\W*\b\w{1,2}\b')
         doc = shortword.sub('', doc)
@@ -182,33 +99,14 @@ for i in range(5):
         P_score = NP_scoring(r'.\StandardWords\mapping.csv')
         P_score = NP_scoring(r'..\forAlgorithm\Pmapping.csv')
         print("P_score: ", P_score)
+        '''
 
     else:
         P_score = 0
 
     # 뉴스 scoring
     if (N_flag == 1):
-        w = ['사진', '기자', '뉴스']
-
-        # 괄호 안에 있는 단어들 출력
-        items = re.findall('\(([^)]+)', doc)  # ()괄호 안에 있는 단어 인식
-        items.append(doc[doc.find("[") + 1: doc.find("]")])  # []괄호 안에 있는 단어 인식
-        # print(items)
-
-        for item in items:
-            for word in w:
-                if word in item:
-                    N_score += 5
-                    # print(word)
-
-        # 중복처리한 토큰들
-        tokens_NP = list(set(tokens))
-
-        N_score += NP_scoring(r'.\StandardWords\mapping.csv')
-        N_score += NP_scoring(r'.\Nmapping.csv')
-        print("N_score: ", N_score)
-
-        print(N_score)
+        N_score = N.Nscoring(doc=doc)
     else:
         N_score = 0
 
@@ -240,80 +138,110 @@ for i in range(5):
                     scoreList[index] = scoreList[index] + 1 * value
                     sum = sum + value
             index = index + 1
-        total_score_list.append(scoreList)
+        #total_score_list.append(scoreList)
         L_score = max(scoreList)
-        print("L_score: ", L_score)
+        #print("L_score: ", L_score)
     else:
-        pass
+        L_score = 0
 
     # 공고문 scoring
-    '''
-    path=input()
-    lines=[]
-    print(path[-3:]=='pdf')
-    if path[-3:]=='pdf':
-        contents = convert_pdf_to_txt(path)
-
-    else:
-        fp = open(path,'r',encoding='utf-8')
-        contents=fp.readlines()
-        fp.close()
+    if (E_flag == 1):
         '''
-    fp = open('../forAlgorithm/NoticeFeature.txt', 'r', encoding='utf-8-sig')
-    features = fp.readlines()
-    fp.close()
+        path=input()
+        lines=[]
+        print(path[-3:]=='pdf')
+        if path[-3:]=='pdf':
+            contents = convert_pdf_to_txt(path)
 
-    scoreList = []  # 10개
-    featureList = []
-
-    for i in range(len(features)):
-        scoreList.append(0)
-        features[i] = features[i].strip()
-        featureList.append(features[i].split())
-
-    # print(featureList)
-
-    if path.find('슈퍼루키') >= 0:
-        print(contents.count('\n'))
-        contents = contents.replace('\n', '')
-    print(contents.count('\n'))
-    index = 0
-    isFind = False
-
-    sum = 0
-    value = 0
-
-    for i in range(len(featureList)):
-        value = 1
-        for w in featureList[i]:
-            if path[-3:] == 'txt':
-                for content in contents:
-                    scoreList[index] += content.count(w)
-                    sum += content.count(w)
-            else:
-                scoreList[index] += contents.count(w)
-                sum += contents.count(w)
+        else:
+            fp = open(path,'r',encoding='utf-8')
+            contents=fp.readlines()
+            fp.close()
             '''
-            if w in contents:
-                scoreList[index]=scoreList[index]+1*value
-                print(i)
-                print(w,value)
-                print(scoreList)
-                #합값생성
+        fp = open('./NoticeFeature.txt', 'r', encoding='utf-8-sig')
+        features = fp.readlines()
+        fp.close()
+
+        scoreList = []  # 10개
+        featureList = []
+
+        for i in range(len(features)):
+            scoreList.append(0)
+            features[i] = features[i].strip()
+            featureList.append(features[i].split())
+
+        # print(featureList)
+
+        if path.find('슈퍼루키') >= 0:
+            #print(doc.count('\n'))
+            doc = doc.replace('\n', '')
+        #print(contents.count('\n'))
+        index = 0
+        #isFind = False
+
+        sum = 0
+        value = 0
+
+        for i in range(len(featureList)):
+            value = 1
+            for w in featureList[i]:
+                if path[-3:] == 'txt':
+                    for content in doc:
+                        scoreList[index] += content.count(w)
+                        sum += content.count(w)
+                else:
+                    scoreList[index] += doc.count(w)
+                    sum += doc.count(w)
                 '''
+                if w in contents:
+                    scoreList[index]=scoreList[index]+1*value
+                    print(i)
+                    print(w,value)
+                    print(scoreList)
+                    #합값생성
+                    '''
 
-        index = index + 1
-        isFind = False
+            index = index + 1
+            #isFind = False
 
-    # print()
-    # print(scoreList)
-    E_score = sum
-    print("E_score: ", E_score)
+        E_score = sum
+    else:
+        E_score = 0
 
     Score_list = [P_score, N_score, L_score, E_score]
     # print('문서 저장위치 = ', document_pdf_source)
     print(Score_list)
+    
+    
+path_origin = input("문서경로:")
+file_list = os.listdir(path_origin)
+#print(file_list)
 
+for i in range(5):
+    path = path_origin + file_list[i]
+    print(path)
+    #lines = []
+    print(path[-3:] == 'pdf')
+    if path[-3:] == 'pdf':
+        contents = convert_pdf_to_txt(path)
 
+    else:
+        fp = open(path, 'r', encoding='utf-8')
+        contents = fp.readlines()
+        fp.close()
 
+    doc = contents
 
+    #
+    scoring(doc=doc)
+    
+    total_score_list = []
+    # 검사하는 문서를 불러오는 코드 -txt version
+    '''
+    #txt
+    document_txt_source = "C:\\capston\\AutomaticFileCategorizeService\\공고\\E1.txt"
+    doc = open(document_txt_source,mode='rt', encoding="utf-8").read()
+
+    '''
+
+    
