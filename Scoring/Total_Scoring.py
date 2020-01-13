@@ -229,11 +229,13 @@ for i in range(file_count):
     print(path[-3:] == 'pdf')
     if path[-3:] == 'pdf':
         contents = convert_pdf_to_txt(path)
-
-    else:
+    elif path[-3:] == 'txt':
         fp = open(path, 'r', encoding='utf-8')
         contents = fp.readlines()
         fp.close()
+        contents = ' '.join(contents)
+    else:
+        pass
 
     doc = contents
 
