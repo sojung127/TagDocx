@@ -210,6 +210,7 @@ def scoring(doc):
 
     Score_list = [P_score, N_score, L_score, E_score]
     # print('문서 저장위치 = ', document_pdf_source)
+    print("논문","기사","수업자료","공고")
     print(Score_list)
     
     
