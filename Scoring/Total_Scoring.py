@@ -9,6 +9,7 @@ import os
 import re
 import Nscoring as N
 import Pscoring as P
+import Escoring as E
 
 # 한글이 포함되어 있는 PDF 읽기
 def convert_pdf_to_txt(path):
@@ -109,6 +110,16 @@ def scoring(doc):
         N_score = N.Nscoring(doc=doc)
     else:
         N_score = 0
+    if (E_flag == 1):
+        if path[-3:] == 'pdf':
+            shortword = re.compile("\n")
+            doc = shortword.sub('', doc)
+            doc = doc.replace("", " ")
+        elif path[-3:] == 'txt':
+            pass
+        E_score = E.Escoring(doc=doc)
+    else:
+        E_score = 0
 
     class_doc = doc.replace(" ", "")
 
@@ -144,70 +155,6 @@ def scoring(doc):
     else:
         L_score = 0
 
-    # 공고문 scoring
-    if (E_flag == 1):
-        '''
-        path=input()
-        lines=[]
-        print(path[-3:]=='pdf')
-        if path[-3:]=='pdf':
-            contents = convert_pdf_to_txt(path)
-
-        else:
-            fp = open(path,'r',encoding='utf-8')
-            contents=fp.readlines()
-            fp.close()
-            '''
-        fp = open('./NoticeFeature.txt', 'r', encoding='utf-8-sig')
-        features = fp.readlines()
-        fp.close()
-
-        scoreList = []  # 10개
-        featureList = []
-
-        for i in range(len(features)):
-            scoreList.append(0)
-            features[i] = features[i].strip()
-            featureList.append(features[i].split())
-
-        # print(featureList)
-
-        if path.find('슈퍼루키') >= 0:
-            #print(doc.count('\n'))
-            doc = doc.replace('\n', '')
-        #print(contents.count('\n'))
-        index = 0
-        #isFind = False
-
-        sum = 0
-        value = 0
-
-        for i in range(len(featureList)):
-            value = 1
-            for w in featureList[i]:
-                if path[-3:] == 'txt':
-                    for content in doc:
-                        scoreList[index] += content.count(w)
-                        sum += content.count(w)
-                else:
-                    scoreList[index] += doc.count(w)
-                    sum += doc.count(w)
-                '''
-                if w in contents:
-                    scoreList[index]=scoreList[index]+1*value
-                    print(i)
-                    print(w,value)
-                    print(scoreList)
-                    #합값생성
-                    '''
-
-            index = index + 1
-            #isFind = False
-
-        E_score = sum
-    else:
-        E_score = 0
-
     Score_list = [P_score, N_score, L_score, E_score]
     # print('문서 저장위치 = ', document_pdf_source)
     print("논문","기사","수업자료","공고")
@@ -238,7 +185,6 @@ for i in range(file_count):
         pass
 
     doc = contents
-
     #
     scoring(doc=doc)
     
