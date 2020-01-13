@@ -212,13 +212,17 @@ def scoring(doc):
     # print('문서 저장위치 = ', document_pdf_source)
     print("논문","기사","수업자료","공고")
     print(Score_list)
-    
-    
-path_origin = input("문서경로:")
-file_list = os.listdir(path_origin)
-#print(file_list)
 
-for i in range(5):
+
+path_origin = input("문서경로:")
+file_list = os.listdir(path_origin) #list 반환
+#list = ['공10.pdf', '공11.pdf', '공12.pdf', '공13.pdf', '공14.pdf', '공15.pdf', '공16.pdf', '공17.pdf', '공19.pdf', '공2.pdf', '공20.pdf', '공21.pdf', '공22.pdf', '공23.pdf', '공24.pdf', '공3.pdf', '공6.pdf', '공7.pdf', '공8.pdf', '공9.pdf']
+
+file_count = len(file_list)
+print("여기 집중")
+print(file_count)
+
+for i in range(file_count):
     path = path_origin + file_list[i]
     print(path)
     #lines = []
