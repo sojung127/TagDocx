@@ -1,5 +1,4 @@
 #-*-coding:utf-8-*-
-
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
@@ -29,39 +28,42 @@ def convert_pdf_to_txt(path):
     device.close()
     retstr.close()
     return text
-
 pdf_file = "C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/강의자료/경영10/1차시 PR의 정의와 유형PR의 4모형.pdf"                                     # 로컬 PC에 있는 pdf 파일도 읽을 수 있음
-contents = convert_pdf_to_txt(pdf_file)
-lines=contents.split('\n')
-
-
+path=input()
+contents = convert_pdf_to_txt(path)
+lines=contents.split('/n')
+'''
+print(type(contents))
+print(contents)
+exit()
+'''
 scoreList=[]
 featureList=[]
 
-fp=open('forAlgorithm/ClassFeature.txt','r',encoding='utf-8-sig')
+fp=open('C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/forAlgorithm/ClassFeature.txt','r',encoding='utf-8-sig')
 features = fp.readlines()
 
-
 fp.close()
-
 
 for i in range(len(features)):
     scoreList.append(0)
     features[i]=features[i].strip()
     featureList.append(features[i].split())
 
-for i in range(len(lines)):
-    lines[i]=lines[i].replace(" ","")
+
 
 index=0
 
 sum=0
 value=1
-
+import re
 for i in range(len(featureList)):
     for line in lines:
         for j in range(1,len(featureList[i])):
-            if featureList[i][j] in line.upper():
+            p=re.compile(featureList[i][j])
+            print(line)
+            if (p.search(line.upper())):
+                print('match')
                 scoreList[index]=scoreList[index]+1*int(featureList[i][0])
                 sum=sum+value
     index=index+1

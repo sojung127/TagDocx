@@ -32,9 +32,6 @@ def convert_pdf_to_txt(path):
 
 import os
 
-path = "./"
-
-
 path_origin=input()
 file_list = os.listdir(path_origin)
 
