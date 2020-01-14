@@ -1,6 +1,10 @@
 import olefile
-test_file=olefile.OleFileIO('2020년 아산다솜장학생 선발안내.hwp')
-encoded_text = test_file.openstream('PrvText').readlines()
-#lines=encoded_text.decode('UTF-16le').split('\r \n')
-for line in encoded_text:
-    print(line.decode('utf-16le'))
+test_file=olefile.OleFileIO('C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/지원서/한국재정정보원 상임이사 채용_지원서(양식).hwp')
+encoded_text = test_file.openstream('PrvText').read()
+lines=encoded_text.decode('UTF-16le')
+text=lines.split("\r \n < >")
+print(lines)
+encoded_text = test_file.openstream('PrvText').read()
+lines=encoded_text.decode('UTF-16le')
+text=lines.split("\r \n < >")
+print(lines)
