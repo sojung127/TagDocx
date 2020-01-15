@@ -11,7 +11,7 @@ import Nscoring as N
 import Pscoring as P
 import Escoring as E
 
-# 한글이 포함되어 있는 PDF 읽기
+#--------------------------------------------------------------------------------- 한글이 포함되어 있는 PDF 읽기
 def convert_pdf_to_txt(path):
     rsrcmgr = PDFResourceManager()
     retstr = StringIO()
@@ -34,7 +34,7 @@ def convert_pdf_to_txt(path):
     device.close()
     retstr.close()
     return text
-
+#------------------------------------------------------------------------------------------변수선언
 def scoring(doc):
     # 점수
     N_score = 0
@@ -67,7 +67,7 @@ def scoring(doc):
     if (Length > 3000): N_flag = 0
     # print('length , flag:',Length, N_flag)
 
-    # 논문 scoring
+    #---------------------------------------------------------------------------------------------------- 논문 scoring
     if (P_flag == 1):
         P_score = P.Pscoring(doc=doc)
         '''
@@ -105,7 +105,7 @@ def scoring(doc):
     else:
         P_score = 0
 
-    # 뉴스 scoring
+    #--------------------------------------------------------------------------------------------------뉴스 scoring
     if (N_flag == 1):
         N_score = N.Nscoring(doc=doc)
     else:
@@ -123,7 +123,7 @@ def scoring(doc):
 
     class_doc = doc.replace(" ", "")
 
-    # 강의자료 scoring
+    #----------------------------------------------------------------------------------------강의자료 scoring
     if (L_flag == 1):
         # 강의자료 특성을 작성한 txt파일을 불러와서 L_score 계산한다.
         fp = open(r'.\ClassFeature.txt', 'r', encoding='utf-8-sig')
@@ -160,8 +160,8 @@ def scoring(doc):
     print("논","기","수","공")
     print(Score_list)
 
-
-path_origin = input("문서경로:")
+#---------------------------------------------------------------------------------------------폴더 경로 입력
+path_origin = input("폴더 경로:")
 file_list = os.listdir(path_origin) #list 반환
 #list = ['공10.pdf', '공11.pdf', '공12.pdf', '공13.pdf', '공14.pdf', '공15.pdf', '공16.pdf', '공17.pdf', '공19.pdf', '공2.pdf', '공20.pdf', '공21.pdf', '공22.pdf', '공23.pdf', '공24.pdf', '공3.pdf', '공6.pdf', '공7.pdf', '공8.pdf', '공9.pdf']
 
@@ -183,13 +183,13 @@ for i in range(file_count):
         contents = ' '.join(contents)
     else:
         pass
-
     doc = contents
-    #
     scoring(doc=doc)
-    
+        
     total_score_list = []
+    
     # 검사하는 문서를 불러오는 코드 -txt version
+    
     '''
     #txt
     document_txt_source = "C:\\capston\\AutomaticFileCategorizeService\\공고\\E1.txt"
@@ -197,4 +197,4 @@ for i in range(file_count):
 
     '''
 
-    
+        
