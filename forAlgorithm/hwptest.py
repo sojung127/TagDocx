@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup
 bs=BeautifulSoup(data,'xml',from_encoding='utf-8')
 # 그냥 출력해도 되는데 파일출력으로 해봤음
 fp=open('C:/Users/소정/output.txt','w',encoding='utf-8')
-for textElement in bs.findAll('Text'):
-    fp.writelines(textElement.text)
+tag=bs.findAll('Text')
+for textElement in tag:
+    str=textElement.text+'\n'
+    fp.write(str)
 fp.close()
