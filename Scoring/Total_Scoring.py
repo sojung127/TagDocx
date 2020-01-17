@@ -11,7 +11,7 @@ import Nscoring as N
 import Pscoring as P
 import Escoring as E
 import Ascoring as A
-import hwptest 
+import hwptest
 
 # 한글이 포함되어 있는 PDF 읽기
 def convert_pdf_to_txt(path):
@@ -193,7 +193,7 @@ for i in range(file_count):
         contents = ' '.join(contents)
 
     elif path[-3:] == 'hwp':
-        contents =  hwptest.convert_hwp_to_txt(path)
+        contents = hwptest.convert_hwp_to_txt(path)
 
     else:
         pass
@@ -210,5 +210,3 @@ for i in range(file_count):
     doc = open(document_txt_source,mode='rt', encoding="utf-8").read()
 
     '''
-
-    
