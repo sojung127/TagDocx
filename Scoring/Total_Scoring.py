@@ -172,14 +172,16 @@ def scoring(doc):
     #print(Score_list)
     global scan
     global score
-    if index(max(Score_list))==scan:
+    print(Score_list.index(max(Score_list)))
+
+    if Score_list.index(max(Score_list))==scan:
         score+=1
 
 
 
 
-#테스트 해볼 폴더의 분류 입력 [논문:0,기사:1,수업자료:2,공고:4,지원서:5]
-scan=int(input('입력 [논문:0,기사:1,수업자료:2,공고:4,지원서:5]'))
+#테스트 해볼 폴더의 분류 입력 [논문:0,기사:1,수업자료:2,공고:3,지원서:4]
+scan=int(input('입력 [논문:0,기사:1,수업자료:2,공고:3,지원서:4]'))
 score=0
 path_origin = input("문서경로:")
 file_list = os.listdir(path_origin) #list 반환
