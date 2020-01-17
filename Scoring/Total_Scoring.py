@@ -144,6 +144,7 @@ def scoring(doc):
             features[i] = features[i].strip()
             featureList.append(features[i].split())
 
+
         index = 0
 
         sum = 0
@@ -167,10 +168,19 @@ def scoring(doc):
 
     Score_list = [P_score, N_score, L_score, E_score, A_score]
     # print('문서 저장위치 = ', document_pdf_source)
-    print("논문","기사","수업자료","공고", "지원서")
-    print(Score_list)
+    #print("논문","기사","수업자료","공고", "지원서")
+    #print(Score_list)
+    global scan
+    global score
+    if index(max(Score_list))==scan:
+        score+=1
 
 
+
+
+#테스트 해볼 폴더의 분류 입력 [논문:0,기사:1,수업자료:2,공고:4,지원서:5]
+scan=int(input('입력 [논문:0,기사:1,수업자료:2,공고:4,지원서:5]'))
+score=0
 path_origin = input("문서경로:")
 file_list = os.listdir(path_origin) #list 반환
 #list = ['공10.pdf', '공11.pdf', '공12.pdf', '공13.pdf', '공14.pdf', '공15.pdf', '공16.pdf', '공17.pdf', '공19.pdf', '공2.pdf', '공20.pdf', '공21.pdf', '공22.pdf', '공23.pdf', '공24.pdf', '공3.pdf', '공6.pdf', '공7.pdf', '공8.pdf', '공9.pdf']
@@ -181,9 +191,9 @@ print(file_count)
 
 for i in range(file_count):
     path = path_origin + file_list[i]
-    print(path)
+    #print(path)
     #lines = []
-    print(path[-3:] == 'pdf')
+    #print(path[-3:] == 'pdf')
     if path[-3:] == 'pdf':
         contents = convert_pdf_to_txt(path)
     elif path[-3:] == 'txt':
@@ -201,7 +211,7 @@ for i in range(file_count):
     doc = contents
     #
     scoring(doc=doc)
-    
+
     total_score_list = []
     # 검사하는 문서를 불러오는 코드 -txt version
     '''
@@ -210,3 +220,4 @@ for i in range(file_count):
     doc = open(document_txt_source,mode='rt', encoding="utf-8").read()
 
     '''
+print(score/file_count*100,'%')
