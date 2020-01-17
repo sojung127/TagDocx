@@ -11,6 +11,7 @@ import Nscoring as N
 import Pscoring as P
 import Escoring as E
 import Ascoring as A
+import hwptest 
 
 # 한글이 포함되어 있는 PDF 읽기
 def convert_pdf_to_txt(path):
@@ -52,11 +53,11 @@ def scoring(doc):
     tokens = text_to_word_sequence(doc)
 
     # flag
-    N_flag = 1
-    P_flag = 1
-    L_flag = 1
-    E_flag = 1
-    A_flag = 1
+    N_flag = 1 #notice
+    P_flag = 1 #papaer
+    L_flag = 1 #lecture
+    E_flag = 1 #공고
+    A_flag = 1 #all
 
 
     N_score = 0
@@ -121,6 +122,7 @@ def scoring(doc):
             doc = doc.replace("", " ")
         elif path[-3:] == 'txt':
             pass
+
         E_score = E.Escoring(doc=doc)
     else:
         E_score = 0
@@ -189,6 +191,10 @@ for i in range(file_count):
         contents = fp.readlines()
         fp.close()
         contents = ' '.join(contents)
+
+    elif path[-3:] == 'hwp':
+        contents =  hwptest.convert_hwp_to_txt(path)
+
     else:
         pass
 
