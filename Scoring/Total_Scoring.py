@@ -171,18 +171,16 @@ def scoring(doc):
     # print('문서 저장위치 = ', document_pdf_source)
     #print("논문","기사","수업자료","공고", "지원서")
     #print(Score_list)
-    global scan
+    global current
     global score
-    global index
-    index+=1
-    global file_count
-    global path
-    print(index,file_count)
+
+    current+=1
+    print(current,file_count)
 
     if Score_list.index(max(Score_list))==scan:
         score+=1
     else:
-        print(path)
+        print(Score_list.index(max(Score_list)), path)
 
 
 
@@ -190,7 +188,7 @@ def scoring(doc):
 #테스트 해볼 폴더의 분류 입력 [논문:0,기사:1,수업자료:2,공고:3,지원서:4]
 scan=int(input('입력 [논문:0,기사:1,수업자료:2,공고:3,지원서:4]'))
 score=0
-index=0
+current=0
 path_origin = input("문서경로:")
 file_list = os.listdir(path_origin) #list 반환
 #list = ['공10.pdf', '공11.pdf', '공12.pdf', '공13.pdf', '공14.pdf', '공15.pdf', '공16.pdf', '공17.pdf', '공19.pdf', '공2.pdf', '공20.pdf', '공21.pdf', '공22.pdf', '공23.pdf', '공24.pdf', '공3.pdf', '공6.pdf', '공7.pdf', '공8.pdf', '공9.pdf']
@@ -214,11 +212,11 @@ for i in range(file_count):
 
     elif path[-3:] == 'hwp':
         contents = hwptest.convert_hwp_to_txt(path)
-    elif path[-3:] == 'docx':
+    elif path[-4:] == 'docx':
         contents = docx2txt.process(path)
 
     else:
-        pass
+        contents = ''
 
     doc = contents
     #
