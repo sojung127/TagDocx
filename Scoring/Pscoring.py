@@ -63,6 +63,7 @@ def Pscoring(doc):
         if x in train:
             #print(x)
             score+=train.get(x)
+            
 
     return score
     #return(s/length)
