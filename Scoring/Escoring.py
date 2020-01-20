@@ -13,7 +13,7 @@ def Escoring(doc):
         tokens.sort()
         #print(tokens)
 
-        train = pd.read_csv(r'./Emapping.csv', encoding='utf-8')
+        train = pd.read_csv(r'./Emapping.csv', encoding='CP949')
         train_words = train['words'].dropna().tolist()
         train_score= train['score'].dropna().tolist()
 
