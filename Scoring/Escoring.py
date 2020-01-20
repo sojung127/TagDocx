@@ -15,12 +15,14 @@ def Escoring(doc):
 
         train = pd.read_csv(r'./Emapping.csv', encoding='utf-8')
         train_words = train['words'].dropna().tolist()
+        train_score= train['score'].dropna().tolist()
 
         train ={}
 
         for i in range(len(train_words)):
             a = train_words.pop()
-            train.update({a : 1})
+            b = train_score.pop()
+            train.update({a : b})
 
         score = 0
         
