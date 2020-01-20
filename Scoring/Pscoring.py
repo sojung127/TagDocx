@@ -12,7 +12,7 @@ def Pscoring(doc):
     for word in words:
         if word in doc:
             score += 1
-            #print(word)
+            print(word)
 
     reg1 = '그림\s+\d+'
     reg2 = '표\s+\d+'
@@ -22,14 +22,16 @@ def Pscoring(doc):
     reg6 = '서\s+론'
     reg7 = '목\s+차'
     reg8 = '차\s+례'
+    '''
     reg9 = ".+\(\d+\),\s?.+,\s?.+,\s?.+,\s?.+쪽"
     reg10 = ".+\.\s?\(\d+\)\.\s?.+,\s?.+권.+,\s?pp\."
+    '''
 
-
-    regs = [reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9, reg10]
+    regs = [reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8]
 
     for reg in regs:
         result = re.findall(reg, doc)
+        print(result)
         for i in range(len(result)):
             score += 1
 
@@ -63,7 +65,6 @@ def Pscoring(doc):
         if x in train:
             #print(x)
             score+=train.get(x)
-            
-
+    
     return score
     #return(s/length)
