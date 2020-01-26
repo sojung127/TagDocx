@@ -31,7 +31,7 @@ def Pscoring(doc):
 
     for reg in regs:
         result = re.findall(reg, doc)
-        print(result)
+        #print(result)
         for i in range(len(result)):
             score += 1
 
