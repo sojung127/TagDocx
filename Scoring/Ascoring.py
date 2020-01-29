@@ -14,26 +14,19 @@ def Ascoring(doc):
         if word in doc:
             score += 1
             #print(word)
+    '''
+    reg1 = '지\s+원\s+서'
+    reg2 = '자\s+기\s+소\s+개\s+서'
+    reg3 = '이\s+력\s+서'
+    
 
-    reg1 = '그림\s+\d+'
-    reg2 = '표\s+\d+'
-    reg3 = 'Fig\s+\d+'
-    reg4 = '\(대학교.+학과\)'
-    reg5 = '결\s+론'
-    reg6 = '서\s+론'
-    reg7 = '목\s+차'
-    reg8 = '차\s+례'
-    reg9 = ".+\(\d+\),\s?.+,\s?.+,\s?.+,\s?.+쪽"
-    reg10 = ".+\.\s?\(\d+\)\.\s?.+,\s?.+권.+,\s?pp\."
-
-
-    regs = [reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9, reg10]
+    regs = [reg1, reg2, reg3]
 
     for reg in regs:
         result = re.findall(reg, doc)
         for i in range(len(result)):
-            score += 1
-    '''
+            score += 5
+    
 
 #######################################
 
