@@ -51,7 +51,6 @@ from konlpy.corpus import kobill
 from konlpy.tag import Okt
 from gensim import models
 
-docs_ko = []
 
 for i in range(file_count):
     path = path_origin + file_list[i]
@@ -59,14 +58,14 @@ for i in range(file_count):
         contents = convert_pdf_to_txt(path)
     else:
         contents = ''
-    docs_ko = []
+        continue
+    docs_ko = []    
     docs_ko.append(contents)
 
     from konlpy.tag import Okt; t=Okt()
     texts_ko = t.pos(docs_ko[0], norm=True)
-
     nouns = [n for n, tag in texts_ko if tag == 'Noun']
-    
+
     pos = lambda d: ['/'.join(p) for p in t.pos(d, stem=True, norm=True)]
     texts_ko = [pos(doc) for doc in nouns]
 
@@ -86,18 +85,16 @@ for i in range(file_count):
 
     ntopics, nwords = 3, 5
     import numpy as np; np.random.seed(42)
-    
+
     #LDA
     import numpy as np; np.random.seed(42)  # optional
-    lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
+
     print(path)
-    print(lda_ko.print_topics(num_topics=ntopics, num_words=nwords))
-    print("\n")
+    lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
 
     bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
-    sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
-        
-    
-    
+    l=sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
+    index=l[0][0]
 
-    
+    print(lda_ko.print_topics(num_topics=ntopics, num_words=nwords)[index])
+    print("\n")
