@@ -102,7 +102,6 @@ for i in range(file_count):
     lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
 
     bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
-<<<<<<< HEAD
     l = sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
     index = l[0][0]
     result_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)[index]
@@ -111,24 +110,11 @@ for i in range(file_count):
 
     reg = "[\'\"][^\'\"]+[\'\"]"
     result = re.findall(reg, result_list[1])
-=======
-    l=sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
-    index=l[0][0]
-    result_list=lda_ko.print_topics(num_topics=ntopics, num_words=nwords)[index]
-    
-    import re
-    reg = "[\'\"][^\'\"]+[\'\"]"
-    result= re.findall(reg,result_list[1])
->>>>>>> a60983100a30aa550d02db210d053076429bb0a2
     for i in result:
         print(i)
     # for t in result_list:
     #     #splits = t[1].split
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> a60983100a30aa550d02db210d053076429bb0a2
     #     result = re.findall(reg,t)
     #     print(result[0])
     print("\n")
