@@ -56,8 +56,26 @@ for i in range(file_count):
     path = path_origin + file_list[i]
     if path[-3:] == 'pdf':
         contents = convert_pdf_to_txt(path)
+        shortword = re.compile("\n")
+        contents = shortword.sub('', contents)
+        contents = contents.replace("", " ")
+    elif path[-3:] == 'txt':
+        fp = open(path, 'r', encoding='utf-8')
+        contents = fp.readlines()
+        fp.close()
+        contents = ' '.join(contents)
+
+    elif path[-3:] == 'hwp':
+        contents = hwptest.convert_hwp_to_txt(path)
+    elif path[-4:] == 'docx':
+        contents = docx2txt.process(path)
+
     else:
         contents = ''
+    # if path[-3:] == 'pdf':
+    #     contents = convert_pdf_to_txt(path)
+    # else:
+    #     contents = ''
         continue
     docs_ko = []
     docs_ko.append(contents)
@@ -83,7 +101,7 @@ for i in range(file_count):
     tfidf_ko = tfidf_model_ko[tf_ko]
     corpora.MmCorpus.serialize('ko.mm', tfidf_ko) # save corpus to file for future use
 
-    ntopics, nwords = 3, 5
+    ntopics, nwords = 5, 5
     import numpy as np; np.random.seed(42)
 
     #LDA
@@ -102,9 +120,5 @@ for i in range(file_count):
     result= re.findall(reg,result_list[1])
     for i in result:
         print(i)
-    # for t in result_list:
-    #     #splits = t[1].split
-        
-    #     result = re.findall(reg,t)
-    #     print(result[0])
+
     print("\n")
