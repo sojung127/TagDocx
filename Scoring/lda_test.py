@@ -95,6 +95,16 @@ for i in range(file_count):
     bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
     l=sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
     index=l[0][0]
-
-    print(lda_ko.print_topics(num_topics=ntopics, num_words=nwords)[index])
+    result_list=lda_ko.print_topics(num_topics=ntopics, num_words=nwords)[index]
+    
+    import re
+    reg = "[\'\"][^\'\"]+[\'\"]"
+    result= re.findall(reg,result_list[1])
+    for i in result:
+        print(i)
+    # for t in result_list:
+    #     #splits = t[1].split
+        
+    #     result = re.findall(reg,t)
+    #     print(result[0])
     print("\n")
