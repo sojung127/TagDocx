@@ -14,6 +14,7 @@ import Ascoring as A
 import hwptest
 import docx2txt
 
+
 # 한글이 포함되어 있는 PDF 읽기
 def convert_pdf_to_txt(path):
     rsrcmgr = PDFResourceManager()
@@ -38,8 +39,9 @@ def convert_pdf_to_txt(path):
     retstr.close()
     return text
 
-score=0
-current=0
+
+score = 0
+current = 0
 path_origin = input("문서경로:")
 file_list = os.listdir(path_origin)
 
@@ -50,7 +52,6 @@ print("여기 집중")
 from konlpy.corpus import kobill
 from konlpy.tag import Okt
 from gensim import models
-
 
 for i in range(file_count):
     path = path_origin + file_list[i]
@@ -80,45 +81,53 @@ for i in range(file_count):
     docs_ko = []
     docs_ko.append(contents)
 
-    from konlpy.tag import Okt; t=Okt()
+    from konlpy.tag import Okt;
+
+    t = Okt()
     texts_ko = t.pos(docs_ko[0], norm=True)
     nouns = [n for n, tag in texts_ko if tag == 'Noun']
 
     pos = lambda d: ['/'.join(p) for p in t.pos(d, stem=True, norm=True)]
     texts_ko = [pos(doc) for doc in nouns]
 
-    #encode tokens to integers
+    # encode tokens to integers
 
     from gensim import corpora
+
     dictionary_ko = corpora.Dictionary(texts_ko)
     dictionary_ko.save('ko.dict')  # save dictionary to file for future use
 
-    #calulate TF-IDF
+    # calulate TF-IDF
 
     from gensim import models
+
     tf_ko = [dictionary_ko.doc2bow(text) for text in texts_ko]
     tfidf_model_ko = models.TfidfModel(tf_ko)
     tfidf_ko = tfidf_model_ko[tf_ko]
-    corpora.MmCorpus.serialize('ko.mm', tfidf_ko) # save corpus to file for future use
+    corpora.MmCorpus.serialize('ko.mm', tfidf_ko)  # save corpus to file for future use
 
     ntopics, nwords = 5, 5
     import numpy as np; np.random.seed(42)
 
-    #LDA
-    import numpy as np; np.random.seed(42)  # optional
+    np.random.seed(42)
+
+    # LDA
+    import numpy as np;
+
+    np.random.seed(42)  # optional
 
     print(path)
     lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
 
     bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
-    l=sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
-    index=l[0][0]
-    result_list=lda_ko.print_topics(num_topics=ntopics, num_words=nwords)[index]
-    
+    l = sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
+    index = l[0][0]
+    result_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)[index]
+
     import re
+
     reg = "[\'\"][^\'\"]+[\'\"]"
-    result= re.findall(reg,result_list[1])
+    result = re.findall(reg, result_list[1])
     for i in result:
         print(i)
-
     print("\n")
