@@ -14,6 +14,7 @@ import Ascoring as A
 import hwptest
 import docx2txt
 
+
 # 한글이 포함되어 있는 PDF 읽기
 def convert_pdf_to_txt(path):
     rsrcmgr = PDFResourceManager()
@@ -38,8 +39,9 @@ def convert_pdf_to_txt(path):
     retstr.close()
     return text
 
-score=0
-current=0
+
+score = 0
+current = 0
 path_origin = input("문서경로:")
 file_list = os.listdir(path_origin)
 
@@ -83,47 +85,56 @@ for i in range(file_count):
     texts_ko = t.pos(docs_ko[0], norm=True)
     '''
 
-    from konlpy.tag import Komoran; t=Komoran()
-    #print(docs_ko[0])
-    
-    #texts_ko = t.nouns(docs_ko[0])
+    from konlpy.tag import Komoran;
+
+    t = Komoran()
+    # print(docs_ko[0])
+
+    # texts_ko = t.nouns(docs_ko[0])
     texts_ko = t.pos(docs_ko[0])
 
-    nouns = [n for n, tag in texts_ko if tag == 'NNG' or tag == 'NNP']
-    print(nouns)
+    nouns = [(n, tag) for n, tag in texts_ko if tag == 'NNG' or tag == 'NNP']
 
-    #pos가 이상해서 pos만 고치면 됨
-    #pos = lambda d: ['/'.join(p) for p in d]
+    # pos가 이상해서 pos만 고치면 됨
+    pos = lambda d: ['/'.join(d)]
+
     texts_ko = [pos(doc) for doc in nouns]
 
-    #encode tokens to integers
+    # print(texts_ko)
 
     from gensim import corpora
+
     dictionary_ko = corpora.Dictionary(texts_ko)
     dictionary_ko.save('ko.dict')  # save dictionary to file for future use
 
-    #calulate TF-IDF
+    # calulate TF-IDF
 
     from gensim import models
+
     tf_ko = [dictionary_ko.doc2bow(text) for text in texts_ko]
     tfidf_model_ko = models.TfidfModel(tf_ko)
     tfidf_ko = tfidf_model_ko[tf_ko]
-    corpora.MmCorpus.serialize('ko.mm', tfidf_ko) # save corpus to file for future use
+    corpora.MmCorpus.serialize('ko.mm', tfidf_ko)  # save corpus to file for future use
 
     ntopics, nwords = 5, 4
-    import numpy as np; np.random.seed(42)
-    
-    #LDA
-    import numpy as np; np.random.seed(42)  # optional
+    import numpy as np;
+
+    np.random.seed(42)
+
+    # LDA
+    import numpy as np;
+
+    np.random.seed(42)  # optional
     lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
     print(path)
     lda_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)
-    
+
     import re
+
     reg = "[\'\"][^\'\"]+[\'\"]"
 
     for t in lda_list:
-        #splits = t[1].split
+        # splits = t[1].split
         result = re.findall(reg, t[1])
         print(result[0])
 
@@ -131,8 +142,3 @@ for i in range(file_count):
 
     bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
     sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
-        
-    
-    
-
-    
