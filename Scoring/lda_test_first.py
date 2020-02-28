@@ -100,8 +100,7 @@ for i in range(file_count):
     corpora.MmCorpus.serialize('ko.mm', tfidf_ko) # save corpus to file for future use
 
     ntopics, nwords = 5, 4
-    import numpy as np; np.random.seed(42)
-    
+
     #LDA
     import numpy as np; np.random.seed(42)  # optional
     lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
