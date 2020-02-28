@@ -87,7 +87,8 @@ for i in range(file_count):
     #print(docs_ko[0])
     
     #texts_ko = t.nouns(docs_ko[0])
-    texts_ko = t.pos(docs_ko[0])
+
+    texts_ko = t.pos(" ".join([s for s in docs_ko[0].split("\n") if s]))
 
     nouns = [(n, tag) for n, tag in texts_ko if tag == 'NNG' or tag == 'NNP']
 
