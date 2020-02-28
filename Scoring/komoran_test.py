@@ -119,7 +119,7 @@ for i in range(file_count):
     lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
     print(path)
     lda_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)
-    
+    print(lda_list)
     import re
     reg = "[\'\"][^\'\"]+[\'\"]"
 
