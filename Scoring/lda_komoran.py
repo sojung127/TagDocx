@@ -94,6 +94,7 @@ for i in range(file_count):
 
     texts_ko = komoran.get_morphes_by_tags(docs_ko[0], tag_list=['NNG', 'NNP'])
 
+
     pos = lambda d: [d]
     texts_ko = [pos(doc) for doc in texts_ko]
 
@@ -133,7 +134,9 @@ for i in range(file_count):
         # splits = t[1].split
         result = re.findall(reg, t[1])
         final_result_list.append(result[0])
-
+        print(result[0])
+    print("\n")
+    '''
     bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
     l = sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
     index = l[0][0]
@@ -147,3 +150,4 @@ for i in range(file_count):
 
     print(final_result_list)
     print(' ')
+    '''
