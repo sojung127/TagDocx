@@ -51,8 +51,8 @@ print("여기 집중")
 
 from konlpy.corpus import kobill
 from konlpy.tag import Okt
+from konlpy.tag import Komoran
 from gensim import models
-
 docs_ko = []
 
 for i in range(file_count):
@@ -84,6 +84,10 @@ for i in range(file_count):
     from konlpy.tag import Okt; t=Okt()
     texts_ko = t.pos(docs_ko[0], norm=True)
     '''
+    from PyKomoran import *
+    k=Komoran("STABLE")
+    texts_ko=k.get_morphes_by_tags(docs_ko[0],tag_list=['NNP','NNG'])
+    print('1')
 
     from konlpy.tag import Komoran; t=Komoran()
     #print(docs_ko[0])
