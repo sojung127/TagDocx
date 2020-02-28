@@ -1,3 +1,5 @@
+# 토픽 한 개당 태그 하나씩 추출(topics == 5, nwords == 4) 
+# LDA 알고리즘과 Komoran 패키지 이용
 from tensorflow.keras.preprocessing.text import text_to_word_sequence
 import pandas as pd
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
@@ -58,6 +60,7 @@ docs_ko = []
 for i in range(file_count):
 
     path = path_origin + file_list[i]
+    print(path)
     if path[-3:] == 'pdf':
         contents = convert_pdf_to_txt(path)
         shortword = re.compile("\n")
@@ -84,11 +87,12 @@ for i in range(file_count):
     texts_ko = t.pos(docs_ko[0], norm=True)
     '''
 
-    from konlpy.tag import Komoran; t=Komoran()
-    #print(docs_ko[0])
-    
-    #texts_ko = t.nouns(docs_ko[0])
+    from konlpy.tag import Komoran;
 
+    t = Komoran()
+    # print(docs_ko[0])
+
+    # texts_ko = t.nouns(docs_ko[0])
     texts_ko = t.pos(" ".join([s for s in docs_ko[0].split("\n") if s]))
 
     nouns = [(n, tag) for n, tag in texts_ko if tag == 'NNG' or tag == 'NNP']
@@ -124,8 +128,9 @@ for i in range(file_count):
 
     np.random.seed(42)  # optional
     lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
-    #print(path)
+    print(path)
     lda_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)
+
     import re
 
     reg = "[\'\"][^\'\"]+[\'\"]"
