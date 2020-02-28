@@ -58,7 +58,6 @@ docs_ko = []
 for i in range(file_count):
 
     path = path_origin + file_list[i]
-    print(path)
     if path[-3:] == 'pdf':
         contents = convert_pdf_to_txt(path)
         shortword = re.compile("\n")
