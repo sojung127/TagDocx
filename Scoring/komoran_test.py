@@ -58,7 +58,6 @@ docs_ko = []
 for i in range(file_count):
 
     path = path_origin + file_list[i]
-    print(path)
     if path[-3:] == 'pdf':
         contents = convert_pdf_to_txt(path)
         shortword = re.compile("\n")
@@ -85,13 +84,12 @@ for i in range(file_count):
     texts_ko = t.pos(docs_ko[0], norm=True)
     '''
 
-    from konlpy.tag import Komoran;
+    from konlpy.tag import Komoran; t=Komoran()
+    #print(docs_ko[0])
+    
+    #texts_ko = t.nouns(docs_ko[0])
 
-    t = Komoran()
-    # print(docs_ko[0])
-
-    # texts_ko = t.nouns(docs_ko[0])
-    texts_ko = t.pos(docs_ko[0])
+    texts_ko = t.pos(" ".join([s for s in docs_ko[0].split("\n") if s]))
 
     nouns = [(n, tag) for n, tag in texts_ko if tag == 'NNG' or tag == 'NNP']
 
