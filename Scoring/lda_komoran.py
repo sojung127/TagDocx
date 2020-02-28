@@ -94,14 +94,14 @@ for i in range(file_count):
     
     #texts_ko = t.nouns(docs_ko[0])
 
-    texts_ko = t.pos(" ".join([s for s in docs_ko[0].split("\n") if s]))
+    #texts_ko = t.pos(" ".join([s for s in docs_ko[0].split("\n") if s]))
 
-    nouns = [(n, tag) for n, tag in texts_ko if tag == 'NNG' or tag == 'NNP']
+    #nouns = [(n, tag) for n, tag in texts_ko if tag == 'NNG' or tag == 'NNP']
 
     # pos가 이상해서 pos만 고치면 됨
-    pos = lambda d: ['/'.join(d)]
+    pos = lambda d: [''.join(d)]
 
-    texts_ko = [pos(doc) for doc in nouns]
+    texts_ko = [pos(doc) for doc in texts_ko]
 
     # print(texts_ko)
 
