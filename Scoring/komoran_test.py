@@ -90,13 +90,13 @@ for i in range(file_count):
     texts_ko = t.pos(docs_ko[0])
 
     nouns = [n for n, tag in texts_ko if tag == 'NNG' or tag == 'NNP']
-    print(nouns)
+    #print(nouns)
 
     #pos가 이상해서 pos만 고치면 됨
-    #pos = lambda d: ['/'.join(p) for p in d]
+    pos = lambda d: [d]
     texts_ko = [pos(doc) for doc in nouns]
-
-    #encode tokens to integers
+    print(texts_ko)
+    
 
     from gensim import corpora
     dictionary_ko = corpora.Dictionary(texts_ko)
