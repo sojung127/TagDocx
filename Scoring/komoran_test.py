@@ -1,3 +1,5 @@
+# 토픽 한 개당 태그 하나씩 추출(topics == 5, nwords == 4) 
+# LDA 알고리즘과 Komoran 패키지 이용
 from tensorflow.keras.preprocessing.text import text_to_word_sequence
 import pandas as pd
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
@@ -91,7 +93,7 @@ for i in range(file_count):
     # print(docs_ko[0])
 
     # texts_ko = t.nouns(docs_ko[0])
-    texts_ko = t.pos(docs_ko[0])
+    texts_ko = t.pos(" ".join([s for s in docs_ko[0].split("\n") if s]))
 
     nouns = [(n, tag) for n, tag in texts_ko if tag == 'NNG' or tag == 'NNP']
 
