@@ -42,6 +42,7 @@ def convert_pdf_to_txt(path):
 
 score = 0
 current = 0
+# 폴더에서 문서 목록 읽어오기
 path_origin = input("문서경로:")
 file_list = os.listdir(path_origin)
 
@@ -84,26 +85,25 @@ for i in range(file_count):
     '''
     from konlpy.tag import Okt; t=Okt()
     texts_ko = t.pos(docs_ko[0], norm=True)
-    '''
+    
     from konlpy.tag import Komoran;
 
     t = Komoran()
-    from PyKomoran import *;
-
+    '''
+    # 패키지 호출 및 Komoran 객체 생성
+    from PyKomoran import *
     komoran = Komoran("STABLE")
-
+    
+    # 명사 추출 전처리 (NNG: 일반명사  NNP: 고유명사)
     texts_ko = komoran.get_morphes_by_tags(docs_ko[0], tag_list=['NNG', 'NNP'])
-
 
     pos = lambda d: [d]
     texts_ko = [pos(doc) for doc in texts_ko]
 
-    # print(texts_ko)
-
     from gensim import corpora
 
-    dictionary_ko = corpora.Dictionary(texts_ko)
-    dictionary_ko.save('ko.dict')  # save dictionary to file for future use
+    dictionary_ko = corpora.Dictionary(texts_ko)     # initialize a dictionary
+    dictionary_ko.save('ko.dict')     # save dictionary to file for future use
 
     # calulate TF-IDF
 
@@ -119,24 +119,41 @@ for i in range(file_count):
 
     np.random.seed(42)
 
+    #Train Topic Model
     # LDA
     import numpy as np;
 
     np.random.seed(42)  # optional
     lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
     lda_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)
-    final_result_list = []
+    '''
+    # LSI
+    ntopics, nwords = 5, 4
+    lsi_ko = models.lsimodel.LsiModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
+    lsi_list =lsi_ko.print_topics(num_topics=ntopics, num_words=nwords)
+
+    #HDP
+    import numpy as np;
+    np.random.seed(42)  # optional
+    hdp_ko = models.hdpmodel.HdpModel(tfidf_ko, id2word=dictionary_ko)
+    print(hdp_ko.print_topics(topics=ntopics, topn=nwords))
+    '''
+    # 보기 좋게 바꾸기
     import re
 
     reg = "[\'\"][^\'\"]+[\'\"]"
-
+    
+    final_result_list = []
+    print("Train in HDP ")
     for t in lda_list:
         # splits = t[1].split
         result = re.findall(reg, t[1])
         final_result_list.append(result[0])
         print(result[0])
     print("\n")
+
     '''
+    #Scoring document
     bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
     l = sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
     index = l[0][0]
