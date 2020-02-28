@@ -53,6 +53,7 @@ from konlpy.corpus import kobill
 from konlpy.tag import Okt
 from konlpy.tag import Komoran
 from gensim import models
+
 docs_ko = []
 
 for i in range(file_count):
@@ -84,24 +85,17 @@ for i in range(file_count):
     from konlpy.tag import Okt; t=Okt()
     texts_ko = t.pos(docs_ko[0], norm=True)
     '''
-    from PyKomoran import *
-    k=Komoran("STABLE")
-    texts_ko=k.get_morphes_by_tags(docs_ko[0],tag_list=['NNP','NNG'])
-    print('1')
+    from konlpy.tag import Komoran;
 
-    from konlpy.tag import Komoran; t=Komoran()
-    #print(docs_ko[0])
-    
-    #texts_ko = t.nouns(docs_ko[0])
+    t = Komoran()
+    from PyKomoran import *;
 
-    texts_ko = t.pos(" ".join([s for s in docs_ko[0].split("\n") if s]))
+    komoran = Komoran("STABLE")
 
-    nouns = [(n, tag) for n, tag in texts_ko if tag == 'NNG' or tag == 'NNP']
+    texts_ko = komoran.get_morphes_by_tags(docs_ko[0], tag_list=['NNG', 'NNP'])
 
-    # pos가 이상해서 pos만 고치면 됨
-    pos = lambda d: ['/'.join(d)]
-
-    texts_ko = [pos(doc) for doc in nouns]
+    pos = lambda d: [d]
+    texts_ko = [pos(doc) for doc in texts_ko]
 
     # print(texts_ko)
 
@@ -130,7 +124,7 @@ for i in range(file_count):
     np.random.seed(42)  # optional
     lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
     lda_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)
-    final_result_list=[]
+    final_result_list = []
     import re
 
     reg = "[\'\"][^\'\"]+[\'\"]"
@@ -140,20 +134,16 @@ for i in range(file_count):
         result = re.findall(reg, t[1])
         final_result_list.append(result[0])
 
-
-    bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
-    sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
-
-
     bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
     l = sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
     index = l[0][0]
     result_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)[index]
-    
 
     result = re.findall(reg, result_list[1])
     for i in result:
         final_result_list.append(i)
+
+    final_result_list = set(final_result_list)
 
     print(final_result_list)
     print(' ')
