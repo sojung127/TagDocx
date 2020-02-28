@@ -126,7 +126,7 @@ for i in range(file_count):
 
     np.random.seed(42)  # optional
     lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
-    print(path)
+    #print(path)
     lda_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)
     import re
 
