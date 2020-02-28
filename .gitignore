@@ -1,6 +1,12 @@
 
 *.pyc
 *.pyc
+
+Scoring/__pycache__/Ascoring.cpython-36.pyc
+Scoring/ko.mm
+Scoring/ko.mm
+Scoring/ko.dict
+
 Scoring/ko.dict
 Scoring/ko.mm.index
 Scoring/ko.mm
