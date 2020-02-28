@@ -57,9 +57,6 @@ for i in range(file_count):
     path = path_origin + file_list[i]
     if path[-3:] == 'pdf':
         contents = convert_pdf_to_txt(path)
-        shortword = re.compile("\n")
-        contents = shortword.sub('', contents)
-        contents = contents.replace("", " ")
     elif path[-3:] == 'txt':
         fp = open(path, 'r', encoding='utf-8')
         contents = fp.readlines()
@@ -70,14 +67,10 @@ for i in range(file_count):
         contents = hwptest.convert_hwp_to_txt(path)
     elif path[-4:] == 'docx':
         contents = docx2txt.process(path)
-
     else:
         contents = ''
-    # if path[-3:] == 'pdf':
-    #     contents = convert_pdf_to_txt(path)
-    # else:
-    #     contents = ''
         continue
+
     docs_ko = []
     docs_ko.append(contents)
 
@@ -106,23 +99,26 @@ for i in range(file_count):
     tfidf_ko = tfidf_model_ko[tf_ko]
     corpora.MmCorpus.serialize('ko.mm', tfidf_ko)  # save corpus to file for future use
 
-    ntopics, nwords = 5, 5
-    import numpy as np; np.random.seed(42)
-
-    np.random.seed(42)
-
-    # LDA
-    import numpy as np;
-
-    np.random.seed(42)  # optional
+    ntopics, nwords = 5,5
 
     print(path)
-    lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
 
+    # LDA
+
+    import numpy as np;   np.random.seed(42)  # optional
+    lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
     bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
     l = sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
     index = l[0][0]
     result_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)[index]
+    '''
+    lsi_ko = models.lsimodel.LsiModel (tfidf_ko, id2word=dictionary_ko, num_topis=ntopics)
+    bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
+    l = sorted(lsi_ko[bow], key=lambda x: x[1], reverse=True)
+    index = l[0][0]
+    result_list = lsi_ko.print_topics(num_topics=ntopics, num_words=nwords)
+    '''
+
 
     import re
 
@@ -130,4 +126,9 @@ for i in range(file_count):
     result = re.findall(reg, result_list[1])
     for i in result:
         print(i)
+    # for t in result_list:
+    #     #splits = t[1].split
+
+    #     result = re.findall(reg,t)
+    #     print(result[0])
     print("\n")
