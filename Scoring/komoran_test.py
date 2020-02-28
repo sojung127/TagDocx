@@ -89,13 +89,14 @@ for i in range(file_count):
     #texts_ko = t.nouns(docs_ko[0])
     texts_ko = t.pos(docs_ko[0])
 
-    nouns = [n for n, tag in texts_ko if tag == 'NNG' or tag == 'NNP']
-    #print(nouns)
+    nouns = [(n, tag) for n, tag in texts_ko if tag == 'NNG' or tag == 'NNP']
 
     #pos가 이상해서 pos만 고치면 됨
-    pos = lambda d: [d]
+    pos = lambda d: ['/'.join(d)]
+
     texts_ko = [pos(doc) for doc in nouns]
-    print(texts_ko)
+
+    #print(texts_ko)
     
 
     from gensim import corpora
