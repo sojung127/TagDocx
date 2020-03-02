@@ -85,15 +85,15 @@ for i in range(file_count):
     '''
     from konlpy.tag import Okt; t=Okt()
     texts_ko = t.pos(docs_ko[0], norm=True)
-
+    
     from konlpy.tag import Komoran;
+
     t = Komoran()
     '''
     # 패키지 호출 및 Komoran 객체 생성
     from PyKomoran import *
-
     komoran = Komoran("STABLE")
-
+    
     # 명사 추출 전처리 (NNG: 일반명사  NNP: 고유명사)
     texts_ko = komoran.get_morphes_by_tags(docs_ko[0], tag_list=['NNG', 'NNP'])
 
@@ -102,8 +102,8 @@ for i in range(file_count):
 
     from gensim import corpora
 
-    dictionary_ko = corpora.Dictionary(texts_ko)  # initialize a dictionary
-    dictionary_ko.save('ko.dict')  # save dictionary to file for future use
+    dictionary_ko = corpora.Dictionary(texts_ko)     # initialize a dictionary
+    dictionary_ko.save('ko.dict')     # save dictionary to file for future use
 
     # calulate TF-IDF
 
@@ -118,33 +118,34 @@ for i in range(file_count):
     import numpy as np;
 
     np.random.seed(42)
-
-    # Train Topic Model
+    '''
+    #Train Topic Model
     # LDA
     import numpy as np;
 
     np.random.seed(42)  # optional
     lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
     lda_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)
-    '''
+    
     # LSI
     ntopics, nwords = 5, 4
     lsi_ko = models.lsimodel.LsiModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
     lsi_list =lsi_ko.print_topics(num_topics=ntopics, num_words=nwords)
+    '''
     #HDP
     import numpy as np;
     np.random.seed(42)  # optional
     hdp_ko = models.hdpmodel.HdpModel(tfidf_ko, id2word=dictionary_ko)
-    print(hdp_ko.print_topics(topics=ntopics, topn=nwords))
-    '''
+    hdp_list =hdp_ko.print_topics(num_topics=ntopics, num_words=nwords)
+
     # 보기 좋게 바꾸기
     import re
 
     reg = "[\'\"][^\'\"]+[\'\"]"
-
+    
     final_result_list = []
-    print("Train in LDA ")
-    for t in lda_list:
+    print("Train in HDP ")
+    for t in hdp_list:
         # splits = t[1].split
         result = re.findall(reg, t[1])
         final_result_list.append(result[0])
