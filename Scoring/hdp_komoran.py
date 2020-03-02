@@ -56,7 +56,6 @@ from konlpy.tag import Komoran
 from gensim import models
 
 docs_ko = []
-file_count=5 # 빠른 테스트를 위해 임시로 추가
 for i in range(file_count):
 
     path = path_origin + file_list[i]
