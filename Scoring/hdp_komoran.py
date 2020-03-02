@@ -118,20 +118,9 @@ for i in range(file_count):
     import numpy as np;
 
     np.random.seed(42)
-    '''
-    #Train Topic Model
-    # LDA
-    import numpy as np;
-
-    np.random.seed(42)  # optional
-    lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
-    lda_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)
     
-    # LSI
-    ntopics, nwords = 5, 4
-    lsi_ko = models.lsimodel.LsiModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
-    lsi_list =lsi_ko.print_topics(num_topics=ntopics, num_words=nwords)
-    '''
+    #Train Topic Model
+    
     #HDP
     import numpy as np;
     np.random.seed(42)  # optional
@@ -139,34 +128,17 @@ for i in range(file_count):
     hdp_list =hdp_ko.print_topics(num_words=nwords)
     
     #가장 확률 높은 토픽의 단어 출력
-    print(hdp_ko.show_topics(num_topics=1,num_words=5,formatted=False))
+    topic_words=hdp_ko.show_topics(num_topics=1,num_words=5,formatted=False)
+    #각 토픽들의 단어 출력
+    word_topics=hdp_ko.show_topics(num_topics=5,num_words=1,formatted=False)
     # 보기 좋게 바꾸기
-    '''
-    import re
+    words_list=[]
+    for w in topic_words[0][1]:
+        words_list.append(w[0])
 
-    reg = "[\'\"][^\'\"]+[\'\"]"
-    #reg="[^(0.\d*)]+(\s+)$"
+    for w in word_topics:
+        words_list.append(w[1][0][0])
 
-    bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
-    l = sorted(hdp_ko[bow], key=lambda x: x[1], reverse=True)
-    print(l)
-    
-    index = l[0][0]
-    result_list = hdp_ko.print_topics( num_words=nwords)[index]
-    
-    result = re.findall(reg, result_list[1])
-    for i in result:
-        print(i)
-        
-    final_result_list = []
-    print("Train in HDP ")
-    for t in hdp_list:
-        #print(t[1])
-        # splits = t[1].split
-        result = re.findall(reg, t[1])
-        final_result_list.append(result)
-        print(result)
-    print("\n")
-    '''
-    
+    words_list=list(set(words_list))
+    print(words_list)
 
