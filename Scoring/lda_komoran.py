@@ -126,28 +126,31 @@ for i in range(file_count):
     np.random.seed(42)  # optional
     lda_ko = models.ldamodel.LdaModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
     lda_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)
-    '''
-    # LSI
-    ntopics, nwords = 5, 4
-    lsi_ko = models.lsimodel.LsiModel(tfidf_ko, id2word=dictionary_ko, num_topics=ntopics)
-    lsi_list =lsi_ko.print_topics(num_topics=ntopics, num_words=nwords)
-    #HDP
-    import numpy as np;
-    np.random.seed(42)  # optional
-    hdp_ko = models.hdpmodel.HdpModel(tfidf_ko, id2word=dictionary_ko)
-    print(hdp_ko.print_topics(topics=ntopics, topn=nwords))
-    '''
-    # 보기 좋게 바꾸기
+    final_result_list=[]
     import re
 
     reg = "[\'\"][^\'\"]+[\'\"]"
 
-    final_result_list = []
-    print("Train in LDA ")
     for t in lda_list:
         # splits = t[1].split
         result = re.findall(reg, t[1])
         final_result_list.append(result[0])
-        print(result[0])
-    print("\n")
+
+
+    bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
+    sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
+
+
+    bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
+    l = sorted(lda_ko[bow], key=lambda x: x[1], reverse=True)
+    index = l[0][0]
+    result_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)[index]
+    
+
+    result = re.findall(reg, result_list[1])
+    for i in result:
+        final_result_list.append(i)
+
+    print(final_result_list)
+    print(' ')
 
