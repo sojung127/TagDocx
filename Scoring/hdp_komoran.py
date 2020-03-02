@@ -126,7 +126,6 @@ for i in range(file_count):
     import numpy as np;
     np.random.seed(42)  # optional
     hdp_ko = models.hdpmodel.HdpModel(tfidf_ko, id2word=dictionary_ko)
-    hdp_list =hdp_ko.print_topics(num_words=nwords)
     
     #가장 확률 높은 토픽의 단어 출력
     topic_words=hdp_ko.show_topics(num_topics=1,num_words=5,formatted=False)
