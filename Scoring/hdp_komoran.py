@@ -56,7 +56,7 @@ from konlpy.tag import Komoran
 from gensim import models
 
 docs_ko = []
-
+file_count=5 # 빠른 테스트를 위해 임시로 추가
 for i in range(file_count):
 
     path = path_origin + file_list[i]
@@ -136,19 +136,37 @@ for i in range(file_count):
     import numpy as np;
     np.random.seed(42)  # optional
     hdp_ko = models.hdpmodel.HdpModel(tfidf_ko, id2word=dictionary_ko)
-    hdp_list =hdp_ko.print_topics(num_topics=ntopics, num_words=nwords)
-
+    hdp_list =hdp_ko.print_topics(num_words=nwords)
+    
+    #가장 확률 높은 토픽의 단어 출력
+    print(hdp_ko.show_topics(num_topics=1,num_words=5,formatted=False))
     # 보기 좋게 바꾸기
+    '''
     import re
 
     reg = "[\'\"][^\'\"]+[\'\"]"
+    #reg="[^(0.\d*)]+(\s+)$"
+
+    bow = tfidf_model_ko[dictionary_ko.doc2bow(texts_ko[0])]
+    l = sorted(hdp_ko[bow], key=lambda x: x[1], reverse=True)
+    print(l)
     
+    index = l[0][0]
+    result_list = hdp_ko.print_topics( num_words=nwords)[index]
+    
+    result = re.findall(reg, result_list[1])
+    for i in result:
+        print(i)
+        
     final_result_list = []
     print("Train in HDP ")
     for t in hdp_list:
+        #print(t[1])
         # splits = t[1].split
         result = re.findall(reg, t[1])
-        final_result_list.append(result[0])
-        print(result[0])
+        final_result_list.append(result)
+        print(result)
     print("\n")
+    '''
+    
 
