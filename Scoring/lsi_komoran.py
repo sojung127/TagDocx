@@ -144,11 +144,17 @@ for i in range(file_count):
     reg = "[\'\"][^\'\"]+[\'\"]"
     
     final_result_list = []
-    print("Train in HDP ")
     for t in lsi_list:
         # splits = t[1].split
         result = re.findall(reg, t[1])
         final_result_list.append(result[0])
-        print(result[0])
-    print("\n")
+
+    result = re.findall(reg, lsi_list[0][1])
+    for i in result:
+        final_result_list.append(i)
+        
+    final_result_list = set(final_result_list)
+
+    print(final_result_list)
+    print(' ')
 
