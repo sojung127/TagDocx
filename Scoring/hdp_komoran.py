@@ -132,12 +132,15 @@ for i in range(file_count):
     word_topics=hdp_ko.show_topics(num_topics=5,num_words=1,formatted=False)
     # 보기 좋게 바꾸기
     words_list=[]
+    #각 리스트의 단어들 words_list에 모음
     for w in topic_words[0][1]:
         words_list.append(w[0])
 
     for w in word_topics:
         words_list.append(w[1][0][0])
 
+    #중복 제거
     words_list=list(set(words_list))
     print(words_list)
+    print()
 
