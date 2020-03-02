@@ -59,6 +59,8 @@ docs_ko = []
 for i in range(file_count):
 
     path = path_origin + file_list[i]
+    if os.path.isdir(path):
+        continue
     print(path)
     if path[-3:] == 'pdf':
         contents = convert_pdf_to_txt(path)
@@ -130,6 +132,7 @@ for i in range(file_count):
     topic_words=hdp_ko.show_topics(num_topics=1,num_words=5,formatted=False)
     #각 토픽들의 단어 출력
     word_topics=hdp_ko.show_topics(num_topics=5,num_words=1,formatted=False)
+    
     # 보기 좋게 바꾸기
     words_list=[]
     #각 리스트의 단어들 words_list에 모음
