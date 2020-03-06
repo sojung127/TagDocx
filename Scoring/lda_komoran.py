@@ -61,6 +61,8 @@ for i in range(file_count):
 
     path = path_origin + file_list[i]
     print(path)
+    if os.path.isdir(path):
+        continue
     if path[-3:] == 'pdf':
         contents = convert_pdf_to_txt(path)
         shortword = re.compile("\n")

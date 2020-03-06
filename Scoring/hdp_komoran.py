@@ -144,5 +144,5 @@ for i in range(file_count):
     #중복 제거
     words_list=list(set(words_list))
     print(words_list)
-    print()
+    print(' ')
 
