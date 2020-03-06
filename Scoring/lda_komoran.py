@@ -151,6 +151,8 @@ for i in range(file_count):
     for i in result:
         final_result_list.append(i)
 
+    final_result_list = set(final_result_list)
+    
     print(final_result_list)
     print(' ')
 
