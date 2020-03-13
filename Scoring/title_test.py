@@ -14,7 +14,7 @@ from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from io import StringIO
 
-VERBOSE = True
+VERBOSE = False
 MISSING_CHAR = None
 WITHIN_WORD_MOVE_LIMIT = 0
 
@@ -344,10 +344,11 @@ class TextOnlyDevice(PDFDevice):
     def recover_last_paragraph(self):
         if len(self.current_block[4]) > 0:
             self.blocks.append(self.current_block)
-        
+        '''
         for block in self.blocks:
             if block[4] == [' ']:
                 self.blocks.remove(block)
+        '''
 
     # pdf spec, page 410
     def new_tx(self, w, Tj, Tfs, Tc, Tw, Th):
@@ -467,8 +468,16 @@ def get_title_from_io(pdf_io):
         for b in dev.blocks:
             verbose(b)
 
+        '''
         # find max font size
         max_tfs = max(dev.blocks, key=lambda x: x[1])[1]
+
+        i= 0
+        for b in dev.blocks:
+            print(i," ", b, "\n")
+            i += 1
+
+        print(max_tfs)
         verbose('max_tfs: ', max_tfs)
         # find max blocks with max font size
         max_blocks = list(filter(lambda x: x[1] == max_tfs, dev.blocks))
@@ -484,7 +493,46 @@ def get_title_from_io(pdf_io):
         for b in found_blocks:
             verbose(b)
         block = found_blocks[0]
-        title = ''.join(block[4]).strip()
+        #
+        print(block[4])
+        #
+        '''
+        '''
+        i= 0
+        for b in dev.blocks:
+            print(i," ", b, "\n")
+            i += 1
+        '''
+        condition = False
+        while len(dev.blocks) > 0:
+            # find max font size
+            max_tfs = max(dev.blocks, key=lambda x: x[1])[1]
+            # find max blocks with max font size
+            max_blocks = list(filter(lambda x: x[1] == max_tfs, dev.blocks))
+            # find the one with the highest y coordinate
+            # this is the most close to top
+            max_y = max(max_blocks, key=lambda x: x[3])[3]
+            verbose('max_y: ', max_y)
+            found_blocks = list(filter(lambda x: x[3] == max_y, max_blocks))
+            block = found_blocks[0]
+            
+            for b in block[4]:
+                if b.isalnum() is True:
+                    condition = True
+                    break
+            
+            if condition is True:
+                break
+            
+            dev.blocks.remove(block)
+        
+        result =[]
+        #print(found_blocks)
+        for b in found_blocks:
+            if b[3] == found_blocks[0][3]:
+                result.extend(b[4])
+
+        title = ''.join(result).strip()
 
         # Retrieve missing spaces if needed
         if not " " in title:
@@ -523,15 +571,33 @@ def retrieve_spaces(first_page, title_without_space, p=0, t=0, result=""):
         # If letter p-1 in page corresponds to letter t-1 in title, but lette p does not corresponds to letter p,
         # we are not exploring the title in the page
         else:
-            t = 0
-            result = ""
+            #t = 0
+            #result = ""
+            #print("3")
+            pass
 
     return retrieve_spaces(
         first_page, title_without_space, p+1, t, result)
 
 
+def run(pdf):
+    try:
+        title = get_title_from_file(pdf)
+        if title is None:
+            return 1
+        else:
+            print(title)
+            return 0
+
+    except Exception as e:
+        if VERBOSE:
+            traceback.print_exc()
+        return 1
+
+'''
 def run():
     try:
+        
         parser = argparse.ArgumentParser(
             prog='pdftitle',
             description='Extracts the title of a PDF article',
@@ -548,16 +614,18 @@ def run():
         VERBOSE = args.verbose
         MISSING_CHAR = args.replace_missing_char
         title = get_title_from_file(args.pdf)
+
         if title is None:
             return 1
         else:
             print(title)
             return 0
+
     except Exception as e:
         if VERBOSE:
             traceback.print_exc()
         return 1
-
+'''
 
 if __name__ == '__main__':
     sys.exit(run())
