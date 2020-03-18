@@ -8,23 +8,23 @@ namespace adc
     /// <summary>
     /// setTagPage.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class classificateDocumentPage00 : Page
+    public partial class classificateDocumentPage01 : Page
     {
-        string selectedFolder;
+        string folderName = null;
 
-        public classificateDocumentPage00()
+        public classificateDocumentPage01()
         {
             InitializeComponent();
         }
 
         private void BtnPreStep(object sender, RoutedEventArgs e)
         {
-            classificateDocumentPage page = new classificateDocumentPage();
+            classificateDocumentPage00 page = new classificateDocumentPage00();
             NavigationService.Navigate(page);
         }
         private void BtnNextStep(object sender, RoutedEventArgs e)
         {
-            classificateDocumentPage01 page = new classificateDocumentPage01();
+            classificateDocumentPage02 page = new classificateDocumentPage02();
             NavigationService.Navigate(page);
         }
 
@@ -37,9 +37,23 @@ namespace adc
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                folderName.Text = dialog.FileName; // 테스트용, 폴더 선택이 완료되면 선택된 폴더를 label에 출력
-                selectedFolder = dialog.FileName; //선택된 폴더이름저장
+                folderName = dialog.FileName; // 테스트용, 폴더 선택이 완료되면 선택된 폴더를 label에 출력
             }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void 묶음에추가_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

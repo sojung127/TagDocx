@@ -62,6 +62,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="classificateDocumentPage02.xaml.cs">
+      <DependentUpon>classificateDocumentPage02.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="classificateDocumentPage01.xaml.cs">
+      <DependentUpon>classificateDocumentPage01.xaml</DependentUpon>
+    </Compile>
     <Compile Include="classificateDocumentPage00.xaml.cs">
       <DependentUpon>classificateDocumentPage00.xaml</DependentUpon>
     </Compile>
@@ -83,6 +89,14 @@
     <Compile Include="setTagPage.xaml.cs">
       <DependentUpon>setTagPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="classificateDocumentPage02.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="classificateDocumentPage01.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="classificateDocumentPage00.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

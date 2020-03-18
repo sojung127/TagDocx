@@ -76,3 +76,9 @@ C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\201910
 C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\obj\Debug\adc.csproj.CopyComplete
 C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\obj\Debug\AutomaticDocumentClassificationSystem.exe
 C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\obj\Debug\AutomaticDocumentClassificationSystem.pdb
+C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\obj\Debug\classificateDocumentPage02.g.cs
+C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\obj\Debug\classificateDocumentPage01.g.cs
+C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\obj\Debug\classificateDocumentPage02.baml
+C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\obj\Debug\classificateDocumentPage01.baml
