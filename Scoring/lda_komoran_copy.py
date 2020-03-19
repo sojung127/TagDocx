@@ -150,7 +150,7 @@ for i in range(file_count):
         final_result_list.append(words_list[i])
         i += 1
 
-    #print(set(final_result_list))
+    print(set(final_result_list))
 
     doc = contents
     #
