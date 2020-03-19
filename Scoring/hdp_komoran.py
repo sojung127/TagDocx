@@ -96,7 +96,9 @@ for i in range(file_count):
     komoran = Komoran("STABLE")
     
     # 명사 추출 전처리 (NNG: 일반명사  NNP: 고유명사)
-    texts_ko = komoran.get_morphes_by_tags(docs_ko[0], tag_list=['NNG', 'NNP'])
+    texts_ko = komoran.get_morphes_by_tags(docs_ko[0], tag_list=['NNP'])
+    print(texts_ko)
+    continue
 
     pos = lambda d: [d]
     texts_ko = [pos(doc) for doc in texts_ko]

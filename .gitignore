@@ -2,7 +2,7 @@
 *.pyc
 *.pyc
 
-Scoring/__pycache__/Ascoring.cpython-36.pyc
+Scoring/__pycache__/
 Scoring/ko.mm
 Scoring/ko.mm
 Scoring/ko.dict
@@ -11,4 +11,4 @@ Scoring/ko.dict
 Scoring/ko.mm.index
 Scoring/ko.mm
 *.pyc
-Scoring/lda_komoran.py
+
