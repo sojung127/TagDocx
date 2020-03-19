@@ -586,6 +586,7 @@ def run(pdf):
         if title is None:
             return 1
         else:
+            return title
             print(title)
             return 0
 
