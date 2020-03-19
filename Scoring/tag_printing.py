@@ -157,8 +157,11 @@ for i in range(file_count):
 
 
     doc = contents
-    #
+    #형식태그 출력
     type_score=Total_Scoring.scoring(doc=doc,path=path)
 
     print(type_score.index(max(type_score)))
 
+    index = type_score.index(max(type_score))
+    def form_tag(index): return {0: '논문', 1: '기사', 2: '강의자료', 3: 'E', 4: 'A'}.get(index, '기타')
+    print(form_tag(index))
