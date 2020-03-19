@@ -1,4 +1,5 @@
 ﻿
+<<<<<<< HEAD
 FC:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\userInterface\20191021\adc\App.xaml;;
 FC:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\userInterface\20191021\adc\classificateDocumentPage02.xaml;;
 FC:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\userInterface\20191021\adc\classificateDocumentPage01.xaml;;
@@ -10,4 +11,17 @@ FC:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\userInterface\20
 FC:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\userInterface\20191021\adc\classificateDocumentPage.xaml;;
 FC:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\userInterface\20191021\adc\setTagPage.xaml;;
 FC:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\userInterface\20191021\adc\TagResultPage.xaml;;
+=======
+FC:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\App.xaml;;
+FC:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\classificateDocumentPage02.xaml;;
+FC:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\classificateDocumentPage01.xaml;;
+FC:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\classificateDocumentPage00.xaml;;
+FC:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\Home.xaml;;
+FC:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\MainWindow.xaml;;
+FC:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\searchDocumentPage.xaml;;
+FC:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\searchDocumentPage00.xaml;;
+FC:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\classificateDocumentPage.xaml;;
+FC:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\setTagPage.xaml;;
+FC:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\20191021\adc\TagResultPage.xaml;;
+>>>>>>> 9fe8ea0a192818957803f4857066556c27addc18
 
