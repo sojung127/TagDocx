@@ -9,34 +9,55 @@
       Title="searchDocumentPage">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-
-        </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="255*"/>
+            <RowDefinition Height="153*" />
         </Grid.RowDefinitions>
+        <!--<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="132" Margin="100,93,0,0" VerticalAlignment="Top" Width="549"/>-->
 
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="100,143,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="210,143,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="321,143,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="432,143,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="543,143,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="100,181,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="210,181,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="321,181,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="432,181,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="543,181,0,0" VerticalAlignment="Top" Width="106"/>
+        <TextBox HorizontalAlignment="Left" Height="31" Margin="99,93,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="550" TextChanged="TextBox_TextChanged_1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="99,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="550"><Run Text="현재 존재하는 내용 태그 목입니다. 찾고자 하는 문서와 관련된 내용태그를 선택하세요."/><LineBreak/><Run Text="태그를 검색할 수 있습니다."/></TextBlock>
+        <Border Background="LightGray" HorizontalAlignment="Left" Height="157" Grid.Row="1" VerticalAlignment="Top" Width="792" Margin="0,19,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Height="31" Margin="94,42,0,0" Grid.Row="1" TextWrapping="Wrap" Text="선택된 태그 목록" VerticalAlignment="Top" Width="111"/>
+        <TextBlock HorizontalAlignment="Left" Height="37" Margin="47,18,0,0" TextWrapping="Wrap" Text="문서찾기" FontSize="20" VerticalAlignment="Top" Width="198" />
+        <ListBox Height="68" HorizontalAlignment="Left" Margin="85,64,0,0" x:Name="listBox2" VerticalAlignment="Top" Width="620" Grid.Row="1">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Padding" Value="30 0 30 0" />
+                </Style>
+            </ListBox.ItemContainerStyle>
 
-        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"   >
-            <Button x:Name="gotoMain" Content="이전단계" HorizontalAlignment="Center" Margin= "00,0,0,0"  Width="75" Click="BtnPreStep" />
-            <Button x:Name="strartTag" Content="검색하기" HorizontalAlignment="Center" Margin= "00,0,0,0" Width="75" Click="BtnNextStep" />
-
-        </StackPanel>
-
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center"  >
-            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="/Resources/dt_icon.png"/>
-            <TextBlock Text="문서 검색" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        </StackPanel>
-        <TextBox HorizontalAlignment="Left" Margin="10,82,0,199.6" Grid.Row="1" TextWrapping="Wrap" Text="키워드 입력" Width="100" TextAlignment="Center"/>
-        <TextBlock Text="검색 하고자 하는 문서와 관련된 키워드를 입력하세요. 아래 [태그 목록]은 현재 컴퓨터에 저장된 문서들이 가지고 있는 태그입니다. 참고하여 키워드로 입력해주세요." TextWrapping="Wrap" Margin="10,10,10,0" Grid.Row="1" VerticalAlignment="Top" Height="61" FontSize="20"/>
-        <TextBox HorizontalAlignment="Left" Margin="132,82,0,199.6" Grid.Row="1" TextWrapping="Wrap" Text="키워드 입력" Width="100" TextAlignment="Center"/>
-        <TextBox HorizontalAlignment="Left" Margin="258,82,0,199.6" Grid.Row="1" TextWrapping="Wrap" Text="키워드 입력" Width="100" TextAlignment="Center"/>
-
-        <Label Content="[태그 목록]" HorizontalAlignment="Left" Margin="10,148,0,0" Grid.Row="1" VerticalAlignment="Top" Height="35" FontSize="20"/>
-
+            <ListBoxItem Content="Vertical Item 1" />
+            <ListBoxItem Content="Vertical Item 2" />
+            <ListBoxItem Content="Vertical Item 3" />
+            <ListBoxItem Content="Vertical Item 4" />
+            <ListBoxItem Content="Vertical Item 5" RenderTransformOrigin="0.5,0.5" >
+                <ListBoxItem.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="4.45"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="1.829"/>
+                    </TransformGroup>
+                </ListBoxItem.RenderTransform>
+            </ListBoxItem>
+        </ListBox>
+        <Button Content="메인으로" HorizontalAlignment="Left" Height="23" Margin="10,143,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Click="Button_Click"/>
+        <Button Content="문서 찾기" HorizontalAlignment="Left" Height="23" Margin="705,143,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77"/>
     </Grid>
 </Page>
