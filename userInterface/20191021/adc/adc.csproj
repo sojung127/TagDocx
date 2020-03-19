@@ -8,12 +8,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>A.D.C.S</RootNamespace>
     <AssemblyName>AutomaticDocumentClassificationSystem</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -62,6 +63,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="classificateDocumentPage02.xaml.cs">
+      <DependentUpon>classificateDocumentPage02.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="classificateDocumentPage01.xaml.cs">
+      <DependentUpon>classificateDocumentPage01.xaml</DependentUpon>
+    </Compile>
     <Compile Include="classificateDocumentPage00.xaml.cs">
       <DependentUpon>classificateDocumentPage00.xaml</DependentUpon>
     </Compile>
@@ -83,6 +90,17 @@
     <Compile Include="setTagPage.xaml.cs">
       <DependentUpon>setTagPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TagResultPage.xaml.cs">
+      <DependentUpon>TagResultPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="classificateDocumentPage02.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="classificateDocumentPage01.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="classificateDocumentPage00.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -112,6 +130,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="setTagPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TagResultPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

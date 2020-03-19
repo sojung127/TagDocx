@@ -1,0 +1,84 @@
+﻿<Page x:Class="A.D.C.S.TagResultPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:A.D.C.S"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TagResultPage"
+      Height="500" 
+        Width="800"
+        MinWidth="450"
+        MinHeight="500">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            Name="TagFinishedTextBox"
+            Style="{StaticResource AboveTextBlock}"
+            Text="태그를 할당하였습니다!"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            >
+        </TextBlock>
+
+        <Grid Name="listgrid"
+              Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Name="width1"></Border>
+            <Border Grid.Column="1" Name="width2"></Border>
+            <Border Grid.Column="2" Name="width3"></Border>
+        </Grid>
+
+        <ListView Name="myListView"
+                  Grid.Row="1"
+                  Margin="10,10,10,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="파일명" Width="{Binding ElementName=width1, Path=ActualWidth}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="파일명" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="형식 태그" Width="{Binding ElementName=width2, Path=ActualWidth}" DisplayMemberBinding="{Binding FirstName}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Id}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="내용 태그" DisplayMemberBinding="{Binding LastName}" Width="{Binding ElementName=width3, Path=ActualWidth}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Id}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button 
+            Style="{StaticResource RoundButtonTemplate}"
+            Width="100"
+            Height="40"
+            BorderBrush="#000"
+            Name="GoToMainButton"
+            Content="메인으로"
+            Grid.Row="2"/>
+
+    </Grid>
+</Page>

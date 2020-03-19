@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\obj\Debug\
+C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\userInterface\20191021\adc\obj\Debug\
 A.D.C.S
 none
 false
 DEBUG;TRACE
-C:\Users\pyj\Desktop\EWHA\2019-2020 졸업프로젝트\adc\adc\App.xaml
-71905929550
+C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\userInterface\20191021\adc\App.xaml
+10-12560956
 
-121015227180
-16-1611510671
-classificateDocumentPage00.xaml;Home.xaml;MainWindow.xaml;searchDocumentPage.xaml;searchDocumentPage00.xaml;classificateDocumentPage.xaml;setTagPage.xaml;
+18-380902571
+16-2020353095
+classificateDocumentPage02.xaml;classificateDocumentPage01.xaml;classificateDocumentPage00.xaml;Home.xaml;MainWindow.xaml;searchDocumentPage.xaml;searchDocumentPage00.xaml;classificateDocumentPage.xaml;setTagPage.xaml;TagResultPage.xaml;
 
 True
 
