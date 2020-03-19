@@ -31,12 +31,16 @@
             <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="/Resources/dt_icon.png"/>
             <TextBlock Text="문서 검색" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
-        <TextBox HorizontalAlignment="Left" Margin="10,82,0,199.6" Grid.Row="1" TextWrapping="Wrap" Text="키워드 입력" Width="100" TextAlignment="Center"/>
         <TextBlock Text="검색 하고자 하는 문서와 관련된 키워드를 입력하세요. 아래 [태그 목록]은 현재 컴퓨터에 저장된 문서들이 가지고 있는 태그입니다. 참고하여 키워드로 입력해주세요." TextWrapping="Wrap" Margin="10,10,10,0" Grid.Row="1" VerticalAlignment="Top" Height="61" FontSize="20"/>
-        <TextBox HorizontalAlignment="Left" Margin="132,82,0,199.6" Grid.Row="1" TextWrapping="Wrap" Text="키워드 입력" Width="100" TextAlignment="Center"/>
-        <TextBox HorizontalAlignment="Left" Margin="258,82,0,199.6" Grid.Row="1" TextWrapping="Wrap" Text="키워드 입력" Width="100" TextAlignment="Center"/>
+        <TextBox x:Name="textBox1"  HorizontalAlignment="Left" Margin="10,82,0,199.6" Grid.Row="1" TextWrapping="Wrap" Text="키워드 입력" Width="100" TextAlignment="Center" TextChanged="textBox1_TextChanged"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Margin="132,82,0,199.6" Grid.Row="1" TextWrapping="Wrap" Text="키워드 입력" Width="100" TextAlignment="Center"/>
+        <TextBox x:Name="textBox3" HorizontalAlignment="Left" Margin="258,82,0,199.6" Grid.Row="1" TextWrapping="Wrap" Text="키워드 입력" Width="100" TextAlignment="Center"/>
 
         <Label Content="[태그 목록]" HorizontalAlignment="Left" Margin="10,148,0,0" Grid.Row="1" VerticalAlignment="Top" Height="35" FontSize="20"/>
+        <TextBlock Text="{Binding Text, ElementName = textBox1}" HorizontalAlignment ="Left" TextWrapping="Wrap" Margin="10,200,10,0" Grid.Row="1" VerticalAlignment="Top" Height="61" FontSize="10" Width="100" TextAlignment="Center"/>
+        <TextBlock Text="{Binding Text, ElementName = textBox2}" HorizontalAlignment ="Left" TextWrapping="Wrap" Margin="132,200,10,0" Grid.Row="1" VerticalAlignment="Top" Height="61" FontSize="10" Width="100" TextAlignment="Center"/>
+        <TextBlock Text="{Binding Text, ElementName = textBox3}" HorizontalAlignment ="Left" TextWrapping="Wrap" Margin="258,200,10,0" Grid.Row="1" VerticalAlignment="Top" Height="61" FontSize="10" Width="100" TextAlignment="Center"/>
 
+        
     </Grid>
 </Page>

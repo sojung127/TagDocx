@@ -1,0 +1,80 @@
+﻿<Page x:Class="adc.searchDocumentPage01"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:adc"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="searchDocumentPage"
+      Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"   >
+            <Button x:Name="gotoMain" Content="메인으로" HorizontalAlignment="Center" Margin= "00,0,0,0"  Width="75" Click="BtntoMain" />
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center"  >
+            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="/Resources/dt_icon.png"/>
+            <TextBlock Text="문서 검색" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
+        <TextBlock Text="입력한 검색어를 바탕으로 일치율이 높은 문서 순으로 나열한 결과입니다." TextWrapping="Wrap" Margin="10, 10,10,0" Grid.Row="1" VerticalAlignment="Top" Height="30" FontSize="20"/>
+
+        <!--검색한 태그 목록-->
+        <!--
+        <Label Content="[태그 목록]" HorizontalAlignment="Left" Margin="10,40,0,0" Grid.Row="1" VerticalAlignment="Top" Height="35" FontSize="20"/>
+      
+        <TextBlock Text="{Binding Text, ElementName = textBox1}" HorizontalAlignment ="Left" TextWrapping="Wrap" Margin="10,74.333,0,0" Grid.Row="1" VerticalAlignment="Top" Height="61" FontSize="10" Width="100" TextAlignment="Center"/>
+        <TextBlock Text="{Binding Text, ElementName = textBox2}" HorizontalAlignment ="Left" TextWrapping="Wrap" Margin="138,74.333,0,0" Grid.Row="1" VerticalAlignment="Top" Height="61" FontSize="10" Width="100" TextAlignment="Center"/>
+        <TextBlock Text="{Binding Text, ElementName = textBox3}" HorizontalAlignment ="Left" TextWrapping="Wrap" Margin="258,74,10,0" Grid.Row="1" VerticalAlignment="Top" Height="61" FontSize="10" Width="100" TextAlignment="Center"/>
+        -->
+        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Left"    >
+            <!-- Document Path, related tag list, Folder Path -->
+            <DataGrid Name="dataGrid1" ItemsSource="{Binding XPath=searchDocument00}"  AutoGenerateColumns="False" RowHeaderWidth="0" Margin="20,90,0.333,37.333" >
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Height" Value="35" />
+                        <Setter Property="Padding" Value="5" />
+                        <Setter Property="Background" Value="#4E87D4" />
+                        <Setter Property="Foreground" Value="White" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Data Path" Binding="{Binding Path=DATAPATH}" />
+                    <DataGridTextColumn Header="Tag List" Binding="{Binding Path=TAGLIST}" />
+                    <DataGridTextColumn Header= "Folder Path"  Binding="{Binding Path=FOLDERPATH}" />
+                    <DataGridTemplateColumn Header="move" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button Click="openFolder_Click"/>
+                                    <TextBox Text="{Binding FOLDERPATH}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <!-- Templates to display document search result data -->
+          
+            
+          
+            
+           
+        </Grid>
+
+    </Grid>
+</Page>
