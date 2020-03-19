@@ -48,6 +48,30 @@ namespace adc {
         #line default
         #line hidden
         
+        
+        #line 35 "..\..\searchDocumentPage00.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox textBox1;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 36 "..\..\searchDocumentPage00.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox textBox2;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 37 "..\..\searchDocumentPage00.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox textBox3;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -96,6 +120,21 @@ namespace adc {
             
             #line default
             #line hidden
+            return;
+            case 3:
+            this.textBox1 = ((System.Windows.Controls.TextBox)(target));
+            
+            #line 35 "..\..\searchDocumentPage00.xaml"
+            this.textBox1.TextChanged += new System.Windows.Controls.TextChangedEventHandler(this.textBox1_TextChanged);
+            
+            #line default
+            #line hidden
+            return;
+            case 4:
+            this.textBox2 = ((System.Windows.Controls.TextBox)(target));
+            return;
+            case 5:
+            this.textBox3 = ((System.Windows.Controls.TextBox)(target));
             return;
             }
             this._contentLoaded = true;
