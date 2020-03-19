@@ -149,12 +149,7 @@ for i in range(file_count):
     # words_list가 원래 lda로 뽑은 10개 단어
     # 여기서 2가지 방법 모두에서 골고루 단어를 어떻게 뽑을지?
     i=0
-    while len(final_result_list)<=10 and len(word):
-        #짝수는 첫번째 방법
-        if i%2==0:
-            if len(words_list)>i:
-        #홀수는 두번째 방법
-
+    while len(final_result_list)<=10 :
         final_result_list.append(words_list[i])
         i+=1
 
