@@ -10,6 +10,8 @@ namespace adc
     /// </summary>
     public partial class classificateDocumentPage00 : Page
     {
+        string selectedFolder;
+
         public classificateDocumentPage00()
         {
             InitializeComponent();
@@ -22,7 +24,8 @@ namespace adc
         }
         private void BtnNextStep(object sender, RoutedEventArgs e)
         {
-
+            classificateDocumentPage01 page = new classificateDocumentPage01();
+            NavigationService.Navigate(page);
         }
 
         private void BtnFindFolder(object sender, RoutedEventArgs e)
@@ -35,6 +38,7 @@ namespace adc
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 folderName.Text = dialog.FileName; // 테스트용, 폴더 선택이 완료되면 선택된 폴더를 label에 출력
+                selectedFolder = dialog.FileName; //선택된 폴더이름저장
             }
         }
     }
