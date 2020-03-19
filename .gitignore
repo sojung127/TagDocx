@@ -1,4 +1,5 @@
-
+.vs/
+.vscode/
 *.pyc
 *.pyc
 
@@ -11,4 +12,7 @@ Scoring/ko.dict
 Scoring/ko.mm.index
 Scoring/ko.mm
 *.pyc
-Scoring/lda_komoran.py
+
+userInterface/20191021/.vs/
+
+
