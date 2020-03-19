@@ -15,22 +15,22 @@
         </Grid.RowDefinitions>
         <!--<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="132" Margin="100,93,0,0" VerticalAlignment="Top" Width="549"/>-->
 
-        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="100,143,0,0" VerticalAlignment="Top" Width="106"/>
-        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="210,143,0,0" VerticalAlignment="Top" Width="106"/>
-        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="321,143,0,0" VerticalAlignment="Top" Width="106"/>
-        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="432,143,0,0" VerticalAlignment="Top" Width="106"/>
-        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="543,143,0,0" VerticalAlignment="Top" Width="106"/>
-        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="100,181,0,0" VerticalAlignment="Top" Width="106"/>
-        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="210,181,0,0" VerticalAlignment="Top" Width="106"/>
-        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="321,181,0,0" VerticalAlignment="Top" Width="106"/>
-        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="432,181,0,0" VerticalAlignment="Top" Width="106"/>
-        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="543,181,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="100,132,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="210,132,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="321,132,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="432,132,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="543,132,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="100,170,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="210,170,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="321,170,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="432,170,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="543,170,0,0" VerticalAlignment="Top" Width="106"/>
         <TextBox HorizontalAlignment="Left" Height="31" Margin="99,93,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="550" TextChanged="TextBox_TextChanged_1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="99,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="550"><Run Text="현재 존재하는 내용 태그 목입니다. 찾고자 하는 문서와 관련된 내용태그를 선택하세요."/><LineBreak/><Run Text="태그를 검색할 수 있습니다."/></TextBlock>
-        <Border Background="LightGray" HorizontalAlignment="Left" Height="157" Grid.Row="1" VerticalAlignment="Top" Width="792" Margin="0,19,0,0"/>
-        <TextBlock HorizontalAlignment="Left" Height="31" Margin="94,42,0,0" Grid.Row="1" TextWrapping="Wrap" Text="선택된 태그 목록" VerticalAlignment="Top" Width="111"/>
+        <TextBlock HorizontalAlignment="Left" Margin="99,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="550"><Run Text="현재 존재하는 내용 태그 목록입니다. 찾고자 하는 문서와 관련된 내용태그를 선택하세요."/><LineBreak/><Run Text="태그를 검색할 수 있습니다."/></TextBlock>
+        <Border Background="LightGray" HorizontalAlignment="Left" Height="157" Grid.Row="1" VerticalAlignment="Top" Width="800" Margin="0,12,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Height="31" Margin="85,28,0,0" Grid.Row="1" TextWrapping="Wrap" Text="선택된 태그 목록" VerticalAlignment="Top" Width="111"/>
         <TextBlock HorizontalAlignment="Left" Height="37" Margin="47,18,0,0" TextWrapping="Wrap" Text="문서찾기" FontSize="20" VerticalAlignment="Top" Width="198" />
-        <ListBox Height="68" HorizontalAlignment="Left" Margin="85,64,0,0" x:Name="listBox2" VerticalAlignment="Top" Width="620" Grid.Row="1">
+        <ListBox Height="68" HorizontalAlignment="Left" Margin="85,51,0,0" x:Name="listBox2" VerticalAlignment="Top" Width="620" Grid.Row="1">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
@@ -57,7 +57,13 @@
                 </ListBoxItem.RenderTransform>
             </ListBoxItem>
         </ListBox>
-        <Button Content="메인으로" HorizontalAlignment="Left" Height="23" Margin="10,143,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Click="Button_Click"/>
-        <Button Content="문서 찾기" HorizontalAlignment="Left" Height="23" Margin="705,143,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77"/>
+        <Button Content="메인으로" HorizontalAlignment="Left" Height="23" Margin="10,136,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Click="Button_Click" RenderTransformOrigin="0.663,-0.901"/>
+        <Button Content="문서 찾기" HorizontalAlignment="Left" Height="23" Margin="713,126,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Click="Button_Click_1"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="100,238,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="210,238,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="321,238,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="432,238,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="CheckBox" HorizontalAlignment="Left" Height="33" Margin="543,238,0,0" VerticalAlignment="Top" Width="106"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="형식태그를 "/><Run Text="선택"/><Run Text="하세요"/></TextBlock>
     </Grid>
 </Page>
