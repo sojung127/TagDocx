@@ -1,6 +1,7 @@
 .vs/
 *.pyc
 *.pyc
+userInterfae/20191021/.vs/
 
 Scoring/__pycache__/
 Scoring/ko.mm
