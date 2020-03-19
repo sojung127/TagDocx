@@ -87,6 +87,9 @@
     <Compile Include="classificateDocumentPage.xaml.cs">
       <DependentUpon>classificateDocumentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="searchDocumentPage01.xaml.cs">
+      <DependentUpon>searchDocumentPage01.xaml</DependentUpon>
+    </Compile>
     <Compile Include="setTagPage.xaml.cs">
       <DependentUpon>setTagPage.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="classificateDocumentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="searchDocumentPage01.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

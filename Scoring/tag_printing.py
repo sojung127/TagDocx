@@ -128,7 +128,8 @@ for i in range(file_count):
     lda_list = lda_ko.print_topics(num_topics=ntopics, num_words=nwords)
     final_result_list=[]
     # 제목에서 명사 분리
-    final_result_list=komoran.get_morphes_by_tags(title, tag_list=['NNG', 'NNP'])
+    if title!=1:
+        final_result_list=komoran.get_morphes_by_tags(title, tag_list=['NNG', 'NNP'])
     
 
     #가장 확률 높은 토픽의 단어 출력
@@ -139,16 +140,16 @@ for i in range(file_count):
     # 보기 좋게 바꾸기
     words_list=[]
     #각 리스트의 단어들 words_list에 모음
-    for w in topic_words[0][1]:
-        words_list.append(w[0])
-
-    for w in word_topics:
-        words_list.append(w[1][0][0])
+    for i in range(5):
+        words_list.append(topic_words[0][1][i][0])
+        words_list.append(word_topics[i][1][0][0])
 
     #중복 제거
     words_list=list(set(words_list))
+    # words_list가 원래 lda로 뽑은 10개 단어
+    # 여기서 2가지 방법 모두에서 골고루 단어를 어떻게 뽑을지?
     i=0
-    while len(final_result_list)<=10:
+    while len(final_result_list)<=10 :
         final_result_list.append(words_list[i])
         i+=1
 
