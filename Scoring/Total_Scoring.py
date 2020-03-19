@@ -38,7 +38,7 @@ def convert_pdf_to_txt(path):
     retstr.close()
     return text
 
-def scoring(doc):
+def scoring(doc,path):
     # 점수
     N_score = 0
     P_score = 0
@@ -168,6 +168,8 @@ def scoring(doc):
         A_score = 0
 
     Score_list = [P_score, N_score, L_score, E_score, A_score]
+    return Score_list
+    '''
     # print('문서 저장위치 = ', document_pdf_source)
     #print("논문","기사","수업자료","공고", "지원서")
     #print(Score_list)
@@ -182,6 +184,7 @@ def scoring(doc):
     else:
         print(Score_list.index(max(Score_list)), path)
 
+    
 
 
 
@@ -231,3 +234,4 @@ for i in range(file_count):
 
     '''
 print(score/file_count*100,'%')
+'''
