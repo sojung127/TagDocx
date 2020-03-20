@@ -15,7 +15,8 @@ namespace adc
         }
         private void BtnNextStep(object sender, RoutedEventArgs e)
         {
-
+            TagResultPage pg = new TagResultPage();
+            NavigationService.Navigate(pg);
         }
         private void BtnBackToHome(object sender, RoutedEventArgs e)
         {

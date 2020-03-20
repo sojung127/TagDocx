@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace A.D.C.S
+namespace adc
 {
     /// <summary>
     /// TagResultPage.xaml에 대한 상호 작용 논리
@@ -23,6 +23,12 @@ namespace A.D.C.S
         public TagResultPage()
         {
             InitializeComponent();
+        }
+
+        private void GoToMainButton_Click(object sender, RoutedEventArgs e)
+        {
+            Home pg = new Home();
+            NavigationService.Navigate(pg);
         }
     }
 }
