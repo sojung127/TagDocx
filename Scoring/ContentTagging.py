@@ -63,3 +63,4 @@ def content_tagging(text, path):
         i += 1
 
     print(set(final_result_list))
+    return final_result_list

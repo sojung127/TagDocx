@@ -14,8 +14,9 @@ import Escoring as E
 import Ascoring as A
 import hwptest
 import docx2txt
-import Total_Scoring
-import ContentTagging
+import Total_Scoring #형식태그
+import ContentTagging #내용태그
+from db_utils import *
 
 
 # 한글이 포함되어 있는 PDF 읽기
@@ -46,6 +47,7 @@ def run():
     score = 0
     current = 0
     # 폴더에서 문서 목록 읽어오기
+    # 입력 예시   ../Dataset/기사/0전체폴더/
     path_origin = input("문서경로:")
     file_list = os.listdir(path_origin)
 
@@ -78,21 +80,27 @@ def run():
 
         else:
             contents = ''
-
-        ContentTagging.content_tagging(contents, path)
+        # 각 문서당 내용태그를 할당한다
+        content_tag =  ContentTagging.content_tagging(contents, path) #list 반환
 
         doc = contents
-        #
-        type_score = Total_Scoring.scoring(doc=doc, path=path)
 
+        # 각 문서당 형식태그를 할당한다
+        type_score = Total_Scoring.scoring(doc=doc, path=path)
         index = type_score.index(max(type_score))
 
         #    Score_list = [P_score, N_score, L_score, E_score, A_score]
         # print(index)
-        def form_tag(index): 
+        def form_tagging(index):
             return {0: '논문', 1: '기사', 2: '강의자료', 3: 'E', 4: 'A'}.get(index, '기타')
+        form_tag = form_tagging(index) #string 값 반환
+        print(form_tag)
 
-        print(form_tag(index))
+        # # create_db()
+        # create_table_content()
+        # create_table_document()
+        # insert_document_tag(path, form_tag)
+        # insert_content_tag(path, content_tag)
 
 
 if __name__ == '__main__':
