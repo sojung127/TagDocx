@@ -62,5 +62,5 @@ def content_tagging(text, path):
         final_result_list.append(words_list[i])
         i += 1
 
-    print(set(final_result_list))
+    #print(set(final_result_list))
     return final_result_list

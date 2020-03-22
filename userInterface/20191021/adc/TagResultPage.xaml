@@ -40,11 +40,12 @@
             <Border Grid.Column="1" Name="width2"></Border>
             <Border Grid.Column="2" Name="width3"></Border>
         </Grid>
-
-        <ListView Name="myListView"
+        <TextBlock Name="FolderPath" Grid.Row="0"  FontSize="30" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <ListView Name="myListView"
                   Grid.Row="1"
                   Margin="10,10,10,0">
             <ListView.View>
+
                 <GridView>
                     <GridViewColumn Header="파일명" Width="{Binding ElementName=width1, Path=ActualWidth}">
                         <GridViewColumn.CellTemplate>

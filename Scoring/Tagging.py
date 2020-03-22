@@ -17,6 +17,7 @@ import docx2txt
 import Total_Scoring #형식태그
 import ContentTagging #내용태그
 from db_utils import *
+import argparse
 
 
 # 한글이 포함되어 있는 PDF 읽기
@@ -43,12 +44,12 @@ def convert_pdf_to_txt(path):
     retstr.close()
     return text
 
-def run():
-    score = 0
-    current = 0
+def get_tag(path):
     # 폴더에서 문서 목록 읽어오기
     # 입력 예시   ../Dataset/기사/0전체폴더/
-    path_origin = input("문서경로:")
+    #path_origin = input("문서경로:")
+    path_origin = path + "\\"
+
     file_list = os.listdir(path_origin)
 
     file_count = len(file_list)
@@ -82,6 +83,7 @@ def run():
             contents = ''
         # 각 문서당 내용태그를 할당한다
         content_tag =  ContentTagging.content_tagging(contents, path) #list 반환
+        print(content_tag)
 
         doc = contents
 
@@ -90,9 +92,6 @@ def run():
         index = type_score.index(max(type_score))
 
         #    Score_list = [P_score, N_score, L_score, E_score, A_score]
-        # print(index)
-        def form_tagging(index):
-            return {0: '논문', 1: '기사', 2: '강의자료', 3: 'E', 4: 'A'}.get(index, '기타')
         form_tag = form_tagging(index) #string 값 반환
         print(form_tag)
 
@@ -102,6 +101,16 @@ def run():
         # insert_document_tag(path, form_tag)
         # insert_content_tag(path, content_tag)
 
+def run():
+    argv_list = sys.argv
+
+    for i in range(len(argv_list)-1):
+        get_tag(argv_list[i+1])
+    print(argv_list)
+
+# print(index)
+def form_tagging(index):
+    return {0: '논문', 1: '기사', 2: '강의자료', 3: 'E', 4: 'A'}.get(index, '기타')
 
 if __name__ == '__main__':
     sys.exit(run())
