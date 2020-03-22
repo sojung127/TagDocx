@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 from tensorflow.keras.preprocessing.text import text_to_word_sequence
 import pandas as pd
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter

@@ -17,6 +17,7 @@ using IronPython.Hosting;
 using IronPython.Runtime;
 using IronPython.Modules;
 using System;
+using System.IO;
 
 namespace adc
 {
@@ -38,6 +39,7 @@ namespace adc
             this.folderpath = path;
             //this.Loaded += new RoutedEventHandler(PathLoaded);
             FolderPath.Text = this.folderpath;
+            GetTag();
         }
 
         private void GoToMainButton_Click(object sender, RoutedEventArgs e)
@@ -49,19 +51,41 @@ namespace adc
 
         public void GetTag()
         {
+            //1) Create engine
             var engine = IronPython.Hosting.Python.CreateEngine();
-            var scope = engine.CreateScope();
-            /*
+
+            //2) Provide script and arguments
+            var script = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\Tagging.py";
+            var source = engine.CreateScriptSourceFromFile(script);//실행시킬 파이썬 경로
+           
             var argv = new List<string>();
-            argv.Add("");
+            argv.Add(""); //Tagging.py
+            argv.Add(this.folderpath);
 
             engine.GetSysModule().SetVariable("argv", argv);
 
-
+            //3)Output redirect
             var elO = engine.Runtime.IO;
 
-            var errors = new M
-            
+            var errors = new MemoryStream();
+            elO.SetErrorOutput(errors, Encoding.Default);
+
+            var results = new MemoryStream();
+            elO.SetOutput(results, Encoding.Default);
+
+            //4) Execute script
+            var scope = engine.CreateScope();
+            source.Execute(scope);
+
+            //5)Display output
+            string str(byte[] x) => Encoding.Default.GetString(x);
+
+            Console.WriteLine("Errors:");
+            Console.WriteLine(str(errors.ToArray()));
+            Console.WriteLine();
+            Console.WriteLine("REsults:");
+            Console.WriteLine(str(results.ToArray()));
+            /*
             string result = "";
             try
             {
