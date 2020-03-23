@@ -75,6 +75,15 @@ namespace adc
 
             //4) Execute script
             var scope = engine.CreateScope();
+
+            string AppPath = @"C:\Users\YooJin\Anaconda3\";
+            ICollection<string> searchPaths = engine.GetSearchPaths();
+            searchPaths.Add(AppPath+@"Lib");
+            searchPaths.Add(AppPath + @"Lib\site-packages");
+            searchPaths.Add(@"C:\Users\YooJin\AppData\Local\Programs\Python\Python36-32\DLLs");
+
+            engine.SetSearchPaths(searchPaths);
+
             source.Execute(scope);
 
             //5)Display output

@@ -118,7 +118,769 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dt_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dt_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="abc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\abc.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="aifc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\aifc.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="antigravity" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\antigravity.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="appdirs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appdirs.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="argparse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\argparse.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ast" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ast.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="asynchat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\asynchat.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="asyncore" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\asyncore.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="base64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\base64.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bdb.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="binhex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\binhex.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bisect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bisect.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bitarray_0_8_3_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bitarray-0.8.3-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="boto_2_49_0_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boto-2.49.0-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bz2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bz2.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="calendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\calendar.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="certifi_2018_08_24_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\certifi-2018.08.24-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cgi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cgi.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cgitb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cgitb.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chunk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chunk.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cmd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmd.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="code" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\code.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="codecs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\codecs.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="codeop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\codeop.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colorsys" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\colorsys.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="compileall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\compileall.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="conda_4_5_11_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\conda-4.5.11-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="configparser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\configparser.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="contextlib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\contextlib.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="contextlib2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\contextlib2.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="contextvars" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\contextvars.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\copy.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="copyreg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\copyreg.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cProfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cProfile.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="crypt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\crypt.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="csv" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\csv.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cycler" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cycler.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cython" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cython.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dataclasses" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dataclasses.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="datetime" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\datetime.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="decorator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\decorator.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="difflib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\difflib.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dis" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dis.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="doctest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\doctest.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="docutils_0_14_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\docutils-0.14-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dummy_threading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dummy_threading.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="easy_install" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\easy_install.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="entrypoints" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\entrypoints.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="entrypoints_0_2_3_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\entrypoints-0.2.3-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="filecmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\filecmp.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="fileinput" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fileinput.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="filelock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\filelock.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="fnmatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fnmatch.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="formatter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\formatter.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="fractions" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fractions.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ftplib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ftplib.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="functools" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functools.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="genericpath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\genericpath.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="getopt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\getopt.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="getpass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\getpass.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="gettext" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gettext.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="glob" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\glob.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="greenlet_cp37_win_amd64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\greenlet.cp37-win_amd64.pyd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="gzip" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gzip.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="hashlib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hashlib.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="heapdict" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heapdict.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="heapdict_1_0_0_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heapdict-1.0.0-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="heapq" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heapq.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="hmac" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hmac.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="imageio_2_4_1_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imageio-2.4.1-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="imagesize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagesize.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="imaplib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imaplib.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="imghdr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imghdr.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="imp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imp.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inspect.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="io" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\io.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ipaddress" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ipaddress.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ipykernel_launcher" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ipykernel_launcher.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ipython_genutils_0_2_0_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ipython_genutils-0.2.0-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="itsdangerous" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\itsdangerous.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="jdcal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jdcal.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="jupyter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jupyter.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="keyword" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\keyword.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="kiwisolver_cp37_win_amd64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kiwisolver.cp37-win_amd64.pyd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="linecache" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\linecache.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="llvmlite_0_24_0_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\llvmlite-0.24.0-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="locale" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\locale.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="locket_0_2_0_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\locket-0.2.0-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lzma" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lzma.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="macpath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\macpath.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="macurl2path" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\macurl2path.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mailbox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mailbox.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mailcap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mailcap.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="matplotlib_2_2_3_py3_7_nspkg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\matplotlib-2.2.3-py3.7-nspkg.pth;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mccabe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mccabe.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="menuinst_1_4_14_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menuinst-1.4.14-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mimetypes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mimetypes.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mistune" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mistune.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mistune_cp37_win_amd64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mistune.cp37-win_amd64.pyd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="modulefinder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\modulefinder.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mpmath_1_0_0_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mpmath-1.0.0-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="netrc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\netrc.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="nntplib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nntplib.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ntpath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ntpath.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="nturl2path" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nturl2path.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numbers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\numbers.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="opcode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\opcode.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="optparse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\optparse.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="os" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\os.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pandocfilters" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pandocfilters.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="path" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\path.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pathlib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pathlib.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pdb.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pep8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pep8.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pickle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pickle.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pickleshare" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pickleshare.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pickletools" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pickletools.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pipes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pipes.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pkgutil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pkgutil.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="platform" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\platform.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="plistlib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plistlib.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="poplib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\poplib.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="posixpath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\posixpath.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pprint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pprint.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="profile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\profile.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pstats" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pstats.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pty.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pyclbr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pyclbr.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pycodestyle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pycodestyle.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pycosat_0_6_3_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pycosat-0.6.3-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pycosat_cp37_win_amd64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pycosat.cp37-win_amd64.pyd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pycrypto_2_6_1_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pycrypto-2.6.1-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pycurl_7_43_0_2_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pycurl-7.43.0.2-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pycurl_cp37_win_amd64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pycurl.cp37-win_amd64.pyd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pydoc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pydoc.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pylab" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pylab.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pyodbc_cp37_win_amd64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pyodbc.cp37-win_amd64.pyd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pyparsing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pyparsing.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pytest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pytest.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pythoncom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pythoncom.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pywin32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pywin32.pth;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pywin32_version" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pywin32.version.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="PyYAML_3_13_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PyYAML-3.13-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="py_compile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\py_compile.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="qtconsole_4_4_1_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\qtconsole-4.4.1-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="queue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\queue.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="quopri" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\quopri.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="random" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\random.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="re" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\re.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="README" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\README.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="reprlib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reprlib.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="rlcompleter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rlcompleter.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ruamel_yaml_0_15_46_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ruamel_yaml-0.15.46-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="run" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\run.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="runpy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\runpy.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sched" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sched.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="secrets" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\secrets.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="selectors" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\selectors.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shelve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shelve.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shlex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shlex.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shutil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shutil.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="signal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\signal.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="simplegeneric" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\simplegeneric.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="singledispatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\singledispatch.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="singledispatch_helpers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\singledispatch_helpers.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sip" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sip.pyd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sip1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sip.pyi;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sipconfig" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sipconfig.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sipdistutils" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sipdistutils.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="site" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\site.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="six" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\six.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="smtpd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\smtpd.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="smtplib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\smtplib.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sndhdr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sndhdr.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="snowballstemmer_1_2_1_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\snowballstemmer-1.2.1-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="socket" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\socket.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="socketserver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\socketserver.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="socks" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\socks.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sockshandler" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sockshandler.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sphinxcontrib_websupport_1_1_0_py3_7_nspkg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sphinxcontrib_websupport-1.1.0-py3.7-nspkg.pth;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spyder_3_3_1_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spyder-3.3.1-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sre_compile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sre_compile.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sre_constants" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sre_constants.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sre_parse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sre_parse.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ssl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ssl.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="stat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stat.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="statistics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\statistics.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="stringprep" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stringprep.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="subprocess" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\subprocess.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sunau" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sunau.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\symbol.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sympy_1_1_1_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sympy-1.1.1-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="symtable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\symtable.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sysconfig" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sysconfig.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabnanny" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tabnanny.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tarfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tarfile.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="telnetlib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\telnetlib.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tempfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tempfile.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="terminado_0_8_1_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\terminado-0.8.1-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="test_path" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\test_path.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="test_pycosat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\test_pycosat.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textwrap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\textwrap.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="threading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\threading.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="timeit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\timeit.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="token" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\token.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tokenize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tokenize.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="trace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trace.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="trace1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trace.cover;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="traceback" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\traceback.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tracemalloc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tracemalloc.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tty.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="turtle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\turtle.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="types" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\types.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="typing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\typing.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="uu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uu.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="uuid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uuid.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="warnings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warnings.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="wave" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wave.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="weakref" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weakref.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="webbrowser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\webbrowser.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="wincertstore" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wincertstore.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="wincertstore_0_2_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wincertstore-0.2-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="win_inet_pton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\win_inet_pton.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="win_inet_pton_1_0_1_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\win_inet_pton-1.0.1-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="wrapt_1_10_11_py3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wrapt-1.10.11-py3.7.egg-info;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="xdrlib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xdrlib.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="zipapp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zipapp.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="zipfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zipfile.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="zope_interface_4_5_0_py3_7_nspkg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zope.interface-4.5.0-py3.7-nspkg.pth;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_bootlocale" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_bootlocale.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_cffi_backend_cp37_win_amd64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_cffi_backend.cp37-win_amd64.pyd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_collections_abc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_collections_abc.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_compat_pickle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_compat_pickle.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_compression" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_compression.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_decimal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\decimal.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_dummy_thread" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_dummy_thread.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_enum" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enum.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_markupbase" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_markupbase.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_nsis" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_nsis.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_operator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\operator.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_osx_support" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_osx_support.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_pydecimal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_pydecimal.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_pyio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_pyio.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_py_abc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_py_abc.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_sitebuiltins" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_sitebuiltins.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_string" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\string.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_strptime" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_strptime.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_struct" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\struct.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_system_path" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_system_path.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_this" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\this.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_threading_local" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_threading_local.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_weakrefset" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_weakrefset.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_yaml_cp37_win_amd64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_yaml.cp37-win_amd64.pyd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="__future__" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\__future__.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="__phello___foo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\__phello__.foo.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

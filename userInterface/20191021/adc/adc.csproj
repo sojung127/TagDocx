@@ -100,6 +100,11 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="searchDocumentPage.xaml.cs">
       <DependentUpon>searchDocumentPage.xaml</DependentUpon>
     </Compile>
@@ -171,11 +176,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -184,18 +184,699 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\bitarray-0.8.3-py3.7.egg-info" />
+    <None Include="Resources\boto-2.49.0-py3.7.egg-info" />
+    <None Include="Resources\certifi-2018.08.24-py3.7.egg-info" />
+    <None Include="Resources\conda-4.5.11-py3.7.egg-info" />
+    <None Include="Resources\docutils-0.14-py3.7.egg-info" />
+    <None Include="Resources\entrypoints-0.2.3-py3.7.egg-info" />
+    <None Include="Resources\greenlet.cp37-win_amd64.pyd" />
+    <None Include="Resources\heapdict-1.0.0-py3.7.egg-info" />
+    <None Include="Resources\imageio-2.4.1-py3.7.egg-info" />
+    <None Include="Resources\ipython_genutils-0.2.0-py3.7.egg-info" />
+    <None Include="Resources\kiwisolver.cp37-win_amd64.pyd" />
+    <None Include="Resources\llvmlite-0.24.0-py3.7.egg-info" />
+    <None Include="Resources\locket-0.2.0-py3.7.egg-info" />
+    <None Include="Resources\matplotlib-2.2.3-py3.7-nspkg.pth" />
+    <None Include="Resources\menuinst-1.4.14-py3.7.egg-info" />
+    <None Include="Resources\mistune.cp37-win_amd64.pyd" />
+    <None Include="Resources\mpmath-1.0.0-py3.7.egg-info" />
+    <None Include="Resources\pycosat-0.6.3-py3.7.egg-info" />
+    <None Include="Resources\pycosat.cp37-win_amd64.pyd" />
+    <None Include="Resources\pycrypto-2.6.1-py3.7.egg-info" />
+    <None Include="Resources\pycurl-7.43.0.2-py3.7.egg-info" />
+    <None Include="Resources\pycurl.cp37-win_amd64.pyd" />
+    <None Include="Resources\pyodbc.cp37-win_amd64.pyd" />
+    <None Include="Resources\pywin32.pth" />
+    <None Include="Resources\PyYAML-3.13-py3.7.egg-info" />
+    <None Include="Resources\qtconsole-4.4.1-py3.7.egg-info" />
+    <None Include="Resources\ruamel_yaml-0.15.46-py3.7.egg-info" />
+    <None Include="Resources\sip.pyd" />
+    <None Include="Resources\sip.pyi" />
+    <None Include="Resources\snowballstemmer-1.2.1-py3.7.egg-info" />
+    <None Include="Resources\sphinxcontrib_websupport-1.1.0-py3.7-nspkg.pth" />
+    <None Include="Resources\spyder-3.3.1-py3.7.egg-info" />
+    <None Include="Resources\sympy-1.1.1-py3.7.egg-info" />
+    <None Include="Resources\terminado-0.8.1-py3.7.egg-info" />
+    <None Include="Resources\trace.cover" />
+    <None Include="Resources\wincertstore-0.2-py3.7.egg-info" />
+    <None Include="Resources\win_inet_pton-1.0.1-py3.7.egg-info" />
+    <None Include="Resources\wrapt-1.10.11-py3.7.egg-info" />
+    <None Include="Resources\zope.interface-4.5.0-py3.7-nspkg.pth" />
+    <None Include="Resources\_cffi_backend.cp37-win_amd64.pyd" />
+    <None Include="Resources\_yaml.cp37-win_amd64.pyd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\dt_icon.png" />
+    <None Include="Resources\appdirs.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\macurl2path.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__future__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__phello__.foo.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_bootlocale.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_collections_abc.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_compat_pickle.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_compression.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_dummy_thread.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_markupbase.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_nsis.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_osx_support.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_py_abc.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_pydecimal.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_pyio.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_sitebuiltins.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_strptime.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_system_path.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_threading_local.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_weakrefset.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\abc.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aifc.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\antigravity.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\argparse.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ast.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asynchat.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asyncore.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\base64.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bdb.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\binhex.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bisect.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bz2.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cgi.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cgitb.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chunk.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmd.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\code.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\codecs.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\codeop.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\colorsys.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compileall.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configparser.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contextlib.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contextvars.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copyreg.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cProfile.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crypt.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\csv.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dataclasses.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\datetime.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\decimal.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\difflib.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dis.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctest.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dummy_threading.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enum.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filecmp.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fileinput.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fnmatch.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\formatter.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fractions.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ftplib.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\functools.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\genericpath.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\getopt.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\getpass.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gettext.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glob.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gzip.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hashlib.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heapq.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hmac.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imaplib.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imghdr.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imp.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inspect.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\io.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ipaddress.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\keyword.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\linecache.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\locale.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lzma.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\macpath.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mailbox.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mailcap.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mimetypes.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\modulefinder.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\netrc.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nntplib.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ntpath.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nturl2path.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\numbers.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\opcode.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\operator.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\optparse.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\os.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pathlib.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdb.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pickle.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pickletools.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pipes.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pkgutil.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\platform.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plistlib.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\poplib.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\posixpath.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pprint.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pstats.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pty.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\py_compile.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pyclbr.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pydoc.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\queue.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quopri.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\random.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\re.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reprlib.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rlcompleter.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\runpy.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sched.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\secrets.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selectors.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shelve.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shlex.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shutil.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\signal.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\site.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smtpd.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smtplib.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sndhdr.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\socket.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\socketserver.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sre_compile.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sre_constants.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sre_parse.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ssl.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stat.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\statistics.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\string.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stringprep.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\struct.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\subprocess.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sunau.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\symbol.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\symtable.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sysconfig.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tabnanny.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tarfile.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telnetlib.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tempfile.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textwrap.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\this.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\threading.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\timeit.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\token.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tokenize.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trace.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\traceback.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tracemalloc.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tty.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\turtle.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\types.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\typing.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\uu.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\uuid.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warnings.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wave.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weakref.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\webbrowser.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xdrlib.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zipapp.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zipfile.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contextlib2.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cycler.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cython.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\decorator.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\easy_install.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\entrypoints.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filelock.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heapdict.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imagesize.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ipykernel_launcher.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\itsdangerous.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jdcal.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jupyter.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mccabe.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mistune.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pandocfilters.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\path.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pep8.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pickleshare.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pycodestyle.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pylab.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pyparsing.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pytest.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pythoncom.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pywin32.version.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\README.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\run.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simplegeneric.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\singledispatch.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\singledispatch_helpers.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sipconfig.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sipdistutils.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\six.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\socks.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sockshandler.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test_path.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test_pycosat.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\win_inet_pton.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wincertstore.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
