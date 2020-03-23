@@ -55,7 +55,7 @@ def get_tag(path):
 
     file_count = len(file_list)
 
-    print("여기 집중")
+    #print("여기 집중")
 
     for i in range(file_count):
 
@@ -84,7 +84,6 @@ def get_tag(path):
             contents = ''
         # 각 문서당 내용태그를 할당한다
         content_tag =  ContentTagging.content_tagging(contents, path) #list 반환
-        print(content_tag)
 
         doc = contents
 
@@ -94,7 +93,10 @@ def get_tag(path):
 
         #    Score_list = [P_score, N_score, L_score, E_score, A_score]
         form_tag = form_tagging(index) #string 값 반환
-        print(form_tag)
+        
+
+        content_tag.insert(0, form_tag)
+        print(content_tag)
 
         # # create_db()
         # create_table_content()
@@ -107,11 +109,10 @@ def run():
 
     for i in range(len(argv_list)-1):
         get_tag(argv_list[i+1])
-    print(argv_list)
 
 # print(index)
 def form_tagging(index):
-    return {0: '논문', 1: '기사', 2: '강의자료', 3: 'E', 4: 'A'}.get(index, '기타')
+    return {0: '논문', 1: '기사', 2: '강의자료', 3: '공고', 4: 'A'}.get(index, '기타')
 
 if __name__ == '__main__':
     sys.exit(run())

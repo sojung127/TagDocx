@@ -18,6 +18,8 @@ using IronPython.Runtime;
 using IronPython.Modules;
 using System;
 using System.IO;
+using System.Diagnostics;
+using System.ComponentModel;
 
 namespace adc
 {
@@ -48,9 +50,53 @@ namespace adc
             NavigationService.Navigate(pg);
         }
 
+        [System.Runtime.InteropServices.DllImport("Kernel32")]
+        public static extern void FreeConsole();
 
         public void GetTag()
         {
+            // Set working directory and create process
+            var workingDirectory = System.IO.Path.GetFullPath("Scripts");
+            var process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    RedirectStandardInput = true,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    WorkingDirectory = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\"
+                }
+            };
+            process.Start();
+            // Pass multiple commands to cmd.exe
+            using (var sw = process.StandardInput)
+            {
+                if (sw.BaseStream.CanWrite)
+                {
+                    // Vital to activate Anaconda
+                    sw.WriteLine(@"C:\ProgramData\Anaconda3\Scripts\activate.bat");
+                    // Activate your environment
+                    //sw.WriteLine("activate tensorflow");
+                    // Any other commands you want to run
+                    //sw.WriteLine("set KERAS_BACKEND=tensorflow");
+                    // run your script. You can also pass in arguments
+                    string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
+                    sw.WriteLine(command);
+
+                }
+            }
+
+            // read multiple output lines
+            while (!process.StandardOutput.EndOfStream)
+            {
+                var line = process.StandardOutput.ReadLine();
+                Console.WriteLine(line.GetType());
+            }
+
+            FreeConsole();
+            
+            /*
             //1) Create engine
             var engine = IronPython.Hosting.Python.CreateEngine();
 
