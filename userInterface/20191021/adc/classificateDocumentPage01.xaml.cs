@@ -28,18 +28,6 @@ namespace adc
             NavigationService.Navigate(page);
         }
 
-        private void BtnFindFolder(object sender, RoutedEventArgs e)
-        {
-            // CommonOpenFileDialog 클래스 생성
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            // 처음 보여줄 폴더 설정(안해도 됨)
-            //dialog.InitialDirectory = "";
-            dialog.IsFolderPicker = true;
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
-                folderName = dialog.FileName; // 테스트용, 폴더 선택이 완료되면 선택된 폴더를 label에 출력
-            }
-        }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -47,6 +35,10 @@ namespace adc
         }
 
         private void 묶음에추가_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void 묶음에서삭제_Click(object sender, RoutedEventArgs e)
         {
 
         }
