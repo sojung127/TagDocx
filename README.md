@@ -69,7 +69,7 @@
       [2] 내용 태그
         비지도 학습 알고리즘 사용 예정
         
-  ### 4) 각 기능 별 adtivity diargam
+  ### 4) 각 기능 별 activity diargam
   #### <문서 태깅>
   ![initial](https://user-images.githubusercontent.com/29905149/77276033-07b43e00-6cfd-11ea-9afd-d286615768f4.png)
   #### <문서 검색>
