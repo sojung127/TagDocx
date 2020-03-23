@@ -32,46 +32,52 @@
         <Grid Name="listgrid"
               Visibility="Hidden">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0" Name="width1"></Border>
             <Border Grid.Column="1" Name="width2"></Border>
             <Border Grid.Column="2" Name="width3"></Border>
+            <Border Grid.Column="3" Name="width4"></Border>
         </Grid>
         <TextBlock Name="FolderPath" Grid.Row="0"  FontSize="30" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-            <ListView Name="myListView"
-                  Grid.Row="1"
-                  Margin="10,10,10,0">
+        
+        <ListView Name="FileList" Margin="10,10,10,0" Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Style.Triggers>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="true">
+                            <Setter Property="IsSelected" Value="true" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
-
                 <GridView>
-                    <GridViewColumn Header="파일명" Width="{Binding ElementName=width1, Path=ActualWidth}">
+                    <GridViewColumn Header="#" DisplayMemberBinding="{Binding Path=Id}" Width="{Binding ElementName=width1, Path=ActualWidth}" />
+                    <GridViewColumn Header="파일명" DisplayMemberBinding="{Binding Path=Name}" Width="{Binding ElementName=width2, Path=ActualWidth}"/>
+                    <GridViewColumn Header="형식 태그" Width="{Binding ElementName=width3, Path=ActualWidth}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="파일명" TextAlignment="Center" />
+                                <TextBox Text="{Binding Path=Form}" TextWrapping="Wrap"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="형식 태그" Width="{Binding ElementName=width2, Path=ActualWidth}" DisplayMemberBinding="{Binding FirstName}">
+                    <GridViewColumn Header="내용 태그" Width="{Binding ElementName=width4, Path=ActualWidth}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Id}" TextAlignment="Center" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="내용 태그" DisplayMemberBinding="{Binding LastName}" Width="{Binding ElementName=width3, Path=ActualWidth}">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Id}" TextAlignment="Center" />
+                                <TextBox Text="{Binding Path=Context}" TextWrapping="Wrap"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-
+        
+        
         <Button 
             Style="{StaticResource RoundButtonTemplate}"
             Width="100"

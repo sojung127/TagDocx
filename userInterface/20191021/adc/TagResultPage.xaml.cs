@@ -12,20 +12,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using IronPython;
-using IronPython.Hosting;
-using IronPython.Runtime;
-using IronPython.Modules;
 using System;
 using System.IO;
 using System.Diagnostics;
-using System.ComponentModel;
 
 namespace adc
 {
     /// <summary>
     /// TagResultPage.xaml에 대한 상호 작용 논리
     /// </summary>
+    class Items
+    {
+        public Items(int id, string path, string form, string context)
+        {
+            Id = id;
+            Path = path;
+            Form = form;
+            Context = context;
+        }
+        public int Id { get; set; }
+        public string Path { get; set; }
+        public string Form { get; set; }
+        public string Context { get; set; }
+    }
+
     public partial class TagResultPage : Page
     {
         string folderpath;
@@ -33,7 +43,13 @@ namespace adc
         public TagResultPage()
         {
             InitializeComponent();
-            
+
+            FileList.ItemsSource = new Items[]{
+                new Items(0, "No", "My", "Me"),
+                new Items(1, "배고프다", "곱창", "육회"),
+                new Items(2, "연어~!", "또 뭐있지", "낙지탕탕이")
+
+            };
         }
 
         public TagResultPage(string path) : this()
@@ -41,7 +57,7 @@ namespace adc
             this.folderpath = path;
             //this.Loaded += new RoutedEventHandler(PathLoaded);
             FolderPath.Text = this.folderpath;
-            GetTag();
+            //GetTag();
         }
 
         private void GoToMainButton_Click(object sender, RoutedEventArgs e)
@@ -54,7 +70,7 @@ namespace adc
         public static extern void FreeConsole();
 
         public void GetTag()
-        {
+        {   
             // Set working directory and create process
             var workingDirectory = System.IO.Path.GetFullPath("Scripts");
             var process = new Process
@@ -162,4 +178,19 @@ namespace adc
             FolderPath.Text = this.folderpath;
         }
     }
+    
+        class Item
+        {
+            public Item(string file_path, string form_tag, string context_tag)
+            {
+
+                FilePath = file_path;
+                FormTag = form_tag;
+                ContextTag = context_tag;
+            }
+            public string FilePath { get; set; }
+            public string FormTag { get; set; }
+            public string ContextTag { get; set; }
+        }
+    
 }
