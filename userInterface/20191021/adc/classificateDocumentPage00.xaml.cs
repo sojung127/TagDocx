@@ -1,7 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using Microsoft.WindowsAPICodePack.Dialogs; 
+using Microsoft.WindowsAPICodePack.Dialogs;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace adc
 {
@@ -39,6 +41,29 @@ namespace adc
             {
                 folderName.Text = dialog.FileName; // 테스트용, 폴더 선택이 완료되면 선택된 폴더를 label에 출력
                 selectedFolder = dialog.FileName; //선택된 폴더이름저장
+            }
+        }
+        private void BtnFindDoc(object sender, RoutedEventArgs e)
+        {
+            string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='"+selectedFolder+"'", connection);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                // 윈도우 폼의 LoadDataBinding에 데이터 넣기
+                adp.Fill(ds, "LoadDataBinding");
+                dataGridCustomers.DataContext = ds;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
             }
         }
     }
