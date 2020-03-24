@@ -42,6 +42,7 @@
                 <DataGridTextColumn Binding="{Binding Path=ID}" Header="고유번호"  IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Path=NAME}" Header="파일명"  IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Path=TYPE_TAG}" Header="형식태그" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Path=CONTENT_TAG}" Header="내용태그" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Path=PATH}" Header="저장경로"  IsReadOnly="True" />
             </DataGrid.Columns>
         </DataGrid>
