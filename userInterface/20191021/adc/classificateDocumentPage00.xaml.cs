@@ -13,6 +13,8 @@ namespace adc
     public partial class classificateDocumentPage00 : Page
     {
         string selectedFolder;
+        DataSet ds = new DataSet();
+
 
         public classificateDocumentPage00()
         {
@@ -26,9 +28,11 @@ namespace adc
         }
         private void BtnNextStep(object sender, RoutedEventArgs e)
         {
-            classificateDocumentPage01 page = new classificateDocumentPage01();
+            //불러온 datadet 다음 페이지로 넘겨주기
+            classificateDocumentPage01 page = new classificateDocumentPage01(ds);
             NavigationService.Navigate(page);
         }
+ 
 
         private void BtnFindFolder(object sender, RoutedEventArgs e)
         {
@@ -52,7 +56,6 @@ namespace adc
                 connection.Open();
                 MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='"+selectedFolder+"'", connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
                 adp.Fill(ds, "LoadDataBinding");
                 dataGridCustomers.DataContext = ds;

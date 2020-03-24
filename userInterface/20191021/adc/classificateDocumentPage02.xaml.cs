@@ -19,7 +19,7 @@ namespace adc
 
         private void BtnPreStep(object sender, RoutedEventArgs e)
         {
-            classificateDocumentPage01 page = new classificateDocumentPage01();
+            classificateDocumentPage01 page = new classificateDocumentPage01(null);
             NavigationService.Navigate(page);
         }
         private void BtnNextStep(object sender, RoutedEventArgs e)
