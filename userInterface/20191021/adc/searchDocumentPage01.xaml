@@ -35,9 +35,13 @@
                     </Style>
                 </DataGrid.ColumnHeaderStyle>
                 <DataGrid.Columns>
+                    <DataGridTextColumn Header= "ID"  Binding="{Binding Path=ID}" />
                     <DataGridTextColumn Header="Data Path" Binding="{Binding Path=DATAPATH}" />
-                    <DataGridTextColumn Header="Tag List" Binding="{Binding Path=TAGLIST}" />
+                    <DataGridTextColumn Header="Type Tag" Binding="{Binding Path=TTAGLIST}" />
+                    <DataGridTextColumn Header="Content Tags" Binding="{Binding Path=CTAGLIST}" />
+
                     <DataGridTextColumn Header= "Folder Path"  Binding="{Binding Path=FOLDERPATH}" />
+
                     <DataGridTemplateColumn Header="move" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
