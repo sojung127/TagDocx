@@ -26,10 +26,15 @@ namespace adc
     /// </summary>
     public partial class searchDocumentPage01 : Page
     {
-        public searchDocumentPage01()
+        List<string> tags;
+
+        public searchDocumentPage01(List<string> vs)
         {
             InitializeComponent();
+            tags = vs;
         }
+        
+        
         private void BtntoMain(object sender, RoutedEventArgs e)
         {
             Home page = new Home();
@@ -48,7 +53,13 @@ namespace adc
             dataTable.Columns.Add("FOLDERPATH", typeof(string));
 
             //데이터 생성
-            dataTable.Rows.Add(new string[] { "1.pdf", "태그1 태그2 태그3", "C:\\capston" });
+            string test = "";
+            foreach (string i in tags)
+            {
+                test = test + " " + i;
+                MessageBox.Show(i);
+            }
+            dataTable.Rows.Add(new string[] { "1.pdf", test, "C:\\capston" });
             dataTable.Rows.Add(new string[] { "2.pdf", "태그1 태그3", "C:\\capston" });
             dataTable.Rows.Add(new string[] { "3.pdf", "태그1 ", "C:\\capston" });
             dataTable.Rows.Add(new string[] { "4.pdf", "태그2", "C:\\capston" });

@@ -29,9 +29,11 @@ namespace adc
     /// </summary>
     public partial class searchDocumentPage00 : Page
     {
+        List<string> selected;
         public searchDocumentPage00()
         {
             InitializeComponent();
+            selected = new List<string>();
             string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;";
 
             MySqlConnection connection = new MySqlConnection(connectionString);
@@ -43,7 +45,9 @@ namespace adc
                 DataSet ds = new DataSet();
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
                 adp.Fill(ds, "LoadDataBinding");
-                dataGridCustomers.DataContext = ds;
+                
+                listbox1.DataContext = ds;
+                
             }
             catch (MySqlException ex)
             {
@@ -83,7 +87,8 @@ namespace adc
                 DataSet ds = new DataSet();
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
                 adp.Fill(ds, "LoadDataBinding");
-                dataGridCustomers.DataContext = ds;
+                listbox1.DataContext = ds;
+                
             }
             catch (MySqlException ex)
             {
@@ -103,84 +108,32 @@ namespace adc
             NavigationService.Navigate(page);
         }
 
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+
+        private void FindButton_Clicked(object sender, RoutedEventArgs e)
         {
+            for(int i = 0; i < 4; i++)
+            {
+                string content = listBox2.Items[i].ToString();
+                int len = "system.windows.controls.listboxitem:".Length;
+                if (listBox2.Items[i].ToString().Length < len)
+                {
+                    if (String.Compare(content, "선택해주세요") != 0)
+                    {
+                        selected.Add(content);
+                    }
+                }
+                
+            }
+                foreach(string j in selected)
+                {
+                MessageBox.Show(j);
 
-        }
+                }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            searchDocumentPage01 page = new searchDocumentPage01();
+            searchDocumentPage01 page = new searchDocumentPage01(selected);
             NavigationService.Navigate(page);
 
-            /*
-             * psi 이용 버전1 (가상환경 켜기가 안됨)
-             * ProcessStartInfo psi = new ProcessStartInfo();
-            //C:\Temp\Anaconda3\envs\tensorflow
-            psi.FileName = @"C:\Temp\Anaconda3\envs\tensorflow\python.exe";//파이썬 설치 경로(아나콘다 자기가 사용하는 가상환경 폴더 경로)
-            psi.Arguments = $"\"C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\tag_printing.py\"";
-
-            psi.UseShellExecute = false;
-            psi.CreateNoWindow = true;
-            psi.RedirectStandardOutput = true;
-            psi.RedirectStandardError = true;
-
-            var errors = "";
-            var results = "";
-
-            using (var process = Process.Start(psi))
-            {
-                errors = process.StandardError.ReadToEnd();
-                results = process.StandardOutput.ReadToEnd();
-            }
-
-            Console.WriteLine(errors);
-            Console.WriteLine(results);
-            
-            * psi 이용 버전2 (가상환경 설정 가능 오류는 뜨지 않으나 출력에 문제가 있음)
-            // Set working directory and create process
-
-            var workingDirectory = Path.GetFullPath("Scripts");
-            var process = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "cmd.exe",
-                    RedirectStandardInput = true,
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    WorkingDirectory = "C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\"
-                }
-            };
-            process.Start();
-            // Pass multiple commands to cmd.exe
-            using (var sw = process.StandardInput)
-            {
-                if (sw.BaseStream.CanWrite)
-                {
-                    // Vital to activate Anaconda
-                    sw.WriteLine("C:\\Temp\\Anaconda3\\Scripts\\activate.bat");
-                    // Activate your environment
-                    sw.WriteLine("activate tensorflow");
-                    // Any other commands you want to run
-                    //sw.WriteLine("set KERAS_BACKEND=tensorflow");
-                    // run your script. You can also pass in arguments
-                    sw.WriteLine("python C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\tag_printing.py");
-                    sw.WriteLine("../Dataset/기사/사회/");
-                }
-            }
-
-            // read multiple output lines
-            while (!process.StandardOutput.EndOfStream)
-            {
-                var line = process.StandardOutput.ReadToEnd();
-                Console.WriteLine(line);
-            }*/
+           
 
         }
 
@@ -194,17 +147,123 @@ namespace adc
             if (selectBtn != null)
             {
                 selectBtn.Background = new SolidColorBrush(Colors.LightGray);
-                RefreshTagList(selectBtn.Content.ToString());
-                ListBox listBox = listBox2;
-                listBox.Items[0] = btn.Content.ToString();
+                
             }
-
+            listBox2.Items[0] = btn.Content.ToString();
 
         }
 
-        private void RefreshTagList(string clicked)
+        private void Listbox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var row = ((DataRowView)listbox1.SelectedItem).Row;
+            string selectedValue = row[0].ToString();
+            bool changed = false;
+
+           
+
+            for (int i = 1; i <= 3; i++)
+            {
+                int len = "system.windows.controls.listboxitem:".Length;
+                if (listBox2.Items[i].ToString().Length > len)
+                {
+                    if(String.Compare(listBox2.Items[i].ToString().Substring(len)," 선택해주세요")==0)
+                    {
+                        listBox2.Items[i] = selectedValue;
+                        changed = true;
+                        break;
+                    }
+                }
+                //MessageBox.Show("!" + listBox2.Items[i].ToString().Substring(len) + "!");
+                //string cpr = listBox2.Items[i].ToString().Substring(len,1);
+                //bool v = listBox2.Items[i].ToString().Substring(len)==" ";
+
+               
+                else if (String.Compare(listBox2.Items[i].ToString(),"선택해주세요")==0)
+                {
+                    listBox2.Items[i] = selectedValue;
+                    changed = true;
+                    break;
+                }
+            }
+            if (!changed)
+            {
+                MessageBox.Show("내용태그는 3개까지 선택가능합니다.");
+            }
+
+            //listBox2.Items[1] = selectedValue;
+        }
+
+
+        private void ListBox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string empty = "선택해주세요";
+            if (listBox2.SelectedIndex != -1)
+                listBox2.Items[listBox2.SelectedIndex] = empty;
 
         }
     }
 }
+
+/*
+            * psi 이용 버전1 (가상환경 켜기가 안됨)
+            * ProcessStartInfo psi = new ProcessStartInfo();
+           //C:\Temp\Anaconda3\envs\tensorflow
+           psi.FileName = @"C:\Temp\Anaconda3\envs\tensorflow\python.exe";//파이썬 설치 경로(아나콘다 자기가 사용하는 가상환경 폴더 경로)
+           psi.Arguments = $"\"C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\tag_printing.py\"";
+
+           psi.UseShellExecute = false;
+           psi.CreateNoWindow = true;
+           psi.RedirectStandardOutput = true;
+           psi.RedirectStandardError = true;
+
+           var errors = "";
+           var results = "";
+
+           using (var process = Process.Start(psi))
+           {
+               errors = process.StandardError.ReadToEnd();
+               results = process.StandardOutput.ReadToEnd();
+           }
+
+           Console.WriteLine(errors);
+           Console.WriteLine(results);
+
+           * psi 이용 버전2 (가상환경 설정 가능 오류는 뜨지 않으나 출력에 문제가 있음)
+           // Set working directory and create process
+
+           var workingDirectory = Path.GetFullPath("Scripts");
+           var process = new Process
+           {
+               StartInfo = new ProcessStartInfo
+               {
+                   FileName = "cmd.exe",
+                   RedirectStandardInput = true,
+                   UseShellExecute = false,
+                   RedirectStandardOutput = true,
+                   WorkingDirectory = "C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\"
+               }
+           };
+           process.Start();
+           // Pass multiple commands to cmd.exe
+           using (var sw = process.StandardInput)
+           {
+               if (sw.BaseStream.CanWrite)
+               {
+                   // Vital to activate Anaconda
+                   sw.WriteLine("C:\\Temp\\Anaconda3\\Scripts\\activate.bat");
+                   // Activate your environment
+                   sw.WriteLine("activate tensorflow");
+                   // Any other commands you want to run
+                   //sw.WriteLine("set KERAS_BACKEND=tensorflow");
+                   // run your script. You can also pass in arguments
+                   sw.WriteLine("python C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\tag_printing.py");
+                   sw.WriteLine("../Dataset/기사/사회/");
+               }
+           }
+
+           // read multiple output lines
+           while (!process.StandardOutput.EndOfStream)
+           {
+               var line = process.StandardOutput.ReadToEnd();
+               Console.WriteLine(line);
+           }*/
