@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:adc"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="searchDocumentPage">
 
     <Grid>
@@ -29,7 +29,11 @@
         <TextBlock HorizontalAlignment="Left" Margin="99,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="550"><Run Text="현재 존재하는 내용 태그 목록입니다. 찾고자 하는 문서와 관련된 내용태그를 선택하세요."/><LineBreak/><Run Text="태그를 검색할 수 있습니다."/></TextBlock>
         <Border Background="LightGray" HorizontalAlignment="Left" Height="157" Grid.Row="1" VerticalAlignment="Top" Width="800" Margin="0,12,0,0"/>
         <TextBlock HorizontalAlignment="Left" Height="31" Margin="85,28,0,0" Grid.Row="1" TextWrapping="Wrap" Text="선택된 태그 목록" VerticalAlignment="Top" Width="111"/>
-        <TextBlock HorizontalAlignment="Left" Height="37" Margin="47,18,0,0" TextWrapping="Wrap" Text="문서찾기" FontSize="20" VerticalAlignment="Top" Width="198" />
+        
+        
+        <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="adcscute.png" Margin="0,0,0,215.8" Width="64" Height="64"/>
+
+        <TextBlock HorizontalAlignment="Left" Height="37" Margin="69,18,0,0" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top" Width="198" ><Run Text="문서"/><Run Text=" 검색"/></TextBlock>
         <ListBox Height="68" HorizontalAlignment="Left" Margin="85,51,0,0" x:Name="listBox2" VerticalAlignment="Top" Width="620" Grid.Row="1">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
