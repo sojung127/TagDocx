@@ -17,7 +17,14 @@ namespace adc
     {
         string folderName = null;
         DataSet ds = new DataSet();  
-        DataTable dt = new DataTable();
+        DataTable dt = new DataTable(); //가지고놀dbtable ds[0]이 dt임
+
+        DataSet cd = new DataSet(); //분류된 문서들의 데이터셋
+        DataTable cd0 = new DataTable();  //cd[0]
+        DataTable cd1 = new DataTable(); //cd[1]
+        DataTable cd2 = new DataTable(); //cd[2]
+
+
         List<string> Tags = new List<string>();
         List<string> 묶음_태그 = new List<string>(); //묶음번호가index고 그 내용이 선택된 태그
 
@@ -65,10 +72,12 @@ namespace adc
 
         private void BtnNextStep(object sender, RoutedEventArgs e)
         {
-           
+            //여기서 분류 코드 호출 후 결과만 넘겨!
+
+
+
             // 넘기기
             classificateDocumentPage02 page = new classificateDocumentPage02(dt);
-
 
 
             NavigationService.Navigate(page);
@@ -161,7 +170,7 @@ namespace adc
 
         
 
-        /*private void 묶음추가클릭(object sender, RoutedEventArgs e)
+        /*private void 묶음추가클릭(object sender, RoutedEventArgs e) => 다음 버전에서 구현
         {
             TabItem newTabItem = new TabItem
             {
@@ -177,5 +186,11 @@ namespace adc
 
 
         }*/
+        
+        private void catagoDocs()
+        {
+            //1. 묶음_태그에 있는 태그들 모두가진 문서들을 먼저 데려가고
+            //2. 남은 문서들은 태그중 우선순위가 높은 묶음_태그 쪽으로 감
+        }
     }
 }

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:adc"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="searchDocumentPage"
       Loaded="Page_Loaded">
 
@@ -16,12 +16,12 @@
 
         </Grid.RowDefinitions>
 
-
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,30,-6,44" Height="70" Width="796"  >
-            <TextBlock Text="문서 검색" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30"></TextBlock>
-            <TextBlock Text="입력한 검색어를 바탕으로 일치율이 높은 문서 순으로 나열한 결과입니다." TextWrapping="Wrap" Margin="10,10.333,10,0" VerticalAlignment="Bottom" Height="30" FontSize="20"/>
-
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="800" Height="79" Margin="0,0,0,65"  >
+            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="adcscute.png" Width="64" Height="64"/>
+            <TextBlock Text="문서 검색" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
+        <TextBlock Text="입력한 검색어를 바탕으로 일치율이 높은 문서 순으로 나열한 결과입니다." TextWrapping="Wrap" Margin="10,0,10,0.4" VerticalAlignment="Bottom" Height="30" FontSize="20"/>
+
         <Border Background="LightGray" HorizontalAlignment="Left" Height="300" Grid.Row="1" VerticalAlignment="Top" Width="800"/>
         <Grid Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left"     >
             <!-- Document Path, related tag list, Folder Path -->
