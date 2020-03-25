@@ -60,7 +60,7 @@ def get_tag(path):
     for i in range(file_count):
 
         path = path_origin + file_list[i]
-        print(path)
+        #print(path)
 
         if os.path.isdir(path):
             continue
@@ -95,8 +95,8 @@ def get_tag(path):
         form_tag = form_tagging(index) #string 값 반환
         
 
-        content_tag.insert(0, form_tag)
-        print(content_tag)
+        #content_tag.insert(0, form_tag)
+        print("<GET",path,"><GET",form_tag,"><GET",content_tag,">")
 
         # # create_db()
         # create_table_content()
