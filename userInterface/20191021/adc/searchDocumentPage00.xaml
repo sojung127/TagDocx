@@ -15,15 +15,15 @@
         </Grid.RowDefinitions>
         <!--<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="132" Margin="100,93,0,0" VerticalAlignment="Top" Width="549"/>-->
 
-        <DataGrid IsReadOnly="True" SelectionMode="Single" Name="listbox1" HorizontalAlignment="Left" Height="144" Margin="100,119,0,0" VerticalAlignment="Top" Width="549" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged"/>
+        <DataGrid IsReadOnly="True" SelectionMode="Single" Name="listbox1" HorizontalAlignment="Left" Height="157" Margin="100,119,0,0" VerticalAlignment="Top" Width="549" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged"/>
 
 
         <TextBox HorizontalAlignment="Left" Height="21" Margin="99,93,0,0" TextWrapping="Wrap" Text="TextBox"  VerticalAlignment="Top" Width="550" TextChanged="TextBox_TextChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="99,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="550"><Run Text="현재 존재하는 내용 태그 목록입니다. 찾고자 하는 문서와 관련된 내용태그를 선택하세요."/><LineBreak/><Run Text="태그를 검색할 수 있습니다."/></TextBlock>
-        <Border Background="LightGray" HorizontalAlignment="Left" Height="157" Grid.Row="1" VerticalAlignment="Top" Width="800" Margin="0,12,0,-8"/>
+        <Border Background="LightGray" HorizontalAlignment="Left" Height="157" Grid.Row="1" VerticalAlignment="Top" Width="800" Margin="0,22,0,0"/>
         <TextBlock HorizontalAlignment="Left" Height="31" Margin="85,28,0,0" Grid.Row="1" TextWrapping="Wrap" Text="선택된 태그 목록" VerticalAlignment="Top" Width="111"/>
-        
-        
+
+
         <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="adcs검색.png" Margin="0,0,0,215.8" Width="64" Height="64"/>
 
         <TextBlock HorizontalAlignment="Left" Height="37" Margin="69,18,0,0" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top" Width="198" ><Run Text="문서"/><Run Text=" 검색"/></TextBlock>
@@ -46,12 +46,12 @@
         </ListBox>
         <Button Content="메인으로" HorizontalAlignment="Left" Height="23" Margin="10,136,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Click="Button_Click" RenderTransformOrigin="0.663,-0.901"/>
         <Button Content="문서 찾기" HorizontalAlignment="Left" Height="23" Margin="713,126,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Click="FindButton_Clicked"/>
-        <WrapPanel Margin="100,289,229,138" Orientation="Horizontal" Name="types" Grid.RowSpan="2">
+        <WrapPanel Margin="100,302,229,125" Orientation="Horizontal" Name="types" Grid.RowSpan="2">
             <Button Content="논문" Height="33" VerticalAlignment="Top" Width="106" Click="TypeButton_Clicked"/>
             <Button Content="기사" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="106" Click="TypeButton_Clicked"/>
             <Button Content="공고" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="106" Click="TypeButton_Clicked"/>
             <Button Content="지원서" Height="33" VerticalAlignment="Top" Width="106"  Click="TypeButton_Clicked"/>
         </WrapPanel>
-        <TextBlock HorizontalAlignment="Left" Margin="100,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="145"><Run Text="형식태그를 "/><Run Text="선택"/><Run Text="하세요"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="100,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="145"><Run Text="형식태그를 "/><Run Text="선택"/><Run Text="하세요"/></TextBlock>
     </Grid>
 </Page>

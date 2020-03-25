@@ -40,7 +40,7 @@ namespace adc
             try
             {
                 connection.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT CONTENT_TAG FROM CONTENT", connection);
+                MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT CONTENT_TAG FROM CONTENT", connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
@@ -59,17 +59,6 @@ namespace adc
             }
         }
 
-        private void BtnNextStep(object sender, RoutedEventArgs e)
-        {
-            searchDocumentPage01 page = new searchDocumentPage01();
-            NavigationService.Navigate(page);
-        }
-
-        private void BtnPreStep(object sender, RoutedEventArgs e)
-        {
-            searchDocumentPage page = new searchDocumentPage();
-            NavigationService.Navigate(page);
-        }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -80,7 +69,7 @@ namespace adc
             {
                 connection.Open();
                 TextBox tb = sender as TextBox;
-                string sql = String.Concat("SELECT CONTENT_TAG FROM CONTENT where content_tag like '%", tb.Text);
+                string sql = String.Concat("SELECT DISTINCT CONTENT_TAG FROM CONTENT where content_tag like '%", tb.Text);
                 sql = String.Concat(sql, "%'");
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
@@ -124,12 +113,7 @@ namespace adc
                 }
                 
             }
-                foreach(string j in selected)
-                {
-                MessageBox.Show(j);
-
-                }
-
+               
             searchDocumentPage01 page = new searchDocumentPage01(selected);
             NavigationService.Navigate(page);
 
@@ -173,9 +157,7 @@ namespace adc
                         break;
                     }
                 }
-                //MessageBox.Show("!" + listBox2.Items[i].ToString().Substring(len) + "!");
-                //string cpr = listBox2.Items[i].ToString().Substring(len,1);
-                //bool v = listBox2.Items[i].ToString().Substring(len)==" ";
+                
 
                
                 else if (String.Compare(listBox2.Items[i].ToString(),"선택해주세요")==0)

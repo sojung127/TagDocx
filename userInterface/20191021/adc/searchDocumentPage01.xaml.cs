@@ -63,7 +63,7 @@ namespace adc
             string ctags = "";
             foreach (string i in tags)
             {
-                ctags = test + " " + i;
+                ctags = ctags +i+ " " ;
                 
             }
             
