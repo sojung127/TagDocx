@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="800" Height="79" Margin="0,0,0,65"  >
-            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="adcscute.png" Width="64" Height="64"/>
+            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="adcs검색.png" Width="64" Height="64"/>
             <TextBlock Text="문서 검색" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
         <TextBlock Text="입력한 검색어를 바탕으로 일치율이 높은 문서 순으로 나열한 결과입니다." TextWrapping="Wrap" Margin="10,0,10,0.4" VerticalAlignment="Bottom" Height="30" FontSize="20"/>
@@ -35,9 +35,13 @@
                     </Style>
                 </DataGrid.ColumnHeaderStyle>
                 <DataGrid.Columns>
+                    <DataGridTextColumn Header= "ID"  Binding="{Binding Path=ID}" />
                     <DataGridTextColumn Header="Data Path" Binding="{Binding Path=DATAPATH}" />
-                    <DataGridTextColumn Header="Tag List" Binding="{Binding Path=TAGLIST}" />
+                    <DataGridTextColumn Header="Type Tag" Binding="{Binding Path=TTAGLIST}" />
+                    <DataGridTextColumn Header="Content Tags" Binding="{Binding Path=CTAGLIST}" />
+
                     <DataGridTextColumn Header= "Folder Path"  Binding="{Binding Path=FOLDERPATH}" />
+
                     <DataGridTemplateColumn Header="move" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

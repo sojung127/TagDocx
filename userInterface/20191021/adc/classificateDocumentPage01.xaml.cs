@@ -19,10 +19,7 @@ namespace adc
         DataSet ds = new DataSet();  
         DataTable dt = new DataTable(); //가지고놀dbtable ds[0]이 dt임
 
-        DataSet cd = new DataSet(); //분류된 문서들의 데이터셋
-        DataTable cd0 = new DataTable();  //cd[0]
-        DataTable cd1 = new DataTable(); //cd[1]
-        DataTable cd2 = new DataTable(); //cd[2]
+
 
 
         List<string> Tags = new List<string>();
@@ -72,12 +69,9 @@ namespace adc
 
         private void BtnNextStep(object sender, RoutedEventArgs e)
         {
-            //여기서 분류 코드 호출 후 결과만 넘겨!
-
-
-
+            
             // 넘기기
-            classificateDocumentPage02 page = new classificateDocumentPage02(dt);
+            classificateDocumentPage02 page = new classificateDocumentPage02(dt,묶음_태그);
 
 
             NavigationService.Navigate(page);
@@ -95,6 +89,13 @@ namespace adc
 
             int 묶음 =0;
             묶음 = 묶음박스.SelectedIndex; //tabpage는 0 부터 시작
+            string[] tmplen = 묶음_태그[묶음].Split();
+
+            if (tmplen.Length == 5 || 태그목록리스트.SelectedItems.Count>5)
+            {
+                MessageBox.Show("태그는 5개까지 선택가능 합니다.", "태그제한", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
             if (묶음>묶음_태그.Count- 1&& 태그목록리스트.SelectedItem != null) //처음 태그 추가
             {
        
@@ -118,6 +119,7 @@ namespace adc
             }
             임시태그목록.Content= 묶음_태그[묶음];
 
+            묶음_태그[묶음]=묶음_태그[묶음].Trim();
 
             if (묶음 == 0) showSelectedTags(묶음태그리스트0);
             if (묶음 == 1) showSelectedTags(묶음태그리스트1);
@@ -187,10 +189,6 @@ namespace adc
 
         }*/
         
-        private void catagoDocs()
-        {
-            //1. 묶음_태그에 있는 태그들 모두가진 문서들을 먼저 데려가고
-            //2. 남은 문서들은 태그중 우선순위가 높은 묶음_태그 쪽으로 감
-        }
+       
     }
 }
