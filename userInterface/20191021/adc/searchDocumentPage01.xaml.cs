@@ -26,10 +26,15 @@ namespace adc
     /// </summary>
     public partial class searchDocumentPage01 : Page
     {
-        public searchDocumentPage01()
+        List<string> tags;
+
+        public searchDocumentPage01(List<string> vs)
         {
             InitializeComponent();
+            tags = vs;
         }
+        
+        
         private void BtntoMain(object sender, RoutedEventArgs e)
         {
             Home page = new Home();
@@ -53,6 +58,15 @@ namespace adc
   
 
             //데이터 생성
+            // 이전 페이지에서 선택한 태그들
+            // tags에 리스트로 담겨있고 ctags에 문자열로 모았음(list, string 둘중 편한 것 선택)
+            string ctags = "";
+            foreach (string i in tags)
+            {
+                ctags = ctags +i+ " " ;
+                
+            }
+            
             dataTable.Rows.Add(new string[] { "1", "1.pdf", "형식1"," 태그1 태그2 태그3", "C:\\capston" });
             dataTable.Rows.Add(new string[] { "2", "2.pdf", "형식1"," 태그1 태그3", "C:\\capston" });
             dataTable.Rows.Add(new string[] { "3", "3.pdf", "형식1"," 태그1 ", "C:\\capston" });
