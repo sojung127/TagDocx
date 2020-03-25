@@ -202,5 +202,14 @@
   <ItemGroup>
     <Folder Include="Resources\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="adcscute.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="adcs검색.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="adcs분류.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

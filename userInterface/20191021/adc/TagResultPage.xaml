@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:A.D.C.S"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="TagResultPage"
       Height="500" 
         Width="800"
@@ -20,12 +20,16 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
         </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center"  >
+            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="adcscute.png"/>
+            <TextBlock Text="문서 태깅" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
         <TextBlock
             Name="TagFinishedTextBox"
             Style="{StaticResource AboveTextBlock}"
             Text="태그를 할당하였습니다!"
             HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
+            VerticalAlignment="Bottom" Margin="254,0,269,335.6" Grid.Row="1"
             >
         </TextBlock>
 
@@ -43,8 +47,8 @@
             <Border Grid.Column="3" Name="width4"></Border>
         </Grid>
         <TextBlock Name="FolderPath" Grid.Row="0"  FontSize="30" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        
-        <ListView Name="FileList" Margin="10,10,10,0" Grid.Row="1">
+
+        <ListView Name="FileList" Margin="10,44.6,10,62" Grid.Row="1" Grid.RowSpan="2">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -76,8 +80,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
-        
+
+
         <Button 
             Style="{StaticResource RoundButtonTemplate}"
             Width="100"
