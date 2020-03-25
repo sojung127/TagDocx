@@ -19,22 +19,20 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="59*"/>
-            <RowDefinition Height="11*"/>
+            <RowDefinition Height="387*"/>
+            <RowDefinition Height="113*"/>
         </Grid.RowDefinitions>
 
 
 
-        <StackPanel Grid.Column ="1" Grid.Row="1"  Orientation="Horizontal" Width="300" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" >
-            <Button x:Name="setTag" Content="태그 달기" HorizontalAlignment="Center" Margin= "0,0,0,0" VerticalAlignment="Center" Width="100" Click="BtnSetTagPage" Height="40" />
-            <Button x:Name="searchDoc" Content="문서 검색" HorizontalAlignment="Center" Margin= "0,0,0,0" VerticalAlignment="Center" Width="100" Click="BtnSearchDocPage" Height="40"  />
-            <Button x:Name="categorizeDoc" Content="문서 분류" HorizontalAlignment="Center" Margin= "0,0,0,0" VerticalAlignment="Center" Width="100" Click="BtnClassificateDocPage" Height="40" />
+        <StackPanel Grid.Column ="1" Grid.Row="1"  Orientation="Horizontal" Width="300" Height="56" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="165.2,9.8,157.2,47" >
+            <Button x:Name="setTag" Content="문서 태깅" HorizontalAlignment="Center" Margin= "0,4,0,4.8" VerticalAlignment="Center" Width="100" Click="BtnSetTagPage" Height="40" />
+            <Button x:Name="searchDoc" Content="문서 검색" HorizontalAlignment="Center" Margin= "0,4,0,4.8" VerticalAlignment="Center" Width="100" Click="BtnSearchDocPage" Height="40"  />
+            <Button x:Name="categorizeDoc" Content="문서 분류" HorizontalAlignment="Center" Margin= "0,4,0,4.8" VerticalAlignment="Center" Width="100" Click="BtnClassificateDocPage" Height="40" />
         </StackPanel>
 
-
-
-        <Image Grid.Row="0"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Automatic Document Classification System" VerticalAlignment="Bottom" FontSize="22" FontFamily="Lucida Handwriting"  Width="176"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Automatic Document Classification System" VerticalAlignment="Bottom" FontSize="22" FontFamily="Cooper Black"  Width="176" Margin="226.2,0,220.2,29.2" Height="101"/>
+        <Image Margin="192.2,41,192.2,108.2" Source="adcscute.png" Stretch="Fill" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="238" Width="238"/>
 
     </Grid>
 </Page>

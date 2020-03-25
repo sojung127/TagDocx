@@ -28,9 +28,10 @@
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center"  >
-            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="/Resources/dt_icon.png"/>
+            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="adcscute.png"/>
             <TextBlock Text="문서 분류" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
+        
         <Label Content="문서 분류 결과" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" FontSize="18" FontWeight="Bold"/>
         <Label Content="묶음 별로 폴더를 생성할 위치를 정할 수 있습니다. &#xA;원하지 않는 문서에 대해 삭제 및 다른 묶음으로 이동가능 합니다." HorizontalAlignment="Left" Margin="10,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="768" Height="49" FontSize="15"/>
         
