@@ -19,8 +19,8 @@ namespace adc
 
         private void BtnNextStep(object sender, RoutedEventArgs e)
         {
-            //searchDocumentPage01 page = new searchDocumentPage01();
-            //NavigationService.Navigate(page);
+            searchDocumentPage01 page = new searchDocumentPage01();
+            NavigationService.Navigate(page);
         }
 
         private void BtnPreStep(object sender, RoutedEventArgs e)
@@ -30,7 +30,7 @@ namespace adc
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
 
 
         }
@@ -61,7 +61,9 @@ namespace adc
         {
             searchDocumentPage01 page = new searchDocumentPage01();
             NavigationService.Navigate(page);
-
+        }
+    }
+}
             /*ProcessStartInfo psi = new ProcessStartInfo();
             //C:\Temp\Anaconda3\envs\tensorflow
             psi.FileName = @"C:\Temp\Anaconda3\envs\tensorflow\python.exe";//파이썬 설치 경로(아나콘다 자기가 사용하는 가상환경 폴더 경로)
@@ -82,7 +84,8 @@ namespace adc
             }
 
             Console.WriteLine(errors);
-            Console.WriteLine(results);*/
+            Console.WriteLine(results);
+            //
 
             // Set working directory and create process
             var workingDirectory = Path.GetFullPath("Scripts");
@@ -130,3 +133,4 @@ namespace adc
 
     }
 }
+ */
