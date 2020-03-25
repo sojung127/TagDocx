@@ -29,7 +29,7 @@
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center"  >
-            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="adcscute.png"/>
+            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="adcs분류.png"/>
             <TextBlock Text="문서 분류" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
         <Label Content="분류하고 싶은 문서에 대한 태그를 선택하세요." HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" FontSize="18" FontWeight="Bold"/>

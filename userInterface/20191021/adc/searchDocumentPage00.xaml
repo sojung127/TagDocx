@@ -33,7 +33,7 @@
         <TextBlock HorizontalAlignment="Left" Height="31" Margin="85,28,0,0" Grid.Row="1" TextWrapping="Wrap" Text="선택된 태그 목록" VerticalAlignment="Top" Width="111"/>
         
         
-        <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="adcscute.png" Margin="0,0,0,215.8" Width="64" Height="64"/>
+        <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="adcs검색.png" Margin="0,0,0,215.8" Width="64" Height="64"/>
 
         <TextBlock HorizontalAlignment="Left" Height="37" Margin="69,18,0,0" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top" Width="198" ><Run Text="문서"/><Run Text=" 검색"/></TextBlock>
         <ListBox Height="68" HorizontalAlignment="Left" Margin="85,51,0,0" x:Name="listBox2" VerticalAlignment="Top" Width="620" Grid.Row="1">
