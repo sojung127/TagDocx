@@ -65,10 +65,12 @@ namespace adc
 
         private void BtnNextStep(object sender, RoutedEventArgs e)
         {
-           
+            //여기서 분류 코드 호출 후 결과만 넘겨!
+
+
+
             // 넘기기
             classificateDocumentPage02 page = new classificateDocumentPage02(dt);
-
 
 
             NavigationService.Navigate(page);
