@@ -62,7 +62,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="#" DisplayMemberBinding="{Binding Path=Id}" Width="{Binding ElementName=width1, Path=ActualWidth}" />
-                    <GridViewColumn Header="파일명" DisplayMemberBinding="{Binding Path=Name}" Width="{Binding ElementName=width2, Path=ActualWidth}"/>
+                    <GridViewColumn Header="파일명" DisplayMemberBinding="{Binding Path=Path}" Width="{Binding ElementName=width2, Path=ActualWidth}"/>
                     <GridViewColumn Header="형식 태그" Width="{Binding ElementName=width3, Path=ActualWidth}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

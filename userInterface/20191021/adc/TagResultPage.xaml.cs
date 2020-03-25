@@ -12,9 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System;
 using System.IO;
 using System.Diagnostics;
+using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace adc
 {
@@ -43,13 +44,14 @@ namespace adc
         public TagResultPage()
         {
             InitializeComponent();
-
+            /*
             FileList.ItemsSource = new Items[]{
                 new Items(0, "No", "My", "Me"),
                 new Items(1, "배고프다", "곱창", "육회"),
                 new Items(2, "연어~!", "또 뭐있지", "낙지탕탕이")
 
             };
+            */
         }
 
         public TagResultPage(string path) : this()
@@ -57,7 +59,7 @@ namespace adc
             this.folderpath = path;
             //this.Loaded += new RoutedEventHandler(PathLoaded);
             FolderPath.Text = this.folderpath;
-            //GetTag();
+            GetTag();
         }
 
         private void GoToMainButton_Click(object sender, RoutedEventArgs e)
@@ -81,9 +83,15 @@ namespace adc
                     RedirectStandardInput = true,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
-                    WorkingDirectory = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\"
+                    WorkingDirectory = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\",
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    CreateNoWindow = true
                 }
             };
+
+            
+
+            
             process.Start();
             // Pass multiple commands to cmd.exe
             using (var sw = process.StandardInput)
@@ -103,11 +111,43 @@ namespace adc
                 }
             }
 
+            Encoding encKr = Encoding.GetEncoding("euc-kr");
+            EncodingInfo[] encods = Encoding.GetEncodings();
+            Encoding destEnc = Encoding.UTF8;
+            
             // read multiple output lines
             while (!process.StandardOutput.EndOfStream)
             {
                 var line = process.StandardOutput.ReadLine();
-                Console.WriteLine(line.GetType());
+
+                //Console.WriteLine(line);
+                
+                Regex reg = new Regex(@"<GET.*?>");
+                MatchCollection result = reg.Matches(line);
+
+                if (result.Count > 2) {
+                    Console.WriteLine(result[0].Groups[0]);
+                    Console.WriteLine(result[1].Groups[0]);
+                    Console.WriteLine(result[2].Groups[0]);
+                }
+                foreach (Match mm in result) {
+                    //Console.WriteLine(mm.Groups[0]);
+                }
+                /*
+                foreach (Match mm in result2) {
+                    Console.WriteLine(mm.Groups[1]);
+                }
+                /*
+                string[] result = line.Split(new string[] { "[^^]" }, StringSplitOptions.None);
+
+                if (result.Length == 2)
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        Console.WriteLine("get line" + result[i]);
+                    }
+                }
+                */
             }
 
             FreeConsole();
