@@ -16,6 +16,7 @@ using System.IO;
 using System.Diagnostics;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
+using System.Collections;
 
 namespace adc
 {
@@ -31,6 +32,14 @@ namespace adc
             Form = form;
             Context = context;
         }
+        private static List<Items> instance;
+
+        public static List<Items> GetInstance() {
+            if (instance == null)
+                instance = new List<Items>();
+
+            return instance;
+        }
         public int Id { get; set; }
         public string Path { get; set; }
         public string Form { get; set; }
@@ -44,14 +53,7 @@ namespace adc
         public TagResultPage()
         {
             InitializeComponent();
-            /*
-            FileList.ItemsSource = new Items[]{
-                new Items(0, "No", "My", "Me"),
-                new Items(1, "배고프다", "곱창", "육회"),
-                new Items(2, "연어~!", "또 뭐있지", "낙지탕탕이")
-
-            };
-            */
+            
         }
 
         public TagResultPage(string path) : this()
@@ -64,6 +66,7 @@ namespace adc
 
         private void GoToMainButton_Click(object sender, RoutedEventArgs e)
         {
+            GetItems();
             Home pg = new Home();
             NavigationService.Navigate(pg);
         }
@@ -88,9 +91,6 @@ namespace adc
                     CreateNoWindow = true
                 }
             };
-
-            
-
             
             process.Start();
             // Pass multiple commands to cmd.exe
@@ -111,10 +111,8 @@ namespace adc
                 }
             }
 
-            Encoding encKr = Encoding.GetEncoding("euc-kr");
-            EncodingInfo[] encods = Encoding.GetEncodings();
-            Encoding destEnc = Encoding.UTF8;
-            
+            int count = 0;
+            string path, form, content; 
             // read multiple output lines
             while (!process.StandardOutput.EndOfStream)
             {
@@ -126,28 +124,17 @@ namespace adc
                 MatchCollection result = reg.Matches(line);
 
                 if (result.Count > 2) {
-                    Console.WriteLine(result[0].Groups[0]);
-                    Console.WriteLine(result[1].Groups[0]);
-                    Console.WriteLine(result[2].Groups[0]);
-                }
-                foreach (Match mm in result) {
-                    //Console.WriteLine(mm.Groups[0]);
-                }
-                /*
-                foreach (Match mm in result2) {
-                    Console.WriteLine(mm.Groups[1]);
-                }
-                /*
-                string[] result = line.Split(new string[] { "[^^]" }, StringSplitOptions.None);
+                    path = result[0].Groups[0].ToString().Substring(5);
+                    path = path.Substring(0, path.Length - 2);
+                    form = result[1].Groups[0].ToString().Substring(5);
+                    form = form.Substring(0, form.Length - 2);
+                    content = result[2].Groups[0].ToString().Substring(6);
+                    content = content.Substring(0, content.Length - 3);
 
-                if (result.Length == 2)
-                {
-                    for (int i = 0; i < 2; i++)
-                    {
-                        Console.WriteLine("get line" + result[i]);
-                    }
+                    //Console.WriteLine(path + " " + form + " " + content);
+                    Items.GetInstance().Add(new Items(count++, path, form, content));
                 }
-                */
+                FileList.ItemsSource = Items.GetInstance();
             }
 
             FreeConsole();
@@ -217,20 +204,13 @@ namespace adc
         void PathLoaded(object sender, RoutedEventArgs e) {
             FolderPath.Text = this.folderpath;
         }
-    }
-    
-        class Item
-        {
-            public Item(string file_path, string form_tag, string context_tag)
-            {
 
-                FilePath = file_path;
-                FormTag = form_tag;
-                ContextTag = context_tag;
+        void GetItems() {
+            foreach (Items a in FileList.Items)
+            {
+                Console.WriteLine(a.Context);
             }
-            public string FilePath { get; set; }
-            public string FormTag { get; set; }
-            public string ContextTag { get; set; }
         }
+    }
     
 }
