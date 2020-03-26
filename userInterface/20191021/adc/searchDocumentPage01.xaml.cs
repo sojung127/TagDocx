@@ -35,16 +35,16 @@ namespace adc
             InitializeComponent();
             tags = vs;
         }
-        
-        
+
+
         private void BtntoMain(object sender, RoutedEventArgs e)
         {
             Home page = new Home();
             NavigationService.Navigate(page);
         }
-        
-       // data Table --> replace to DB later
-          private void Page_Loaded(object sender, RoutedEventArgs e)
+
+        // data Table --> replace to DB later
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             //DataTable 생성
             DataTable dataTable = new DataTable();
@@ -56,8 +56,8 @@ namespace adc
             dataTable.Columns.Add("TTAGLIST", typeof(string));
             dataTable.Columns.Add("CTAGLIST", typeof(string));
             dataTable.Columns.Add("FOLDERPATH", typeof(string));
-            
-  
+
+
 
             //데이터 생성
             // 이전 페이지에서 선택한 태그들
@@ -65,20 +65,21 @@ namespace adc
             string ctags = "";
             foreach (string i in tags)
             {
-                ctags = ctags +i+ " " ;
-                
+                ctags = ctags + i + " ";
+
             }
-            
-            dataTable.Rows.Add(new string[] { "1", "1.pdf", "형식1"," 태그1 태그2 태그3", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "2", "2.pdf", "형식1"," 태그1 태그3", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "3", "3.pdf", "형식1"," 태그1 ", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "4", "4.pdf", "형식1"," 태그2", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "5", "5.pdf", "형식1"," 태그3 ", "C:\\capston" });
+
+            dataTable.Rows.Add(new string[] { "1", "1.pdf", "형식1", " 태그1 태그2 태그3", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "2", "2.pdf", "형식1", " 태그1 태그3", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "3", "3.pdf", "형식1", " 태그1 ", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "4", "4.pdf", "형식1", " 태그2", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "5", "5.pdf", "형식1", " 태그3 ", "C:\\capston" });
 
             //seperated content tag string seperated by comma
             string commaSeperatedString = String.Join(",", dataTable.AsEnumerable().Select(x => x.Field<string>("CTAGLIST").ToString()).ToArray());
             //DataTable의 Default View를 바인딩하기 (원본 데이터테이블)
-            dataGrid1.ItemsSource = dataTable.DefaultView;
+            //기존 !!!!!!!
+          //  dataGrid1.ItemsSource = dataTable.DefaultView;
 
             // datacolumn으로 primary key 설정
             DataColumn[] primarykey = new DataColumn[1];
@@ -102,7 +103,7 @@ namespace adc
             resultTable.Columns.Add("TTAGLIST", typeof(string));
             resultTable.Columns.Add("CTAGLIST", typeof(string));
             resultTable.Columns.Add("FOLDERPATH", typeof(string));
-           
+
 
             Console.WriteLine("형식태그");
             // 1. 형식태그 선별 
@@ -120,23 +121,23 @@ namespace adc
             //신규 데이터 테이블에 row 추가
             foreach (DataRow dr in semiRows)
             {
-                semiTable.Rows.Add(dr.ItemArray); 
+                semiTable.Rows.Add(dr.ItemArray);
             }
-                   
+
             Console.WriteLine(semiTable.Rows.Count);
             for (int i = 0; i < semiTable.Rows.Count; i++)
             {
-                for(int col = 0; col < semiTable.Columns.Count; col++)
+                for (int col = 0; col < semiTable.Columns.Count; col++)
                 {
                     Console.Write("{0}", semiTable.Rows[i][col].ToString());
-                 }
+                }
                 Console.WriteLine(" ");
-             }
-            
+            }
+
 
             // 2. 내용태그 선별 
             Console.WriteLine("내용태그");
-           // string contentTag = "CTAGLIST LIKE'%태그1 태그3%'";
+            // string contentTag = "CTAGLIST LIKE'%태그1 태그3%'";
             Regex reg = new Regex(@".*태그1.*태그3.*"); // 태그1*태그3
 
             //matching rows
@@ -149,7 +150,7 @@ namespace adc
             //display rows 
             foreach (var row in finalRows)
             {
-               // Console.WriteLine(row["CTAGLIST"]);
+                // Console.WriteLine(row["CTAGLIST"]);
                 resultTable.Rows.Add(row.ItemArray);
             }
             Console.WriteLine(resultTable.Rows.Count);
@@ -161,8 +162,9 @@ namespace adc
                 }
                 Console.WriteLine(" ");
             }
+            //업데이트 !!!!!!!
             //resultTable의 Default View를 바인딩하기 (원본 데이터테이블)
-            //dataGrid1.ItemsSource = resultTable.DefaultView; //re
+            dataGrid1.ItemsSource = resultTable.DefaultView; //re
 
             /*
             string sortOrder = "DATAPATH ASC";
@@ -173,8 +175,6 @@ namespace adc
                 resultTable.Rows.Add(dr2.ItemArray);
             }
             Console.WriteLine(resultTable.Rows.Count);
-
-
             for (int i = 0; i < finalRows.Length; i++)
             {
                 Console.Write(finalRows[i][0]);
@@ -195,7 +195,7 @@ namespace adc
             wordProcess.StartInfo.FileName = filePath;
             wordProcess.StartInfo.UseShellExecute = true;
             wordProcess.Start();
-                                 
+
             /*
             Process process = new Process();
             process.StartInfo.UseShell Execute = true;
@@ -203,7 +203,6 @@ namespace adc
             process.Start();
             
         }
-
         //fileBrowserDiaglog 
         private void openFile_click(object sender, RoutedEventArgs e)
         {
@@ -217,9 +216,9 @@ namespace adc
 
         private void dataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
-        
+
     }
 }

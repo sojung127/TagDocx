@@ -25,36 +25,7 @@
         <Border Background="LightGray" HorizontalAlignment="Left" Height="300" Grid.Row="1" VerticalAlignment="Top" Width="800"/>
         <Grid Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left"     >
             <!-- Document Path, related tag list, Folder Path -->
-            <DataGrid Name="dataGrid1" ItemsSource="{Binding XPath=searchDocument00}"  AutoGenerateColumns="False" RowHeaderWidth="20"  Height="210" VerticalAlignment="Top" SelectionChanged="dataGrid1_SelectionChanged" Margin="84,35,-719,-30.333" >
-                <DataGrid.ColumnHeaderStyle>
-                    <Style TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="Height" Value="35" />
-                        <Setter Property="Padding" Value="5" />
-                        <Setter Property="Background" Value="Darkgray" />
-                        <Setter Property="Foreground" Value="White" />
-                    </Style>
-                </DataGrid.ColumnHeaderStyle>
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header= "ID"  Binding="{Binding Path=ID}" />
-                    <DataGridTextColumn Header="Data Path" Binding="{Binding Path=DATAPATH}" />
-                    <DataGridTextColumn Header="Type Tag" Binding="{Binding Path=TTAGLIST}" />
-                    <DataGridTextColumn Header="Content Tags" Binding="{Binding Path=CTAGLIST}" />
-                    <DataGridTextColumn Header= "Folder Path"  Binding="{Binding Path=FOLDERPATH}" />
-
-                    <DataGridTemplateColumn Header="move" >
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Button Click="openFolder_Click"/>
-                                    <TextBox Text="{Binding FOLDERPATH, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                </Grid>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-            <!-- Templates to display document search result data -->
-            <DataGrid Name="dataGrid2" ItemsSource="{Binding XPath=searchDocument00}"  AutoGenerateColumns="False" RowHeaderWidth="20"  Height="210" VerticalAlignment="Top" SelectionChanged="dataGrid1_SelectionChanged" Margin="84,35,-719,-30.333" >
+            <DataGrid Name="dataGrid1" ItemsSource="{Binding XPath=searchDocument00}"  AutoGenerateColumns="False" RowHeaderWidth="20"  Height="210" VerticalAlignment="Top" SelectionChanged="Page_Loaded" Margin="84,35,-719,-30.333" >
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="Height" Value="35" />
@@ -82,7 +53,8 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-        </Grid>
+            <!-- Templates to display document search result data -->
+          </Grid>
 
         <Button x:Name="gotoMain" Content="메인으로" HorizontalAlignment="Center"  Grid.Row="1"  Margin="361,261,365,22"  Width="74" Height="23"  Click="BtntoMain" RenderTransformOrigin="0.42,4.942" />
 
