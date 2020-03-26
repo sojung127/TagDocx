@@ -49,6 +49,7 @@ namespace adc
     public partial class TagResultPage : Page
     {
         string folderpath;
+        static string db_information = @"Server=localhost;Database=adcs;Uid=root;";
 
         public TagResultPage()
         {
@@ -206,10 +207,16 @@ namespace adc
         }
 
         void GetItems() {
+            MySqlConnection conn = new MySqlConnection(db_information);
+            /*
+            try {
+                conn.Open();
+            String sql = "INSERT INTO }
             foreach (Items a in FileList.Items)
             {
                 Console.WriteLine(a.Context);
             }
+            */
         }
     }
     
