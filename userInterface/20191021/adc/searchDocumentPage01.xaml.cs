@@ -16,6 +16,8 @@ using System.Data;
 using System.Drawing;
 using System.Diagnostics;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
+using System.Collections;
 
 
 
@@ -75,9 +77,7 @@ namespace adc
 
             //seperated content tag string seperated by comma
             string commaSeperatedString = String.Join(",", dataTable.AsEnumerable().Select(x => x.Field<string>("CTAGLIST").ToString()).ToArray());
-           // Console.WriteLine(commaSeperatedString[i]);
-         
-            //DataTable의 Default View를 바인딩하기
+            //DataTable의 Default View를 바인딩하기 (원본 데이터테이블)
             dataGrid1.ItemsSource = dataTable.DefaultView;
 
             // datacolumn으로 primary key 설정
@@ -87,6 +87,14 @@ namespace adc
             // 복합키 설정 
             dataTable.PrimaryKey = primarykey;
 
+            // 임시 데이터 테이블 
+            DataTable semiTable = new DataTable();
+            semiTable.Columns.Add("ID", typeof(string));
+            semiTable.Columns.Add("DATAPATH", typeof(string));
+            semiTable.Columns.Add("TTAGLIST", typeof(string));
+            semiTable.Columns.Add("CTAGLIST", typeof(string));
+            semiTable.Columns.Add("FOLDERPATH", typeof(string));
+
             // 결과 데이터 테이블 
             DataTable resultTable = new DataTable();
             resultTable.Columns.Add("ID", typeof(string));
@@ -94,9 +102,7 @@ namespace adc
             resultTable.Columns.Add("TTAGLIST", typeof(string));
             resultTable.Columns.Add("CTAGLIST", typeof(string));
             resultTable.Columns.Add("FOLDERPATH", typeof(string));
-            resultTable.Rows.Add(new string[] { "5", "5.pdf", "형식1", " 태그3 ", "C:\\capston" });
-
-
+           
 
             Console.WriteLine("형식태그");
             // 1. 형식태그 선별 
@@ -114,15 +120,15 @@ namespace adc
             //신규 데이터 테이블에 row 추가
             foreach (DataRow dr in semiRows)
             {
-                resultTable.Rows.Add(dr.ItemArray); //
+                semiTable.Rows.Add(dr.ItemArray); 
             }
                    
-            Console.WriteLine(resultTable.Rows.Count);
-            for (int i = 0; i < resultTable.Rows.Count; i++)
+            Console.WriteLine(semiTable.Rows.Count);
+            for (int i = 0; i < semiTable.Rows.Count; i++)
             {
-                for(int col = 0; col < resultTable.Columns.Count; col++)
+                for(int col = 0; col < semiTable.Columns.Count; col++)
                 {
-                    Console.Write("{0}", resultTable.Rows[i][col].ToString());
+                    Console.Write("{0}", semiTable.Rows[i][col].ToString());
                  }
                 Console.WriteLine(" ");
              }
@@ -130,16 +136,53 @@ namespace adc
 
             // 2. 내용태그 선별 
             Console.WriteLine("내용태그");
-            string contentTag = "CTAGLIST LIKE'%태그1 태그3%'"; // 태그1 태그2 태그3은 어떻게 인식하지?
+           // string contentTag = "CTAGLIST LIKE'%태그1 태그3%'";
+            Regex reg = new Regex(@".*태그1.*태그3.*"); // 태그1*태그3
+
+            //matching rows
+            ArrayList al = new ArrayList();
+            foreach (DataRow row in semiTable.Select())
+                if (reg.Match(row["CTAGLIST"].ToString()).Success)
+                    al.Add(row);
+            DataRow[] finalRows = (DataRow[])al.ToArray(typeof(DataRow));
+
+            //display rows 
+            foreach (var row in finalRows)
+            {
+               // Console.WriteLine(row["CTAGLIST"]);
+                resultTable.Rows.Add(row.ItemArray);
+            }
+            Console.WriteLine(resultTable.Rows.Count);
+            for (int i = 0; i < resultTable.Rows.Count; i++)
+            {
+                for (int col = 0; col < resultTable.Columns.Count; col++)
+                {
+                    Console.Write("{0}", resultTable.Rows[i][col].ToString());
+                }
+                Console.WriteLine(" ");
+            }
+            //resultTable의 Default View를 바인딩하기 (원본 데이터테이블)
+            //dataGrid1.ItemsSource = resultTable.DefaultView; //re
+
+            /*
             string sortOrder = "DATAPATH ASC";
             // DataRow[] finalRows = dataTable.Select(contentTag, sortOrder);
-            DataRow[] finalRows = dataTable.Select(contentTag);
+            DataRow[] finalRows = semiTable.Select(contentTag);
+            foreach (DataRow dr2 in finalRows)
+            {
+                resultTable.Rows.Add(dr2.ItemArray);
+            }
+            Console.WriteLine(resultTable.Rows.Count);
+
+
             for (int i = 0; i < finalRows.Length; i++)
             {
-              //  Console.Write(finalRows[i][0]);
-            //    Console.WriteLine(finalRows[i][3]);
+                Console.Write(finalRows[i][0]);
+                Console.WriteLine(finalRows[i][3]);
             }
-            
+            */
+
+
         }
 
         //FolderBrowserDialog + System.Windows.Forms

@@ -139,7 +139,7 @@ namespace adc
 
         private void Listbox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var row = ((DataRowView)listbox1.SelectedItem).Row;
+            var row = ((DataRowView) listbox1.SelectedItem).Row;
             string selectedValue = row[0].ToString();
             bool changed = false;
 
