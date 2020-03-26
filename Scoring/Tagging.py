@@ -58,8 +58,9 @@ def get_tag(path):
     #print("여기 집중")
 
     for i in range(file_count):
-
-        path = path_origin + file_list[i]
+        
+        name = file_list[i]
+        path = path_origin + name
         #print(path)
 
         if os.path.isdir(path):
@@ -96,7 +97,7 @@ def get_tag(path):
         
 
         #content_tag.insert(0, form_tag)
-        print("<GET",path,"><GET",form_tag,"><GET",content_tag,">")
+        print("<GET",path,"><GET",form_tag,"><GET",content_tag,"><GET",name,">")
 
         # # create_db()
         # create_table_content()
