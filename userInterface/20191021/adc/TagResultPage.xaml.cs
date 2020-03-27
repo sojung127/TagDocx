@@ -25,12 +25,13 @@ namespace adc
     /// </summary>
     class Items
     {
-        public Items(int id, string path, string form, string context)
+        public Items(int id, string path, string form, string context, string name)
         {
             Id = id;
             Path = path;
             Form = form;
             Context = context;
+            Name = name;
         }
         private static List<Items> instance;
 
@@ -44,11 +45,13 @@ namespace adc
         public string Path { get; set; }
         public string Form { get; set; }
         public string Context { get; set; }
+        public string Name { get; set; }
     }
 
     public partial class TagResultPage : Page
     {
         string folderpath;
+        static string db_information = @"Server=localhost;Database=adcs;Uid=root;Pwd=;";
 
         public TagResultPage()
         {
@@ -112,7 +115,7 @@ namespace adc
             }
 
             int count = 0;
-            string path, form, content; 
+            string path, form, context, name; 
             // read multiple output lines
             while (!process.StandardOutput.EndOfStream)
             {
@@ -123,16 +126,16 @@ namespace adc
                 Regex reg = new Regex(@"<GET.*?>");
                 MatchCollection result = reg.Matches(line);
 
-                if (result.Count > 2) {
+                if (result.Count > 3) {
                     path = result[0].Groups[0].ToString().Substring(5);
                     path = path.Substring(0, path.Length - 2);
                     form = result[1].Groups[0].ToString().Substring(5);
                     form = form.Substring(0, form.Length - 2);
-                    content = result[2].Groups[0].ToString().Substring(6);
-                    content = content.Substring(0, content.Length - 3);
-
-                    //Console.WriteLine(path + " " + form + " " + content);
-                    Items.GetInstance().Add(new Items(count++, path, form, content));
+                    context = result[2].Groups[0].ToString().Substring(6);
+                    context = context.Substring(0, context.Length - 3);
+                    name = result[3].Groups[0].ToString().Substring(5);
+                    name = name.Substring(0, name.Length - 2);
+                    Items.GetInstance().Add(new Items(count++, path, form, context, name));
                 }
                 FileList.ItemsSource = Items.GetInstance();
             }
@@ -206,10 +209,49 @@ namespace adc
         }
 
         void GetItems() {
-            foreach (Items a in FileList.Items)
+            int id;
+            string path, form, context, c, name, sql1, sql2;
+
+            try
             {
-                Console.WriteLine(a.Context);
+                using (MySqlConnection conn = new MySqlConnection(db_information))
+                {
+                    conn.Open();
+                    if (conn.State == System.Data.ConnectionState.Open)
+                        MessageBox.Show("서버에 연결");
+
+                    foreach (Items a in FileList.Items)
+                    {
+                        id = a.Id;
+                        path = a.Path;
+                        form = a.Form;
+                        context = a.Context;
+                        name = a.Name;
+            
+                        sql1 = "insert into document values("+id+",\""+name+"\",\""+form+ "\",\""+path+"\")";
+                        MySqlCommand cmd = new MySqlCommand(sql1, conn);
+                        cmd.ExecuteNonQuery();
+
+                        Regex reg = new Regex(@"\'.*?\'");
+                        MatchCollection result = reg.Matches(context);
+                        foreach (Match mm in result) {
+                            c = mm.Groups[0].ToString().Substring(1);
+                            c = c.Substring(0, c.Length - 1);
+                            //Console.WriteLine(c);
+                            sql2 = "insert into content values(" + id + ",\"" + c + "\")";
+                            cmd = new MySqlCommand(sql2, conn);
+                            cmd.ExecuteNonQuery();
+
+                        }
+                        
+                        //MessageBox.Show("입력 성공");
+                    }
+                    
+                    conn.Close();
+                }
             }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            
         }
     }
     

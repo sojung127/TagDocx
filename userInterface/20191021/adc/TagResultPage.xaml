@@ -40,11 +40,13 @@
                 <ColumnDefinition Width="3*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0" Name="width1"></Border>
             <Border Grid.Column="1" Name="width2"></Border>
             <Border Grid.Column="2" Name="width3"></Border>
             <Border Grid.Column="3" Name="width4"></Border>
+            <Border Grid.Column="4" Name="width5"></Border>
         </Grid>
         <TextBlock Name="FolderPath" Grid.Row="0"  FontSize="30" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
 
@@ -62,7 +64,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="#" DisplayMemberBinding="{Binding Path=Id}" Width="{Binding ElementName=width1, Path=ActualWidth}" />
-                    <GridViewColumn Header="파일명" DisplayMemberBinding="{Binding Path=Path}" Width="{Binding ElementName=width2, Path=ActualWidth}"/>
+                    <GridViewColumn Header="저장 경로" DisplayMemberBinding="{Binding Path=Path}" Width="{Binding ElementName=width2, Path=ActualWidth}"/>
                     <GridViewColumn Header="형식 태그" Width="{Binding ElementName=width3, Path=ActualWidth}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -77,6 +79,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+                    <GridViewColumn Header="파일명" DisplayMemberBinding="{Binding Path=Name}" Width="{Binding ElementName=width5, Path=ActualWidth}"/>
                 </GridView>
             </ListView.View>
         </ListView>
