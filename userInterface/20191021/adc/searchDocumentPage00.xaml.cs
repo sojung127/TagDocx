@@ -6,18 +6,14 @@ using System.Diagnostics;
 using System.ComponentModel;
 using System.IO;
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
@@ -34,9 +30,9 @@ namespace adc
         {
             InitializeComponent();
             selected = new List<string>();
-            string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;";
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            var connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=ewhayeeun;";
+            var connection = new MySqlConnection(connectionString);
             try
             {
                 connection.Open();
@@ -51,20 +47,21 @@ namespace adc
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+               // MessageBox.Show(ex.ToString());
+                Console.WriteLine("DB 연결 실패" + "(" + ex.Message + ")");
             }
             finally
             {
                 connection.Close();
+              
             }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;";
-
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=ewhayeeun;";
+            var connection = new MySqlConnection(connectionString);
             try
             {
                 connection.Open();
@@ -74,6 +71,7 @@ namespace adc
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
+
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
                 adp.Fill(ds, "LoadDataBinding");
                 listbox1.DataContext = ds;
@@ -81,7 +79,8 @@ namespace adc
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+               // MessageBox.Show(ex.ToString());
+                Console.WriteLine("DB 연결 실패" + "(" + ex.Message + ")");
             }
             finally
             {
@@ -113,7 +112,8 @@ namespace adc
                 }
                 
             }
-               
+            
+            //입력된 태그리스트 전달
             searchDocumentPage01 page = new searchDocumentPage01(selected);
             NavigationService.Navigate(page);
 
@@ -142,7 +142,7 @@ namespace adc
             var row = ((DataRowView) listbox1.SelectedItem).Row;
             string selectedValue = row[0].ToString();
             bool changed = false;
-
+            
            
 
             for (int i = 1; i <= 3; i++)
