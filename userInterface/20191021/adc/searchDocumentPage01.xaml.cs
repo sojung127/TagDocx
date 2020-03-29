@@ -42,11 +42,11 @@ namespace adc
                 connection.Open();
                 MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT CONTENT_TAG FROM CONTENT", connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
+                //DataSet ds = new DataSet();
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
-                adp.Fill(ds, "searchDocument00");
+                //adp.Fill(ds, "searchDocument00");
 
-                dataGrid1.DataContext = ds;
+                //dataGrid1.DataContext = ds;
 
             }
             catch (MySqlException ex)
@@ -78,11 +78,11 @@ namespace adc
                 connection.Open();
                 MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT CONTENT_TAG FROM CONTENT", connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
+                //DataSet ds = new DataSet();
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
-                adp.Fill(ds, "Page_Loaded");
+                //adp.Fill(ds, "Page_Loaded");
 
-                dataGrid1.DataContext = ds;
+                //dataGrid1.DataContext = ds;
 
             }
             catch (MySqlException ex)
@@ -107,31 +107,40 @@ namespace adc
             dataTable.Columns.Add("FOLDERPATH", typeof(string));
 
 
-
-            //데이터 생성
             // 이전 페이지에서 선택한 태그들
             // tags에 리스트로 담겨있고 ctags에 문자열로 모았음(list, string 둘중 편한 것 선택
-            string ctags = @"";      //  (@".*태그1.*태그3.*")
+                        
+            string ttag = "";           // 형식태그 String'형식1'
+            string ctags = @"";         // 내용태그 정규표현식 형태로 (@".*태그1.*태그3.*")
             int length = tags.Count();
            
             foreach (string i in tags)
             {
                 //ctags = ctags + i 
-                if(tags.IndexOf(i)!= 0)
-                  ctags = ctags + ".*" + i;
+                if (tags.IndexOf(i) == 0)
+                    ttag = ttag + i;
+                else ctags = ctags + ".*" + i;
+                
             }
-            // ctags = "@" + ctags;
             ctags = ctags + ".*";
+            Console.WriteLine(" ");
+            Console.WriteLine(ttag.GetType());
             Console.WriteLine(ctags);
                       
-            dataTable.Rows.Add(new string[] { "1", "1.pdf", "형식1", " 여성 봉사 복지", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "2", "2.pdf", "형식1", " 여성 복지", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "3", "3.pdf", "형식1", " 여성 ", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "4", "4.pdf", "형식1", " 봉사", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "5", "5.pdf", "형식1", " 복지 ", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "1", "1.pdf", "기사", " 여성 봉사 복지", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "2", "2.pdf", "기사", " 여성 복지", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "3", "3.pdf", "기사", " 여성 ", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "4", "4.pdf", "기사", " 봉사", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "5", "5.pdf", "기사", " 복지 ", "C:\\capston" });
+
+            dataTable.Rows.Add(new string[] { "6", "1.pdf", "논문", " 여성 봉사 복지", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "7", "2.pdf", "논문", " 여성 복지", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "8", "3.pdf", "논문", " 여성 ", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "9", "4.pdf", "논문", " 봉사", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "10", "5.pdf", "논문", " 복지 ", "C:\\capston" });
 
             //DataTable의 Default View를 바인딩하기 (원본 데이터테이블)
-           
+
             // datacolumn으로 primary key 설정
             DataColumn[] primarykey = new DataColumn[1];
             primarykey[0] = dataTable.Columns["ID"];
@@ -158,7 +167,9 @@ namespace adc
 
             // 1. 형식태그 선별 
             Console.WriteLine("형식태그");
-            string typeTag = "TTAGLIST = '형식1'";
+            //string typeTag = "TTAGLIST = '논문'";
+            string typeTag = string.Format("TTAGLIST = '{0}'", ttag);
+            Console.Write(typeTag);
             DataRow[] semiRows = dataTable.Select(typeTag);
 
             //신규 데이터 테이블에 row 추가
@@ -180,7 +191,6 @@ namespace adc
 
             // 2. 내용태그 선별 
             Console.WriteLine("내용태그");
-            // string contentTag = "CTAGLIST LIKE'%태그1 태그3%'";
             //Regex reg = new Regex(@".*태그1.*태그3.*"); // 태그1*태그3
             Regex reg = new Regex(ctags);
 
