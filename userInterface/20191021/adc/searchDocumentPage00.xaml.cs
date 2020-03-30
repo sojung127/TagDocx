@@ -31,7 +31,7 @@ namespace adc
             InitializeComponent();
             selected = new List<string>();
 
-            var connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=ewhayeeun;";
+            var connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=;";
             var connection = new MySqlConnection(connectionString);
             try
             {

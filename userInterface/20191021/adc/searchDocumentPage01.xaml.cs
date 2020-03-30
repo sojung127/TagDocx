@@ -71,7 +71,7 @@ namespace adc
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-            var  connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=ewhayeeun;";
+            var  connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=;";
             var connection = new MySqlConnection(connectionString);
             try
             {
@@ -109,12 +109,14 @@ namespace adc
 
             // 이전 페이지에서 선택한 태그들
             // tags에 리스트로 담겨있고 ctags에 문자열로 모았음(list, string 둘중 편한 것 선택
+            
                         
             string ttag = "";           // 형식태그 String'형식1'
             string ctags = @"";         // 내용태그 정규표현식 형태로 (@".*태그1.*태그3.*")
             int length = tags.Count();
-           
-            foreach (string i in tags)
+            if (ttag != "") ttag = "";
+            if (ctags != "") ctags = "";
+                foreach (string i in tags)
             {
                 //ctags = ctags + i 
                 if (tags.IndexOf(i) == 0)
@@ -127,18 +129,29 @@ namespace adc
             Console.WriteLine(ttag.GetType());
             Console.WriteLine(ctags);
                       
-            dataTable.Rows.Add(new string[] { "1", "1.pdf", "기사", " 여성 봉사 복지", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "2", "2.pdf", "기사", " 여성 복지", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "3", "3.pdf", "기사", " 여성 ", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "4", "4.pdf", "기사", " 봉사", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "5", "5.pdf", "기사", " 복지 ", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "1", "1.pdf", "논문", " 여성 봉사 복지", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "2", "2.pdf", "논문", " 여성 복지", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "3", "3.pdf", "논문", " 여성 ", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "4", "4.pdf", "논문", " 봉사", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "5", "5.pdf", "논문", " 복지 ", "C:\\capston" });
 
-            dataTable.Rows.Add(new string[] { "6", "1.pdf", "논문", " 여성 봉사 복지", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "7", "2.pdf", "논문", " 여성 복지", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "8", "3.pdf", "논문", " 여성 ", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "9", "4.pdf", "논문", " 봉사", "C:\\capston" });
-            dataTable.Rows.Add(new string[] { "10", "5.pdf", "논문", " 복지 ", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "6", "1.pdf", "기사", " 여성 봉사 복지", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "7", "2.pdf", "기사", " 여성 복지", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "8", "3.pdf", "기사", " 여성 ", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "9", "4.pdf", "기사", " 봉사", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "10", "5.pdf", "기사", " 복지 ", "C:\\capston" });
 
+            dataTable.Rows.Add(new string[] { "11", "1.pdf", "지원서", " 여성 봉사 복지", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "12", "2.pdf", "지원서", " 여성 복지", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "13", "3.pdf", "지원서", " 여성 ", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "14", "4.pdf", "지원서", " 봉사", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "15", "5.pdf", "지원서", " 복지 ", "C:\\capston" });
+
+            dataTable.Rows.Add(new string[] { "16", "1.pdf", "공고", " 여성 봉사 복지", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "17", "2.pdf", "공고", " 여성 복지", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "18", "3.pdf", "공고", " 여성 ", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "19", "4.pdf", "공고", " 봉사", "C:\\capston" });
+            dataTable.Rows.Add(new string[] { "20", "5.pdf", "공고", " 복지 ", "C:\\capston" });
             //DataTable의 Default View를 바인딩하기 (원본 데이터테이블)
 
             // datacolumn으로 primary key 설정
@@ -193,7 +206,7 @@ namespace adc
             Console.WriteLine("내용태그");
             //Regex reg = new Regex(@".*태그1.*태그3.*"); // 태그1*태그3
             Regex reg = new Regex(ctags);
-
+            //Regex reg = new Regex(@".*여성.*복지.*봉사.*");
             //matching rows
             ArrayList al = new ArrayList();
             foreach (DataRow row in semiTable.Select())
