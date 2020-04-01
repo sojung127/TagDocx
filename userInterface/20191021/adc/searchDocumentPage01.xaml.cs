@@ -35,7 +35,7 @@ namespace adc
             InitializeComponent();
             tags = vs;
 
-            var connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=ewhayeeun;";
+            var connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
             var connection = new MySqlConnection(connectionString);
             try
             {
@@ -71,7 +71,7 @@ namespace adc
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-            var  connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=;";
+            var  connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
             var connection = new MySqlConnection(connectionString);
             try
             {

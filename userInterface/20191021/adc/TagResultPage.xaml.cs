@@ -51,7 +51,8 @@ namespace adc
     public partial class TagResultPage : Page
     {
         string folderpath;
-        static string db_information = @"Server=localhost;Database=adcs;Uid=root;Pwd=;";
+        static string db_information = @"Server=localhost;Database=adcs;Uid=root;Pwd=1771094;";
+        string savingpath;
 
         public TagResultPage()
         {
@@ -62,6 +63,7 @@ namespace adc
         public TagResultPage(string path) : this()
         {
             this.folderpath = path;
+            this.savingpath = path;
             //this.Loaded += new RoutedEventHandler(PathLoaded);
             FolderPath.Text = this.folderpath;
             GetTag();
@@ -89,7 +91,7 @@ namespace adc
                     RedirectStandardInput = true,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
-                    WorkingDirectory = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\",
+                    WorkingDirectory = @"C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\Scoring\",
                     WindowStyle = ProcessWindowStyle.Hidden,
                     CreateNoWindow = true
                 }
@@ -102,13 +104,13 @@ namespace adc
                 if (sw.BaseStream.CanWrite)
                 {
                     // Vital to activate Anaconda
-                    sw.WriteLine(@"C:\ProgramData\Anaconda3\Scripts\activate.bat");
+                    sw.WriteLine(@"C:\Users\pyj\Anaconda3\Scripts\activate.bat");
                     // Activate your environment
                     //sw.WriteLine("activate tensorflow");
                     // Any other commands you want to run
                     //sw.WriteLine("set KERAS_BACKEND=tensorflow");
                     // run your script. You can also pass in arguments
-                    string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
+                    string command = @"python C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
                     sw.WriteLine(command);
 
                 }
@@ -223,11 +225,11 @@ namespace adc
                     foreach (Items a in FileList.Items)
                     {
                         id = a.Id;
-                        path = a.Path;
+                        path = savingpath;
                         form = a.Form;
                         context = a.Context;
                         name = a.Name;
-            
+                        
                         sql1 = "insert into document values("+id+",\""+name+"\",\""+form+ "\",\""+path+"\")";
                         MySqlCommand cmd = new MySqlCommand(sql1, conn);
                         cmd.ExecuteNonQuery();

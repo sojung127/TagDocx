@@ -31,7 +31,7 @@ namespace adc
             InitializeComponent();
             selected = new List<string>();
 
-            var connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=;";
+            var connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
             var connection = new MySqlConnection(connectionString);
             try
             {
@@ -60,7 +60,7 @@ namespace adc
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=ewhayeeun;";
+            string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
             var connection = new MySqlConnection(connectionString);
             try
             {

@@ -39,8 +39,8 @@ namespace adc
             //Console.WriteLine("데이터불러옴");
 
             dataGridCustomers0.ItemsSource=catagoDocs("묶음0").DefaultView;
-            dataGridCustomers1.ItemsSource = catagoDocs("묶음1").DefaultView;
-            dataGridCustomers2.ItemsSource = catagoDocs("묶음2").DefaultView;
+            if (catagoDocs("묶음1") != null) { dataGridCustomers1.ItemsSource = catagoDocs("묶음1").DefaultView; }
+            if (catagoDocs("묶음2") != null) { dataGridCustomers2.ItemsSource = catagoDocs("묶음2").DefaultView; }
 
             묶음0태그들.Content = 묶음_태그[0];
             묶음1태그들.Content = 묶음_태그[1];
@@ -107,7 +107,7 @@ namespace adc
             }
             //2. 남은 문서들은 태그중 우선순위가 높은 묶음_태그 쪽으로 감
 
-            if (묶음이름 == "묶음1")
+            if (묶음이름 == "묶음1" && 묶음_태그[1] == null)
             {
                 DataRow[] rows;
                 rows = dt.Select("CONTENT_TAG in " + 쿼리형식 + " OR TYPE_TAG in " + 쿼리형식);
@@ -136,7 +136,7 @@ namespace adc
                 return cd1;
             }
 
-            if (묶음이름 == "묶음2")
+            if (묶음이름 == "묶음2" && 묶음_태그[2] == null)
             {
                 DataRow[] rows;
                 rows = dt.Select("CONTENT_TAG in " + 쿼리형식 + " OR TYPE_TAG in " + 쿼리형식);
