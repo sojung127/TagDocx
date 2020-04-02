@@ -33,15 +33,23 @@ namespace adc
             this.dt = dt; //문서 datatable 가져오기
             this.묶음_태그 = 묶음_태그;
 
-            dataGridCustomers0.ItemsSource = dt.DefaultView;
-            dataGridCustomers1.ItemsSource = dt.DefaultView;
-            dataGridCustomers2.ItemsSource = dt.DefaultView;
+            dataGridCustomers0.ItemsSource = null; // dt.DefaultView;
+            dataGridCustomers1.ItemsSource = null;// dt.DefaultView;
+            dataGridCustomers2.ItemsSource = null;// dt.DefaultView;
             //Console.WriteLine("데이터불러옴");
 
             dataGridCustomers0.ItemsSource=catagoDocs("묶음0").DefaultView;
-            if (catagoDocs("묶음1") != null) { dataGridCustomers1.ItemsSource = catagoDocs("묶음1").DefaultView; }
-            if (catagoDocs("묶음2") != null) { dataGridCustomers2.ItemsSource = catagoDocs("묶음2").DefaultView; }
+            if (묶음_태그[1] != null) {
+                try { dataGridCustomers1.ItemsSource = catagoDocs("묶음1").DefaultView; }
+                catch(System.NullReferenceException e) { }
+                }
+            if (묶음_태그[2] != null)
+            {
+                try { dataGridCustomers2.ItemsSource = catagoDocs("묶음2").DefaultView; }
+                catch (System.NullReferenceException e) { }
+            }
 
+            //위에표시라벨
             묶음0태그들.Content = 묶음_태그[0];
             묶음1태그들.Content = 묶음_태그[1];
             묶음2태그들.Content = 묶음_태그[2];
@@ -107,7 +115,7 @@ namespace adc
             }
             //2. 남은 문서들은 태그중 우선순위가 높은 묶음_태그 쪽으로 감
 
-            if (묶음이름 == "묶음1" && 묶음_태그[1] == null)
+            if (묶음이름 == "묶음1")
             {
                 DataRow[] rows;
                 rows = dt.Select("CONTENT_TAG in " + 쿼리형식 + " OR TYPE_TAG in " + 쿼리형식);
@@ -130,13 +138,19 @@ namespace adc
                 쿼리형식 = 쿼리형식1;
                 //일단 태그 5개까지만선택가능
                 묶음1 = dt.Select("CONTENT_TAG in " + 쿼리형식1 + " OR TYPE_TAG in " + 쿼리형식1);
-
-                cd1 = 묶음1.CopyToDataTable();
-                cd1 = cd1.DefaultView.ToTable(true, "ID", "NAME"); //중복ID제거
-                return cd1;
+                try
+                {
+                    cd1 = 묶음1.CopyToDataTable();
+                    cd1 = cd1.DefaultView.ToTable(true, "ID", "NAME"); //중복ID제거
+                    return cd1;
+                }
+                catch (System.InvalidOperationException e)
+                {
+                    return null;
+                }
             }
 
-            if (묶음이름 == "묶음2" && 묶음_태그[2] == null)
+            if (묶음이름 == "묶음2")
             {
                 DataRow[] rows;
                 rows = dt.Select("CONTENT_TAG in " + 쿼리형식 + " OR TYPE_TAG in " + 쿼리형식);
@@ -159,10 +173,16 @@ namespace adc
 
                 //일단 태그 5개까지만선택가능
                 묶음2 = dt.Select("CONTENT_TAG in " + 쿼리형식2 + " OR TYPE_TAG in " + 쿼리형식2);
-
-                cd2 = 묶음2.CopyToDataTable();
-                cd2 = cd2.DefaultView.ToTable(true, "ID", "NAME"); //중복ID제거
-                return cd2;
+                try
+               {
+                    cd2 = 묶음2.CopyToDataTable();
+                    cd2 = cd2.DefaultView.ToTable(true, "ID", "NAME"); //중복ID제거
+                    return cd2;
+               }
+                catch (System.InvalidOperationException e) {
+                    return null;
+                }
+                
             }
             else return null;
         }

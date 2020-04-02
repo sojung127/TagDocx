@@ -73,7 +73,12 @@ namespace adc
             // 넘기기
             classificateDocumentPage02 page = new classificateDocumentPage02(dt,묶음_태그);
 
-
+            Console.WriteLine("0묶음");
+            Console.WriteLine(묶음_태그[0]);
+            Console.WriteLine("1묶음");
+            Console.WriteLine(묶음_태그[1]);
+            Console.WriteLine("2묶음");
+            Console.WriteLine(묶음_태그[2]);
             NavigationService.Navigate(page);
         }
 
