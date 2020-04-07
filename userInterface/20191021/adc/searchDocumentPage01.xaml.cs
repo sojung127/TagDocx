@@ -29,19 +29,25 @@ namespace adc
     public partial class searchDocumentPage01 : Page
     {
         List<string> tags;
+        static string db_information = @"SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=ewhayeeun;";
 
         public searchDocumentPage01(List<string> vs) // 태그 리스트로 받아옴 
         {
             InitializeComponent();
             tags = vs;
-
-            var connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
+           /*
+            var connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=ewhayeeun;";
             var connection = new MySqlConnection(connectionString);
+           */
+            MySqlConnection connection = new MySqlConnection(db_information); 
             try
             {
                 connection.Open();
                 MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT CONTENT_TAG FROM CONTENT", connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                
+                adp.Fill(ds, "loadDataBinding"); //content table
                 //DataSet ds = new DataSet();
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
                 //adp.Fill(ds, "searchDocument00");
@@ -70,14 +76,112 @@ namespace adc
         // data Table --> replace to DB later
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+          //  int id;
+           // string path, form, context, c, name;
+            string sql1, sql2;
+            DataTable tTable;
+            DataTable cTable;
 
-            var  connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
+            string ttag = "";           // 형식태그 String'형식1'
+            string ctags = @"";         // 내용태그 정규표현식 형태로 (@".*태그1.*태그3.*")
+            int length = tags.Count();
+            if (ttag != "") ttag = "";
+            if (ctags != "") ctags = "";
+            foreach (string i in tags)
+            {
+                //ctags = ctags + i 
+                if (tags.IndexOf(i) == 0)
+                    ttag = ttag + i;
+                else ctags = ctags + ".*" + i;
+
+            }
+            ctags = ctags + ".*";
+            Console.WriteLine(" ");
+            Console.WriteLine(ttag);
+            Console.WriteLine(ctags);
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(db_information)) 
+                {
+                    conn.Open();
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        MessageBox.Show("서버에 연결");
+                        Console.WriteLine("서버에 연결");
+                    }
+
+                    // 형식 DB 
+                    DataSet ds = new DataSet();
+
+                    //("TYPE_TAG = '{0}'", ttag);
+                    //  sql1 = $"SELECT * FROM document WHERE TYPE_TAG ={ttag};"  ; // where TYPE_TAG = ttag
+                    sql1 = "SELECT * FROM document WHERE TYPE_TAG =@val1;";
+                    sql1 = "SELECT * FROM document "; // where TYPE_TAG = ttag
+                    MySqlDataAdapter adapter = new MySqlDataAdapter();
+                    adapter.SelectCommand = new MySqlCommand(sql1, conn);
+                   // adapter.SelectCommand.Parameters.AddWithValue("@val", ttag);
+                    adapter.Fill(ds,"typedDataBinding"); // type table 
+
+
+                    if (ds.Tables.Count >0)
+                    {
+                        foreach (DataRow r in ds.Tables[0].Rows)
+                        {
+                            Console.Write("Name");
+                            Console.Write("  ");
+                            Console.WriteLine(r["TYPE_TAG"]);
+                        }
+                    }
+
+                    sql2 = "select * from content";
+                    adapter.SelectCommand = new MySqlCommand(sql2, conn);
+                    adapter.Fill(ds, "contentDataBinding"); // content table
+
+                    cTable = new DataTable();
+                    cTable = ds.Tables["contentDataBinding"];
+
+                    foreach(DataRow dr in cTable.Rows)
+                    {
+                        Console.WriteLine(dr["CONTENT_TAG"].ToString());
+                        //MessageBox.Show(dr["CONTENT_TAG"].ToString());
+                    }
+                    /*
+                    sql1 = "SELECT DISTINCT TYPE_TAG FROM document";
+                    MySqlCommand cmd = new MySqlCommand(sql1, conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+
+                    adp.Fill(ds, "typeDataBinding"); // type table
+                    //DataTable dataTable = new DataTable();
+                    typeTable = ds.Tables[0];
+                   
+                    
+                    // 내용 DB
+                    sql2 = "SELECT DISTINCT CONTENT_TAG FROM content";
+                    cmd = new MySqlCommand(sql1, conn);
+                    adp = new MySqlDataAdapter(cmd);
+                    ds = new DataSet();
+
+                    adp.Fill(ds, "contentDataBinding"); // type table
+                    */
+                    conn.Close();
+
+                }
+
+                
+            }catch (Exception ex) { MessageBox.Show(ex.Message); }
+            /*
+            var  connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=ewhayeeun;";
             var connection = new MySqlConnection(connectionString);
             try
             {
                 connection.Open();
                 MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT CONTENT_TAG FROM CONTENT", connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+
+                adp.Fill(ds, "loadDataBinding"); //content table
                 //DataSet ds = new DataSet();
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
                 //adp.Fill(ds, "Page_Loaded");
@@ -93,42 +197,29 @@ namespace adc
             {
                 connection.Close();
             }
-
+            */
 
             //DataTable 생성
             DataTable dataTable = new DataTable();
+           // DataTable dataTable = ds.Tables[0];
             var dtkey = new DataColumn[1];
 
-            //컬럼 생성
+            /*컬럼 생성
             dataTable.Columns.Add("ID", typeof(string));
             dataTable.Columns.Add("DATAPATH", typeof(string));
             dataTable.Columns.Add("TTAGLIST", typeof(string));
             dataTable.Columns.Add("CTAGLIST", typeof(string));
             dataTable.Columns.Add("FOLDERPATH", typeof(string));
-
+            */
 
             // 이전 페이지에서 선택한 태그들
             // tags에 리스트로 담겨있고 ctags에 문자열로 모았음(list, string 둘중 편한 것 선택
             
                         
-            string ttag = "";           // 형식태그 String'형식1'
-            string ctags = @"";         // 내용태그 정규표현식 형태로 (@".*태그1.*태그3.*")
-            int length = tags.Count();
-            if (ttag != "") ttag = "";
-            if (ctags != "") ctags = "";
-                foreach (string i in tags)
-            {
-                //ctags = ctags + i 
-                if (tags.IndexOf(i) == 0)
-                    ttag = ttag + i;
-                else ctags = ctags + ".*" + i;
-                
-            }
-            ctags = ctags + ".*";
-            Console.WriteLine(" ");
-            Console.WriteLine(ttag.GetType());
-            Console.WriteLine(ctags);
+        
                       
+            //test data
+            /*
             dataTable.Rows.Add(new string[] { "1", "1.pdf", "논문", " 여성 봉사 복지", "C:\\capston" });
             dataTable.Rows.Add(new string[] { "2", "2.pdf", "논문", " 여성 복지", "C:\\capston" });
             dataTable.Rows.Add(new string[] { "3", "3.pdf", "논문", " 여성 ", "C:\\capston" });
@@ -152,6 +243,8 @@ namespace adc
             dataTable.Rows.Add(new string[] { "18", "3.pdf", "공고", " 여성 ", "C:\\capston" });
             dataTable.Rows.Add(new string[] { "19", "4.pdf", "공고", " 봉사", "C:\\capston" });
             dataTable.Rows.Add(new string[] { "20", "5.pdf", "공고", " 복지 ", "C:\\capston" });
+            */
+
             //DataTable의 Default View를 바인딩하기 (원본 데이터테이블)
 
             // datacolumn으로 primary key 설정
@@ -161,27 +254,25 @@ namespace adc
             // 복합키 설정 
             dataTable.PrimaryKey = primarykey;
 
-            // 형식태그 확인 결과 테이블 
+            // 형식태그 검색 결과 테이블 
             DataTable semiTable = new DataTable();
             semiTable.Columns.Add("ID", typeof(string));
-            semiTable.Columns.Add("DATAPATH", typeof(string));
-            semiTable.Columns.Add("TTAGLIST", typeof(string));
-            semiTable.Columns.Add("CTAGLIST", typeof(string));
-            semiTable.Columns.Add("FOLDERPATH", typeof(string));
-
-            // 내용태그 확인 결과 테이블 
+            semiTable.Columns.Add("NAME", typeof(string));
+            semiTable.Columns.Add("TYPE_TAG", typeof(string));
+            semiTable.Columns.Add("PATH", typeof(string));
+            
+            // 내용태그 검색 결과 테이블 
             DataTable resultTable = new DataTable();
             resultTable.Columns.Add("ID", typeof(string));
-            resultTable.Columns.Add("DATAPATH", typeof(string));
-            resultTable.Columns.Add("TTAGLIST", typeof(string));
-            resultTable.Columns.Add("CTAGLIST", typeof(string));
-            resultTable.Columns.Add("FOLDERPATH", typeof(string));
-
+            resultTable.Columns.Add("CONTENT_TAG", typeof(string));
+     
+            /*
+             * " 되살리기!!!!"
 
             // 1. 형식태그 선별 
             Console.WriteLine("형식태그");
             //string typeTag = "TTAGLIST = '논문'";
-            string typeTag = string.Format("TTAGLIST = '{0}'", ttag);
+            string typeTag = string.Format("TYPE_TAG = '{0}'", ttag);
             Console.Write(typeTag);
             DataRow[] semiRows = dataTable.Select(typeTag);
 
@@ -210,7 +301,7 @@ namespace adc
             //matching rows
             ArrayList al = new ArrayList();
             foreach (DataRow row in semiTable.Select())
-                if (reg.Match(row["CTAGLIST"].ToString()).Success)
+                if (reg.Match(row["CONTENT_TAG"].ToString()).Success)
                     al.Add(row);
             DataRow[] finalRows = (DataRow[])al.ToArray(typeof(DataRow));
 
@@ -233,14 +324,14 @@ namespace adc
             //resultTable의 Default View를 바인딩하기 (원본 데이터테이블)
             dataGrid1.ItemsSource = resultTable.DefaultView; //re
 
-            
+            */
 
         }
 
         //FolderBrowserDialog + System.Windows.Forms
         private void openFolder_Click(object sender, RoutedEventArgs e)
         {
-            String filePath = @"FOLDERPATH";
+            String filePath = @"PATH";
             System.Diagnostics.Process.Start(filePath);
 
             Process wordProcess = new Process();
