@@ -35,18 +35,18 @@ namespace adc
         {
             InitializeComponent();
             tags = vs;
-           /*
-            var connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=ewhayeeun;";
-            var connection = new MySqlConnection(connectionString);
-           */
-            MySqlConnection connection = new MySqlConnection(db_information); 
+            /*
+             var connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=ewhayeeun;";
+             var connection = new MySqlConnection(connectionString);
+            */
+            MySqlConnection connection = new MySqlConnection(db_information);
             try
             {
                 connection.Open();
                 MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT CONTENT_TAG FROM CONTENT", connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
-                
+
                 adp.Fill(ds, "loadDataBinding"); //content table
                 //DataSet ds = new DataSet();
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
@@ -76,8 +76,8 @@ namespace adc
         // data Table --> replace to DB later
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-          //  int id;
-           // string path, form, context, c, name;
+            //  int id;
+            // string path, form, context, c, name;
             string sql1, sql2;
             DataTable tTable;
             DataTable cTable;
@@ -102,7 +102,7 @@ namespace adc
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(db_information)) 
+                using (MySqlConnection conn = new MySqlConnection(db_information))
                 {
                     conn.Open();
                     if (conn.State == System.Data.ConnectionState.Open)
@@ -114,17 +114,17 @@ namespace adc
                     // 형식 DB 
                     DataSet ds = new DataSet();
 
-                    //("TYPE_TAG = '{0}'", ttag);
-                    //  sql1 = $"SELECT * FROM document WHERE TYPE_TAG ={ttag};"  ; // where TYPE_TAG = ttag
                     sql1 = "SELECT * FROM document WHERE TYPE_TAG =@val1;";
-                    sql1 = "SELECT * FROM document "; // where TYPE_TAG = ttag
-                    MySqlDataAdapter adapter = new MySqlDataAdapter();
-                    adapter.SelectCommand = new MySqlCommand(sql1, conn);
-                   // adapter.SelectCommand.Parameters.AddWithValue("@val", ttag);
-                    adapter.Fill(ds,"typedDataBinding"); // type table 
+                    MySqlCommand cmd1 = new MySqlCommand();
+                    cmd1.CommandText = sql1;
+                    cmd1.Parameters.AddWithValue("@val1", ttag);
+
+                    cmd1.Connection = conn;
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd1);
+                    adapter.Fill(ds, "typedDataBinding"); // type table 
 
 
-                    if (ds.Tables.Count >0)
+                    if (ds.Tables.Count > 0)
                     {
                         foreach (DataRow r in ds.Tables[0].Rows)
                         {
@@ -141,7 +141,7 @@ namespace adc
                     cTable = new DataTable();
                     cTable = ds.Tables["contentDataBinding"];
 
-                    foreach(DataRow dr in cTable.Rows)
+                    foreach (DataRow dr in cTable.Rows)
                     {
                         Console.WriteLine(dr["CONTENT_TAG"].ToString());
                         //MessageBox.Show(dr["CONTENT_TAG"].ToString());
@@ -169,8 +169,9 @@ namespace adc
 
                 }
 
-                
-            }catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
             /*
             var  connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=ewhayeeun;";
             var connection = new MySqlConnection(connectionString);
@@ -201,7 +202,7 @@ namespace adc
 
             //DataTable 생성
             DataTable dataTable = new DataTable();
-           // DataTable dataTable = ds.Tables[0];
+            // DataTable dataTable = ds.Tables[0];
             var dtkey = new DataColumn[1];
 
             /*컬럼 생성
@@ -214,10 +215,10 @@ namespace adc
 
             // 이전 페이지에서 선택한 태그들
             // tags에 리스트로 담겨있고 ctags에 문자열로 모았음(list, string 둘중 편한 것 선택
-            
-                        
-        
-                      
+
+
+
+
             //test data
             /*
             dataTable.Rows.Add(new string[] { "1", "1.pdf", "논문", " 여성 봉사 복지", "C:\\capston" });
@@ -260,12 +261,12 @@ namespace adc
             semiTable.Columns.Add("NAME", typeof(string));
             semiTable.Columns.Add("TYPE_TAG", typeof(string));
             semiTable.Columns.Add("PATH", typeof(string));
-            
+
             // 내용태그 검색 결과 테이블 
             DataTable resultTable = new DataTable();
             resultTable.Columns.Add("ID", typeof(string));
             resultTable.Columns.Add("CONTENT_TAG", typeof(string));
-     
+
             /*
              * " 되살리기!!!!"
 
