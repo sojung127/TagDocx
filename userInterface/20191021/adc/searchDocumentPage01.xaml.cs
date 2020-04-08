@@ -71,7 +71,7 @@ namespace adc
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-            var  connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
+            var  connectionString = "SERVER=localhost;DATABASE=adcs;UID=root";
             var connection = new MySqlConnection(connectionString);
             try
             {
