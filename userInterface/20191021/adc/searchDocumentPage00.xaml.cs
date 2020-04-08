@@ -31,7 +31,7 @@ namespace adc
             InitializeComponent();
             selected = new List<string>();
 
-            var connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
+            var connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;";
             var connection = new MySqlConnection(connectionString);
             try
             {
@@ -123,16 +123,22 @@ namespace adc
 
         private void TypeButton_Clicked(object sender, RoutedEventArgs e)
         {
-            var tmp = new SolidColorBrush(Colors.Yellow);
-            var yellow = tmp.ToString();
-            var selectBtn = types.Children.OfType<Button>().FirstOrDefault(r => r.Background.ToString() == yellow);
+            var tmp = new SolidColorBrush(Colors.DarkGray);
+            var color = tmp.ToString();
+            var selectBtn = types.Children.OfType<Button>().FirstOrDefault(r => r.Background.ToString() == color);
             Button btn = sender as Button;
-            btn.Background = new SolidColorBrush(Colors.Yellow);
+            btn.Background = tmp;
+            btn.Foreground = new SolidColorBrush(Colors.White);
             if (selectBtn != null)
             {
                 selectBtn.Background = new SolidColorBrush(Colors.LightGray);
-                
+                selectBtn.Foreground = Brushes.Black;
             }
+            
+            if (String.Compare(listBox2.Items[0].ToString(), btn.Content.ToString()) == 0 )
+            {
+                listBox2.Items[0] = "선택해주세요";
+            }else
             listBox2.Items[0] = btn.Content.ToString();
 
         }
