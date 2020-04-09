@@ -76,7 +76,9 @@ namespace adc
         // data Table --> replace to DB later
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //  int id;
+           // int id;
+            List<Object> ID_list = new List<Object>();
+
             // string path, form, context, c, name;
             string sql1, sql2;
             DataTable tTable;
@@ -115,6 +117,7 @@ namespace adc
                     DataSet ds = new DataSet();
 
                     sql1 = "SELECT * FROM document WHERE TYPE_TAG =@val1;";
+                   
                     MySqlCommand cmd1 = new MySqlCommand();
                     cmd1.CommandText = sql1;
                     cmd1.Parameters.AddWithValue("@val1", ttag);
@@ -126,16 +129,27 @@ namespace adc
 
                     if (ds.Tables.Count > 0)
                     {
-                        foreach (DataRow r in ds.Tables[0].Rows)
+                        foreach (DataRow dr in ds.Tables[0].Rows)
                         {
-                            Console.Write("Name");
+
+                            ID_list.Add(dr["ID"]);
+                            Console.Write(dr["NAME"]);
                             Console.Write("  ");
-                            Console.WriteLine(r["TYPE_TAG"]);
+                            Console.WriteLine(dr["TYPE_TAG"]);
                         }
                     }
-
+                    foreach(Object ID in ID_list)
+                    {
+                        Console.WriteLine(ID);
+                    }
+                    sql2 = "SELECT * FROM document WHERE TYPE_TAG =@val1 " +
+                           "UNION  ALL " +
+                           "SELECT * FROM content ORDER BY ID;";
+                    MySqlCommand cmd2 = new MySqlCommand();
+                    cmd2.CommandText = sql2;
                     sql2 = "select * from content";
                     adapter.SelectCommand = new MySqlCommand(sql2, conn);
+                    adapter = new MySqlDataAdapter(cmd2);
                     adapter.Fill(ds, "contentDataBinding"); // content table
 
                     cTable = new DataTable();
