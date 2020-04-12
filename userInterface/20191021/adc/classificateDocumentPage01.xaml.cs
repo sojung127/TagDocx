@@ -87,20 +87,20 @@ namespace adc
         {
 
         }
-
+        
         private void 묶음에추가_Click(object sender, RoutedEventArgs e)
         {
-            //넣은거 또 넣는거 처리 안됨, 그 태그리스트에 선택되었던거 선택된 표시로 해놓는거 처리안됨..
 
             int 묶음 =0;
             묶음 = 묶음박스.SelectedIndex; //tabpage는 0 부터 시작
             string[] tmplen = 묶음_태그[묶음].Split();
 
-            if (tmplen.Length == 5 || 태그목록리스트.SelectedItems.Count>5)
+            if (tmplen.Length == 5 || 태그목록리스트.SelectedItems.Count > 5)
             {
                 MessageBox.Show("태그는 5개까지 선택가능 합니다.", "태그제한", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
+       
             if (묶음>묶음_태그.Count- 1&& 태그목록리스트.SelectedItem != null) //처음 태그 추가
             {
        
@@ -130,9 +130,12 @@ namespace adc
             if (묶음 == 1) showSelectedTags(묶음태그리스트1);
             if (묶음 == 2) showSelectedTags(묶음태그리스트2);
         }
-        private void 묶음에서삭제_Click(object sender, RoutedEventArgs e)
+        private void 묶음비우기_Click(object sender, RoutedEventArgs e)
         {
-
+            int tabindex = 묶음박스.SelectedIndex; //어느 묶음 선택했는지
+            if (tabindex == 0) { 묶음_태그[0]="";  showSelectedTags(묶음태그리스트0); }
+            if (tabindex == 1) { 묶음_태그[1] = ""; showSelectedTags(묶음태그리스트1); }
+            if (tabindex == 2) { 묶음_태그[2] =""; showSelectedTags(묶음태그리스트2); }
         }
         private void showSelectedTags(ListBox 묶음태그리스트)
         {

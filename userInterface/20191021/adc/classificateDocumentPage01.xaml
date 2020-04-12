@@ -75,8 +75,8 @@
             </TabItem>
 
         </TabControl>
-        <Button x:Name="묶음에추가"  Content="&lt;&lt;"  HorizontalAlignment="Left" Height="30" Margin="448,172,0,0" Grid.Row="1" VerticalAlignment="Top" Width="42" Click="묶음에추가_Click" FontSize="18" FontWeight="Bold"/>
-        <Button x:Name="묶음에서삭제" Content="&gt;&gt;" HorizontalAlignment="Left" Height="30" Margin="448,219,0,0" Grid.Row="1" VerticalAlignment="Top" Width="42" Click="묶음에추가_Click" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="묶음에추가"  Content="묶음에 추가"  HorizontalAlignment="Left" Height="30" Margin="359,303.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="116" Click="묶음에추가_Click" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="묶음에서삭제" Content="묶음 비우기" HorizontalAlignment="Left" Height="28" Margin="205,303.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="116" Click="묶음비우기_Click" FontSize="18" FontWeight="Bold"/>
         <Label x:Name="임시태그목록" Content="테스트텍스트" HorizontalAlignment="Left" Height="23" Margin="358,84,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111"/>
         <!--
         <Button x:Name="묶음추가" Content="묶음추가" Margin="368,107,357,191.6" Grid.Row="1" Click="묶음추가클릭"/>
