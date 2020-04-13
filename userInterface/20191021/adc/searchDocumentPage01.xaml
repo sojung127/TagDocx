@@ -22,20 +22,24 @@
         </StackPanel>
         <TextBlock Text="입력한 검색어를 바탕으로 일치율이 높은 문서 순으로 나열한 결과입니다." TextWrapping="Wrap" Margin="10,0,10,0.4" VerticalAlignment="Bottom" Height="30" FontSize="20"/>
 
-        <Border Background="LightGray" HorizontalAlignment="Left" Height="300" Grid.Row="1" VerticalAlignment="Top" Width="800"/>
+        <Border Background="LightGray" HorizontalAlignment="Left" Height="300" Grid.Row="1" VerticalAlignment="Top" Width="auto"/>
         <Grid Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left"     >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="52*"/>
+                <RowDefinition Height="163*"/>
+            </Grid.RowDefinitions>
             <!-- Document Path, related tag list, Folder Path -->
-            <DataGrid Name="dataGrid1" ItemsSource="{Binding XPath=searchDocument00}"  AutoGenerateColumns="False" RowHeaderWidth="20"  Height="210" VerticalAlignment="Top" SelectionChanged="Page_Loaded" Margin="84,35,-719,-30.333" >
+            <DataGrid Name="dataGrid1" ItemsSource="{Binding XPath=searchDocumentPage01}"  AutoGenerateColumns="False" RowHeaderWidth="20"  Height="210" VerticalAlignment="Top" SelectionChanged="Page_Loaded" Margin="84,35,-719,-30.334" Grid.RowSpan="2" >
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="Height" Value="35" />
+                        <Setter Property="Height" Value="50" />
                         <Setter Property="Padding" Value="5" />
                         <Setter Property="Background" Value="Darkgray" />
                         <Setter Property="Foreground" Value="White" />
                     </Style>
                 </DataGrid.ColumnHeaderStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID"  Binding="{Binding Path=ID}" />
+                    <DataGridTextColumn Header="ID"  Binding="{Binding Path=ID}"  />
                     <DataGridTextColumn Header="NAME" Binding="{Binding Path=NAME}" />
                     <DataGridTextColumn Header="TYPE" Binding="{Binding Path=TYPE_TAG}" />
                     <DataGridTextColumn Header="CONTENTS" Binding="{Binding Path=CONTENT_TAG}" />
@@ -54,7 +58,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             <!-- Templates to display document search result data -->
-          </Grid>
+        </Grid>
 
         <Button x:Name="gotoMain" Content="메인으로" HorizontalAlignment="Center"  Grid.Row="1"  Margin="361,261,365,22"  Width="74" Height="23"  Click="BtntoMain" RenderTransformOrigin="0.42,4.942" />
 

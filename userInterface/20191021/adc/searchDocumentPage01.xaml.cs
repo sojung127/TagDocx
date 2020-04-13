@@ -80,51 +80,92 @@ namespace adc
             List<Object> ID_list = new List<Object>();
 
             // string path, form, context, c, name;
-            string sql1, sql2;
-            DataTable tTable;
-            DataTable cTable;
+            string sql1, sql2, sql3;
+           
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("ID", typeof(string));
+            dataTable.Columns.Add("NAME", typeof(string));
+            dataTable.Columns.Add("TYPE_TAG", typeof(string));
+            dataTable.Columns.Add("CONTENT_TAG", typeof(string));
+            dataTable.Columns.Add("PATH", typeof(string));
+
 
             string ttag = "";           // 형식태그 String'형식1'
             string ctags = @"";         // 내용태그 정규표현식 형태로 (@".*태그1.*태그3.*")
+            string ctag = "";
             int length = tags.Count();
             if (ttag != "") ttag = "";
             if (ctags != "") ctags = "";
+            if (ctag != "") ctag = "";
             foreach (string i in tags)
             {
                 //ctags = ctags + i 
                 if (tags.IndexOf(i) == 0)
                     ttag = ttag + i;
-                else ctags = ctags + ".*" + i;
+                else
+                {
+                    ctags = ctags + ".*" + i;
+                    ctag = ctag + i;
+                    
+                };
 
             }
             ctags = ctags + ".*";
             Console.WriteLine(" ");
             Console.WriteLine(ttag);
             Console.WriteLine(ctags);
+            Console.WriteLine(ctag);
 
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(db_information))
                 {
+                    
+
+                    // command에 query 삽입
+                    
+                    sql1 = "SELECT * FROM document WHERE TYPE_TAG =@val1;"; // SQL 형식태그 선택
+                    MySqlCommand cmd1 = new MySqlCommand();
+                    cmd1.CommandText = sql1;
+                    cmd1.Parameters.AddWithValue("@val1", ttag); 
+                    
+                    sql2 = "SELECT * FROM content WHERE  CONTENT_TAG=@val2 ;";  // SQL 내용태그 선택
+                    MySqlCommand cmd2 = new MySqlCommand();
+                    cmd2.CommandText = sql2;
+                    cmd2.Parameters.AddWithValue("@val2", ctag);
+                   
+                    sql3 = "SELECT * FROM content;";  //  내용태그 
+                    MySqlCommand cmd3 = new MySqlCommand();
+                    cmd3.CommandText = sql3;
+                   
+
+                    DataSet ds = new DataSet();
+                    cmd1.Connection = conn;     // 형식 DB 연결
+                    cmd2.Connection = conn;    // 내용 DB 연결 (ID 찾기)
+                    cmd3.Connection = conn;     //내용 DB 연결 (전체)
+
                     conn.Open();
                     if (conn.State == System.Data.ConnectionState.Open)
                     {
                         MessageBox.Show("서버에 연결");
                         Console.WriteLine("서버에 연결");
+
                     }
 
-                    // 형식 DB 
-                    DataSet ds = new DataSet();
-
-                    sql1 = "SELECT * FROM document WHERE TYPE_TAG =@val1;";
-                   
-                    MySqlCommand cmd1 = new MySqlCommand();
-                    cmd1.CommandText = sql1;
-                    cmd1.Parameters.AddWithValue("@val1", ttag);
-
-                    cmd1.Connection = conn;
+                    // 형식 DB 테이블 읽어오기
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd1);
-                    adapter.Fill(ds, "typedDataBinding"); // type table 
+                    adapter.Fill(ds, "First Table"); // type table 
+
+                    // 내용 DB에서 내용태그에 해당하는 ID 찾기 
+                    adapter = new MySqlDataAdapter(cmd2);
+                    adapter.Fill(ds, "Second Table"); // content table
+
+                    // 내용 DB 읽어오기 
+                    adapter = new MySqlDataAdapter(cmd3);
+                    adapter.Fill(ds, "Third Table"); // content table
+
+
+                    //dataTable = ds.Tables["First Table"];
 
 
                     if (ds.Tables.Count > 0)
@@ -136,30 +177,119 @@ namespace adc
                             Console.Write(dr["NAME"]);
                             Console.Write("  ");
                             Console.WriteLine(dr["TYPE_TAG"]);
+                           
                         }
                     }
-                    foreach(Object ID in ID_list)
+                    
+                    /*
+                    foreach (Object ID in ID_list)
                     {
                         Console.WriteLine(ID);
                     }
-                    sql2 = "SELECT * FROM document WHERE TYPE_TAG =@val1 " +
-                           "UNION  ALL " +
-                           "SELECT * FROM content ORDER BY ID;";
+                    */
+                    // 내용 DB 테이블 읽어오기 
+                    /*
+                     * sql2 = "SELECT * FROM content";
+                    sql2 = "SELECT * FROM content WHERE  CONTENT_TAG=@val2 ;";
                     MySqlCommand cmd2 = new MySqlCommand();
                     cmd2.CommandText = sql2;
-                    sql2 = "select * from content";
-                    adapter.SelectCommand = new MySqlCommand(sql2, conn);
+                    cmd2.Parameters.AddWithValue("@val2", ctags);
+                    
+                    cmd2.Connection = conn;
                     adapter = new MySqlDataAdapter(cmd2);
-                    adapter.Fill(ds, "contentDataBinding"); // content table
+                    adapter.Fill(ds, "Second Table"); // content table
+                   */
+                    Console.WriteLine("내용태그");
 
-                    cTable = new DataTable();
-                    cTable = ds.Tables["contentDataBinding"];
+                    //semiTable = ds.Tables["contentDataBinding"];
 
-                    foreach (DataRow dr in cTable.Rows)
+
+                    List<String> list = new List<String>();
+                    foreach (DataRow dr in ds.Tables[1].Rows)
                     {
+                        list.Add(dr["ID"].ToString());
+                        Console.Write(dr["ID"]);
                         Console.WriteLine(dr["CONTENT_TAG"].ToString());
-                        //MessageBox.Show(dr["CONTENT_TAG"].ToString());
+                        /* 
+                         foreach (Object ID in ID_list)
+                         {
+                             if (dr["ID"] == ID)
+                             {
+                                 Console.Write(dr["ID"]);
+                                 Console.Write("  ");
+                                 Console.WriteLine(dr["CONTENT_TAG"].ToString());
+                             }
+                             else
+                             {
+
+                                 ID_list.Remove(ID);
+
+                             }
+                             //MessageBox.Show(dr["CONTENT_TAG"].ToString());
+                         }
+                         */
                     }
+
+                    DataRow row = null;
+                    List <string>  ctagData = new List <string> ();
+                    // 결과 테이블 입력하기 
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        foreach (String s in list)  //list : ID 리스트 
+                        {
+
+                            if (dr["ID"].ToString() == s)
+                            {
+                                // dataTable.Rows.Add(new string[] { "1", "1.pdf", "논문", " 여성 봉사 복지", "C:\\capston" });
+                                row = dataTable.NewRow();
+                                row["ID"] = s;
+                                row["NAME"] = dr["NAME"].ToString();
+                                row["TYPE_TAG"] = dr["TYPE_TAG"].ToString();
+                                //row["CONTENT_TAG"] = dr["CONTENT_TAG"];
+                                row["PATH"] = dr["PATH"].ToString();
+                                dataTable.Rows.Add(row);
+                                break;
+                            }
+                        }
+
+                    }
+                    int rowNum = 0;
+                    foreach (String s in list)
+                    {
+
+                        String ID = s;
+                        Console.Write(ID);
+                        String Contents = "";
+                        foreach(DataRow drc in ds.Tables[2].Rows)
+                        {
+                            if (drc["ID"].ToString() == ID)
+                            {
+                                Contents = Contents + drc["CONTENT_TAG"].ToString() + " ";
+                                //Console.WriteLine(Contents);
+                            }
+                        }
+                        dataTable.Rows[rowNum]["CONTENT_TAG"] = Contents;
+                        rowNum++;
+                    }
+
+
+
+
+                    foreach (DataRow row_ in dataTable.Rows)
+                    {
+                        foreach (DataColumn column in dataTable.Columns)
+                        {
+                            Console.WriteLine(row_[column]);
+                        }
+                    }
+
+                    dataGrid1.ItemsSource = dataTable.DefaultView;
+
+                    sql3 = "SELECT * FROM document WHERE TYPE_TAG =@val1 " +
+                           "UNION  ALL " +
+                           "SELECT * FROM content ORDER BY ID;";
+
+
                     /*
                     sql1 = "SELECT DISTINCT TYPE_TAG FROM document";
                     MySqlCommand cmd = new MySqlCommand(sql1, conn);
@@ -215,9 +345,9 @@ namespace adc
             */
 
             //DataTable 생성
-            DataTable dataTable = new DataTable();
+            //DataTable dataTable = new DataTable();
             // DataTable dataTable = ds.Tables[0];
-            var dtkey = new DataColumn[1];
+           // var dtkey = new DataColumn[1];
 
             /*컬럼 생성
             dataTable.Columns.Add("ID", typeof(string));
@@ -264,11 +394,11 @@ namespace adc
 
             // datacolumn으로 primary key 설정
             DataColumn[] primarykey = new DataColumn[1];
-            primarykey[0] = dataTable.Columns["ID"];
+            //primarykey[0] = dataTable.Columns["ID"];
 
             // 복합키 설정 
-            dataTable.PrimaryKey = primarykey;
-
+            //dataTable.PrimaryKey = primarykey;
+            /*
             // 형식태그 검색 결과 테이블 
             DataTable semiTable = new DataTable();
             semiTable.Columns.Add("ID", typeof(string));
@@ -280,7 +410,7 @@ namespace adc
             DataTable resultTable = new DataTable();
             resultTable.Columns.Add("ID", typeof(string));
             resultTable.Columns.Add("CONTENT_TAG", typeof(string));
-
+            */
             /*
              * " 되살리기!!!!"
 
@@ -377,6 +507,9 @@ namespace adc
 
         }
 
+        private void Page_Loaded(object sender, SelectionChangedEventArgs e)
+        {
 
+        }
     }
 }
