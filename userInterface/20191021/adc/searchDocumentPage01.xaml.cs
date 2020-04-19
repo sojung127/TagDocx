@@ -29,7 +29,7 @@ namespace adc
     public partial class searchDocumentPage01 : Page
     {
         List<string> tags;
-        static string db_information = @"SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=ewhayeeun;";
+        static string db_information = @"SERVER=127.0.0.1;DATABASE=adcs;UID=godocx;PASSWORD=486; PORT=3306;";
 
         public searchDocumentPage01(List<string> vs) // 태그 리스트로 받아옴 
         {
@@ -48,12 +48,7 @@ namespace adc
                 DataSet ds = new DataSet();
 
                 adp.Fill(ds, "loadDataBinding"); //content table
-                //DataSet ds = new DataSet();
-                // 윈도우 폼의 LoadDataBinding에 데이터 넣기
-                //adp.Fill(ds, "searchDocument00");
-
-                //dataGrid1.DataContext = ds;
-
+               
             }
             catch (MySqlException ex)
             {
@@ -139,12 +134,7 @@ namespace adc
                     cmd1.CommandText = sql1;
                     cmd1.Parameters.AddWithValue("@val1", ttag); 
                     
-                    /* 입력값으로 걸러서 가져온다.
-                    sql2 = "SELECT * FROM content WHERE  CONTENT_TAG=@val2 ;";  // SQL 내용태그 선택
-                    MySqlCommand cmd2 = new MySqlCommand();
-                    cmd2.CommandText = sql2;
-                    cmd2.Parameters.AddWithValue("@val2", ctag);
-                    */
+                    
                     // 모두 읽어온 후 나중에 내용태그 값
                     sql2 = "SELECT * FROM content;";  //  내용태그 
                     MySqlCommand cmd2 = new MySqlCommand();
@@ -201,37 +191,11 @@ namespace adc
                         
                     }
                    
-                   // ID_list_length = ID_list.Count();
-                    //Console.WriteLine(ID_list_length);
-                    /*
-                    foreach (Object ID in ID_list)
-                    {
-                        Console.WriteLine(ID);
-                    }
-                    */
-                    // 내용 DB 테이블 읽어오기 
-                    /*
-                     * sql2 = "SELECT * FROM content";
-                    sql2 = "SELECT * FROM content WHERE  CONTENT_TAG=@val2 ;";
-                    MySqlCommand cmd2 = new MySqlCommand();
-                    cmd2.CommandText = sql2;
-                    cmd2.Parameters.AddWithValue("@val2", ctags);
-                    
-                    cmd2.Connection = conn;
-                    adapter = new MySqlDataAdapter(cmd2);
-                    adapter.Fill(ds, "Second Table"); // content table
-                   */
+                   
                     Console.WriteLine("내용태그");
 
-                    //semiTable = ds.Tables["contentDataBinding"];
-
-
-                    // List<String> IDList = new List<String>();
                     // 형식태그가 일치하는 문서들의 ID 리스트를 doc[0]에 입력
-
-                    // int[,] doc = new int[totalRows, 2] {0};
-                    //int num = 0;
-
+         
                     //num 번 ID 값을 갖는 문서에 대해 태그 몇개 갖는지 count
                     var myTable = new Dictionary<int, int>();
                     foreach (DataRow dr in ds.Tables[1].Rows)
@@ -342,26 +306,6 @@ namespace adc
                            "UNION  ALL " +
                            "SELECT * FROM content ORDER BY ID;";
 
-
-                    /*
-                    sql1 = "SELECT DISTINCT TYPE_TAG FROM document";
-                    MySqlCommand cmd = new MySqlCommand(sql1, conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                    DataSet ds = new DataSet();
-
-                    adp.Fill(ds, "typeDataBinding"); // type table
-                    //DataTable dataTable = new DataTable();
-                    typeTable = ds.Tables[0];
-                   
-                    
-                    // 내용 DB
-                    sql2 = "SELECT DISTINCT CONTENT_TAG FROM content";
-                    cmd = new MySqlCommand(sql1, conn);
-                    adp = new MySqlDataAdapter(cmd);
-                    ds = new DataSet();
-
-                    adp.Fill(ds, "contentDataBinding"); // type table
-                    */
                     conn.Close();
 
                 }
