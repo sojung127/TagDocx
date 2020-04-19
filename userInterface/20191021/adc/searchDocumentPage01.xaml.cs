@@ -76,10 +76,12 @@ namespace adc
         // data Table --> replace to DB later
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-           // int id;
-            List<Object> ID_list = new List<Object>();
+            
+            List<int> ID_list = new List<int>();
+           
+            int value =0;
+            int tagRowCount=0;
 
-            // string path, form, context, c, name;
             string sql1, sql2, sql3;
            
             DataTable dataTable = new DataTable();
@@ -93,6 +95,7 @@ namespace adc
             string ttag = "";           // 형식태그 String'형식1'
             string ctags = @"";         // 내용태그 정규표현식 형태로 (@".*태그1.*태그3.*")
             string ctag = "";
+            var tag_list = new List<string>();
             int length = tags.Count();
             if (ttag != "") ttag = "";
             if (ctags != "") ctags = "";
@@ -101,12 +104,15 @@ namespace adc
             {
                 //ctags = ctags + i 
                 if (tags.IndexOf(i) == 0)
+                {
                     ttag = ttag + i;
+                  //  tag_list.Add(i);
+                }
                 else
                 {
                     ctags = ctags + ".*" + i;
                     ctag = ctag + i;
-                    
+                    tag_list.Add(i);
                 };
 
             }
@@ -115,6 +121,10 @@ namespace adc
             Console.WriteLine(ttag);
             Console.WriteLine(ctags);
             Console.WriteLine(ctag);
+            foreach(string str in tag_list)
+            {
+                Console.WriteLine(str);
+            }
 
             try
             {
@@ -129,11 +139,18 @@ namespace adc
                     cmd1.CommandText = sql1;
                     cmd1.Parameters.AddWithValue("@val1", ttag); 
                     
+                    /* 입력값으로 걸러서 가져온다.
                     sql2 = "SELECT * FROM content WHERE  CONTENT_TAG=@val2 ;";  // SQL 내용태그 선택
                     MySqlCommand cmd2 = new MySqlCommand();
                     cmd2.CommandText = sql2;
                     cmd2.Parameters.AddWithValue("@val2", ctag);
-                   
+                    */
+                    // 모두 읽어온 후 나중에 내용태그 값
+                    sql2 = "SELECT * FROM content;";  //  내용태그 
+                    MySqlCommand cmd2 = new MySqlCommand();
+                    cmd2.CommandText = sql2;
+
+
                     sql3 = "SELECT * FROM content;";  //  내용태그 
                     MySqlCommand cmd3 = new MySqlCommand();
                     cmd3.CommandText = sql3;
@@ -164,23 +181,28 @@ namespace adc
                     adapter = new MySqlDataAdapter(cmd3);
                     adapter.Fill(ds, "Third Table"); // content table
 
-
+                    // 형식태그 입력값과 일치하는 문서 ID를 배열로 저장하기
                     //dataTable = ds.Tables["First Table"];
-
-
+                  
+                    tagRowCount = ds.Tables[0].Rows.Count;
+                    ID_list.Capacity = tagRowCount;
                     if (ds.Tables.Count > 0)
                     {
                         foreach (DataRow dr in ds.Tables[0].Rows)
                         {
 
-                            ID_list.Add(dr["ID"]);
+                            //  ID_list[Convert.ToInt32(dr["ID"])] = i;
+                            ID_list.Add(Convert.ToInt32(dr["ID"]));
                             Console.Write(dr["NAME"]);
                             Console.Write("  ");
                             Console.WriteLine(dr["TYPE_TAG"]);
                            
                         }
+                        
                     }
-                    
+                   
+                   // ID_list_length = ID_list.Count();
+                    //Console.WriteLine(ID_list_length);
                     /*
                     foreach (Object ID in ID_list)
                     {
@@ -204,45 +226,72 @@ namespace adc
                     //semiTable = ds.Tables["contentDataBinding"];
 
 
-                    List<String> list = new List<String>();
+                    // List<String> IDList = new List<String>();
+                    // 형식태그가 일치하는 문서들의 ID 리스트를 doc[0]에 입력
+
+                    // int[,] doc = new int[totalRows, 2] {0};
+                    //int num = 0;
+
+                    //num 번 ID 값을 갖는 문서에 대해 태그 몇개 갖는지 count
+                    var myTable = new Dictionary<int, int>();
                     foreach (DataRow dr in ds.Tables[1].Rows)
                     {
-                        list.Add(dr["ID"].ToString());
-                        Console.Write(dr["ID"]);
-                        Console.WriteLine(dr["CONTENT_TAG"].ToString());
-                        /* 
-                         foreach (Object ID in ID_list)
-                         {
-                             if (dr["ID"] == ID)
-                             {
-                                 Console.Write(dr["ID"]);
-                                 Console.Write("  ");
-                                 Console.WriteLine(dr["CONTENT_TAG"].ToString());
-                             }
-                             else
-                             {
+                        int i = Convert.ToInt32(dr["ID"]);
 
-                                 ID_list.Remove(ID);
+                        if (!ID_list.Contains(i)) continue;
+                        else
+                        {
+                            foreach (String s in tag_list)
+                            {
+                                String content_tag = dr["Content_Tag"].ToString();
+                                if (content_tag == s)
+                                {
+                                    if (!myTable.ContainsKey(i))
+                                        myTable.Add(i, 1);
+                                    else
+                                    {
+                                        value = myTable[i];
+                                        //Console.WriteLine(value++);
+                                        myTable[i] = ++value;
+                                    }
 
-                             }
-                             //MessageBox.Show(dr["CONTENT_TAG"].ToString());
-                         }
-                         */
+
+                                }
+                                else if (content_tag != s) continue;
+
+                            }
+                        }
                     }
+                    // myTable 내림차순 정렬 
+                    var queryDesc = myTable.OrderByDescending(x => x.Value);
+                    /*
+                    foreach (KeyValuePair<int, int> kvp in myTable)
+                    {
+                        Console.WriteLine("key={0}, Value={1}", kvp.Key, kvp.Value);
+                    }
+                    */
+                   foreach (var dictionary in queryDesc)
+                    {
+                        Console.WriteLine("key={0}, Value={1}", dictionary.Key, dictionary.Value);
+                    }
+                   
+
 
                     DataRow row = null;
-                    List <string>  ctagData = new List <string> ();
-                    // 결과 테이블 입력하기 
-                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    List<string> ctagData = new List<string>();
+                    // 내용태그와 형식태그 결과 하나의 테이블 합쳐서 화면에 바인딩 
+                   
+                    //foreach (int i in ID_list)  //list : ID 리스트 
+                    foreach(var dictionary in queryDesc)
                     {
-                        foreach (String s in list)  //list : ID 리스트 
+                        Console.WriteLine(dictionary.Key);
+                        foreach (DataRow dr in ds.Tables[0].Rows)
                         {
-
-                            if (dr["ID"].ToString() == s)
+                            if (Convert.ToInt32(dr["ID"]) == dictionary.Key)
                             {
                                 // dataTable.Rows.Add(new string[] { "1", "1.pdf", "논문", " 여성 봉사 복지", "C:\\capston" });
                                 row = dataTable.NewRow();
-                                row["ID"] = s;
+                                row["ID"] = dictionary.Key;
                                 row["NAME"] = dr["NAME"].ToString();
                                 row["TYPE_TAG"] = dr["TYPE_TAG"].ToString();
                                 //row["CONTENT_TAG"] = dr["CONTENT_TAG"];
@@ -251,18 +300,18 @@ namespace adc
                                 break;
                             }
                         }
-
                     }
+
+                    
                     int rowNum = 0;
-                    foreach (String s in list)
+                    //foreach (int i in ID_list)
+                    foreach (var dictionary in queryDesc)
                     {
 
-                        String ID = s;
-                        Console.Write(ID);
                         String Contents = "";
-                        foreach(DataRow drc in ds.Tables[2].Rows)
+                        foreach (DataRow drc in ds.Tables[2].Rows)
                         {
-                            if (drc["ID"].ToString() == ID)
+                            if (Convert.ToInt32(drc["ID"]) == dictionary.Key)
                             {
                                 Contents = Contents + drc["CONTENT_TAG"].ToString() + " ";
                                 //Console.WriteLine(Contents);
@@ -282,6 +331,10 @@ namespace adc
                             Console.WriteLine(row_[column]);
                         }
                     }
+
+
+
+
 
                     dataGrid1.ItemsSource = dataTable.DefaultView;
 
