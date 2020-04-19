@@ -39,7 +39,9 @@ def content_tagging(text, path):
 
     # 제목에서 명사 분리
     title = title_test.run(path)
-    final_result_list = komoran.get_morphes_by_tags(title, tag_list=['NNG', 'NNP'])
+
+    if type(title) is "<class 'str'>":
+        final_result_list = komoran.get_morphes_by_tags(title, tag_list=['NNG', 'NNP'])
 
     # 가장 확률 높은 토픽의 단어 출력
     topic_words = lda_ko.show_topics(num_topics=1, num_words=5, formatted=False)
