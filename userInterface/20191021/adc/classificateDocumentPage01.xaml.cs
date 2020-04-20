@@ -8,6 +8,7 @@ using System.Linq; //리스트 중복제거 함수 쓰려고 추가
 using System;
 
 
+
 namespace adc
 {
     /// <summary>
@@ -85,9 +86,11 @@ namespace adc
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            태그목록리스트.Items.Clear(); //리셋하고
+            string 검색어 = 태그검색어.Text;
+            태그목록리스트.Items.Add(dt.Select("TYPE_TAG like '%", 검색어));
         }
-        
+
         private void 묶음에추가_Click(object sender, RoutedEventArgs e)
         {
 
