@@ -16,7 +16,7 @@ namespace adc
     /// </summary>
     public partial class classificateDocumentPage01 : Page
     {
-        string folderName = null;
+
         DataSet ds = new DataSet();  
         DataTable dt = new DataTable(); //가지고놀dbtable ds[0]이 dt임
 
@@ -84,13 +84,6 @@ namespace adc
         }
 
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            태그목록리스트.Items.Clear(); //리셋하고
-            string 검색어 = 태그검색어.Text;
-            태그목록리스트.Items.Add(dt.Select("TYPE_TAG like '%", 검색어));
-        }
-
         private void 묶음에추가_Click(object sender, RoutedEventArgs e)
         {
 
@@ -125,7 +118,7 @@ namespace adc
             {
                 묶음_태그[묶음] = "";
             }
-            임시태그목록.Content= 묶음_태그[묶음];
+            //임시태그목록.Content= 묶음_태그[묶음];
 
             묶음_태그[묶음]=묶음_태그[묶음].Trim();
 
@@ -145,7 +138,7 @@ namespace adc
             int tabindex = 0;
             묶음태그리스트.Items.Clear();//reset
             태그목록리스트.SelectedIndex = -1;
-            임시태그목록.Content = 묶음박스.SelectedIndex;
+            //임시태그목록.Content = 묶음박스.SelectedIndex;
             tabindex = 묶음박스.SelectedIndex;
 
             if (tabindex <= 묶음_태그.Count - 1 && 묶음_태그[tabindex] != null)
@@ -181,7 +174,29 @@ namespace adc
 
         }
 
-        
+        private void click_search(object sender, RoutedEventArgs e)
+        {
+            string 검색어 = 태그검색어.Text;
+            foreach (string searchtag in 태그목록리스트.Items)
+            {
+                if (searchtag == 검색어)
+                {
+                    태그목록리스트.SelectedItems.Add(searchtag); //선택되게표시하고
+                    int curIndex = 태그목록리스트.Items.IndexOf(searchtag);
+                    태그목록리스트.ScrollIntoView(태그목록리스트.Items[curIndex]);
+                    return; //찾아서 나가기
+                }
+            }
+            //못찾아서 못나가면
+            MessageBox.Show("찾는 태그가 없습니다.", "없는 태그", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void TextBox_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            태그검색어.SelectAll();
+        }
+
+
 
         /*private void 묶음추가클릭(object sender, RoutedEventArgs e) => 다음 버전에서 구현
         {
@@ -199,7 +214,7 @@ namespace adc
 
 
         }*/
-        
-       
+
+
     }
 }
