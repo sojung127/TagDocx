@@ -36,12 +36,12 @@
         <Label Content="태그를 복수 선택하여 그룹으로 묶을 수 도 있습니다.&#xD;&#xA;문서는 높은 순위의 그룹으로 우선 배정됩니다." HorizontalAlignment="Left" Margin="10,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="373" Height="49" FontSize="15"/>
 
         <Grid Margin="0,10,10,9.6" Grid.Row="1" HorizontalAlignment="Right" Width="300">
-            <TextBox x:Name="태그검색어" Height="32" Margin="10,10,0,0" TextWrapping="Wrap" Text="태그 검색어 입력" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" FontSize="14" HorizontalAlignment="Left" Width="229"/>
-            <Button x:Name="태그검색버튼" Content="검색" Height="32" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="46" FontSize="14" FontWeight="Bold"/>
+            <TextBox x:Name="태그검색어" Height="32" Margin="10,10,0,0" TextWrapping="Wrap" Text="검색할 태그를 입력하세요." VerticalAlignment="Top" GotMouseCapture="TextBox_GotMouseCapture" FontSize="14" HorizontalAlignment="Left" Width="229"/>
+            <Button x:Name="태그검색버튼" Content="검색" Height="32" Margin="0,10,10,0" VerticalAlignment="Top" Click="click_search" HorizontalAlignment="Right" Width="46" FontSize="14" FontWeight="Bold"/>
             <ListBox x:Name="태그목록리스트" Margin="10,47,10,10"/>
 
         </Grid>
-        <TabControl x:Name="묶음박스" HorizontalAlignment="Left" Height="192" Margin="10,107,0,0" Grid.Row="1" VerticalAlignment="Top" Width="433" SelectionChanged="TabControl_SelectionChanged" IsSynchronizedWithCurrentItem="False">
+        <TabControl x:Name="묶음박스" HorizontalAlignment="Left" Height="157" Margin="10,106.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="433" SelectionChanged="TabControl_SelectionChanged" IsSynchronizedWithCurrentItem="False">
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -75,9 +75,8 @@
             </TabItem>
 
         </TabControl>
-        <Button x:Name="묶음에추가"  Content="&lt;&lt;"  HorizontalAlignment="Left" Height="30" Margin="448,172,0,0" Grid.Row="1" VerticalAlignment="Top" Width="42" Click="묶음에추가_Click" FontSize="18" FontWeight="Bold"/>
-        <Button x:Name="묶음에서삭제" Content="&gt;&gt;" HorizontalAlignment="Left" Height="30" Margin="448,219,0,0" Grid.Row="1" VerticalAlignment="Top" Width="42" Click="묶음에추가_Click" FontSize="18" FontWeight="Bold"/>
-        <Label x:Name="임시태그목록" Content="테스트텍스트" HorizontalAlignment="Left" Height="23" Margin="358,84,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111"/>
+        <Button x:Name="묶음에추가"  Content="묶음에 추가"  HorizontalAlignment="Left" Height="30" Margin="245,268.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="116" Click="묶음에추가_Click" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="묶음에서삭제" Content="묶음 비우기" HorizontalAlignment="Left" Height="28" Margin="91,268.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="116" Click="묶음비우기_Click" FontSize="18" FontWeight="Bold"/>
         <!--
         <Button x:Name="묶음추가" Content="묶음추가" Margin="368,107,357,191.6" Grid.Row="1" Click="묶음추가클릭"/>
         -->
