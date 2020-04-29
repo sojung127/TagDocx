@@ -149,7 +149,7 @@ namespace adc
 
                 //typetag로 먼저 필터링하기
                 string 태그쿼리형식0=filterTypeTag(묶음0split);
-                if (태그쿼리형식0 != "()") //형식태그가 있는 경우
+                if (태그쿼리형식0 != "()" && 태그쿼리형식0 !=null) //형식태그가 있는 경우
                 {
                     묶음0 = dt.Select("TYPE_TAG in " + 태그쿼리형식0);
                     필터링후0 = 묶음0.CopyToDataTable(); //"필터링후"에서 내용태그로 필터링하면됨
@@ -212,13 +212,12 @@ namespace adc
                 //typetag로 먼저 필터링하기
                 string 태그쿼리형식1 = filterTypeTag(묶음1split);
                 //형식태그가있는경우
-                if (태그쿼리형식1 != null) { 
+                if (태그쿼리형식1 != null && 태그쿼리형식1 !="()") { 
                     묶음1 = dt.Select("TYPE_TAG in " + 태그쿼리형식1);
                     필터링후1 = 묶음1.CopyToDataTable(); //"필터링후"에서 내용태그로 필터링하면됨
                     묶음1 = null;
                  }
                 else 필터링후1 = dt;
-
 
                 //쿼리에 넣을 형식으로 바꾸기
                 /*string 쿼리형식1 = "(";
@@ -274,7 +273,7 @@ namespace adc
 
                 //typetag로 먼저 필터링하기
                 string 태그쿼리형식2 = filterTypeTag(묶음2split);
-                if (태그쿼리형식2 != null) //형식태그있는경우
+                if (태그쿼리형식2 != null && 태그쿼리형식2 != "()") //형식태그있는경우
                 {
                     묶음2 = 필터링후2.Select("TYPE_TAG in " + 태그쿼리형식2);
                     필터링후2 = 묶음2.CopyToDataTable(); //"필터링후"에서 내용태그로 필터링하면됨
@@ -325,6 +324,44 @@ namespace adc
                 
             }
             else return null;
+        }
+        private DataGrid findtabindex()
+        {
+            int tabindex = 묶음결과박스.SelectedIndex;
+            if (tabindex == 0) return dataGridCustomers0;
+            if (tabindex == 1) return dataGridCustomers1;
+            else return dataGridCustomers2;
+        }
+        private DataTable findtabdata()
+        {
+            int tabindex = 묶음결과박스.SelectedIndex;
+            if (tabindex == 0) return cd0;
+            if (tabindex == 1) return cd1;
+            else return cd2;
+        }
+        private void ssdelete(object sender, RoutedEventArgs e)
+        {
+            //선택한폴더삭제하기
+            DataGrid cdatagrid = findtabindex();
+            cdatagrid.Items.Remove(cdatagrid.SelectedItem);
+        }
+
+        private void ssmove(object sender, RoutedEventArgs e)
+        {
+            //선택한폴더이동
+            DataGrid cdatagrid = findtabindex();
+            DataTable cdcd = findtabdata();
+            if (묶음0라디오.IsChecked ==true && 묶음1라디오.IsChecked == false && 묶음2라디오.IsChecked == false){
+                
+            }
+            if (묶음0라디오.IsChecked == false && 묶음1라디오.IsChecked == true && 묶음2라디오.IsChecked == false)
+            {
+                
+            }
+            if (묶음0라디오.IsChecked == false && 묶음1라디오.IsChecked == false && 묶음2라디오.IsChecked == true)
+            {
+               
+            }
         }
     }
 }
