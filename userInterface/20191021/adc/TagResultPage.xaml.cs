@@ -23,6 +23,7 @@ namespace adc
     /// <summary>
     /// TagResultPage.xaml에 대한 상호 작용 논리
     /// </summary>
+
     class Items
     {
         public Items(int id, string path, string form, string context, string name)
@@ -51,13 +52,14 @@ namespace adc
     public partial class TagResultPage : Page
     {
         string folderpath;
-        static string db_information = @"Server=localhost;Database=adcs;Uid=root;Pwd=1771094;";
+        static string db_information = @"Server=localhost;Database=adcs;Uid=godocx;Pwd=486;";
         string savingpath;
-
+        
         public TagResultPage()
         {
             InitializeComponent();
-            
+            App.
+
         }
 
         public TagResultPage(string path) : this()
@@ -91,7 +93,8 @@ namespace adc
                     RedirectStandardInput = true,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
-                    WorkingDirectory = @"C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\Scoring\",
+                    //WorkingDirectory = @"C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\Scoring\",
+                    WorkingDirectory = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\",
                     WindowStyle = ProcessWindowStyle.Hidden,
                     CreateNoWindow = true
                 }
@@ -104,13 +107,14 @@ namespace adc
                 if (sw.BaseStream.CanWrite)
                 {
                     // Vital to activate Anaconda
-                    sw.WriteLine(@"C:\Users\pyj\Anaconda3\Scripts\activate.bat");
+                    sw.WriteLine(@"C:\ProgramData\Anaconda3\Scripts\activate.bat");
+                    //sw.WriteLine(@"C:\Users\pyj\Anaconda3\Scripts\activate.bat");
                     // Activate your environment
                     //sw.WriteLine("activate tensorflow");
                     // Any other commands you want to run
                     //sw.WriteLine("set KERAS_BACKEND=tensorflow");
                     // run your script. You can also pass in arguments
-                    string command = @"python C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
+                    string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
                     sw.WriteLine(command);
 
                 }
@@ -221,6 +225,8 @@ namespace adc
                     conn.Open();
                     if (conn.State == System.Data.ConnectionState.Open)
                         MessageBox.Show("서버에 연결");
+
+                    id = App.index;
 
                     foreach (Items a in FileList.Items)
                     {

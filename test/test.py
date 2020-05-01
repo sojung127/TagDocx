@@ -46,7 +46,7 @@ def get_tag():
     #path_origin = input("문서경로:")
     #paths = ["../Dataset/기사/0전체폴더"]
     paths = ["../Dataset/기사/0전체폴더","../Dataset/논문/0전체","../Dataset/공고","../Dataset/지원서"]
-    paths = ["../Dataset/기사/기사test","../Dataset/논문/논문test2","../Dataset/지원서test"]
+    paths = ["../Dataset/기사/기사test","../Dataset/논문/논문test2","../Dataset/공고test","../Dataset/지원서test"]
 
     import pandas as pd
     train = pd.read_csv(r'C:\\Users\\YooJin\\Desktop\\AutomaticDocumentClassificationService\\test\\words.csv', encoding='CP949')
