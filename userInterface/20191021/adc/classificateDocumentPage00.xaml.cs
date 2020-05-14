@@ -51,8 +51,9 @@ namespace adc
         }
         private void BtnFindDoc(object sender, RoutedEventArgs e)
         {
-            
-            string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
+
+            // string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
+            string connectionString = @"SERVER=127.0.0.1;DATABASE=adcs;UID=godocx;PASSWORD=486; PORT=3306;";
             MySqlConnection connection = new MySqlConnection(connectionString);
             try
             {
