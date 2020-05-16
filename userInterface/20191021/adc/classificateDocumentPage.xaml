@@ -15,22 +15,19 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="352*"/>
+            <RowDefinition Height="77*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center"  >
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center" Height="71" Margin="0,0,0,0.2" Width="188"  >
             <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="adcs분류.png"/>
-            <TextBlock Text="문서 분류" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="문서 분류" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="./#EHWA" FontSize="30" Width="130" Height="30"></TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <Button x:Name="gotoMain" Content="메인으로" HorizontalAlignment="Center" Margin= "0,0,0,0"  Width="75" Click="BtnBackToHome"/>
-            <Button x:Name="strartTag" Content="시작하기" HorizontalAlignment="Right" Margin= "0,0,0,0" Width="75" Click="BtnNextStep" />
-
-        </StackPanel>
-        <TextBlock  HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="문서에 할당된 태그를 이용하여 자동 문서 분류 기능을 제공합니다. 형식 태그 별로 폴더를 생성하여 문서를 분류합니다." VerticalAlignment="Top" Height="116" Width="610" FontSize="20"/>
+        <Button x:Name="strartTag" Content="시작하기" FontFamily="./#EHWA" FontSize="30" Width="200" Height="50" Click="BtnNextStep" Margin="0,5.8,10,10" Grid.Row="2" HorizontalAlignment="Right" />
+        <Button x:Name="gotoMain" Content="메인으로" FontFamily="./#EHWA" FontSize="30"  Width="200" Height="50" Click="BtnBackToHome" Margin="10,5.8,0,10" Grid.Row="2" HorizontalAlignment="Left"/>
+        <TextBlock Margin="10,9.8,10,0" Grid.Row="1" TextWrapping="Wrap" FontFamily="./#EHWA" FontSize="30" Height="332" VerticalAlignment="Top" ><Run Text="문서에 할당된 태그를 이용하여 "/><Run Text="사용자가 지정한 묶음에 대해 문서를 찾아 자동으로 분류해 주는 기능입니다."/><LineBreak/></TextBlock>
     </Grid>
 
 </Page>
