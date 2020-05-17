@@ -13,47 +13,64 @@
     <Grid Margin="0,0,0,-0.4">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0*" />
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="17*"/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="353*"/>
+            <RowDefinition Height="148*"/>
         </Grid.RowDefinitions>
 
 
 
-        <StackPanel Grid.Column ="1"  Orientation="Horizontal" Margin="12.2,7,10.2,0" Height="90" VerticalAlignment="Top" Grid.Row="1" >
+        <StackPanel Margin="98,0,102,47" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal" Panel.ZIndex="-2" UseLayoutRounding="False" Width="600" >
             <Button x:Name="setTag" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Click="BtnSetTagPage" Height="90" >
-                <ContentControl>
-                    <StackPanel Height="90" Width="200" Orientation="Horizontal">
-                        <Image Source="adcscute.png" Height="90" VerticalAlignment="Center" HorizontalAlignment="Left" Width="90" />
-                        <TextBlock Text="문서 태깅" Height="auto" Width="110" VerticalAlignment="center" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FF00462A" Offset="1"/>
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FF00462A" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <ContentControl Width="200">
+                    <StackPanel Height="90" Orientation="Horizontal">
+                        <Image Source="adcscute.png" Height="90" VerticalAlignment="Center" HorizontalAlignment="Left" Width="72" Margin="0,0,0,-0.4" />
+                        <TextBlock Text="문서 태깅" FontFamily="./#EHWA" FontSize="30" Height="auto" Width="120" VerticalAlignment="center" TextAlignment="Center" Margin="0,30,0,29.6" Foreground="White" />
                     </StackPanel>
                 </ContentControl>
             </Button>
-            <Button x:Name="searchDoc" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="200" Click="BtnSearchDocPage" Height="90"  >
-                <ContentControl>
-                    <StackPanel Height="90" Width="200" Orientation="Horizontal">
-                        <Image Source="adcs검색.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                        <TextBlock Text="문서 검색" Height="auto" Width="110" VerticalAlignment="center" TextAlignment="Center" FontSize="20" FontWeight="Bold" />
-                    </StackPanel>
-                </ContentControl>
+            <Button x:Name="searchDoc" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="200" Click="BtnSearchDocPage" Height="90"    >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF00462A" Offset="1"/>
+                        <GradientStop Color="White"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <StackPanel Height="90" Orientation="Horizontal">
+                    <Image Source="adcs검색.png" Height="90" Width="72" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,-0.4" />
+                    <TextBlock Text="문서 검색" FontFamily="./#EHWA" FontSize="30"  Height="auto" Width="120" VerticalAlignment="center" TextAlignment="Center" Foreground="White" />
+                </StackPanel>
             </Button>
-            <Button x:Name="categorizeDoc"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Click="BtnClassificateDocPage" Height="90">
-                <ContentControl>
-                    <StackPanel Height="90" Width="200" Orientation="Horizontal">
-                        <Image Source="adcs분류.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-                        <TextBlock Text="문서 분류" Height="auto" Width="110" VerticalAlignment="center" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
+            <Button x:Name="categorizeDoc"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Click="BtnClassificateDocPage" Height="90" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF00462A" Offset="1"/>
+                        <GradientStop Color="White"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <ContentControl Width="200">
+                    <StackPanel Height="90" Orientation="Horizontal">
+                        <Image Source="adcs분류.png" Height="90" Width="72" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+                        <TextBlock Text="문서 분류" FontFamily="./#EHWA" FontSize="30" Height="auto" Width="120" VerticalAlignment="center" TextAlignment="Center" Foreground="White"/>
                     </StackPanel>
                 </ContentControl>
             </Button>
         </StackPanel>
 
-        <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Automatic Document Classification System" VerticalAlignment="Bottom" FontSize="22" FontFamily="Cooper Black"  Width="176" Margin="226.2,0,220.2,24" Height="101"/>
-        <Image Margin="192.2,19,192.2,83" Source="adcscute.png" Stretch="Fill" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="238" Width="238"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Automatic Document Classification System" VerticalAlignment="Bottom" FontSize="30" FontFamily="./#EHWA" Width="218" Margin="301,0,281,1" Height="125" TextAlignment="Center"/>
+        <Image Margin="287,26,275,88" Source="adcscute.png" Stretch="Fill" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="238" Width="238"/>
 
     </Grid>
 </Page>

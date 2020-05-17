@@ -58,7 +58,6 @@ namespace adc
         public TagResultPage()
         {
             InitializeComponent();
-            //App.
 
         }
 
@@ -94,7 +93,8 @@ namespace adc
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     //WorkingDirectory = @"C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\Scoring\",
-                    WorkingDirectory = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\",
+                    //WorkingDirectory = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\",
+                    WorkingDirectory = @"C:\capston\AutomaticDocumentClassificationService\Scoring\",
                     WindowStyle = ProcessWindowStyle.Hidden,
                     CreateNoWindow = true
                 }
@@ -107,14 +107,16 @@ namespace adc
                 if (sw.BaseStream.CanWrite)
                 {
                     // Vital to activate Anaconda
-                    sw.WriteLine(@"C:\ProgramData\Anaconda3\Scripts\activate.bat");
+                    sw.WriteLine(@"C:\Users\user\Anaconda3\Scripts\activate.bat");
+                    //sw.WriteLine(@"C:\ProgramData\Anaconda3\Scripts\activate.bat");
                     //sw.WriteLine(@"C:\Users\pyj\Anaconda3\Scripts\activate.bat");
                     // Activate your environment
-                    //sw.WriteLine("activate tensorflow");
+                    sw.WriteLine("activate tensorflow");
                     // Any other commands you want to run
                     //sw.WriteLine("set KERAS_BACKEND=tensorflow");
                     // run your script. You can also pass in arguments
-                    string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
+                    //string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
+                    string command = @"python C:\capston\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
                     sw.WriteLine(command);
 
                 }
@@ -226,7 +228,6 @@ namespace adc
                     if (conn.State == System.Data.ConnectionState.Open)
                         MessageBox.Show("서버에 연결");
 
-                    //id = App.index;
 
                     foreach (Items a in FileList.Items)
                     {
