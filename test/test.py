@@ -49,7 +49,8 @@ def get_tag():
     paths = ["../Dataset/기사/기사test","../Dataset/논문/논문test2","../Dataset/공고test","../Dataset/지원서test"]
 
     import pandas as pd
-    train = pd.read_csv(r'C:\\Users\\YooJin\\Desktop\\AutomaticDocumentClassificationService\\test\\words.csv', encoding='CP949')
+   # train = pd.read_csv(r'C:\\Users\\YooJin\\Desktop\\AutomaticDocumentClassificationService\\test\\words.csv', encoding='CP949')
+    train = pd.read_csv(r'C:\capston\AutomaticDocumentClassificationService\test\words.csv', encoding='CP949')
     train_words = train['words'].dropna().tolist()
     train =[]
 
@@ -188,4 +189,5 @@ def get_pickle():
 
 if __name__ == '__main__':
     #sys.exit(get_tag())
-    sys.exit(get_pickle())
+    sys.exit(get_tag())
+    #sys.exit(get_pickle())
