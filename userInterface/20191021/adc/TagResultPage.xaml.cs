@@ -58,7 +58,6 @@ namespace adc
         public TagResultPage()
         {
             InitializeComponent();
-            
 
         }
 
@@ -229,7 +228,6 @@ namespace adc
                     if (conn.State == System.Data.ConnectionState.Open)
                         MessageBox.Show("서버에 연결");
 
-                    
 
                     foreach (Items a in FileList.Items)
                     {
