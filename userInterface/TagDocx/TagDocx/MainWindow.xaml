@@ -1,0 +1,38 @@
+﻿<Window x:Class="TagDocx.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TagDocx"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen" Visibility="Visible">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Frame x:Name="MainHome" Margin="0,0,0.333,0.334" Grid.RowSpan="2"/>
+
+        <Grid x:Name="GridBarTitle" Grid.Row="0" Grid.ColumnSpan="2" Background="#FF8522BD" MouseDown="GridBarTitle_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="367*"/>
+                <ColumnDefinition Width="434*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="1">
+                <Button Width="25" Height="25"  Background ="{x:Null}" BorderBrush = "{x:Null}" Foreground="white">
+                    <materialDesign:PackIcon Kind="Bell" RenderTransformOrigin="-0.344,0.26"/>
+                </Button>
+                <Button Width="25" Height="25" Background ="{x:Null}" BorderBrush = "{x:Null}" Foreground="white">
+                    <materialDesign:PackIcon Kind="Account"/>
+                </Button>
+                <Button x:Name="ButtonFechar" Width="25" Height="25" Background ="{x:Null}" BorderBrush = "{x:Null}" Foreground="white" Click="ButtonFechar_Click">
+                    <materialDesign:PackIcon Kind="Power"/>
+                </Button>
+            </StackPanel>
+
+
+        </Grid>
+
+    </Grid>
+</Window>

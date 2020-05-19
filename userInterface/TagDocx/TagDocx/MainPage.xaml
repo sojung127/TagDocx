@@ -1,0 +1,16 @@
+﻿<Page x:Class="TagDocx.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TagDocx"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+
+    <Grid>
+        <Button Content="검색" HorizontalAlignment="Left" Margin="216,278,0,0" VerticalAlignment="Top" Width="75" Click="ToSearch"/>
+        <Button Content="분류" HorizontalAlignment="Left" Margin="464,278,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Page>
