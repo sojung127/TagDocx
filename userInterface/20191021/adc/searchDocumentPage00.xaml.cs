@@ -60,7 +60,7 @@ namespace adc
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
+            string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root";
             var connection = new MySqlConnection(connectionString);
             try
             {
@@ -177,8 +177,6 @@ namespace adc
             {
                 MessageBox.Show("내용태그는 3개까지 선택가능합니다.");
             }
-
-            //listBox2.Items[1] = selectedValue;
         }
 
 

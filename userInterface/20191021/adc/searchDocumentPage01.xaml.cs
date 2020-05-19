@@ -29,7 +29,7 @@ namespace adc
     public partial class searchDocumentPage01 : Page
     {
         List<string> tags;
-        static string db_information = @"SERVER=127.0.0.1;DATABASE=adcs;UID=godocx;PASSWORD=486; PORT=3306;";
+        static string db_information = @"SERVER=127.0.0.1;DATABASE=adcs;UID=godocx;PASSWORD=486; ";
 
         public searchDocumentPage01(List<string> vs) // 태그 리스트로 받아옴 
         {

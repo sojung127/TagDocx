@@ -33,7 +33,7 @@ namespace adc
             classificateDocumentPage01 page = new classificateDocumentPage01(ds);
             NavigationService.Navigate(page);
         }
- 
+
 
         private void BtnFindFolder(object sender, RoutedEventArgs e)
         {
@@ -44,7 +44,7 @@ namespace adc
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-               
+
                 folderName.Text = dialog.FileName.Replace("\\", ""); // 테스트용, 폴더 선택이 완료되면 선택된 폴더를 label에 출력
                 selectedFolder = dialog.FileName.Replace("\\", ""); ; //선택된 폴더이름저장
             }
@@ -53,18 +53,18 @@ namespace adc
         {
 
             // string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
-            string connectionString = @"SERVER=127.0.0.1;DATABASE=adcs;UID=godocx;PASSWORD=486; PORT=3306;";
+            string connectionString = @"SERVER=127.0.0.1;DATABASE=adcs;UID=godocx;PASSWORD=486;";
             MySqlConnection connection = new MySqlConnection(connectionString);
             try
             {
                 connection.Open();
-                /*MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='"+selectedFolder+"'", connection);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='"+selectedFolder+"'", connection);
+                /*MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
                 adp.Fill(ds, "LoadDataBinding");
                 dataGridCustomers.DataContext = ds;*/
-                
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM document inner join content on document.ID = content.ID where document.PATH='" + selectedFolder + "'", connection);
+
+                //MySqlCommand cmd = new MySqlCommand("SELECT * FROM document inner join content on document.ID = content.ID where document.PATH='" + selectedFolder + "'", connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
                 adp.Fill(ds, "LoadDataBinding");

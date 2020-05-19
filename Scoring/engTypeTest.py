@@ -56,7 +56,7 @@ for folder in folder_list:
     cnt=0
     for i in range(len(file_list)):
         path = path_origin + file_list[i]
-        print(path)
+        print(file_list[i])
         if os.path.isdir(path):
             pass
         if path[-3:] == 'pdf':
@@ -102,5 +102,6 @@ for folder in folder_list:
     filename='data'+ str(cnt)+'.bin'
     with open(filename,'wb') as f:
         pickle.dump(X_train,f)
+        pickle.dump(vectorizer,f)
     print('\n'+filename+' created!\n')
     cnt=cnt+1
