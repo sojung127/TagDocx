@@ -12,14 +12,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="2" >
             <Grid Margin="10,0">
-                <TextBox HorizontalAlignment="Left" Height="45" Margin="0,12,0,9.667" TextWrapping="Wrap"  VerticalAlignment="Center" Width="780" TextChanged="TextBox_TextChanged"/>
+                <TextBox HorizontalAlignment="Left" Height="40" Margin="0,2,0,2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="780" TextChanged="TextBox_TextChanged"/>
 
             </Grid>
         </Grid>
@@ -27,10 +27,10 @@
         <Grid Grid.Row="3">
             <Grid Margin="10,0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
                     <RowDefinition Height="7*"/>
-                    <RowDefinition Height="71*"/>
                 </Grid.RowDefinitions>
-                <DataGrid IsReadOnly="False" SelectionMode="Single" Name="SearchResult" HorizontalAlignment="Left" Height="400" Margin="0,10,0,0" VerticalAlignment="Top" Width="780" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="None" Grid.RowSpan="2">
+                <DataGrid IsReadOnly="False" SelectionMode="Single" Name="SearchResult" HorizontalAlignment="Left" Height="310" Margin="0,10,0,0" VerticalAlignment="Top" Width="780" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="None" Grid.RowSpan="2">
                     <DataGrid.Columns >
                         <DataGridTextColumn Header=" ID"/>
 
@@ -56,7 +56,7 @@
 
         </Grid>
 
-        <Grid x:Name="TabMenu" Grid.Row="1" >
+        <Grid x:Name="TabMenu" Grid.Row="1" Margin="12,0">
             <DockPanel>
                 <ToolBarTray DockPanel.Dock="Top">
                     <ToolBar>

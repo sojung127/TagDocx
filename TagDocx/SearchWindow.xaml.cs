@@ -32,5 +32,10 @@ namespace TagDocx
         {
 
         }
+
+        private void ButtonFechar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

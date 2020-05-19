@@ -24,5 +24,20 @@ namespace TagDocx
         {
             InitializeComponent();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Listbox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ButtonFechar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
