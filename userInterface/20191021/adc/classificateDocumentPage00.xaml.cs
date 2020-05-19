@@ -58,13 +58,13 @@ namespace adc
             try
             {
                 connection.Open();
-                /*MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='"+selectedFolder+"'", connection);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='"+selectedFolder+"'", connection);
+                /*MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
                 adp.Fill(ds, "LoadDataBinding");
                 dataGridCustomers.DataContext = ds;*/
 
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM document inner join content on document.ID = content.ID where document.PATH='" + selectedFolder + "'", connection);
+                //MySqlCommand cmd = new MySqlCommand("SELECT * FROM document inner join content on document.ID = content.ID where document.PATH='" + selectedFolder + "'", connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
                 adp.Fill(ds, "LoadDataBinding");
