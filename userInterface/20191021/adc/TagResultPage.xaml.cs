@@ -94,7 +94,7 @@ namespace adc
                     RedirectStandardOutput = true,
                     //WorkingDirectory = @"C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\Scoring\",
                     //WorkingDirectory = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\",
-                    WorkingDirectory = @"C:\capston\AutomaticDocumentClassificationService\Scoring\",
+                    WorkingDirectory = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\",
                     WindowStyle = ProcessWindowStyle.Hidden,
                     CreateNoWindow = true
                 }
@@ -107,7 +107,8 @@ namespace adc
                 if (sw.BaseStream.CanWrite)
                 {
                     // Vital to activate Anaconda
-                    sw.WriteLine(@"C:\Users\user\Anaconda3\Scripts\activate.bat");
+                    sw.WriteLine(@"C:\Temp\Anaconda3\Scripts\activate.bat");
+                    //sw.WriteLine(@"C:\Users\user\Anaconda3\Scripts\activate.bat");
                     //sw.WriteLine(@"C:\ProgramData\Anaconda3\Scripts\activate.bat");
                     //sw.WriteLine(@"C:\Users\pyj\Anaconda3\Scripts\activate.bat");
                     // Activate your environment
@@ -116,7 +117,7 @@ namespace adc
                     //sw.WriteLine("set KERAS_BACKEND=tensorflow");
                     // run your script. You can also pass in arguments
                     //string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
-                    string command = @"python C:\capston\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
+                    string command = @"python C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
                     sw.WriteLine(command);
 
                 }
