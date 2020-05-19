@@ -15,16 +15,21 @@ using System.Windows.Shapes;
 namespace TagDocx
 {
     /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
+    /// MainPage.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPage : Page
     {
-        public MainWindow()
+        public MainPage()
         {
             InitializeComponent();
-            MainHome.Content = new MainPage();
         }
 
-    
+        private void ToSearch(object sender, RoutedEventArgs e)
+        {
+
+            SearchPage page = new SearchPage();
+            NavigationService.Navigate(page);
+
+        }
     }
 }
