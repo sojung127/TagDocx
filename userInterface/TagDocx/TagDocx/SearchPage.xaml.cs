@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Diagnostics;
 
 namespace TagDocx
 {
@@ -80,8 +81,21 @@ namespace TagDocx
                 connection.Close();
             }
         }
-
+        int selectID = -1;
         private void Listbox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (DataRowView rv in e.AddedItems)
+            {
+                Debug.WriteLine("Row contents:", rv.Row.ItemArray[0].ToString());
+                selectID = int.Parse(rv.Row.ItemArray[0].ToString());
+            }
+        }
+        private void menuitem_click(object sender, RoutedEventArgs e)
+        {
+            Window win = new TagEditWindow(selectID,Search);
+            win.Show();
+        }
+        void popup_open(object sender,MouseButtonEventArgs e, SelectionChangedEventArgs s)
         {
 
         }
