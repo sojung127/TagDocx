@@ -27,18 +27,19 @@
 
         <Grid Grid.Row="3">
             <Grid Margin="10,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="18*"/>
-                    <RowDefinition Height="41*"/>
-                    <RowDefinition Height="272*"/>
-                </Grid.RowDefinitions>
-                <DataGrid IsReadOnly="True" SelectionMode="Single" Name="SearchResult" HorizontalAlignment="Left" Height="310" Margin="0,10,0,0" VerticalAlignment="Top" Width="780" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="None" Grid.RowSpan="2">
+                
+                <DataGrid IsReadOnly="True" SelectionMode="Single" Name="SearchResult" HorizontalAlignment="Left" Height="310" Margin="0,10,0,0" VerticalAlignment="Top" Width="780" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="None" Grid.RowSpan="2" ClipboardCopyMode="IncludeHeader" AutoGenerateColumns="False">
                     <DataGrid.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="태그 수정" Click="menuitem_click"/>
                         </ContextMenu>
                     </DataGrid.ContextMenu>
-
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding id}" Header="ID" />
+                        <DataGridTextColumn Binding="{Binding name}" Header="Name" />
+                        <DataGridTextColumn Binding="{Binding path}" Header="Path" />
+                        <DataGridTextColumn Binding="{Binding content_tag}" Header="tag" />
+                    </DataGrid.Columns>
 
                 </DataGrid>
 
