@@ -32,12 +32,8 @@
                     <RowDefinition Height="41*"/>
                     <RowDefinition Height="272*"/>
                 </Grid.RowDefinitions>
-                <DataGrid IsReadOnly="False" Background="WhiteSmoke" SelectionMode="Single" Name="SearchResult" HorizontalAlignment="Left" Height="310" Margin="0,10,0,0" VerticalAlignment="Top" Width="780" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="None" Grid.RowSpan="3">
-                    <DataGrid.Columns >
-                        <DataGridTextColumn Header="파일명" Binding="{Binding Path=NAME}"/>
-                        <DataGridTextColumn Header="태그" Binding="{Binding Path=TAG_LIST}"/>
-                        <DataGridTextColumn Header="경로" Binding="{Binding Path=PATH}"/>
-                    </DataGrid.Columns>
+                <DataGrid IsReadOnly="False" SelectionMode="Single" Name="SearchResult" HorizontalAlignment="Left" Height="310" Margin="0,10,0,0" VerticalAlignment="Top" Width="780" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="None" Grid.RowSpan="2">
+
 
                 </DataGrid>
 
@@ -51,7 +47,7 @@
                 <ColumnDefinition Width="434*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="SearchPage" HorizontalAlignment="left" VerticalAlignment="Center" Margin="10"/>
-           
+
 
 
         </Grid>
