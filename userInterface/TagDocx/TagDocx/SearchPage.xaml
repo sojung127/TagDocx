@@ -35,9 +35,9 @@
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding id}" Header="ID" />
                         <DataGridTextColumn Binding="{Binding name}" Header="Name" />
                         <DataGridTextColumn Binding="{Binding path}" Header="Path" />
+                        <DataGridTextColumn Binding="{Binding type_tag}" Header="type" />
                         <DataGridTextColumn Binding="{Binding content_tag}" Header="tag" />
                     </DataGrid.Columns>
 

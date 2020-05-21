@@ -39,7 +39,7 @@ namespace TagDocx
             TextBox tb = sender as TextBox;
             string[] words = tb.Text.Split(' ');
 
-            string query_start = "select document.id, name, path, c.content_tag from document left join (select id,group_concat(content_tag) as content_tag from content where id in "
+            string query_start = "select name, path, type_tag, c.content_tag from document left join (select id,group_concat(content_tag) as content_tag from content where id in "
                 + "(select id from content where ";
             string select_content="";
             string select_docu="";
