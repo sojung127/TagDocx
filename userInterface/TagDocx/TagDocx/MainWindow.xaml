@@ -20,14 +20,14 @@
                 <ColumnDefinition Width="434*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="1">
-                <Button Width="25" Height="25"  Background ="{x:Null}" BorderBrush = "{x:Null}" Foreground="white">
-                    <materialDesign:PackIcon Kind="Bell" RenderTransformOrigin="-0.344,0.26"/>
+                <Button Width="auto" Height="Auto" Foreground="white" Padding="auto" Margin="5,0"  Background ="{x:Null}" BorderBrush = "{x:Null}"  >
+                    <materialDesign:PackIcon Kind="minus" />
                 </Button>
-                <Button Width="25" Height="25" Background ="{x:Null}" BorderBrush = "{x:Null}" Foreground="white">
-                    <materialDesign:PackIcon Kind="Account"/>
+                <Button Width="auto" Height="Auto"  Foreground="white" Padding="auto" Margin="5,0" Background ="{x:Null}" BorderBrush = "{x:Null}"  >
+                    <materialDesign:PackIcon Kind="SquareOutline" RenderTransformOrigin="0.5,0.5"/>
                 </Button>
-                <Button x:Name="ButtonFechar" Width="25" Height="25" Background ="{x:Null}" BorderBrush = "{x:Null}" Foreground="white" Click="ButtonFechar_Click">
-                    <materialDesign:PackIcon Kind="Power"/>
+                <Button x:Name="CloseButtonFechar" Margin="5,0" Width="auto" Height="auto" Padding="auto" Background ="{x:Null}" BorderBrush = "{x:Null}"  Visibility="Visible"  Foreground="white"  Click="CloseButtonFechar_Click"  >
+                    <materialDesign:PackIcon Kind="Close"/>
                 </Button>
             </StackPanel>
 

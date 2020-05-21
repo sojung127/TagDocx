@@ -30,7 +30,8 @@ namespace TagDocx
             DragMove();
         }
 
-        private void ButtonFechar_Click(object sender, RoutedEventArgs e)
+
+        private void CloseButtonFechar_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
