@@ -65,6 +65,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="SearchPage.xaml.cs" />
+    <Compile Include="TagEditPage.xaml.cs">
+      <DependentUpon>TagEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TagEditWindow.xaml.cs">
+      <DependentUpon>TagEditWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="ClassficationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -90,6 +96,14 @@
     <Page Include="SearchPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TagEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TagEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
