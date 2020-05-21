@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Text.RegularExpressions; //패턴매칭(Regex)등 사용위해 정규식표현 using
 
 namespace TagDocx
 {
@@ -69,6 +70,9 @@ namespace TagDocx
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
 
                 DataSet ds = new DataSet();
+
+
+
                 adp.Fill(ds, "LoadDataBinding");
                 SearchResult.DataContext = ds;
             }catch (MySqlException ex)
@@ -79,16 +83,86 @@ namespace TagDocx
             {
                 connection.Close();
             }
+
+            string match = "기술";
+            int index = SearchResult.Text.IndexOf(match);
+            int length = match.Length;
+
+            SearchResult.Select(index, length);
+            SearchResult.SelectionColor = Color.Red;
+
         }
 
-        private void Listbox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+    
+        private void SearchResult_LoadingRow(object sender, DataGridRowEventArgs e)
         {
-
+            DataGrid grid = sender as DataGrid;
+            e.Row.MouseEnter += (s, args) => Row_MouseEnter(s, grid);
+            e.Row.MouseLeave += (s, args) => Row_MouseLeave(s, grid);
         }
 
-        private void ButtonFechar_Click(object sender, RoutedEventArgs e)
+        void Row_MouseLeave(object sender, DataGrid grid)
         {
-
+            DataGridRow row = sender as DataGridRow;
+            grid.SelectedIndex = -1;
         }
+
+        void Row_MouseEnter(object sender, DataGrid grid)
+        {
+            DataGridRow row = sender as DataGridRow;
+            grid.SelectedIndex = row.GetIndex();
+        }
+
+
+        private void SearchResult_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            DataGridCell gridCell = null;
+            try
+            {
+                gridCell = GetCell(SearchResult.SelectedCells[0]);
+            }
+            catch (Exception)
+            {
+            }
+            if (gridCell != null)
+                gridCell.Background = Brushes.Red;
+        }
+
+        public DataGridCell GetCell(DataGridCellInfo dataGridCellInfo)
+        {
+            if (!dataGridCellInfo.IsValid)
+            {
+                return null;
+            }
+
+            var cellContent = dataGridCellInfo.Column.GetCellContent(dataGridCellInfo.Item);
+            if (cellContent != null)
+            {
+                return (DataGridCell)cellContent.Parent;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static void AppendText(this RichTextBox box, string text, Color color, bool AddNewLine = false)
+        {
+            if (AddNewLine)
+            {
+                text += Environment.NewLine;
+            }
+
+            box.SelectionStart = box.TextLength;
+            box.SelectionLength = 0;
+
+            box.SelectionColor = color;
+            box.AppendText(text);
+            box.SelectionColor = box.ForeColor;
+        }
+
+
     }
+
 }
