@@ -1,0 +1,53 @@
+﻿<Page x:Class="TagDocx.ClassificationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TagDocx"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ClassificationPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Button x:Name="gotoMain" Content="이전단계" HorizontalAlignment="Left" Margin= "0,0,0,0"  Width="75" Click="BtnPreStep" />
+            <Button x:Name="strartTag" Content="다음단계" HorizontalAlignment="Right" Margin= "0,0,0,0" Width="75" Click="BtnNextStep" />
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center"  >
+            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="/resource/adcs분류.png"/>
+            <TextBlock Text="문서 분류" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
+
+        <Label Content="문서를 분류하고자 하는 대상 폴더를 선택하세요. (하위 폴더 미포함) " HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30"/>
+        <Button Content="폴더 찾기" HorizontalAlignment="Left" Margin="317,43,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="BtnFindFolder"/>
+        <TextBox x:Name="folderName" HorizontalAlignment="Left" Height="22" Margin="10,40,0,0" Grid.Row="1" TextWrapping="Wrap" Text="폴더 경로 직접 입력" VerticalAlignment="Top" Width="302"/>
+        <Button Content="폴더 안의 문서 가져오기" Margin="0,42.8,233,0" Grid.Row="1" Click="BtnFindDoc" Height="21" VerticalAlignment="Top" HorizontalAlignment="Right" Width="170"/>
+        <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="53,175,0,24.6" Name="dataGridCustomers"
+                 Width="678" ItemsSource="{Binding Path=LoadDataBinding}" CanUserResizeRows="False" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=ID}" Header="고유번호"  IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Path=NAME}" Header="파일명"  IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Path=TYPE_TAG}" Header="형식태그" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Path=CONTENT_TAG}" Header="내용태그" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Path=PATH}" Header="저장경로"  IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+
+    </Grid>
+</Page>

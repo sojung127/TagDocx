@@ -1,0 +1,84 @@
+﻿<Page x:Class="TagDocx.ClassificationPage01"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TagDocx"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ClassificationPage01">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Button x:Name="gotoMain" Content="이전단계" HorizontalAlignment="Left" Margin= "0,0,0,0"  Width="75" Click="BtnPreStep" />
+            <Button x:Name="strartTag" Content="다음단계" HorizontalAlignment="Right" Margin= "0,0,0,0" Width="75" Click="BtnNextStep" />
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center"  >
+            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="/resource/adcs분류.png"/>
+            <TextBlock Text="문서 분류" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
+        <Label Content="분류하고 싶은 문서에 대한 태그를 선택하세요." HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" FontSize="18" FontWeight="Bold"/>
+        <Label Content="태그를 복수 선택하여 그룹으로 묶을 수 도 있습니다.&#xD;&#xA;문서는 높은 순위의 그룹으로 우선 배정됩니다." HorizontalAlignment="Left" Margin="10,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="373" Height="49" FontSize="15"/>
+
+        <Grid Margin="0,10,10,9.6" Grid.Row="1" HorizontalAlignment="Right" Width="300">
+            <TextBox x:Name="태그검색어" Height="32" Margin="10,10,0,0" TextWrapping="Wrap" Text="검색할 태그를 입력하세요." VerticalAlignment="Top" GotMouseCapture="TextBox_GotMouseCapture" FontSize="14" HorizontalAlignment="Left" Width="229"/>
+            <Button x:Name="태그검색버튼" Content="검색" Height="32" Margin="0,10,10,0" VerticalAlignment="Top" Click="click_search" HorizontalAlignment="Right" Width="46" FontSize="14" FontWeight="Bold"/>
+            <ListBox x:Name="태그목록리스트" Margin="10,47,10,10"/>
+
+        </Grid>
+        <TabControl x:Name="묶음박스" HorizontalAlignment="Left" Height="157" Margin="10,106.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="433" SelectionChanged="TabControl_SelectionChanged" IsSynchronizedWithCurrentItem="False">
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16"><Run Text="묶음0"/></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Background="#FFE5E5E5">
+                    <ListBox x:Name="묶음태그리스트0" Margin="10,10,10.2,10.2"/>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16"><Run Text="묶음1"/></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Background="#FFE5E5E5">
+                    <ListBox x:Name="묶음태그리스트1" Margin="10,10,10.2,10.2"/>
+                </Grid>
+
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16"><Run Text="묶음2"/></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Background="#FFE5E5E5">
+                    <ListBox x:Name="묶음태그리스트2" Margin="10,10,10.2,10.2"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+        <Button x:Name="묶음에추가"  Content="묶음에 추가"  HorizontalAlignment="Left" Height="30" Margin="245,268.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="116" Click="묶음에추가_Click" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="묶음에서삭제" Content="묶음 비우기" HorizontalAlignment="Left" Height="28" Margin="91,268.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="116" Click="묶음비우기_Click" FontSize="18" FontWeight="Bold"/>
+        <!--
+        <Button x:Name="묶음추가" Content="묶음추가" Margin="368,107,357,191.6" Grid.Row="1" Click="묶음추가클릭"/>
+        -->
+
+
+    </Grid>
+</Page>
