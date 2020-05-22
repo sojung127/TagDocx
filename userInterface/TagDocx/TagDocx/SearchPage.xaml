@@ -65,10 +65,39 @@
             <DockPanel>
                 <ToolBarTray DockPanel.Dock="Top">
                     <ToolBar Background="WhiteSmoke" Margin="0,4" VerticalAlignment="center">
-                        <Button Content="파일" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto"/>
+                        <Menu>
+                            <MenuItem Header="파일">
+                                <MenuItem Header="메인으로"/>
+                                <MenuItem Header="닫기"/>
+                            </MenuItem>
+                            <MenuItem Header="편집">
+                                <MenuItem Header="모두선택"/>
+
+                                <MenuItem Header="모두취소"/>
+                                <MenuItem Header="삭제"/>
+                                <MenuItem Header="폴더로 이동"/>
+                                <MenuItem Header="복사"/>
+                            </MenuItem>
+                            <MenuItem Header="보기">
+                                <MenuItem Header="태그 목록 보기"/>
+
+                                <MenuItem Header="전체화면"/>
+                                <MenuItem Header="최소화"/>
+                            </MenuItem>
+                        </Menu>
+                        <!--<Button Content="파일" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto">
+                            <Button.ContextMenu>
+                                <ContextMenu>
+                                    
+                                <MenuItem Header="메인으로"/>
+                                <MenuItem Header="닫기"/>
+                                </ContextMenu>
+                                
+                            </Button.ContextMenu>
+                        </Button>>
                         <Button Content="편집" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto"/>
                         <Button Content="보기" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto"/>
-                        <Button Content="검색" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto"/>
+                        <Button Content="검색" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto"/>-->
 
                     </ToolBar>
                 </ToolBarTray>

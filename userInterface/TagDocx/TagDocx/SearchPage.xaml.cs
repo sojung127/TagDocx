@@ -106,8 +106,6 @@ namespace TagDocx
 
                 DataSet ds = new DataSet();
 
-
-
                 adp.Fill(ds, "LoadDataBinding");
                 SearchResult.DataContext = ds;
             }catch (MySqlException ex)
