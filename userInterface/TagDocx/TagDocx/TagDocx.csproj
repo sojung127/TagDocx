@@ -40,6 +40,14 @@
     <Reference Include="MaterialDesignColors, Version=1.2.5.1465, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.2.5\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
+=======
+    <Reference Include="MaterialDesignThemes.Wpf, Version=3.1.2.1465, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.3.1.2\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MySql.Data, Version=8.0.19.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+>>>>>>> 84f4d4bd0479b6c781dd3eb0e6ab9c6585bb4d9d
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -63,6 +71,7 @@
     <Compile Include="ClassificationPage02.xaml.cs" />
     <Compile Include="ClassificationPage01.xaml.cs" />
     <Compile Include="SearchPage.xaml.cs" />
+<<<<<<< HEAD
     <Page Include="ClassificationPage02.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -72,6 +81,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ClassificationPage.xaml">
+=======
+    <Compile Include="TagEditPage.xaml.cs">
+      <DependentUpon>TagEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TagEditWindow.xaml.cs">
+      <DependentUpon>TagEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ClassficationPage.xaml">
+>>>>>>> 84f4d4bd0479b6c781dd3eb0e6ab9c6585bb4d9d
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -96,6 +114,14 @@
     <Page Include="SearchPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TagEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TagEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

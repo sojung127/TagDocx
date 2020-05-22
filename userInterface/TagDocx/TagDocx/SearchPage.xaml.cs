@@ -12,6 +12,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using System.Data;
+using MySql.Data.MySqlClient;
+using System.Configuration;
+using System.Diagnostics;
+using System.Text.RegularExpressions; //패턴매칭(Regex)등 사용위해 정규식표현 using
+using Microsoft.VisualBasic.FileIO;
+
 
 namespace TagDocx
 {
@@ -20,24 +27,183 @@ namespace TagDocx
     /// </summary>
     public partial class SearchPage : Page
     {
+        string connectionString = "SERVER=localhost;DATABASE=adcs;UID=godocx;PASSWORD=486;";
+        int[] selectID=new int[100];
+        string[] filePath=new string[100];
+        MySqlConnection connection;
+        int temp;
         public SearchPage()
         {
             InitializeComponent();
+            temp = 0;
+            connection = new MySqlConnection(connectionString);
+
+
+            string query_start = "select document.id, name, path, type_tag, c.content_tag from document left join (select id,group_concat(content_tag) as content_tag from content";
+            string query_end = " group by id )as c on c.id = document.id where c.id = document.id;";
+
+            string final_query = query_start + query_end;
+            try
+            {
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand(final_query, connection);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+
+                DataSet ds = new DataSet();
+
+
+
+                adp.Fill(ds, "LoadDataBinding");
+                SearchResult.DataContext = ds;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-        }
+            TextBox tb = sender as TextBox;
+            string[] words = tb.Text.Split(' ');
 
+            string query_start = "select document.id, name, path, type_tag, c.content_tag from document left join (select id,group_concat(content_tag) as content_tag from content where id in "
+                + "(select id from content where ";
+            string select_content="";
+            string select_docu="";
+
+
+            select_content += "content_tag like '%" + words[0] + "%'";
+            select_docu += "union select id from document where name like '%" + words[0] + "%'";
+
+            if (words.Length >1)
+            {
+                for (int i = 1; i < words.Length; i++)
+                {
+                    if (words[i].Length != 0)
+                    {
+                        select_content += "or content_tag like '%" + words[i] + "%' ";
+                        select_docu += "or name like '%" + words[i] + "%' ";
+                    }
+                }
+            }
+
+
+            string query_end=") group by id )as c on c.id = document.id where c.id = document.id;";
+
+            string final_query = query_start + select_content + select_docu + query_end;
+            try
+            {
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand(final_query, connection);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+
+                DataSet ds = new DataSet();
+
+                adp.Fill(ds, "LoadDataBinding");
+                SearchResult.DataContext = ds;
+            }catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            
+
+        }
+        int selectedItems;
         private void Listbox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
+            ;
+            Console.WriteLine(" 현재 선택된 갯수 "+ SearchResult.SelectedItems.Count);
+            if (temp == 0)
+            {
+                selectedItems = SearchResult.SelectedItems.Count;
+                if (selectedItems > 100)
+                {
+                    MessageBox.Show("최대 100개까지만 선택가능합니다.");
+                }
+                for(int i = 0; i < selectedItems; i++)
+                {
+                    DataRowView rv = (DataRowView)SearchResult.SelectedItems[i];
+                    selectID[i] = int.Parse(rv[0].ToString());
+                    filePath[i] = rv[2].ToString() + rv[1].ToString();
+                    Debug.WriteLine(filePath[i] + " " + selectID[i]);
+                }
+                
 
+            }
+        }
+        private void menuitem_click(object sender, RoutedEventArgs e)
+        {
+            if (selectedItems > 1)
+            {
+                MessageBox.Show("태그는 하나의 문서에 대해서만 수정가능합니다.");
+            }else if (selectedItems == 1)
+            {
+                Window win = new TagEditWindow(selectID[0],Search);
+                win.Show();
+
+            }
         }
 
-        private void ButtonFechar_Click(object sender, RoutedEventArgs e)
+        private void ListDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            Debug.WriteLine(filePath);
+            
+            if (filePath.Length != 0 && selectedItems==1)
+                System.Diagnostics.Process.Start(filePath[0]);
+            
+            filePath[0] = "";
+        }
 
+        private void fileDelete(object sender, RoutedEventArgs e)
+        {
+            temp = selectedItems;
+            
+            try
+            {
+                    connection.Open();
+                for (int i = 0; i < temp; i++)
+                {
+                    if (System.IO.File.Exists(filePath[i]))
+                    {
+                        FileSystem.DeleteFile
+                    (
+                         filePath[i],
+                         UIOption.AllDialogs,
+                         RecycleOption.SendToRecycleBin
+                    );
+                    }
+                    MySqlCommand cmd = new MySqlCommand("delete from content where id=" + selectID[i] + ";", connection);
+                    cmd = new MySqlCommand("delete from document where id=" + selectID[i] + ";", connection);
+                }
+                    connection.Close();
+
+            }
+            catch (System.IO.IOException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                temp = 0;
+
+            }
+                Search.Text += " ";
+            Search.Text = Search.Text.ToString().TrimEnd();
         }
     }
+
 }

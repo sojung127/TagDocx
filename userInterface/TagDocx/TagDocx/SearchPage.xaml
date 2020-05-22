@@ -11,30 +11,37 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="2" >
-            <Grid Margin="10,0">
-                <TextBox HorizontalAlignment="Left" Height="40" Margin="0,2,0,2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="780" TextChanged="TextBox_TextChanged"/>
-
+            <Grid Margin="10,0" >
+                <Border BorderBrush="Purple">
+                 <TextBox Name="Search" HorizontalAlignment="Left" Background="WhiteSmoke"  Margin="0,5,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="780" TextChanged="TextBox_TextChanged"/>
+                </Border>
             </Grid>
         </Grid>
 
         <Grid Grid.Row="3">
             <Grid Margin="10,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="29*"/>
-                    <RowDefinition Height="136*"/>
-                </Grid.RowDefinitions>
-                <DataGrid IsReadOnly="False" SelectionMode="Single" Name="SearchResult" HorizontalAlignment="Left" Height="310" Margin="0,10,0,0" VerticalAlignment="Top" Width="780" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="None" Grid.RowSpan="2">
-                    <DataGrid.Columns >
-                        <DataGridTextColumn Header="파일명" Binding="{Binding Path=NAME}"/>
-                        <DataGridTextColumn Header="태그" Binding="{Binding Path=TAG_LIST}"/>
-                        <DataGridTextColumn Header="경로" Binding="{Binding Path=PATH}"/>
+                
+                <DataGrid IsReadOnly="True" SelectionMode="Extended" Name="SearchResult" HorizontalAlignment="Left" Height="310" Margin="0,10,0,0" VerticalAlignment="Top" Width="780" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="None" Grid.RowSpan="2" AutoGenerateColumns="False" MouseDoubleClick="ListDoubleClick">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="태그 수정" Click="menuitem_click"/>
+                            <MenuItem Header="삭제" Click="fileDelete"/>
+
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding id}" Header="ID" Visibility="Hidden"/>
+                        <DataGridTextColumn Binding="{Binding name}" Header="Name" />
+                        <DataGridTextColumn Binding="{Binding path}" Header="Path" />
+                        <DataGridTextColumn Binding="{Binding type_tag}" Header="type" />
+                        <DataGridTextColumn Binding="{Binding content_tag}" Header="tag" />
                     </DataGrid.Columns>
 
                 </DataGrid>
@@ -48,24 +55,49 @@
                 <ColumnDefinition Width="367*"/>
                 <ColumnDefinition Width="434*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="SearchWindow" HorizontalAlignment="left" VerticalAlignment="Center" Margin="10"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="1" >
-                <Button x:Name="ButtonFechar" Width="25" Height="25" Background ="{x:Null}" BorderBrush = "{x:Null}" Foreground="white" Click="ButtonFechar_Click" Margin="0,10,0,10">
+            <TextBlock Text="SearchPage" HorizontalAlignment="left" VerticalAlignment="Center" Margin="10"/>
 
-                </Button>
-            </StackPanel>
 
 
         </Grid>
 
         <Grid x:Name="TabMenu" Grid.Row="1" Margin="12,0">
             <DockPanel>
-                <ToolBarTray DockPanel.Dock="Top" Height="60">
-                    <ToolBar>
-                        <Button Content="파일" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="20" Margin="5,0"/>
-                        <Button Content="편집" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="20" Margin="5,0"/>
-                        <Button Content="보기" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="20" Margin="5,0"/>
-                        <Button Content="검색" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="20" Margin="5,0"/>
+                <ToolBarTray DockPanel.Dock="Top">
+                    <ToolBar Background="WhiteSmoke" Margin="0,4" VerticalAlignment="center">
+                        <Menu>
+                            <MenuItem Header="파일">
+                                <MenuItem Header="메인으로"/>
+                                <MenuItem Header="닫기"/>
+                            </MenuItem>
+                            <MenuItem Header="편집">
+                                <MenuItem Header="모두선택"/>
+
+                                <MenuItem Header="모두취소"/>
+                                <MenuItem Header="삭제"/>
+                                <MenuItem Header="폴더로 이동"/>
+                                <MenuItem Header="복사"/>
+                            </MenuItem>
+                            <MenuItem Header="보기">
+                                <MenuItem Header="태그 목록 보기"/>
+
+                                <MenuItem Header="전체화면"/>
+                                <MenuItem Header="최소화"/>
+                            </MenuItem>
+                        </Menu>
+                        <!--<Button Content="파일" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto">
+                            <Button.ContextMenu>
+                                <ContextMenu>
+                                    
+                                <MenuItem Header="메인으로"/>
+                                <MenuItem Header="닫기"/>
+                                </ContextMenu>
+                                
+                            </Button.ContextMenu>
+                        </Button>>
+                        <Button Content="편집" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto"/>
+                        <Button Content="보기" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto"/>
+                        <Button Content="검색" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto"/>-->
 
                     </ToolBar>
                 </ToolBarTray>
