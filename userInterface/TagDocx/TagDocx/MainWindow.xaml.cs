@@ -29,6 +29,15 @@ namespace TagDocx
         {
             DragMove();
         }
+        private void Maximize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = (this.WindowState == WindowState.Normal) ? WindowState.Maximized : WindowState.Normal;
+        }
+
+        private void Mimimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
 
 
         private void CloseButtonFechar_Click(object sender, RoutedEventArgs e)

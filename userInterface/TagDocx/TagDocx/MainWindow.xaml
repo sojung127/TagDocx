@@ -20,10 +20,10 @@
                 <ColumnDefinition Width="434*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="1">
-                <Button Width="auto" Height="Auto" Foreground="white" Padding="auto" Margin="5,0"  Background ="{x:Null}" BorderBrush = "{x:Null}"  >
+                <Button Width="auto" Height="Auto" Foreground="white" Padding="auto" Margin="5,0"  Background ="{x:Null}" BorderBrush = "{x:Null}" Click="Mimimize_Click"  >
                     <materialDesign:PackIcon Kind="minus" />
                 </Button>
-                <Button Width="auto" Height="Auto"  Foreground="white" Padding="auto" Margin="5,0" Background ="{x:Null}" BorderBrush = "{x:Null}"  >
+                <Button Width="auto" Height="Auto"  Foreground="white" Padding="auto" Margin="5,0" Background ="{x:Null}" BorderBrush = "{x:Null}" Click="Maximize_Click" >
                     <materialDesign:PackIcon Kind="SquareOutline" RenderTransformOrigin="0.5,0.5"/>
                 </Button>
                 <Button x:Name="CloseButtonFechar" Margin="5,0" Width="auto" Height="auto" Padding="auto" Background ="{x:Null}" BorderBrush = "{x:Null}"  Visibility="Visible"  Foreground="white"  Click="CloseButtonFechar_Click"  >
