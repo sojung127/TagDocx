@@ -42,10 +42,8 @@ folder_list=[ "C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClass
                 "C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/지원서/"]
 '''
 
-#folder_list=['C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/논문/0전체/']
-folder_list=['C:/capston/AutomaticDocumentClassificationService/Dataset/논문/0전체/']
-#folder_list=['C:/Users/user/Desktop/dataset/']
-cnt=3
+folder_list=['C:/capston/AutomaticDocumentClassificationService/Dataset/한글/논문/논문 test/']
+
 from konlpy.tag import Kkma
 pos_tagger=Kkma()
                 
@@ -54,7 +52,7 @@ for folder in folder_list:
     file_list = os.listdir(path_origin) #list 반환
 
     posts=[]
-    cnt=0
+
     for i in range(len(file_list)):
         path = path_origin + file_list[i]
         print(path)
@@ -82,6 +80,7 @@ for folder in folder_list:
                 ' '.join(pos_tagger.morphs(contents))
                 vectorizer=CountVectorizer(min_df=1)
                 X_train=vectorizer.fit_transform(post)
+                
                 posts.append(contents)
             except Exception as ex:
                 print('error',ex)
@@ -90,73 +89,25 @@ for folder in folder_list:
         #posts.append(contents)
 
 
-        from sklearn.feature_extraction.text import CountVectorizer
-        vectorizer = CountVectorizer(min_df=1)
+    from sklearn.feature_extraction.text import CountVectorizer
+    vectorizer = CountVectorizer(min_df=1)
 
 
-        from konlpy.tag import Kkma
-        pos_tagger=Kkma()
-        posts_tokens=[]
-        posts_tokens = [' '.join(pos_tagger.morphs(sentence)) for sentence in posts]
+    from konlpy.tag import Kkma
+    pos_tagger=Kkma()
+    posts_tokens=[]
+    posts_tokens = [' '.join(pos_tagger.morphs(sentence)) for sentence in posts]
 
-        X_train=vectorizer.fit_transform(posts_tokens)
-        # 디렉토리 생성
-        #dirname = 'C:/capston/AutomaticDocumentClassificationService/Dataset/VectorResult/'
-        dirname = folder + 'VectorResult/'
-        try:
-            if not(os.path.isdir(dirname)):
-                os.makedirs(os.path.join(dirname))
-        except OSError as e:
-            if e.errno != errno.EEXIST:
-                print("Failed to create directory!")
-                raise
-        # pickle 파일에 학습결과 저장
-        filename='data'+ str(cnt)+'.bin'
-        filepath = os.path.join(dirname, filename)
-        with open(filepath,'wb') as f:
-            pickle.dump(X_train,f)
-            f.close()
-        print('\n'+filename+' created!\n')
-        cnt=cnt+1
-    '''
-        # pickle 파일에 학습 결과 출력
-        with open(filepath,'rb') as fr:
-            data = pickle.load(fr)
-            #print(type(data)+'\n')
-            print(filepath+'\n')
-            fr.close()
-    '''
-    '''
-    new_post= convert_pdf_to_txt("C:/Users/소정/Desktop/졸업프로젝트/공고2/연세대학교 생명시스템대학 계약직원 모집.pdf")
-    new_post_tokens=' '.join(pos_tagger.morphs(new_post))
+    X_train=vectorizer.fit_transform(posts_tokens).toarray()
+    
+    namelist=folder_list[0][-15:-1].split('/')
+    name=''.join(namelist)
+    filename=name+'.bin'
+    with open(filename,'wb') as f:
+        pickle.dump(X_train,f)
+        pickle.dump(vectorizer,f)
+    print('\n'+filename+' created!\n')
 
-    new_post_vec = vectorizer.transform([new_post_tokens])
-
-
-    # 거리를 구하는 dist_raw 함수 정의. 최단 거리 계산
-    import numpy as np
-    def dist_raw(v1, v2):
-        delta = v1 - v2
-        return np.linalg.norm(delta.toarray())
-
-    import sys
-    best_dist = sys.maxsize
-    best_doc = None
-    best_i = None
-    d_array=[]
-    # 이전 게시물과 기존 게시물의 거리를 계산하여 출력. 유사도가 가장 높은 게시물을 찾음
-    for i, post in enumerate(posts):
-        post_vec = X_train.getrow(i)
-        d = dist_raw(post_vec, new_post_vec)
-        d_array.append(d)
-        
-    sum=0
-    for d in d_array:
-        sum+=d
-
-    print(sum/len(d_array))
-    '''
-   
 
 
  
