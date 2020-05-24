@@ -75,13 +75,15 @@
                                 <MenuItem Header="모두선택" Click="SelectAll_Exectued"/>
                                 <MenuItem Header="모두취소" Click="DeselectAll_Executed"/>
                                 <MenuItem Header="삭제"/>
-                                <MenuItem Header="폴더로 이동"/>
-                                <MenuItem Header="복사"/>
+                                <MenuItem Header="폴더로 이동" Click="fileMove"/>
+                                <MenuItem Header="복사" Click="fileCopy"/>
                             </MenuItem>
                             <MenuItem Header="보기">
-                                <MenuItem Header="태그 목록 보기"/>
-                                <MenuItem Header="전체화면"/>
-                                <MenuItem Header="최소화"/>
+                                <MenuItem Header="태그 목록 보기" Click="ShowTagList">
+                                   
+                                </MenuItem>
+                                <MenuItem Header="전체화면" Click="Maximize_Click"/>
+                                <MenuItem Header="최소화" Click="Minimize_Click"/>
                             </MenuItem>
                         </Menu>
                         <!--<Button Content="파일" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto">
@@ -101,6 +103,7 @@
                     </ToolBar>
                 </ToolBarTray>
             </DockPanel>
+            
         </Grid>
 
     </wpf:Grid>

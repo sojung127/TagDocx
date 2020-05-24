@@ -264,8 +264,55 @@ namespace TagDocx
             
         }
 
-        
-        
+        private void fileCopy(object sender, RoutedEventArgs e)
+        {
+            temp = selectedItems;
+            string folder = "";
+
+            // 폴더 열기 다이얼로그 생성
+            CommonOpenFileDialog fileDialog = new CommonOpenFileDialog();
+            fileDialog.IsFolderPicker = true;
+            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                folder = fileDialog.FileName;
+                folder = folder.Replace("\\", "/");
+                try
+                {
+                    connection.Open();
+                    for (int i = 0; i < temp; i++)
+                    {
+                        Debug.WriteLine("이동: " + filePath[i] + " to " + folder + "/" + fileName[i]);
+                        if (System.IO.File.Exists(filePath[i]))
+                        {
+
+                            System.IO.File.Copy(filePath[i], folder + "/" + fileName[i]);
+
+                        }
+                        /// DB 추가는 추후 추가예정;
+                        string insertQuery = "insert into document values";
+                        //MySqlCommand cmd = new MySqlCommand("update document set path='" + folder + "/" + "' where id=" + selectID[i] + ";", connection);
+                        //cmd.ExecuteNonQuery();
+                    }
+                    connection.Close();
+
+                }
+                catch (System.IO.IOException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    temp = 0;
+
+                }
+                Search.Text += " ";
+                Search.Text = Search.Text.ToString().TrimEnd();
+            }
+
+
+        }
+
+
         private void Click_Exit(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -288,6 +335,24 @@ namespace TagDocx
             Debug.WriteLine("deSelectAll Executed");
             SearchResult.UnselectAll();
 
+        }
+
+        private void Maximize_Click(object sender, RoutedEventArgs e)
+        {
+
+            Application.Current.MainWindow.WindowState = (Application.Current.MainWindow.WindowState == WindowState.Normal) ? WindowState.Maximized : WindowState.Normal;
+        }
+
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
+
+        private void ShowTagList(object sender, RoutedEventArgs e)
+        {
+
+            Window win = new TagListWindow();
+            win.Show();
         }
     }
 
