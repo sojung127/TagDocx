@@ -6,6 +6,7 @@ using System.Data;
 using System.Collections.Generic; //List collection 써야하니까!
 using System.Linq; //리스트 중복제거 함수 쓰려고 추가
 using System;
+using Microsoft.VisualBasic.Logging;
 
 namespace TagDocx
 {
@@ -36,6 +37,7 @@ namespace TagDocx
             dataGridCustomers1.ItemsSource = null;// dt.DefaultView;
             dataGridCustomers2.ItemsSource = null;// dt.DefaultView;
             //Console.WriteLine("데이터불러옴");
+          
 
             if (묶음_태그[0] != null)
             {
@@ -349,7 +351,7 @@ namespace TagDocx
             cdatagrid.Items.Remove(cdatagrid.SelectedItem);
         }
 
-        private void ssmove(object sender, RoutedEventArgs e)
+        /*private void ssmove(object sender, RoutedEventArgs e)
         {
             //선택한폴더이동
             DataGrid cdatagrid = findtabindex();
@@ -366,6 +368,6 @@ namespace TagDocx
             {
 
             }
-        }
+        }*/
     }
 }
