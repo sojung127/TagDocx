@@ -7,6 +7,7 @@ using System.Collections.Generic; //List collection 써야하니까!
 using System.Linq; //리스트 중복제거 함수 쓰려고 추가
 using System;
 using Microsoft.VisualBasic.Logging;
+using System.IO.Packaging;
 
 namespace TagDocx
 {
@@ -351,23 +352,15 @@ namespace TagDocx
             cdatagrid.Items.Remove(cdatagrid.SelectedItem);
         }
 
-        /*private void ssmove(object sender, RoutedEventArgs e)
+        
+
+        //파일 문서 경로 바꾸기
+        private static string changePath(string filePath, string oldFile, string newFile)
         {
-            //선택한폴더이동
-            DataGrid cdatagrid = findtabindex();
-            DataTable cdcd = findtabdata();
-            if (묶음0라디오.IsChecked == true && 묶음1라디오.IsChecked == false && 묶음2라디오.IsChecked == false)
-            {
+            oldFile = filePath + "/" + oldFile;   //파일이름포함한 기존경로  (NAME은 파일 타입 포함)
+            newFile = filePath + "/" + newFile;    //새로운경로+파일이름 경로
 
-            }
-            if (묶음0라디오.IsChecked == false && 묶음1라디오.IsChecked == true && 묶음2라디오.IsChecked == false)
-            {
-
-            }
-            if (묶음0라디오.IsChecked == false && 묶음1라디오.IsChecked == false && 묶음2라디오.IsChecked == true)
-            {
-
-            }
-        }*/
+            System.IO.File.Move(oldFile, newFile);
+        }
     }
 }

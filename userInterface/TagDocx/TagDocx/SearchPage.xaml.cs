@@ -264,26 +264,31 @@ namespace TagDocx
             
         }
 
-        private void SelectAll(object sender, RoutedEventArgs e)
+        
+        
+        private void Click_Exit(object sender, RoutedEventArgs e)
         {
+            Application.Current.Shutdown();
+        }
+
+        private void BackToMainPage(object sender, RoutedEventArgs e)
+        {
+           MainPage page = new MainPage();
+           NavigationService.Navigate(page);
+        }
+
+        private void SelectAll_Exectued(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("SelectAll Executed");
             SearchResult.SelectAll();
         }
 
-        private void Deselect(object sender, RoutedEventArgs e)
+        private void DeselectAll_Executed(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine("deSelectAll Executed");
             SearchResult.UnselectAll();
-        }
 
-        private void ToMain(object sender, RoutedEventArgs e)
-        {
-            MainPage page = new MainPage();
-            NavigationService.Navigate(page);
         }
-        private void Close(object sender, RoutedEventArgs e)
-        {
-            Application.Current.MainWindow.Close();
-        }
-
     }
 
 }

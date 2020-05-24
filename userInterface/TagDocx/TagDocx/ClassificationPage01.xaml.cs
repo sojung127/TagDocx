@@ -23,7 +23,7 @@ namespace TagDocx
 
         List<string> Tags = new List<string>();
         List<string> 묶음_태그 = new List<string>(); //묶음번호가index고 그 내용이 선택된 태그
-
+        string[,] stags = new string[3,5];   //
 
 
         public ClassificationPage01(DataSet data)
