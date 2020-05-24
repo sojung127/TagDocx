@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data;
 
