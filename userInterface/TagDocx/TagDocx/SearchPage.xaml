@@ -68,13 +68,13 @@
                     <ToolBar Background="WhiteSmoke" Margin="0,4" VerticalAlignment="center">
                         <Menu>
                             <MenuItem Header="파일">
-                                <MenuItem Header="메인으로"/>
-                                <MenuItem Header="닫기"/>
+                                <MenuItem Header="메인으로" Click="ToMain"/>
+                                <MenuItem Header="닫기" Click="Close"/>
                             </MenuItem>
                             <MenuItem Header="편집">
-                                <MenuItem Header="모두선택"/>
+                                <MenuItem Header="모두선택" Click="SelectAll"/>
 
-                                <MenuItem Header="모두취소"/>
+                                <MenuItem Header="모두취소" Click="Deselect"/>
                                 <MenuItem Header="삭제" Click="fileDelete"/>
                                 <MenuItem Header="폴더로 이동"/>
                                 <MenuItem Header="복사"/>

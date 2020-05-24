@@ -19,6 +19,7 @@ using System.Diagnostics;
 using System.Text.RegularExpressions; //패턴매칭(Regex)등 사용위해 정규식표현 using
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Microsoft.VisualBasic.FileIO;
+using System.Windows.Navigation;
 
 
 namespace TagDocx
@@ -262,6 +263,27 @@ namespace TagDocx
 
             
         }
+
+        private void SelectAll(object sender, RoutedEventArgs e)
+        {
+            SearchResult.SelectAll();
+        }
+
+        private void Deselect(object sender, RoutedEventArgs e)
+        {
+            SearchResult.UnselectAll();
+        }
+
+        private void ToMain(object sender, RoutedEventArgs e)
+        {
+            MainPage page = new MainPage();
+            NavigationService.Navigate(page);
+        }
+        private void Close(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Close();
+        }
+
     }
 
 }
