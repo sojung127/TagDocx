@@ -9,12 +9,20 @@
       Title="MainPage">
 
     <Grid>
-        <Button Content="검색" HorizontalAlignment="Left" Margin="160,345,0,0" VerticalAlignment="Top" Width="75" Click="ToSearch"/>
-        <Button x:Name="categorizeDoc"  Width="200" Click="BtnClassificateDocPage" Height="90" Margin="500,314,100,45.6">
-            <ContentControl>
-                <StackPanel Height="90" Width="200" Orientation="Horizontal">
+
+        <Button x:Name="searchDoc"  VerticalAlignment="Top" Width="250" Height="90" Click="ToSearch" Margin="108,312,442,0">
+            <ContentControl Width="200">
+                <StackPanel Height="80" Width="200" Orientation="Horizontal">
+                    <Image Source="/resource/adcs검색.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+                    <TextBlock Text="문서 검색" Height="auto" Width="110" VerticalAlignment="center" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                </StackPanel>
+            </ContentControl>
+        </Button>
+        <Button x:Name="categorizeDoc"  Width="250" Click="BtnClassificateDocPage" Height="90" Margin="443,312,107,47.6" >
+            <ContentControl Width="200">
+                <StackPanel Height="80" Width="200" Orientation="Horizontal">
                     <Image Source="/resource/adcs분류.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-                    <TextBlock Text="문서 분류" Height="auto" Width="110" VerticalAlignment="center" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                    <TextBlock Text="문서 분류" Height="auto" Width="110" HorizontalAlignment="right" VerticalAlignment="center" TextAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0,0,69.6,0"/>
                 </StackPanel>
             </ContentControl>
         </Button>
