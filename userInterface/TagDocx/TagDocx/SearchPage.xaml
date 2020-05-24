@@ -1,4 +1,5 @@
 ﻿<Page x:Class="TagDocx.SearchPage"
+      xmlns:wpf="http://schemas.microsoft.com/netfx/2009/xaml/presentation" 
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -8,7 +9,8 @@
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SearchPage">
-    <Grid>
+ 
+    <wpf:Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
@@ -55,9 +57,7 @@
                 <ColumnDefinition Width="367*"/>
                 <ColumnDefinition Width="434*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="SearchPage" HorizontalAlignment="left" VerticalAlignment="Center" Margin="10"/>
-
-
+          
 
         </Grid>
 
@@ -67,20 +67,18 @@
                     <ToolBar Background="WhiteSmoke" Margin="0,4" VerticalAlignment="center">
                         <Menu>
                             <MenuItem Header="파일">
-                                <MenuItem Header="메인으로"/>
-                                <MenuItem Header="닫기"/>
+                                <MenuItem Header="메인으로" Click="BackToMainPage"/>
+                                <MenuItem Header="닫기" Click="Click_Exit" />
                             </MenuItem>
                             <MenuItem Header="편집">
-                                <MenuItem Header="모두선택"/>
-
-                                <MenuItem Header="모두취소"/>
+                                <MenuItem Header="모두선택" Click="SelectAll_Exectued"/>
+                                <MenuItem Header="모두취소" Click="DeselectAll_Executed"/>
                                 <MenuItem Header="삭제"/>
                                 <MenuItem Header="폴더로 이동"/>
                                 <MenuItem Header="복사"/>
                             </MenuItem>
                             <MenuItem Header="보기">
                                 <MenuItem Header="태그 목록 보기"/>
-
                                 <MenuItem Header="전체화면"/>
                                 <MenuItem Header="최소화"/>
                             </MenuItem>
@@ -104,7 +102,7 @@
             </DockPanel>
         </Grid>
 
-    </Grid>
+    </wpf:Grid>
 
 
 </Page>

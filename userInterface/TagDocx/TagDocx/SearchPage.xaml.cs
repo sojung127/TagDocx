@@ -204,6 +204,31 @@ namespace TagDocx
                 Search.Text += " ";
             Search.Text = Search.Text.ToString().TrimEnd();
         }
+
+        
+        private void Click_Exit(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void BackToMainPage(object sender, RoutedEventArgs e)
+        {
+           MainPage page = new MainPage();
+           NavigationService.Navigate(page);
+        }
+
+        private void SelectAll_Exectued(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("SelectAll Executed");
+            SearchResult.SelectAll();
+        }
+
+        private void DeselectAll_Executed(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("deSelectAll Executed");
+            SearchResult.UnselectAll();
+
+        }
     }
 
 }
