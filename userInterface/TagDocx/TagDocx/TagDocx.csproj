@@ -69,7 +69,10 @@
     <Compile Include="ClassificationPage01.xaml.cs" />
     <Compile Include="ClassificationPage.xaml.cs" />
     <Compile Include="SearchPage.xaml.cs" />
-
+    <Page Include="ClassificationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ClassificationPage02.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,17 +81,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ClassficationPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-
     <Compile Include="MainPage.xaml.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,19 +94,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-
     <Compile Include="TagEditPage.xaml.cs">
       <DependentUpon>TagEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TagEditWindow.xaml.cs">
       <DependentUpon>TagEditWindow.xaml</DependentUpon>
     </Compile>
-    
     <Page Include="SearchPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

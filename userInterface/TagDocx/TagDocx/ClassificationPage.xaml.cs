@@ -31,6 +31,7 @@ namespace TagDocx
             //불러온 datadet 다음 페이지로 넘겨주기
             ClassificationPage01 page = new ClassificationPage01(ds);
             NavigationService.Navigate(page);
+            FindDoc();  //폴더에서 문서들가져오기
         }
 
 
@@ -48,7 +49,7 @@ namespace TagDocx
                 selectedFolder = dialog.FileName.Replace("\\", ""); ; //선택된 폴더이름저장
             }
         }
-        private void BtnFindDoc(object sender, RoutedEventArgs e)
+        private void FindDoc()
         {
 
             // string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
@@ -67,7 +68,7 @@ namespace TagDocx
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
                 adp.Fill(ds, "LoadDataBinding");
-                dataGridCustomers.DataContext = ds;
+                //dataGridCustomers.DataContext = ds;
 
             }
             catch (MySqlException ex)
