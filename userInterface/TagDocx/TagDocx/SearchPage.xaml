@@ -33,6 +33,7 @@
                         <ContextMenu>
                             <MenuItem Header="태그 수정" Click="menuitem_click"/>
                             <MenuItem Header="삭제" Click="fileDelete"/>
+                            <MenuItem Header="이동" Click="fileMove"/>
 
                         </ContextMenu>
                     </DataGrid.ContextMenu>
@@ -74,7 +75,7 @@
                                 <MenuItem Header="모두선택"/>
 
                                 <MenuItem Header="모두취소"/>
-                                <MenuItem Header="삭제"/>
+                                <MenuItem Header="삭제" Click="fileDelete"/>
                                 <MenuItem Header="폴더로 이동"/>
                                 <MenuItem Header="복사"/>
                             </MenuItem>
