@@ -19,7 +19,6 @@ using System.Diagnostics;
 using System.Text.RegularExpressions; //패턴매칭(Regex)등 사용위해 정규식표현 using
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Microsoft.VisualBasic.FileIO;
-using System.Windows.Navigation;
 
 
 namespace TagDocx
@@ -42,7 +41,7 @@ namespace TagDocx
             connection = new MySqlConnection(connectionString);
 
 
-            string query_start = "select document.id, name, path, type_tag, c.content_tag from document left join (select id,group_concat(content_tag) as content_tag from content";
+            string query_start = "select document.id, name, path, type_tag, c.content_tag, substring_index(document.name, '.', -1) as ext FROM document left join (select id,group_concat(content_tag) as content_tag from content";
             string query_end = " group by id )as c on c.id = document.id where c.id = document.id;";
 
             string final_query = query_start + query_end;
@@ -76,7 +75,7 @@ namespace TagDocx
             TextBox tb = sender as TextBox;
             string[] words = tb.Text.Split(' ');
 
-            string query_start = "select document.id, name, path, type_tag, c.content_tag from document left join (select id,group_concat(content_tag) as content_tag from content where id in "
+            string query_start = "select document.id, name, path, type_tag, c.content_tag, substring_index(name, '.', -1) as ext from document left join (select id,group_concat(content_tag) as content_tag from content where id in "
                 + "(select id from content where ";
             string select_content="";
             string select_docu="";
@@ -315,7 +314,7 @@ namespace TagDocx
 
         private void Click_Exit(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+           Application.Current.Shutdown();
         }
 
         private void BackToMainPage(object sender, RoutedEventArgs e)

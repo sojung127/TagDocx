@@ -354,7 +354,7 @@ namespace TagDocx
 
         
 
-        //파일 문서 경로 바꾸기
+        /*파일 문서 경로 바꾸기
         private static string changePath(string filePath, string oldFile, string newFile)
         {
             oldFile = filePath + "/" + oldFile;   //파일이름포함한 기존경로  (NAME은 파일 타입 포함)
@@ -362,5 +362,6 @@ namespace TagDocx
 
             System.IO.File.Move(oldFile, newFile);
         }
+        */
     }
 }
