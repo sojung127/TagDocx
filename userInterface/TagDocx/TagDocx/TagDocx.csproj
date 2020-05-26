@@ -44,16 +44,7 @@
       <HintPath>..\packages\MaterialDesignThemes.3.1.2\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 8.0.13\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
-    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.19.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -76,9 +67,7 @@
     </ApplicationDefinition>
     <Compile Include="ClassificationPage02.xaml.cs" />
     <Compile Include="ClassificationPage01.xaml.cs" />
-    <Compile Include="ClassificationPage.xaml.cs" />
     <Compile Include="SearchPage.xaml.cs" />
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     <Compile Include="TagListPage.xaml.cs">
@@ -93,13 +82,6 @@
     </Page>
 >>>>>>> 6e7d24a90dbc32972e393901061f6550201cc60d
     <Page Include="ClassificationPage02.xaml">
-=======
-    <Page Include="ClassificationPage.xaml">
->>>>>>> parent of 21873ad... Update TagDocx.csproj
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ClassificationPage02.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -107,11 +89,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="MainPage.xaml.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Page Include="ClassificationPage.xaml">
+    <Compile Include="TagEditPage.xaml.cs">
+      <DependentUpon>TagEditPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TagEditWindow.xaml.cs">
+      <DependentUpon>TagEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ClassficationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,11 +112,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TagEditPage.xaml.cs">
-      <DependentUpon>TagEditPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TagEditWindow.xaml.cs">
-      <DependentUpon>TagEditWindow.xaml</DependentUpon>
+    <Compile Include="ClassificationPage.xaml.cs" />
+    <Compile Include="MainPage.xaml.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Page Include="SearchPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -186,11 +174,4 @@
     <Resource Include="resource\adcs분류.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets'))" />
-  </Target>
 </Project>
