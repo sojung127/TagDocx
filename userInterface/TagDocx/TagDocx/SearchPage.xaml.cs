@@ -17,6 +17,7 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Diagnostics;
 using System.Text.RegularExpressions; //패턴매칭(Regex)등 사용위해 정규식표현 using
+using Microsoft.WindowsAPICodePack.Dialogs;
 using Microsoft.VisualBasic.FileIO;
 
 
@@ -30,6 +31,7 @@ namespace TagDocx
         string connectionString = "SERVER=localhost;DATABASE=adcs;UID=godocx;PASSWORD=486;";
         int[] selectID=new int[100];
         string[] filePath=new string[100];
+        string[] fileName=new string[100];
         MySqlConnection connection;
         int temp;
         public SearchPage()
@@ -39,7 +41,7 @@ namespace TagDocx
             connection = new MySqlConnection(connectionString);
 
 
-            string query_start = "select document.id, name, path, type_tag, c.content_tag from document left join (select id,group_concat(content_tag) as content_tag from content";
+            string query_start = "select document.id, name, path, type_tag, c.content_tag, substring_index(document.name, '.', -1) as ext FROM document left join (select id,group_concat(content_tag) as content_tag from content";
             string query_end = " group by id )as c on c.id = document.id where c.id = document.id;";
 
             string final_query = query_start + query_end;
@@ -73,14 +75,14 @@ namespace TagDocx
             TextBox tb = sender as TextBox;
             string[] words = tb.Text.Split(' ');
 
-            string query_start = "select document.id, name, path, type_tag, c.content_tag from document left join (select id,group_concat(content_tag) as content_tag from content where id in "
+            string query_start = "select document.id, name, path, type_tag, c.content_tag, substring_index(name, '.', -1) as ext from document left join (select id,group_concat(content_tag) as content_tag from content where id in "
                 + "(select id from content where ";
             string select_content="";
             string select_docu="";
 
 
-            select_content += "content_tag like '%" + words[0] + "%'";
-            select_docu += "union select id from document where name like '%" + words[0] + "%'";
+            select_content += "content_tag like '%" + words[0] + "%' ";
+            select_docu += "union select id from document where name like '%" + words[0] + "%' or type_tag like '%"+words[0]+"%' ";
 
             if (words.Length >1)
             {
@@ -89,7 +91,7 @@ namespace TagDocx
                     if (words[i].Length != 0)
                     {
                         select_content += "or content_tag like '%" + words[i] + "%' ";
-                        select_docu += "or name like '%" + words[i] + "%' ";
+                        select_docu += "or name like '%" + words[i] + "%' " +" or type_tag like '%" + words[i] + "%' ";
                     }
                 }
             }
@@ -138,7 +140,14 @@ namespace TagDocx
                 {
                     DataRowView rv = (DataRowView)SearchResult.SelectedItems[i];
                     selectID[i] = int.Parse(rv[0].ToString());
-                    filePath[i] = rv[2].ToString() + rv[1].ToString();
+                    fileName[i] = rv[1].ToString();
+                    Debug.WriteLine(rv[2].ToString()[rv[2].ToString().Length - 1]);
+                    if( rv[2].ToString()[rv[2].ToString().Length-1]!='/')
+                        filePath[i] = rv[2].ToString() +"/"+ rv[1].ToString();
+                    else
+                        filePath[i] = rv[2].ToString() + rv[1].ToString();
+
+
                     Debug.WriteLine(filePath[i] + " " + selectID[i]);
                 }
                 
@@ -171,10 +180,10 @@ namespace TagDocx
         private void fileDelete(object sender, RoutedEventArgs e)
         {
             temp = selectedItems;
-            
+
             try
             {
-                    connection.Open();
+                connection.Open();
                 for (int i = 0; i < temp; i++)
                 {
                     if (System.IO.File.Exists(filePath[i]))
@@ -187,9 +196,11 @@ namespace TagDocx
                     );
                     }
                     MySqlCommand cmd = new MySqlCommand("delete from content where id=" + selectID[i] + ";", connection);
+                    cmd.ExecuteNonQuery();
                     cmd = new MySqlCommand("delete from document where id=" + selectID[i] + ";", connection);
+                    cmd.ExecuteNonQuery();
                 }
-                    connection.Close();
+                connection.Close();
 
             }
             catch (System.IO.IOException ex)
@@ -201,14 +212,109 @@ namespace TagDocx
                 temp = 0;
 
             }
-                Search.Text += " ";
+            Search.Text += " ";
             Search.Text = Search.Text.ToString().TrimEnd();
         }
 
-        
+        private void fileMove(object sender, RoutedEventArgs e)
+        {
+            temp = selectedItems;
+            string folder="";
+
+            // 폴더 열기 다이얼로그 생성
+            CommonOpenFileDialog fileDialog = new CommonOpenFileDialog();
+            fileDialog.IsFolderPicker = true;
+            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                folder = fileDialog.FileName;
+                folder=folder.Replace("\\","/");
+                try
+                {
+                    connection.Open();
+                    for (int i = 0; i < temp; i++)
+                    {
+                            Debug.WriteLine("이동: " + filePath[i] + " to " + folder + "/" + fileName[i]);
+                        if (System.IO.File.Exists(filePath[i]))
+                        {
+
+                            System.IO.File.Move(filePath[i], folder + "/" + fileName[i]);
+
+                        }
+
+                        MySqlCommand cmd = new MySqlCommand("update document set path='"+folder+"/"+"' where id=" + selectID[i] + ";", connection);
+                        cmd.ExecuteNonQuery();
+                    }
+                    connection.Close();
+
+                }
+                catch (System.IO.IOException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    temp = 0;
+
+                }
+                Search.Text += " ";
+                Search.Text = Search.Text.ToString().TrimEnd();
+            }
+
+            
+        }
+
+        private void fileCopy(object sender, RoutedEventArgs e)
+        {
+            temp = selectedItems;
+            string folder = "";
+
+            // 폴더 열기 다이얼로그 생성
+            CommonOpenFileDialog fileDialog = new CommonOpenFileDialog();
+            fileDialog.IsFolderPicker = true;
+            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                folder = fileDialog.FileName;
+                folder = folder.Replace("\\", "/");
+                try
+                {
+                    connection.Open();
+                    for (int i = 0; i < temp; i++)
+                    {
+                        Debug.WriteLine("이동: " + filePath[i] + " to " + folder + "/" + fileName[i]);
+                        if (System.IO.File.Exists(filePath[i]))
+                        {
+
+                            System.IO.File.Copy(filePath[i], folder + "/" + fileName[i]);
+
+                        }
+                        /// DB 추가는 추후 추가예정;
+                        string insertQuery = "insert into document values";
+                        //MySqlCommand cmd = new MySqlCommand("update document set path='" + folder + "/" + "' where id=" + selectID[i] + ";", connection);
+                        //cmd.ExecuteNonQuery();
+                    }
+                    connection.Close();
+
+                }
+                catch (System.IO.IOException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    temp = 0;
+
+                }
+                Search.Text += " ";
+                Search.Text = Search.Text.ToString().TrimEnd();
+            }
+
+
+        }
+
+
         private void Click_Exit(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+           Application.Current.Shutdown();
         }
 
         private void BackToMainPage(object sender, RoutedEventArgs e)
@@ -228,6 +334,24 @@ namespace TagDocx
             Debug.WriteLine("deSelectAll Executed");
             SearchResult.UnselectAll();
 
+        }
+
+        private void Maximize_Click(object sender, RoutedEventArgs e)
+        {
+
+            Application.Current.MainWindow.WindowState = (Application.Current.MainWindow.WindowState == WindowState.Normal) ? WindowState.Maximized : WindowState.Normal;
+        }
+
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
+
+        private void ShowTagList(object sender, RoutedEventArgs e)
+        {
+
+            Window win = new TagListWindow();
+            win.Show();
         }
     }
 

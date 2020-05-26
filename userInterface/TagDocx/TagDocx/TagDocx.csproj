@@ -68,6 +68,19 @@
     <Compile Include="ClassificationPage02.xaml.cs" />
     <Compile Include="ClassificationPage01.xaml.cs" />
     <Compile Include="SearchPage.xaml.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="TagListPage.xaml.cs">
+      <DependentUpon>TagListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TagListWindow.xaml.cs">
+      <DependentUpon>TagListWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ClassificationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+>>>>>>> 6e7d24a90dbc32972e393901061f6550201cc60d
     <Page Include="ClassificationPage02.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -114,6 +127,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TagEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TagListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TagListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
