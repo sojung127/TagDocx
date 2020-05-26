@@ -42,6 +42,7 @@ folder_list=[ "C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClass
                 "C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/지원서/"]
 '''
 
+## 폴더리스트 수정하기
 folder_list=["C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/한글/공고/","C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/한글/공고test/","C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/한글/지원서/","C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/한글/지원서test/"]
 from sklearn.feature_extraction.text import CountVectorizer
 vectorizer = CountVectorizer(min_df=1)
@@ -49,11 +50,12 @@ from konlpy.tag import Kkma
 pos_tagger=Kkma()
 
 # 트레이닝2, 테스트2개 폴더에 맞춘 코드입니다! 트레이닝,테스트, 트레이닝,테스트 순으로 FOLDERLIST만들어주세요               
+posts=[]
+
 for i in range(4):
     path_origin=folder_list[i]
     file_list = os.listdir(path_origin) #list 반환
 
-    posts=[]
 
     for j in range(len(file_list)):
         path = path_origin + file_list[j]
@@ -89,26 +91,24 @@ for i in range(4):
                 print('error',ex)
                 pass
         
-    if(i%2==0):
-        vectorizer = CountVectorizer(min_df=1)
 
 
-    from konlpy.tag import Kkma
-    pos_tagger=Kkma()
-    posts_tokens=[]
-    posts_tokens = [' '.join(pos_tagger.morphs(sentence)) for sentence in posts]
+from konlpy.tag import Kkma
+pos_tagger=Kkma()
+posts_tokens=[]
+posts_tokens = [' '.join(pos_tagger.morphs(sentence)) for sentence in posts]
 
-    X_train=vectorizer.fit_transform(posts_tokens).toarray()
+X_train=vectorizer.fit_transform(posts_tokens).toarray()
     
-    ## !! 자기 폴더 길이에 맞게 수정해주세용!! 
-    namelist=folder_list[i][74:-1].split('/')
-    name=''.join(namelist)
-    # python 실행하는 폴더에파일이 생깁니다(cmd창 현재 경로)
-    filename=name+'.bin'
-    with open(filename,'wb') as f:
-        pickle.dump(X_train,f)
-        pickle.dump(vectorizer,f)
-    print('\n'+filename+' created!\n')
+## !! 자기 폴더 길이에 맞게 수정해주세용!! 
+namelist=folder_list[i][74:-1].split('/')
+name=''.join(namelist)
+# python 실행하는 폴더에파일이 생깁니다(cmd창 현재 경로)
+filename='vectorData'+'.bin'
+with open(filename,'wb') as f:
+    pickle.dump(X_train,f)
+    pickle.dump(vectorizer,f)
+print('\n'+filename+' created!\n')
 
 
 
