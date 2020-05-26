@@ -68,8 +68,6 @@
     <Compile Include="ClassificationPage02.xaml.cs" />
     <Compile Include="ClassificationPage01.xaml.cs" />
     <Compile Include="SearchPage.xaml.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="TagListPage.xaml.cs">
       <DependentUpon>TagListPage.xaml</DependentUpon>
     </Compile>
@@ -80,7 +78,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
->>>>>>> 6e7d24a90dbc32972e393901061f6550201cc60d
     <Page Include="ClassificationPage02.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
