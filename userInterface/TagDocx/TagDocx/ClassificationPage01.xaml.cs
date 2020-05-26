@@ -6,6 +6,9 @@ using System.Data;
 using System.Collections.Generic; //List collection 써야하니까!
 using System.Linq; //리스트 중복제거 함수 쓰려고 추가
 using System;
+using System.Data;
+using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace TagDocx
 {
@@ -21,9 +24,13 @@ namespace TagDocx
 
 
 
-        List<string> Tags = new List<string>();
-        List<string> 묶음_태그 = new List<string>(); //묶음번호가index고 그 내용이 선택된 태그
-        string[,] stags = new string[3,5];   //
+        List<string> Tags = new List<string>();  //db에 있는 태그들 리스트
+
+        List<string> G0 = new List<string>();  //묶음0
+        List<string> G1 = new List<string>();  //묶음1
+        List<string> G2 = new List<string>();  //묶음2
+
+
 
 
         public ClassificationPage01(DataSet data)
@@ -46,9 +53,9 @@ namespace TagDocx
 
 
             setList(); //리스트 박스로 출력하기
-            묶음_태그.Add("");
-            묶음_태그.Add("");
-            묶음_태그.Add("");
+            //묶음_태그.Add("");
+            //묶음_태그.Add("");
+            //묶음_태그.Add("");
         }
 
         public void setList() //listbox에 item 추가
@@ -70,105 +77,96 @@ namespace TagDocx
         {
 
             // 넘기기
-            ClassificationPage02 page = new ClassificationPage02(dt, 묶음_태그);
+            ClassificationPage02 page = new ClassificationPage02(dt, G0,G1,G2);
 
             Console.WriteLine("0묶음");
-            Console.WriteLine(묶음_태그[0]);
+            Console.WriteLine(G0);
             Console.WriteLine("1묶음");
-            Console.WriteLine(묶음_태그[1]);
+            Console.WriteLine(G1);
             Console.WriteLine("2묶음");
-            Console.WriteLine(묶음_태그[2]);
+            Console.WriteLine(G2);
             NavigationService.Navigate(page);
         }
 
+
+
+        private void tagtogroup(int 묶음, List<string> group)
+        {
+            
+
+            //처음 태그 추가
+            if (group == null&& 태그목록리스트.SelectedItem != null) 
+            {
+
+                for (int i = 0; i < 태그목록리스트.SelectedItems.Count; i++)
+                {
+                    group.Add(태그목록리스트.SelectedItems[i].ToString());
+                }
+            }
+            //이미담아놓은 태그가 있음
+            else if (group != null && 태그목록리스트.SelectedItem != null) //있는데다 추가
+            {
+                for (int i = 0; i < 태그목록리스트.SelectedItems.Count; i++)
+                {
+                    group.Add(태그목록리스트.SelectedItems[i].ToString());
+                }
+            }
+
+            if (묶음 == 0) showSelectedTags(묶음태그리스트0,group);
+            if (묶음 == 1) showSelectedTags(묶음태그리스트1,group);
+            if (묶음 == 2) showSelectedTags(묶음태그리스트2,group);
+        }
 
         private void 묶음에추가_Click(object sender, RoutedEventArgs e)
         {
 
             int 묶음 = 0;
             묶음 = 묶음박스.SelectedIndex; //tabpage는 0 부터 시작
-            string[] tmplen = 묶음_태그[묶음].Split();
 
-            if (tmplen.Length == 5 || 태그목록리스트.SelectedItems.Count > 5)
-            {
-                MessageBox.Show("태그는 5개까지 선택가능 합니다.", "태그제한", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
 
-            if (묶음 > 묶음_태그.Count - 1 && 태그목록리스트.SelectedItem != null) //처음 태그 추가
-            {
-
-                //묶음_태그.Add(this.태그목록리스트.SelectedItems.ToString());
-                //묶음_태그.Add(""); //빈 스트링 추가
-                for (int i = 0; i < 태그목록리스트.SelectedItems.Count; i++)
-                {
-                    묶음_태그[묶음] = 묶음_태그[묶음] + ' ' + 태그목록리스트.SelectedItems[i].ToString();
-                }
-            }
-            else if (묶음 <= 묶음_태그.Count - 1 && 태그목록리스트.SelectedItem != null) //있는데다 추가
-            {
-                for (int i = 0; i < 태그목록리스트.SelectedItems.Count; i++)
-                {
-                    묶음_태그[묶음] = 묶음_태그[묶음] + ' ' + 태그목록리스트.SelectedItems[i].ToString();
-                }
-            }
-            else//암것도아님
-            {
-                묶음_태그[묶음] = "";
-            }
-            //임시태그목록.Content= 묶음_태그[묶음];
-
-            묶음_태그[묶음] = 묶음_태그[묶음].Trim();
-
-            if (묶음 == 0) showSelectedTags(묶음태그리스트0);
-            if (묶음 == 1) showSelectedTags(묶음태그리스트1);
-            if (묶음 == 2) showSelectedTags(묶음태그리스트2);
+            if (묶음 == 0) tagtogroup(0,G0);
+            if (묶음 == 1) tagtogroup(1,G1);
+            if (묶음 == 2) tagtogroup(2,G2);
+            
         }
         private void 묶음비우기_Click(object sender, RoutedEventArgs e)
         {
+
             int tabindex = 묶음박스.SelectedIndex; //어느 묶음 선택했는지
-            if (tabindex == 0) { 묶음_태그[0] = ""; showSelectedTags(묶음태그리스트0); }
-            if (tabindex == 1) { 묶음_태그[1] = ""; showSelectedTags(묶음태그리스트1); }
-            if (tabindex == 2) { 묶음_태그[2] = ""; showSelectedTags(묶음태그리스트2); }
+            List<string> group=null;
+            if (tabindex == 0) group = G0;
+            if (tabindex == 1) group = G1;
+            if (tabindex == 2) group = G2;
+            if (tabindex == 0) { G0.Clear(); showSelectedTags(묶음태그리스트0,group); }
+            if (tabindex == 1) { G1.Clear(); showSelectedTags(묶음태그리스트1,group); }
+            if (tabindex == 2) { G2.Clear(); showSelectedTags(묶음태그리스트2,group); }
         }
-        private void showSelectedTags(ListBox 묶음태그리스트)
+        private void showSelectedTags(ListBox 묶음태그리스트,List<string> group)
         {
             int tabindex = 0;
             묶음태그리스트.Items.Clear();//reset
             태그목록리스트.SelectedIndex = -1;
             //임시태그목록.Content = 묶음박스.SelectedIndex;
             tabindex = 묶음박스.SelectedIndex;
+            
 
-            if (tabindex <= 묶음_태그.Count - 1 && 묶음_태그[tabindex] != null)
+            if (tabindex <= 3 && group != null)
             {
-                string[] sts = 묶음_태그[tabindex].Split(' ');
-                for (int i = 0; i < sts.Length; i++)
+                for (int i = 0; i < group.Count(); i++)
                 {
-                    묶음태그리스트.Items.Add(sts[i]);
+                    묶음태그리스트.Items.Add(group[i]);
                 }
             }
         }
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int tabindex = 묶음박스.SelectedIndex;
-            if (tabindex == 0) showSelectedTags(묶음태그리스트0);
-            if (tabindex == 1) showSelectedTags(묶음태그리스트1);
-            if (tabindex == 2) showSelectedTags(묶음태그리스트2);
+            int tabindex = 묶음박스.SelectedIndex; //어느 묶음 선택했는지
+            List<string> group = null;
+            if (tabindex == 0) group = G0;
+            if (tabindex == 1) group = G1;
+            if (tabindex == 2) group = G2;
 
-            /*int tabindex = 0;
-            태그목록리스트.SelectedIndex = -1;
-            임시태그목록.Content = 묶음박스.SelectedIndex;
-            tabindex = 묶음박스.SelectedIndex;
-            if(tabindex<=묶음_태그.Count-1 && 묶음_태그[tabindex] != null) 
-            {
-                string[] sts = 묶음_태그[tabindex].Split(' ');
-                for(int i=0; i<sts.Length; i++)
-                {
-                    int tmpindex=태그목록리스트.Items.IndexOf(sts[i]); //해당태그의 인덱스가져오기
-                    태그목록리스트.
-                    태그목록리스트.SelectedItem.Add(sts[i]);
-                }
-            }*/
+            
 
         }
 

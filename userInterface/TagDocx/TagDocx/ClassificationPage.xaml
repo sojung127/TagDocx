@@ -32,7 +32,7 @@
         </StackPanel>
 
         <Label Content="문서를 분류하고자 하는 대상 폴더를 선택하세요. (하위 폴더 미포함) " HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30"/>
-        <Button Content="폴더 찾기" HorizontalAlignment="Left" Margin="317,43,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="BtnFindFolder"/>
+        <Button Content="폴더 찾기" HorizontalAlignment="Left" Margin="317,43,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" Click="BtnFindFolder"/>
         <TextBox x:Name="folderName" HorizontalAlignment="Left" Height="22" Margin="10,40,0,0" Grid.Row="1" TextWrapping="Wrap" Text="폴더 경로 직접 입력" VerticalAlignment="Top" Width="302"/>
       
         <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="53,175,0,24.6" Name="dataGridCustomers"

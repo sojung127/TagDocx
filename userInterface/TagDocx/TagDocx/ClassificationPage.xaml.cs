@@ -2,10 +2,9 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 using System.Data;
-using System.Collections.Generic; //List collection 써야하니까!
-using System.Linq; //리스트 중복제거 함수 쓰려고 추가
-using System;
 
 namespace TagDocx
 {
@@ -31,7 +30,7 @@ namespace TagDocx
         private void BtnNextStep(object sender, RoutedEventArgs e)
         {
             FindDoc();  //폴더에서 문서들가져오기
-            
+
         }
 
 
@@ -59,7 +58,7 @@ namespace TagDocx
             {
                 connection.Open();
                 //MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='" + selectedFolder + "'", connection);
-              
+
 
                 MySqlCommand cmd = new MySqlCommand("SELECT * FROM document inner join content on document.ID = content.ID where document.PATH='" + selectedFolder + "'", connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
