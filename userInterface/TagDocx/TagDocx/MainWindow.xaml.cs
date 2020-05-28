@@ -26,7 +26,9 @@ namespace TagDocx
         {
             InitializeComponent();
             //FileSystemWatcher fsw = new FileSystemWatcher("C:\\AutomaticDocumentClassificationService\\Dataset\\한글\\기사\\IT과학\\");
-            FileSystemWatcher fsw = new FileSystemWatcher(@"C:\AutomaticDocumentClassificationService\Dataset");
+            Console.WriteLine(Directory.GetCurrentDirectory()); // = TagDocx\bin\debug 
+            string path = System.IO.Path.GetFullPath(System.IO.Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\..\..\Dataset\"));
+            FileSystemWatcher fsw = new FileSystemWatcher(path);
 
             fsw.EnableRaisingEvents = true;
 
