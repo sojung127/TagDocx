@@ -6,7 +6,6 @@ using System.Data;
 using System.Collections.Generic; //List collection 써야하니까!
 using System.Linq; //리스트 중복제거 함수 쓰려고 추가
 using System;
-using System.Data;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
 

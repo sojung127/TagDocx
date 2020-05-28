@@ -21,9 +21,7 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using Microsoft.VisualBasic.FileIO;
 using System.Security.Permissions;
 using System.IO;
-
-
-
+using System.Collections.Specialized;
 
 namespace TagDocx
 {
@@ -274,49 +272,22 @@ namespace TagDocx
         private void fileCopy(object sender, RoutedEventArgs e)
         {
             temp = selectedItems;
-            string folder = "";
 
-            // 폴더 열기 다이얼로그 생성
-            CommonOpenFileDialog fileDialog = new CommonOpenFileDialog();
-            fileDialog.IsFolderPicker = true;
-            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            // 선택한 파일들 클립보드에 복사
+
+            StringCollection paths = new StringCollection();
+            for (int i = 0; i < temp; i++)
             {
-                folder = fileDialog.FileName;
-                folder = folder.Replace("\\", "/");
-                try
+                if (System.IO.File.Exists(filePath[i]))
                 {
-                    connection.Open();
-                    for (int i = 0; i < temp; i++)
-                    {
-                        Debug.WriteLine("이동: " + filePath[i] + " to " + folder + "/" + fileName[i]);
-                        if (System.IO.File.Exists(filePath[i]))
-                        {
-
-                            System.IO.File.Copy(filePath[i], folder + "/" + fileName[i]);
-
-                        }
-                        /// DB 추가는 추후 추가예정;
-                        string insertQuery = "insert into document values";
-                        //MySqlCommand cmd = new MySqlCommand("update document set path='" + folder + "/" + "' where id=" + selectID[i] + ";", connection);
-                        //cmd.ExecuteNonQuery();
-                    }
-                    connection.Close();
-
+                    paths.Add(filePath[i]);
                 }
-                catch (System.IO.IOException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    temp = 0;
 
-                }
-                Search.Text += " ";
-                Search.Text = Search.Text.ToString().TrimEnd();
             }
-
-
+                Clipboard.SetFileDropList(paths);
+            // 파일리스트 새로고침
+            Search.Text += " ";
+            Search.Text = Search.Text.ToString().TrimEnd();
         }
 
 
