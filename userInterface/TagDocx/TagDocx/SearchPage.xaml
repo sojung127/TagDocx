@@ -46,7 +46,7 @@
                         <DataGridTextColumn Binding="{Binding path}" Header="Path" />
                         <DataGridTextColumn Binding="{Binding type_tag}" Header="type" />
                         <DataGridTextColumn Binding="{Binding content_tag}" Header="tag" />
-                        <DataGridTextColumn Binding="{Binding extData}"  Header="ext"/>
+                        <DataGridTextColumn Binding="{Binding ext}"  Header="ext"/>
                     </DataGrid.Columns>
                     <!--
                    

@@ -19,6 +19,10 @@ using System.Diagnostics;
 using System.Text.RegularExpressions; //패턴매칭(Regex)등 사용위해 정규식표현 using
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Microsoft.VisualBasic.FileIO;
+using System.Security.Permissions;
+using System.IO;
+
+
 
 
 namespace TagDocx
@@ -169,7 +173,7 @@ namespace TagDocx
 
         private void ListDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Debug.WriteLine(filePath);
+            Debug.WriteLine(filePath[0]);
             
             if (filePath.Length != 0 && selectedItems==1)
                 System.Diagnostics.Process.Start(filePath[0]);
@@ -218,6 +222,9 @@ namespace TagDocx
 
         private void fileMove(object sender, RoutedEventArgs e)
         {
+            
+
+
             temp = selectedItems;
             string folder="";
 
@@ -260,6 +267,7 @@ namespace TagDocx
                 Search.Text = Search.Text.ToString().TrimEnd();
             }
 
+           
             
         }
 
