@@ -74,7 +74,7 @@
 
         </Grid>
 
-        <Grid x:Name="TabMenu" Margin="0,31,0,0.2" Grid.RowSpan="2" HorizontalAlignment="left" Width="790">
+        <Grid x:Name="TabMenu" Margin="10,31,10,0.2" Grid.RowSpan="2">
             <Button Content="홈으로"  Click="BackToMainPage" Height="Auto" Width="89" Margin="10,10,0,6" HorizontalAlignment="Left"/>
             <Button Content="모두선택" Click="SelectAll_Exectued" Margin="0,10,483,6" Height="Auto" HorizontalAlignment="Right" Width="111"/>
             <Button Content="선택모두취소" Click="DeselectAll_Executed" Margin="0,10,364,6" Height="Auto" HorizontalAlignment="Right" Width="113"/>
