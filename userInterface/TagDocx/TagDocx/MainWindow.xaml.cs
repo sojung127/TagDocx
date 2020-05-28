@@ -12,6 +12,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using System.Security.Permissions;
+using System.IO;
+
 namespace TagDocx
 {
     /// <summary>
@@ -22,6 +25,22 @@ namespace TagDocx
         public MainWindow()
         {
             InitializeComponent();
+            //FileSystemWatcher fsw = new FileSystemWatcher("C:\\AutomaticDocumentClassificationService\\Dataset\\한글\\기사\\IT과학\\");
+            FileSystemWatcher fsw = new FileSystemWatcher(@"C:\AutomaticDocumentClassificationService\Dataset");
+
+            fsw.EnableRaisingEvents = true;
+
+            //  Register a handler that gets called when a
+            //  file is created, changed, or deleted.
+            fsw.Changed += new FileSystemEventHandler(OnChanged);
+
+            fsw.Created += new FileSystemEventHandler(OnChanged);
+
+            fsw.Deleted += new FileSystemEventHandler(OnChanged);
+
+           // fsw.Renamed += new FileSystemEventHandler(OnRenamed);
+
+            Console.WriteLine("!!!!");
             MainHome.Content = new MainPage();
         }
 
@@ -44,5 +63,44 @@ namespace TagDocx
         {
             Application.Current.Shutdown();
         }
+
+
+        private void watch()
+        {
+
+            string path = "C:\\AutomaticDocumentClassificationService\\Dataset\\한글\\기사\\IT과학\\";
+            FileSystemWatcher watcher = new FileSystemWatcher();
+            watcher.Path = path;
+            watcher.NotifyFilter = NotifyFilters.LastWrite;
+            watcher.Filter = "*.*";
+            watcher.Changed += new FileSystemEventHandler(OnChanged);
+            watcher.EnableRaisingEvents = true;
+        }
+
+        void OnChanged(object source, FileSystemEventArgs e)
+        {
+            this.Dispatcher.Invoke((Action)(() =>
+            {
+                Console.WriteLine("변경");
+
+            }));
+
+
+            //  Show that a file has been created, changed, or deleted.
+            WatcherChangeTypes wct = e.ChangeType;
+            Console.WriteLine("File {0} {1}", e.FullPath, wct.ToString());
+            Console.WriteLine("변경!!!!");
+
+
+
+        }
+
+        private static void OnRenamed(object source, RenamedEventArgs e)
+        {
+            Console.WriteLine($"File: {e.OldFullPath} renamed to {e.FullPath}");
+        }
+
+        
+
     }
 }
