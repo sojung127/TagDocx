@@ -9,8 +9,8 @@
       Title="MainPage">
 
     <Grid>
-
-        <Button x:Name="searchDoc"  VerticalAlignment="Top" Width="250" Height="90" Click="ToSearch" Margin="108,312,442,0">
+        <Image Source="/resource/adcs태깅.jpg" Height="254" Width="254" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="70,100,0,95.6"  />
+        <Button x:Name="searchDoc"  VerticalAlignment="Top" Width="250" Height="90" Click="ToSearch" Margin="430,100,120,0">
             <ContentControl Width="200">
                 <StackPanel Height="80" Width="200" Orientation="Horizontal">
                     <Image Source="/resource/adcs검색.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"  />
@@ -18,7 +18,7 @@
                 </StackPanel>
             </ContentControl>
         </Button>
-        <Button x:Name="categorizeDoc"  Width="250" Click="BtnClassificateDocPage" Height="90" Margin="443,312,107,47.6" >
+        <Button x:Name="categorizeDoc"  Width="250" Click="BtnClassificateDocPage" Height="90" Margin="430,264,120,95.6" >
             <ContentControl Width="200">
                 <StackPanel Height="80" Width="200" Orientation="Horizontal">
                     <Image Source="/resource/adcs분류.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"  />
