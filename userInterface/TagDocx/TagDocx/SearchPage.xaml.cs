@@ -361,6 +361,11 @@ namespace TagDocx
             Window win = new TagListWindow();
             win.Show();
         }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }

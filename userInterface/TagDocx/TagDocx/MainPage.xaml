@@ -10,7 +10,7 @@
 
     <Grid>
         <Image Source="/resource/adcs태깅.jpg" Height="254" Width="254" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="70,100,0,95.6"  />
-        <Button x:Name="searchDoc"  VerticalAlignment="Top" Width="250" Height="90" Click="ToSearch" Margin="430,100,120,0">
+        <Button x:Name="searchDoc" VerticalAlignment="Top" Width="250" Height="90" Click="ToSearch" Margin="430,100,120,0">
             <ContentControl Width="200">
                 <StackPanel Height="80" Width="200" Orientation="Horizontal">
                     <Image Source="/resource/adcs검색.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"  />
