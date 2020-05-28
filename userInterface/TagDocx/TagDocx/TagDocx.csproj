@@ -127,6 +127,9 @@
     <Compile Include="TagListWindow.xaml.cs">
       <DependentUpon>TagListWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ToastMessage.xaml.cs">
+      <DependentUpon>ToastMessage.xaml</DependentUpon>
+    </Compile>
     <Page Include="ClassificationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -180,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TagListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToastMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
