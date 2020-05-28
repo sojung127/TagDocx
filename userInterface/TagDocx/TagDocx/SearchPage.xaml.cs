@@ -285,6 +285,10 @@ namespace TagDocx
 
             }
                 Clipboard.SetFileDropList(paths);
+            Application.Current.Properties["TM_Msg"] = "클립보드에 복사되었습니다.";
+
+            Window Splash_Message = new ToastMessage();
+            Splash_Message.Show();
             // 파일리스트 새로고침
             Search.Text += " ";
             Search.Text = Search.Text.ToString().TrimEnd();
