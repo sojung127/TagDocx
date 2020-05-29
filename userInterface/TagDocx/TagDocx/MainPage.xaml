@@ -10,22 +10,31 @@
 
     <Grid>
         <Image Source="/resource/adcs태깅.jpg" Height="254" Width="254" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="70,100,0,95.6"  />
-        <Button x:Name="searchDoc" VerticalAlignment="Top" Width="250" Height="90" Click="ToSearch" Margin="430,100,120,0">
-            <ContentControl Width="200">
-                <StackPanel Height="80" Width="200" Orientation="Horizontal">
-                    <Image Source="/resource/adcs검색.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-                    <TextBlock Text="문서 검색" Height="auto" Width="110" VerticalAlignment="center" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
-                </StackPanel>
-            </ContentControl>
+        <Button x:Name="searchDoc" VerticalAlignment="Top" Width="300" Height="90" Click="ToSearch" Margin="352,100,148,0">
+
+            <StackPanel Height="auto" Width="300" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="/resource/adcs검색.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+                <TextBlock Text="문서 검색" Height="auto" Width="auto" VerticalAlignment="center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30" FontWeight="Bold" Margin="10,20"/>
+            </StackPanel>
+
         </Button>
-        <Button x:Name="categorizeDoc"  Width="250" Click="BtnClassificateDocPage" Height="90" Margin="430,264,120,95.6" >
-            <ContentControl Width="200">
-                <StackPanel Height="80" Width="200" Orientation="Horizontal">
-                    <Image Source="/resource/adcs분류.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-                    <TextBlock Text="문서 분류" Height="auto" Width="110" HorizontalAlignment="right" VerticalAlignment="center" TextAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0,0,69.6,0"/>
-                </StackPanel>
-            </ContentControl>
+        <Button x:Name="categorizeDoc" Click="BtnClassificateDocPage" Width="300" Height="90" Margin="352,264,148,95.6" >
+
+            <StackPanel Height="auto" Width="300" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="/resource/adcs분류.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+                <TextBlock Text="문서 분류" Height="auto" Width="auto" VerticalAlignment="center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30" FontWeight="Bold" Margin="10,0,69.6,0"/>
+            </StackPanel>
+
         </Button>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="519,366,10,9.6">
+            <Image Source="/resource/setting.png" Margin="0,10,0,9.6" Width="55" />
+            <Button x:Name="SettingBtn" Click="BtnSetting" Margin="10,10,10,9.6" Height="50" HorizontalAlignment="Right" Width="130" >
+                <TextBlock Text="Setting" FontSize="30" />
+            </Button>
+        </StackPanel>
+        <Label x:Name="notice" Content="" HorizontalAlignment="Left" Height="24" Margin="136,32,0,0" VerticalAlignment="Top" Width="516"/>
+
 
     </Grid>
 </Page>
