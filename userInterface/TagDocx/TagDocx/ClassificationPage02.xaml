@@ -27,22 +27,19 @@
 
         <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center"  >
             <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="/resource/adcs분류.png"/>
-            <TextBlock Text="문서 분류" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="문서 분류" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
 
-        <Label Content="문서 분류 결과" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" FontSize="18" FontWeight="Bold"/>
-        <Label Content="묶음 별로 폴더를 생성할 위치를 정할 수 있습니다. &#xA;원하지 않는 문서에 대해 삭제 및 다른 묶음으로 이동가능 합니다." HorizontalAlignment="Left" Margin="10,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="768" Height="49" FontSize="15"/>
-
-        <TabControl x:Name="묶음결과박스" Margin="117,107,119,22.6" Grid.Row="1" SelectionChanged="TabControl_SelectionChanged" IsSynchronizedWithCurrentItem="False">
+        <TabControl x:Name="묶음결과박스" FontSize="15" Margin="10,10,10,9.6" Grid.Row="1" SelectionChanged="TabControl_SelectionChanged" IsSynchronizedWithCurrentItem="False">
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock FontSize="16"><Run Text="묶음0"/></TextBlock>
+                        <TextBlock FontSize="20"><Run Text="묶음0"/></TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <Grid Background="#FFE5E5E5">
 
-                    <DataGrid AutoGenerateColumns="False" Margin="10,39,10.4,10.2" Name="dataGridCustomers0" CanUserResizeRows="False" RenderTransformOrigin="0.5,0.5">
+                    <DataGrid AutoGenerateColumns="False" Margin="10,44,10.4,9.8" Name="dataGridCustomers0" CanUserResizeRows="False" RenderTransformOrigin="0.5,0.5">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Path=ID}" Header="고유번호"  IsReadOnly="True" />
                             <DataGridTextColumn Binding="{Binding Path=NAME}" Header="파일명"  IsReadOnly="True" />
@@ -51,17 +48,17 @@
                             <DataGridTextColumn Binding="{Binding Path=PATH}" Header="저장경로"  IsReadOnly="True" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label x:Name="묶음0태그들" Content="묶음 태그" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="303"/>
+                    <Label x:Name="묶음0태그들" Content="묶음 태그" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="303"/>
                 </Grid>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock FontSize="16"><Run Text="묶음1"/></TextBlock>
+                        <TextBlock FontSize="20"><Run Text="묶음1"/></TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid AutoGenerateColumns="False" Margin="10,39,10.4,10.2" Name="dataGridCustomers1" CanUserResizeRows="False" RenderTransformOrigin="0.5,0.5">
+                    <DataGrid AutoGenerateColumns="False" Margin="10,44,10.4,9.8" Name="dataGridCustomers1" CanUserResizeRows="False" RenderTransformOrigin="0.5,0.5">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Path=ID}" Header="고유번호"  IsReadOnly="True" />
                             <DataGridTextColumn Binding="{Binding Path=NAME}" Header="파일명"  IsReadOnly="True" />
@@ -70,18 +67,18 @@
                             <DataGridTextColumn Binding="{Binding Path=PATH}" Header="저장경로"  IsReadOnly="True" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label x:Name="묶음1태그들" Content="묶음태그" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="303"/>
+                    <Label x:Name="묶음1태그들" Content="묶음태그" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="303"/>
                 </Grid>
 
             </TabItem>
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock FontSize="16"><Run Text="묶음2"/></TextBlock>
+                        <TextBlock FontSize="20"><Run Text="묶음2"/></TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid AutoGenerateColumns="False" Margin="10,39,10.4,10.2" Name="dataGridCustomers2" CanUserResizeRows="False" RenderTransformOrigin="0.5,0.5">
+                    <DataGrid AutoGenerateColumns="False" Margin="10,44,10.4,9.8" Name="dataGridCustomers2" CanUserResizeRows="False" RenderTransformOrigin="0.5,0.5">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Path=ID}" Header="고유번호"  IsReadOnly="True" />
                             <DataGridTextColumn Binding="{Binding Path=NAME}" Header="파일명"  IsReadOnly="True" />
@@ -90,7 +87,7 @@
                             <DataGridTextColumn Binding="{Binding Path=PATH}" Header="저장경로"  IsReadOnly="True" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label x:Name="묶음2태그들" Content="묶음태그" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="303"/>
+                    <Label x:Name="묶음2태그들" Content="묶음태그" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="303"/>
                 </Grid>
             </TabItem>
 
@@ -123,7 +120,7 @@
             </Label>
             <Button Content="삭제하기" HorizontalAlignment="Left" Height="34" Margin="114,91,0,0" VerticalAlignment="Top" Width="87" Click="ssdelete"/>
         </Grid>-->
-        <Button x:Name="문서분류종료" Content="분류끝" Margin="337,0,322,18.6" Click="BtnEnd" Height="54" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Bottom" />
+        <Button x:Name="문서분류종료" FontSize="20" Content="끝내기" Margin="649,0,10,9.6" Click="BtnEnd" Height="44" Grid.Row="2" VerticalAlignment="Bottom" />
 
     </Grid>
 

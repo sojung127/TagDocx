@@ -27,7 +27,7 @@
 
         <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center"  >
             <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Source="/resource/adcs분류.png"/>
-            <TextBlock Text="문서 분류" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="문서 분류" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
         <Label Content="분류하고 싶은 문서에 대한 태그를 선택하세요." HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" FontSize="18" FontWeight="Bold"/>
         <Label Content="태그를 복수 선택하여 그룹으로 묶을 수 도 있습니다.&#xD;&#xA;문서는 높은 순위의 그룹으로 우선 배정됩니다." HorizontalAlignment="Left" Margin="10,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="373" Height="49" FontSize="15"/>
@@ -72,13 +72,13 @@
             </TabItem>
 
         </TabControl>
-        <Button x:Name="묶음에추가"  Content="묶음에 추가"  HorizontalAlignment="Left" Height="30" Margin="264,269,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130" Click="묶음에추가_Click" FontSize="18" FontWeight="Bold"/>
-        <Button x:Name="묶음에서삭제" Content="묶음 비우기" HorizontalAlignment="Left" Height="28" Margin="91,269,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130" Click="묶음비우기_Click" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="묶음에추가"  FontSize="20" Content="묶음에 추가"  HorizontalAlignment="Left" Height="30" Margin="264,269,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Click="묶음에추가_Click" FontWeight="Bold"/>
+        <Button x:Name="묶음에서삭제" FontSize="20" Content="묶음 비우기" HorizontalAlignment="Left" Height="30" Margin="71,269,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Click="묶음비우기_Click" FontWeight="Bold"/>
         <!--
         <Button x:Name="묶음추가" Content="묶음추가" Margin="368,107,357,191.6" Grid.Row="1" Click="묶음추가클릭"/>
         -->
-        <Button x:Name="gotoMain" Content="이전단계" HorizontalAlignment="Left" Margin="10,10.4,0,9.6"  Width="130" Click="BtnPreStep" Grid.Row="2" Height="Auto" />
-        <Button x:Name="strartTag" Content="다음단계" HorizontalAlignment="Right" Margin="0,10.4,10,9.6" Width="130" Click="BtnNextStep" Grid.Row="2" Height="Auto" />
+        <Button x:Name="gotoMain" FontSize="20" Content="이전단계" HorizontalAlignment="Left" Margin="10,0,0,9.6"  Width="130" Click="BtnPreStep" Grid.Row="2" Height="44" VerticalAlignment="Bottom" />
+        <Button x:Name="strartTag" FontSize="20" Content="다음단계" HorizontalAlignment="Right" Margin="0,0,10,9.6" Width="130" Click="BtnNextStep" Grid.Row="2" Height="44" VerticalAlignment="Bottom" />
 
     </Grid>
 </Page>
