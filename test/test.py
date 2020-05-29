@@ -45,12 +45,12 @@ def get_tag():
     # 입력 예시   ../Dataset/기사/0전체폴더/
     #path_origin = input("문서경로:")
     #paths = ["../Dataset/기사/0전체폴더"]
-    paths = ["../Dataset/기사/0전체폴더","../Dataset/논문/0전체","../Dataset/공고","../Dataset/지원서"]
-    paths = ["../Dataset/기사/기사test","../Dataset/논문/논문test2","../Dataset/공고test","../Dataset/지원서test"]
+    paths = ["../Dataset/한글/기사/0전체폴더","../Dataset/한글/논문/0전체","../Dataset/한글/공고","../Dataset/한글/지원서"]
+    #paths = ["../Dataset/기사/기사test","../Dataset/논문/논문test2","../Dataset/공고test","../Dataset/지원서test"]
 
     import pandas as pd
-   # train = pd.read_csv(r'C:\\Users\\YooJin\\Desktop\\AutomaticDocumentClassificationService\\test\\words.csv', encoding='CP949')
-    train = pd.read_csv(r'C:\capston\AutomaticDocumentClassificationService\test\words.csv', encoding='CP949')
+    train = pd.read_csv(r'C:\\Users\\YooJin\\Desktop\\AutomaticDocumentClassificationService\\test\\words.csv', encoding='CP949')
+    #train = pd.read_csv(r'C:\capston\AutomaticDocumentClassificationService\test\words.csv', encoding='CP949')
     train_words = train['words'].dropna().tolist()
     train =[]
 
@@ -92,9 +92,8 @@ def get_tag():
                 contents = hwptest.convert_hwp_to_txt(path)
             elif path[-4:] == 'docx':
                 contents = docx2txt.process(path)
-
             else:
-                contents = ''
+                pass
             # 각 문서당 내용태그를 할당한다
 
             doc = contents
@@ -171,7 +170,7 @@ def get_tag():
             results.append((paths.index(p), score))
             #print((paths.index(p), score))
             #print(score)
-    f = open('test.pickle', 'wb')
+    f = open('train.pickle', 'wb')
     pickle.dump(results, f)
     f.close()
     quit()
@@ -182,7 +181,7 @@ def form_tagging(index):
     return {0: '논문', 1: '기사', 2: '강의자료', 3: '공고', 4: 'A'}.get(index, '기타')
 
 def get_pickle():
-    f = open('test.pickle', 'rb')
+    f = open('train.pickle', 'rb')
     my_list = pickle.load(f)
     print(my_list)
     f.close()
