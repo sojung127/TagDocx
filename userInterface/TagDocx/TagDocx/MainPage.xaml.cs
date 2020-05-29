@@ -31,5 +31,13 @@ namespace TagDocx
             NavigationService.Navigate(page);
 
         }
+
+        private void BtnClassificateDocPage(object sender, RoutedEventArgs e)
+        {
+            ClassificationPage page = new ClassificationPage();
+            NavigationService.Navigate(page);
+        }
     }
+
+
 }

@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -28,9 +29,8 @@ namespace TagDocx
         }
         private void BtnNextStep(object sender, RoutedEventArgs e)
         {
-            //불러온 datadet 다음 페이지로 넘겨주기
-            ClassificationPage01 page = new ClassificationPage01(ds);
-            NavigationService.Navigate(page);
+            FindDoc();  //폴더에서 문서들가져오기
+
         }
 
 
@@ -48,7 +48,7 @@ namespace TagDocx
                 selectedFolder = dialog.FileName.Replace("\\", ""); ; //선택된 폴더이름저장
             }
         }
-        private void BtnFindDoc(object sender, RoutedEventArgs e)
+        private void FindDoc()
         {
 
             // string connectionString = "SERVER=localhost;DATABASE=adcs;UID=root;PASSWORD=1771094;";
@@ -57,17 +57,14 @@ namespace TagDocx
             try
             {
                 connection.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='" + selectedFolder + "'", connection);
-                /*MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                // 윈도우 폼의 LoadDataBinding에 데이터 넣기
-                adp.Fill(ds, "LoadDataBinding");
-                dataGridCustomers.DataContext = ds;*/
+                //MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='" + selectedFolder + "'", connection);
 
-                //MySqlCommand cmd = new MySqlCommand("SELECT * FROM document inner join content on document.ID = content.ID where document.PATH='" + selectedFolder + "'", connection);
+
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM document inner join content on document.ID = content.ID where document.PATH='" + selectedFolder + "'", connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
                 adp.Fill(ds, "LoadDataBinding");
-                dataGridCustomers.DataContext = ds;
+                //dataGridCustomers.DataContext = ds;
 
             }
             catch (MySqlException ex)
@@ -78,6 +75,10 @@ namespace TagDocx
             {
                 connection.Close();
             }
+
+            //작업 끝나면 불러온 datadet 다음 페이지로 넘겨주기
+            ClassificationPage01 page = new ClassificationPage01(ds);
+            NavigationService.Navigate(page);
         }
     }
 }

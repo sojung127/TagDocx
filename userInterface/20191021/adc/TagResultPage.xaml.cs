@@ -94,7 +94,8 @@ namespace adc
                     RedirectStandardOutput = true,
                     //WorkingDirectory = @"C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\Scoring\",
                     //WorkingDirectory = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\",
-                    WorkingDirectory = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\",
+                    //WorkingDirectory = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\",
+                    WorkingDirectory = @"C:\AutomaticDocumentClassificationService\Scoring\",
                     WindowStyle = ProcessWindowStyle.Hidden,
                     CreateNoWindow = true
                 }
@@ -107,8 +108,8 @@ namespace adc
                 if (sw.BaseStream.CanWrite)
                 {
                     // Vital to activate Anaconda
-                    sw.WriteLine(@"C:\Temp\Anaconda3\Scripts\activate.bat");
-                    //sw.WriteLine(@"C:\Users\user\Anaconda3\Scripts\activate.bat");
+                    //sw.WriteLine(@"C:\Temp\Anaconda3\Scripts\activate.bat");
+                    sw.WriteLine(@"C:\Users\user\Anaconda3\Scripts\activate.bat");
                     //sw.WriteLine(@"C:\ProgramData\Anaconda3\Scripts\activate.bat");
                     //sw.WriteLine(@"C:\Users\pyj\Anaconda3\Scripts\activate.bat");
                     // Activate your environment
@@ -117,7 +118,7 @@ namespace adc
                     //sw.WriteLine("set KERAS_BACKEND=tensorflow");
                     // run your script. You can also pass in arguments
                     //string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
-                    string command = @"python C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
+                    string command = @"python C:\AutomaticDocumentClassificationService\Scoring\\Tagging.py " + this.folderpath;
                     sw.WriteLine(command);
 
                 }
@@ -233,12 +234,12 @@ namespace adc
                     foreach (Items a in FileList.Items)
                     {
                         id = a.Id;
-                        path = savingpath;
+                        path = savingpath.Replace("\\", "/");
                         form = a.Form;
                         context = a.Context;
                         name = a.Name;
                         
-                        sql1 = "insert into document values("+id+",\""+name+"\",\""+form+ "\",\""+path+"\")";
+                        sql1 = "insert into document values("+id+",\""+name+"\",\""+form+ "\",\""+path+"\")"; // id ,name, from, path 
                         MySqlCommand cmd = new MySqlCommand(sql1, conn);
                         cmd.ExecuteNonQuery();
 
