@@ -36,7 +36,7 @@
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="태그 수정" Click="menuitem_click"/>
-                        <MenuItem Header="경로 복사" Click="fileCopy"/>
+                        <MenuItem Header="파일 복사" Click="fileCopy"/>
                         <MenuItem Header="삭제" Click="fileDelete"/>
                         <MenuItem Header="이동" Click="fileMove"/>
 
@@ -84,7 +84,7 @@
                 <Button Content="모두선택" Click="SelectAll_Exectued" Margin="5,5"  Height="Auto" HorizontalAlignment="Right" Width="auto"/>
                 <Button Content="선택취소" Click="DeselectAll_Executed"   Margin="5,5" Height="Auto" HorizontalAlignment="Right" Width="auto"/>
                 <Button Content="선택 삭제" Click="fileDelete"  Margin="5,5" Height="Auto" HorizontalAlignment="Right" Width="auto"/>
-            <Button Content="경로 복사" Click="fileCopy" Margin="5,5" Height="Auto" HorizontalAlignment="Right" Width="auto"/>
+            <Button Content="경로 복사" Click="filePathCopy" Margin="5,5" Height="Auto" HorizontalAlignment="Right" Width="auto"/>
             <!--<Button Content="파일" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto">
                             <Button.ContextMenu>
                                 <ContextMenu>
