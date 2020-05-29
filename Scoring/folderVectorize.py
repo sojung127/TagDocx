@@ -43,20 +43,20 @@ folder_list=[ "C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClass
 '''
 
 ## 폴더리스트 수정하기
-folder_list=["C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/한글/공고/","C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/한글/공고test/","C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/한글/지원서/","C:/Users/소정/Desktop/졸업프로젝트/AutomaticDocumentClassificationService/Dataset/한글/지원서test/"]
+folder_list=["C:/Users/소정/Desktop/졸업프로젝트/test2/","C:/Users/소정/Desktop/졸업프로젝트/test1/"]
 from sklearn.feature_extraction.text import CountVectorizer
 vectorizer = CountVectorizer(min_df=1)
 from konlpy.tag import Kkma
 pos_tagger=Kkma()
-
+label=[]
 # 트레이닝2, 테스트2개 폴더에 맞춘 코드입니다! 트레이닝,테스트, 트레이닝,테스트 순으로 FOLDERLIST만들어주세요               
 posts=[]
 
-for i in range(4):
+for i in range(2):
     path_origin=folder_list[i]
     file_list = os.listdir(path_origin) #list 반환
 
-
+    cnt=0
     for j in range(len(file_list)):
         path = path_origin + file_list[j]
         print(path)
@@ -87,15 +87,18 @@ for i in range(4):
                 X_train=vectorizer.fit_transform(post)
                 # 위의 코드들이 정상 실행되었을때만 벡터에 포함시킴
                 posts.append(contents)
+                cnt=cnt+1
             except Exception as ex:
                 print('error',ex)
                 pass
+    label.append(cnt)
         
 
 
 from konlpy.tag import Kkma
 pos_tagger=Kkma()
 posts_tokens=[]
+
 posts_tokens = [' '.join(pos_tagger.morphs(sentence)) for sentence in posts]
 
 X_train=vectorizer.fit_transform(posts_tokens).toarray()
@@ -107,8 +110,10 @@ name=''.join(namelist)
 filename='vectorData'+'.bin'
 with open(filename,'wb') as f:
     pickle.dump(X_train,f)
+    pickle.dump(label,f)
     pickle.dump(vectorizer,f)
 print('\n'+filename+' created!\n')
+
 
 
 
