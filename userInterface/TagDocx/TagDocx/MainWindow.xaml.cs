@@ -14,24 +14,38 @@ using System.Windows.Shapes;
 using System.Timers;
 using System.Security.Permissions;
 using System.IO;
-
-
+using System.Diagnostics;
+using System.ComponentModel;
 
 namespace TagDocx
 {
     /// <summary>
     /// MainWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         int moved;
         string []fileList = new string[10];
+
+        #region INotifyPropertyChanged Member
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
+
+        [System.Runtime.InteropServices.DllImport("Kernel32")]
+        public static extern void FreeConsole();
+
         public MainWindow()
         {
             Timer timer = new System.Timers.Timer();
             timer.Interval = 1000; // 1 초
             timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
             timer.Start();
+
+           
+            
+
 
             Console.WriteLine("Press Enter to exit");
             Console.ReadLine();
@@ -104,14 +118,18 @@ namespace TagDocx
 
         private void CloseButtonFechar_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            //Application.Current.Shutdown();
+            this.Visibility = Visibility.Hidden;
         }
        void OnCreated(object soruce,FileSystemEventArgs e)
         {
             Console.WriteLine("\n" + e.Name + "created start "+moved);
-            for(int i = moved-1; i >= 0; i--)
+
+            
+
+            for (int i = moved-1; i >= 0; i--)
             {
-                    Console.Write(fileList[i] + " " + i);
+                Console.Write(fileList[i] + " " + i);
                 if (fileList[i].Equals(e.Name))
                 {
                     // 이 경우 db에 추가

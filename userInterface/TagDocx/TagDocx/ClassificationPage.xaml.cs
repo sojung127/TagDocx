@@ -5,6 +5,7 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Diagnostics;
 
 namespace TagDocx
 {

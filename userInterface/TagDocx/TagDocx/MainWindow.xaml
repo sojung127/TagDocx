@@ -28,6 +28,7 @@
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="1">
                 <Button Width="auto" Height="Auto" Foreground="white" Padding="auto" Margin="5,0"  Background ="{x:Null}" BorderBrush = "{x:Null}" Click="Mimimize_Click"  >
+                    
                     <materialDesign:PackIcon Kind="minus" />
                 </Button>
                 <Button Width="auto" Height="Auto"  Foreground="white" Padding="auto" Margin="5,0" Background ="{x:Null}" BorderBrush = "{x:Null}" Click="Maximize_Click" >
