@@ -8,7 +8,7 @@
         Title="ToastMessage" Height="80" Width="400" Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" AllowsTransparency="True" WindowStyle="None"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
     <Grid>
-        <Rectangle x:Name="Rectangle1" Fill="#ffe3eae7" Margin="10" Stroke="Black" RadiusX="20" RadiusY="20" Height="50"/>
+        <Rectangle x:Name="Rectangle1" Fill="#8881c147" Margin="10" RadiusX="10" RadiusY="10" Height="50"/>
         <TextBlock x:Name="TB_Msg" Margin="10" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         
     </Grid>
