@@ -181,7 +181,7 @@ namespace TagDocx
             }
             catch(Exception xe)
             {
-                MessageBox.Show(xe.ToString());
+                Debug.WriteLine(xe.ToString());
             }
             Window.GetWindow(this).Close();
         }

@@ -63,7 +63,7 @@ namespace TagDocx
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                Debug.WriteLine(ex.ToString());
             }
             finally
             {
@@ -115,7 +115,7 @@ namespace TagDocx
                 SearchResult.DataContext = ds;
             }catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                Debug.WriteLine(ex.ToString());
             }
             finally
             {
@@ -137,7 +137,11 @@ namespace TagDocx
                 selectedItems = SearchResult.SelectedItems.Count;
                 if (selectedItems > 100)
                 {
-                    MessageBox.Show("최대 100개까지만 선택가능합니다.");
+                    //MessageBox.Show("최대 100개까지만 선택가능합니다.");
+                    Application.Current.Properties["TM_Msg"] = "최대 100개까지만 선택가능합니다.";
+
+                    Window Splash_Message = new ToastMessage();
+                    Splash_Message.Show();
                 }
                 for(int i = 0; i < selectedItems; i++)
                 {
@@ -159,8 +163,14 @@ namespace TagDocx
         {
             if (selectedItems > 1)
             {
-                MessageBox.Show("태그는 하나의 문서에 대해서만 수정가능합니다.");
-            }else if (selectedItems == 1)
+                //MessageBox.Show("태그는 하나의 문서에 대해서만 수정가능합니다.");
+                Application.Current.Properties["TM_Msg"] = "태그는 하나의 문서에 대해서만 수정가능합니다.";
+
+                Window Splash_Message = new ToastMessage();
+                Splash_Message.Show();
+
+            }
+            else if (selectedItems == 1)
             {
                 if (!File.Exists(filePath[0])){
                     showDeleteMessage();
