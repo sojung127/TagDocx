@@ -11,9 +11,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Timers;
 using System.Security.Permissions;
 using System.IO;
+
+
 
 namespace TagDocx
 {
@@ -26,6 +28,15 @@ namespace TagDocx
         string []fileList = new string[10];
         public MainWindow()
         {
+            Timer timer = new System.Timers.Timer();
+            timer.Interval = 1000; // 1 초
+            timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
+            timer.Start();
+
+            Console.WriteLine("Press Enter to exit");
+            Console.ReadLine();
+            
+            //시작하고 변수들 초기화
             InitializeComponent();
 
             moved = 0;
@@ -65,6 +76,15 @@ namespace TagDocx
 
             Console.WriteLine("!!!!");
             MainHome.Content = new MainPage();
+        }
+
+
+
+
+        //타이머할일
+        static void timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            Console.WriteLine("timer!");   // <- 여기다가 하고싶은 작업 넣으면 됨!
         }
 
         private void GridBarTitle_MouseDown(object sender, MouseButtonEventArgs e)
@@ -154,7 +174,18 @@ namespace TagDocx
             WatcherChangeTypes wct = e.ChangeType;
             Console.WriteLine("File {0} {1}", e.FullPath, wct.ToString());
             Console.WriteLine("변경!!!!");
-            
+
+          
+ 
+
+
+
+            Console.WriteLine("Press the Enter key to exit the program... ");
+
+            Console.ReadLine();
+
+            Console.WriteLine("Terminating the application...");
+
         }
 
         private static void OnRenamed(object source, RenamedEventArgs e)
@@ -164,5 +195,8 @@ namespace TagDocx
 
         
 
+
+
     }
+
 }

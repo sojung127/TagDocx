@@ -44,8 +44,8 @@ namespace TagDocx
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
 
-                folderName.Text = dialog.FileName.Replace("\\", ""); // 테스트용, 폴더 선택이 완료되면 선택된 폴더를 label에 출력
-                selectedFolder = dialog.FileName.Replace("\\", ""); ; //선택된 폴더이름저장
+                folderName.Text = dialog.FileName; // 테스트용, 폴더 선택이 완료되면 선택된 폴더를 label에 출력
+                selectedFolder = dialog.FileName; //선택된 폴더이름저장
             }
         }
         private void FindDoc()

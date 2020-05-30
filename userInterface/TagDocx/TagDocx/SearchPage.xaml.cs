@@ -23,6 +23,7 @@ using System.Security.Permissions;
 using System.IO;
 using System.Collections.Specialized;
 
+
 namespace TagDocx
 {
     /// <summary>
@@ -219,8 +220,6 @@ namespace TagDocx
         private void fileMove(object sender, RoutedEventArgs e)
         {
             
-
-
             temp = selectedItems;
             string folder="";
 
@@ -283,7 +282,7 @@ namespace TagDocx
 
             }
                 Clipboard.SetFileDropList(paths);
-            Application.Current.Properties["TM_Msg"] = "클립보드에 복사되었습니다.";
+            Application.Current.Properties["TM_Msg"] = "클립보드에 파일이 복사되었습니다.";
 
             Window Splash_Message = new ToastMessage();
             Splash_Message.Show();
@@ -337,6 +336,18 @@ namespace TagDocx
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void filePathCopy(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(filePath[0]);
+
+            Clipboard.SetText(filePath[0]);
+
+            Application.Current.Properties["TM_Msg"] = "클립보드에 경로가 복사되었습니다.";
+            Window Splash_Message = new ToastMessage();
+            Splash_Message.Show();
 
         }
     }
