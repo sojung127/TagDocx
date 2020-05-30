@@ -99,5 +99,13 @@
   <ItemGroup>
     <None Include="Resources\testicon.ico" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resource\adcs검색.png" />
+    <Resource Include="Resource\adcs분류.png" />
+    <Resource Include="Resource\adcs태깅.jpg" />
+    <Resource Include="Resource\setting.png" />
+    <Resource Include="Resource\돋보기.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

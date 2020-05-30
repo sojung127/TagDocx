@@ -28,6 +28,7 @@ namespace TagDocx
         string []fileList = new string[10];
         public MainWindow()
         {
+            /*
             Timer timer = new System.Timers.Timer();
             timer.Interval = 1000; // 1 초
             timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
@@ -52,6 +53,8 @@ namespace TagDocx
             // test용 경로
             string testPath = @"C:\test\";
             string TempPath = @"C:\Temp\";
+
+            /*
             FileSystemWatcher fsw = new FileSystemWatcher(testPath);
             FileSystemWatcher fswTemp = new FileSystemWatcher(TempPath);
 
@@ -73,9 +76,11 @@ namespace TagDocx
             fswTemp.Deleted += new FileSystemEventHandler(OnDeleted);
 
             // fsw.Renamed += new FileSystemEventHandler(OnRenamed);
+            
+
 
             Console.WriteLine("!!!!");
-            MainHome.Content = new MainPage();
+            MainHome.Content = new MainPage();*/
         }
 
 

@@ -62,8 +62,11 @@ namespace TestInterface
         string folderpath = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Dataset\한글\기사\문화";
         static string db_information = @"Server=localhost;Database=adcs;Uid=godocx;Pwd=486;";
         string savingpath;
-        List<string> notinDBfiles = new List<string>();
-        List<Items> itemslist = new List<Items>();
+        List<string> folderlist = new List<string>(); //하위 폴더들 담을 리스트
+        List<string> filelist = new List<string>(); //파일들 담을 리스트
+        List<string> notinDBfiles = new List<string>(); // DB에 없는 파일들 담을 리스트
+        List<Items> itemslist = new List<Items>(); //태그 결과 담을 itemslist
+        
 
         private BackgroundWorker _bgWorker = new BackgroundWorker();
 
@@ -77,33 +80,6 @@ namespace TestInterface
                     PropertyChanged(this, new PropertyChangedEventArgs("WorkerState"));
             }
         }
-        public MainWindow()
-        {
-            InitializeComponent();
-
-            
-            DataContext = this;
-
-            _bgWorker.DoWork += (s, e) => {
-                /*
-                for (int i = 0; i <= 10000; i++) {
-                    System.Threading.Thread.Sleep(1000);
-                    Console.WriteLine(i);
-                }*/
-
-                LookforDoc();
-                GetItems();
-                MessageBox.Show("Workisdone");
-            };
-
-            _bgWorker.RunWorkerAsync();
-            
-            /*
-            LookforDoc();
-            GetItems();*/
-
-        }
-
         #region INotifyPropertyChanged Member
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -113,47 +89,166 @@ namespace TestInterface
         [System.Runtime.InteropServices.DllImport("Kernel32")]
         public static extern void FreeConsole();
 
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            /*
+            //백그라운드 워커
+            DataContext = this;
+
+            _bgWorker.DoWork += (s, e) => {
+                
+                for (int i = 0; i <= 10000; i++) {
+                    System.Threading.Thread.Sleep(1000);
+                    Console.WriteLine(i);
+                }
+
+                LookforDoc();
+                GetItems();
+                MessageBox.Show("Workisdone");
+            };
+
+            _bgWorker.RunWorkerAsync();
+            */
+            StartPeriodicTagging();
+
+        }
+
+        private void StartPeriodicTagging()
+        {
+            this.folderlist = new List<string>();
+            this.itemslist = new List<Items>();
+            string dirPath = @"C:\Users\YooJin\Desktop\test";
+            string filelist = "";
+
+            //폴더 경로로 폴더에 있는 하위 폴더들 찾기
+            GetFolders(dirPath);
+
+            foreach (string name in this.folderlist) {
+                GetFilesAndTag2(name);
+            }
+
+            foreach (string name in this.notinDBfiles)
+            {
+                filelist += name+ " ";
+            }
+            GetTag(filelist);
+            GetItems();
+        }
+
+        private void GetFolders(string dirPath) {
+            if (System.IO.Directory.Exists(dirPath))
+            {
+                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(dirPath);
+                foreach (var item in di.GetDirectories())
+                {
+
+                    GetFolders(dirPath+"\\"+item.Name);
+                    this.folderlist.Add(dirPath + "\\" + item.Name);
+                }
+            }
+            else
+            {
+                Console.WriteLine(dirPath + "를 찾을 수 없습니다");
+            }
+        }
 
         //test
         //string selectedForder=찾을 문서가 있는 경로;
         //string docuname=찾을문서이름;
 
+        private void GetFilesAndTag2(string dirPath) {
+            this.filelist = new List<string>(); //파일 리스트 초기화
 
-        private void LookforDoc()
-        {
-            //string dirPath, string selectedFolder, string docuname
-            this.itemslist = new List<Items>();
-            string dirPath = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Dataset\한글\기사\경제";
-            string filename;
-            MySqlConnection connection = new MySqlConnection(db_information);
-            List<Items> itemslist = new List<Items>();
-            List<string> filelist = new List<string>();
-            notinDBfiles = new List<string>();
-
+            //폴더에 속한 문서들 불러옴
             if (System.IO.Directory.Exists(dirPath))
             {
                 System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(dirPath);
                 foreach (System.IO.FileInfo File in di.GetFiles())
                 {
-                    filename = File.Name;
-                    filelist.Add(filename);
+                    this.filelist.Add(File.Name);
                 }
             }
+            else
+            {
+                Console.WriteLine(dirPath + "를 찾을 수 없습니다");
+            }
 
-            /*
-            //폴더 이름 출력
-            Console.WriteLine("FOLDER NAME : " + File.Name);
-            //폴더내부 파일 개수 출력
-            Console.WriteLine("FILE COUNT IN FOLDER : " + item.GetFiles().Length);
-            //폴더 생성 날짜 출력
-            Console.WriteLine("CREATE DATE : " + item.CreationTime);
-            */
+            MySqlConnection connection = new MySqlConnection(db_information);
+            //notinDBfiles = new List<string>(); //리스트 초기화
+
             try
             {
                 connection.Open();
                 DataSet tds = new DataSet();
-                string searchPath = dirPath.Replace("\\", "/");
-                
+                string searchPath = dirPath.Replace("\\", "/"); //DB를 찾기 위해 경로를 \\를 /로 바꿔줌
+
+
+                foreach (string name in filelist)
+                {
+                    tds = new DataSet();
+
+                    MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='" + searchPath + "'and NAME='" + name + "'", connection);
+
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                    adp.Fill(tds);
+                    //Console.WriteLine(tds);
+                    if (tds.Tables[0].Rows.Count == 0) //비어있으면
+                    {
+                        //Console.WriteLine("없음");
+                        notinDBfiles.Add(dirPath+"\\"+name);
+                        //GetTag(dirPath, name);
+                    }
+                    else
+                    {
+                        //Console.WriteLine(name);
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                connection.Close();
+                //Console.WriteLine("안연결");
+            }
+            finally { connection.Close(); }
+
+            string command = dirPath + " ";
+            foreach (string name in notinDBfiles)
+            {
+                command += name + " ";
+            }
+            //Console.WriteLine(command);
+
+            //GetTag(command);
+        }
+
+        private void GetFilesAndTag(string dirPath)
+        {
+            this.filelist = new List<string>(); //파일 리스트 초기화
+
+            //폴더에 속한 문서들 불러옴
+            if (System.IO.Directory.Exists(dirPath))
+            {
+                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(dirPath);
+                foreach (System.IO.FileInfo File in di.GetFiles())
+                {
+                    this.filelist.Add(File.Name);
+                }
+            }
+            else {
+                Console.WriteLine(dirPath+"를 찾을 수 없습니다");
+            }
+
+            MySqlConnection connection = new MySqlConnection(db_information);
+            notinDBfiles = new List<string>(); //리스트 초기화
+
+            try
+            {
+                connection.Open();
+                DataSet tds = new DataSet();
+                string searchPath = dirPath.Replace("\\", "/"); //DB를 찾기 위해 경로를 \\를 /로 바꿔줌
+
 
                 foreach (string name in filelist)
                 {
@@ -181,21 +276,23 @@ namespace TestInterface
                 connection.Close();
                 //Console.WriteLine("안연결");
             }
+            finally { connection.Close(); }
+            
 
-            finally
+            
+            string command = dirPath + " ";
+            foreach (string name in notinDBfiles)
             {
-                connection.Close();
-            }
-
-            string command = dirPath+ " ";
-            foreach (string name in notinDBfiles) {
                 command += name + " ";
             }
             //Console.WriteLine(command);
+
             GetTag(command);
             
+
         }
-        
+
+
         public void GetTag(string files)
         {
             // Set working directory and create process
