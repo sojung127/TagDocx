@@ -152,8 +152,6 @@ namespace TagDocx
 
                     Debug.WriteLine(filePath[i] + " " + selectID[i]);
                 }
-                
-
             }
         }
         private void menuitem_click(object sender, RoutedEventArgs e)
