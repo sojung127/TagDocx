@@ -45,7 +45,7 @@ namespace TagDocx
 
 
             string query_start = "select document.id, name, path, type_tag, c.content_tag, substring_index(document.name, '.', -1) as ext FROM document left join (select id,group_concat(content_tag) as content_tag from content";
-            string query_end = " group by id )as c on c.id = document.id where c.id = document.id;";
+            string query_end = " group by id )as c on c.id = document.id where c.id = document.id union select document.id,name,path,null,null,substring_index(document.name, '.', -1) from document where document.id NOT IN (SELECT DISTINCT CONTENT.ID FROM CONTENT);";
 
             string final_query = query_start + query_end;
             try
@@ -100,7 +100,7 @@ namespace TagDocx
             }
 
 
-            string query_end=") group by id )as c on c.id = document.id where c.id = document.id;";
+            string query_end = ") group by id )as c on c.id = document.id where c.id = document.id union select document.id,name,path,null,null,substring_index(document.name, '.', -1) from document where document.id NOT IN (SELECT DISTINCT CONTENT.ID FROM CONTENT);";
 
             string final_query = query_start + select_content + select_docu + query_end;
             try
