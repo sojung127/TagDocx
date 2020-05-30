@@ -284,7 +284,7 @@ namespace TagDocx
 
             }
                 Clipboard.SetFileDropList(paths);
-            Application.Current.Properties["TM_Msg"] = "클립보드에 복사되었습니다.";
+            Application.Current.Properties["TM_Msg"] = "클립보드에 파일이 복사되었습니다.";
 
             Window Splash_Message = new ToastMessage();
             Splash_Message.Show();
@@ -347,7 +347,7 @@ namespace TagDocx
 
             Clipboard.SetText(filePath[0]);
 
-            Application.Current.Properties["TM_Msg"] = "클립보드에 복사되었습니다.";
+            Application.Current.Properties["TM_Msg"] = "클립보드에 경로가 복사되었습니다.";
             Window Splash_Message = new ToastMessage();
             Splash_Message.Show();
 

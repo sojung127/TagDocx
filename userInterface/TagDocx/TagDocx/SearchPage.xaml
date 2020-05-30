@@ -36,7 +36,7 @@
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="태그 수정" Click="menuitem_click"/>
-                        <MenuItem Header="파일 복사" Click="fileCopy"/>
+                        <MenuItem Header="경로 복사" Click="filePathCopy"/>
                         <MenuItem Header="삭제" Click="fileDelete"/>
                         <MenuItem Header="이동" Click="fileMove"/>
 
@@ -51,21 +51,7 @@
                     <DataGridTextColumn Binding="{Binding content_tag}" Header="tag" />
                     <DataGridTextColumn Binding="{Binding ext}"  Header="ext"/>
                 </DataGrid.Columns>
-                <!--
-
-                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="Image" Width="SizeToCells" IsReadOnly="True">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Image Source="/resource/adcs검색.png" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                         Source="{Binding Image}"
-                        <DataGridTextColumn Binding="{Binding XPath=typeData}"  Header="Type"/>
-
-                    -->
+               
             </DataGrid>
 
         </Grid>
@@ -84,21 +70,8 @@
                 <Button Content="모두선택" Click="SelectAll_Exectued" Margin="5,5"  Height="Auto" HorizontalAlignment="Right" Width="auto"/>
                 <Button Content="선택취소" Click="DeselectAll_Executed"   Margin="5,5" Height="Auto" HorizontalAlignment="Right" Width="auto"/>
                 <Button Content="선택 삭제" Click="fileDelete"  Margin="5,5" Height="Auto" HorizontalAlignment="Right" Width="auto"/>
-            <Button Content="경로 복사" Click="filePathCopy" Margin="5,5" Height="Auto" HorizontalAlignment="Right" Width="auto"/>
-            <!--<Button Content="파일" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto">
-                            <Button.ContextMenu>
-                                <ContextMenu>
-
-                                <MenuItem Header="메인으로"/>
-                                <MenuItem Header="닫기"/>
-                                </ContextMenu>
-
-                            </Button.ContextMenu>
-                        </Button>>
-                        <Button Content="편집" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto"/>
-                        <Button Content="보기" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto"/>
-                        <Button Content="검색" VerticalAlignment="top" HorizontalAlignment="Center" FontSize="10" Margin="10,5,10,0" Padding="auto"/>-->
-
+            <Button Content="파일 복사" Click="fileCopy" Margin="5,5" Height="Auto" HorizontalAlignment="Right" Width="auto"/>
+           
             </StackPanel>
         </Grid>
 
