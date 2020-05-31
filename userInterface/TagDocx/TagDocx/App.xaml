@@ -14,9 +14,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <Style x:Key="MaterialDesignFloatingHintTextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}" TargetType="{x:Type TextBox}">
-                <Setter Property="FontFamily" Value="휴먼둥근헤드라인" />
-            </Style>
 
         </ResourceDictionary>
         
