@@ -255,6 +255,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="NN\NanumSquareRoundB.ttf" />
+    <Resource Include="NN\NanumSquareRoundEB.ttf" />
+    <Resource Include="NN\NanumSquareRoundL.ttf" />
+    <Resource Include="NN\NanumSquareRoundR.ttf" />
     <None Include="TagDocx_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

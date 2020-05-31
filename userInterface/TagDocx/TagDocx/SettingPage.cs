@@ -83,6 +83,7 @@ namespace TagDocx
             
             for (int i = 0; i < flist.Items.Count; i++)
             {
+                //"경로1<경로2<경로3<"형태로   customerDir 저장되어있음
                 temp = temp + flist.Items[i].ToString() + "<";
             }
             Properties.Settings.Default.customerDir = temp;
