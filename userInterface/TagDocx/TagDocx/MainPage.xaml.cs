@@ -35,7 +35,8 @@ namespace TagDocx
                 notice.Content="정기적 태깅 작업을 할 폴더를 지정해주세요.";
             }
             else{//lastTagedTime 값을notice에 넣어 화면에 출력하기
-                notice.Content = Properties.Settings.Default.lastTagedTime;
+                string noticecontent = "최근 태깅 시간: " + Properties.Settings.Default.lastTagedTime;
+                notice.Content = noticecontent;
             }
         }
 

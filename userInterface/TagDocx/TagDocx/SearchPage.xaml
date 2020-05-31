@@ -26,8 +26,8 @@
                     <Border BorderBrush="DarkGreen" Margin="60,0,164,0">
                         <TextBox Name="Search" Background="WhiteSmoke"  VerticalAlignment="Center" Margin="30,0" TextWrapping="Wrap" TextChanged="TextBox_TextChanged" FontSize="15pt" Height="40"/>
                     </Border>
-                    <Button FontSize="15pt" Content="태그 목록" Click="ShowTagList" VerticalAlignment="top" Height="44" Margin="624,10,0,0" HorizontalAlignment="Left" Width="133"/>
-            </Grid>
+                    <Button FontSize="15pt" Content="태그 목록" Click="ShowTagList" VerticalAlignment="top" Height="44" Margin="624,1,-0.2,0" HorizontalAlignment="Left" Width="133"/>
+                </Grid>
             </StackPanel>
         </Grid>
 
@@ -51,7 +51,7 @@
                     <DataGridTextColumn Binding="{Binding content_tag}" Header="tag" />
                     <DataGridTextColumn Binding="{Binding ext}"  Header="ext"/>
                 </DataGrid.Columns>
-               
+
             </DataGrid>
 
         </Grid>
@@ -67,11 +67,11 @@
         <Grid x:Name="TabMenu" Margin="10,31,10,0.2" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
                 <Button Content="홈으로"  Click="BackToMainPage" Margin="10,5,5,5" Height="Auto" Width="Auto" HorizontalAlignment="right"/>
-                <Button Content="모두선택" Click="SelectAll_Exectued" Margin="5,5"  Height="Auto" HorizontalAlignment="Right" Width="auto"/>
-                <Button Content="선택취소" Click="DeselectAll_Executed"   Margin="5,5" Height="Auto" HorizontalAlignment="Right" Width="auto"/>
-                <Button Content="선택 삭제" Click="fileDelete"  Margin="5,5" Height="Auto" HorizontalAlignment="Right" Width="auto"/>
-            <Button Content="파일 복사" Click="fileCopy" Margin="5,5" Height="Auto" HorizontalAlignment="Right" Width="auto"/>
-           
+                <Button Content="모두선택" Click="SelectAll_Exectued" Margin="5,5,5,4.6"  Height="Auto" HorizontalAlignment="Right" Width="95"/>
+                <Button Content="선택취소" Click="DeselectAll_Executed"   Margin="5,5,5,4.6" Height="Auto" HorizontalAlignment="Right" Width="96"/>
+                <Button Content="선택 삭제" Click="fileDelete"  Margin="5,5,5,4.6" Height="Auto" HorizontalAlignment="Right" Width="101"/>
+                <Button Content="파일 복사" Click="fileCopy" Margin="5,5,5,4.6" Height="Auto"  Width="101"/>
+
             </StackPanel>
         </Grid>
 

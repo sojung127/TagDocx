@@ -1,5 +1,4 @@
 #-*- coding: utf-8 -*-
-from tensorflow.keras.preprocessing.text import text_to_word_sequence
 import pandas as pd
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
@@ -43,6 +42,119 @@ def convert_pdf_to_txt(path):
     retstr.close()
     return text
 
+def get_tag2(filepath):
+
+    name = filepath.split("\\")[-1]
+    result_path = filepath[:-((len(filepath.split("\\")[-1]))+1)]
+
+    '''
+    result_path = path
+
+    path_origin = path + "\\"
+
+    file_list = os.listdir(path_origin)
+
+    file_count = len(file_list)
+    '''
+    score = []
+    
+    path = filepath
+
+    if path[-3:] == 'pdf':
+        contents = convert_pdf_to_txt(path)
+        shortword = re.compile("\n")
+        contents = shortword.sub('', contents)
+        contents = contents.replace("", " ")
+    elif path[-3:] == 'txt':
+        fp = open(path, 'r', encoding='utf-8')
+        contents = fp.readlines()
+        fp.close()
+        contents = ' '.join(contents)
+
+    elif path[-3:] == 'hwp':
+        contents = hwptest.convert_hwp_to_txt(path)
+    elif path[-4:] == 'docx':
+        contents = docx2txt.process(path)
+    else:
+        pass
+    # 각 문서당 내용태그를 할당한다
+
+    doc = contents
+
+    for word in train:
+        score.append(doc.count(word))
+
+    #지원서
+    A_score = 0
+    reg1 = '지\s+원\s+서'
+    reg2 = '자\s+기\s+소\s+개\s+서'
+    reg3 = '이\s+력\s+서'
+    
+    regs = [reg1, reg2, reg3]
+
+    for reg in regs:
+        result = re.findall(reg, doc)
+        for i in range(len(result)):
+            A_score += 1
+
+    score.append(A_score)
+
+    #지원서
+    w = ['사진', '기자', '뉴스']
+
+    # 괄호 안에 있는 단어들 출력
+    items = re.findall('\(([^)]+)', doc)  # ()괄호 안에 있는 단어 인식
+    items.append(doc[doc.find("[") + 1: doc.find("]")])  # []괄호 안에 있는 단어 인식
+    # print(items)
+
+    N_score = 0
+
+    for item in items:
+        for word in w:
+            if word in item:
+                N_score += 1
+    
+    score.append(N_score)
+
+    #논문
+    P_score = 0
+
+    words = ['게재 결정', '결론 및 논의', '글을 마치며' '나가는 말', '논문 게재',
+    '논문 발표', '들어가는 말','심사 일자', '연구 결과', '연구 방법'
+    , '요약 및 결론','논문 접수', '논문 심사', '게재 확정']
+
+    for word in words:
+        if word in doc:
+            P_score += 1
+
+    reg1 = '그림\s+\d+'
+    reg2 = '표\s+\d+'
+    reg3 = 'Fig\s+\d+'
+    reg4 = '\(대학교.+학과\)'
+    reg5 = '결\s+론'
+    reg6 = '서\s+론'
+    reg7 = '목\s+차'
+    reg8 = '차\s+례'
+    '''
+    reg9 = ".+\(\d+\),\s?.+,\s?.+,\s?.+,\s?.+쪽"
+    reg10 = ".+\.\s?\(\d+\)\.\s?.+,\s?.+권.+,\s?pp\."
+    '''
+
+    regs = [reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8]
+
+    for reg in regs:
+        result = re.findall(reg, doc)
+        #print(result)
+        for i in range(len(result)):
+            P_score += 1
+
+    score.append(P_score)
+
+    index = model.predict([score])[0]
+    form_tag = form_tagging(index) #string 값 반환
+
+    content_tag =  ContentTagging.content_tagging(contents, path) #list 반환
+    print("<GET",result_path,"><GET",form_tag,"><GET",content_tag,"><GET",name,">")
 
 def get_tag(folderpath, filename):
 
@@ -186,15 +298,24 @@ def run():
 
     folderpath = argv_list[1]
 
-    for i in range(len(argv_list)-1):
-        if i<2:
+    for i in range(len(argv_list)):
+        if i<1:
             pass
         else:
             #print(argv_list[i])
-            get_tag(folderpath, argv_list[i+1])
+            ###########################
+            #get_tag(folderpath, argv_list[i+1])
+            get_tag2(argv_list[i])
+
+def test():
+    argv_list = sys.argv
+    test_string = argv_list[1]
+    print(test_string[:-((len(test_string.split("\\")[-1]))+1)])
+    #print(test_string)
 
 if __name__ == '__main__':
     sys.exit(run())
+    #sys.exit(test())
 
 '''
 filename = '/tmp/digits_classifier.joblib.pkl'

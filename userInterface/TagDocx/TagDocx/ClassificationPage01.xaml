@@ -72,8 +72,8 @@
             </TabItem>
 
         </TabControl>
-        <Button x:Name="묶음에추가"  FontSize="20" Content="묶음에 추가"  HorizontalAlignment="Left" Height="30" Margin="264,269,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Click="묶음에추가_Click" FontWeight="Bold"/>
-        <Button x:Name="묶음에서삭제" FontSize="20" Content="묶음 비우기" HorizontalAlignment="Left" Height="30" Margin="71,269,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Click="묶음비우기_Click" FontWeight="Bold"/>
+        <Button x:Name="묶음에추가"  FontSize="20" Content="묶음에 추가"  HorizontalAlignment="Left" Height="43" Margin="264,269,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Click="묶음에추가_Click" FontWeight="Bold"/>
+        <Button x:Name="묶음에서삭제" FontSize="20" Content="묶음 비우기" HorizontalAlignment="Left" Height="43" Margin="71,269,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Click="묶음비우기_Click" FontWeight="Bold"/>
         <!--
         <Button x:Name="묶음추가" Content="묶음추가" Margin="368,107,357,191.6" Grid.Row="1" Click="묶음추가클릭"/>
         -->

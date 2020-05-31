@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +17,13 @@ using System.IO;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
-using MySql.Data.MySqlClient;
+using System.Collections;
 using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace TagDocx
 {
-    /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
-    /// </summary>
-    /// 
+
     class Items
     {
         public Items(int id, string path, string form, string context, string name)
@@ -51,31 +49,14 @@ namespace TagDocx
         public string Context { get; set; }
         public string Name { get; set; }
     }
+
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        int moved;
-        string []fileList = new string[10];
 
-        string folderpath = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Dataset\한글\기사\문화";
-        static string db_information = @"Server=localhost;Database=adcs;Uid=godocx;Pwd=486;";
-        string savingpath;
+        string []fileList = new string[10];
         List<string> notinDBfiles = new List<string>();
         List<Items> itemslist = new List<Items>();
-
-        private BackgroundWorker _bgWorker = new BackgroundWorker();
-
-        private int _workerState;
-
-        public int WorkerState
-        {
-            get { return _workerState; }
-            set
-            {
-                _workerState = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("WorkerState"));
-            }
-        }
+        static string db_information = @"Server=localhost;Database=adcs;Uid=godocx;Pwd=486;";
 
         #region INotifyPropertyChanged Member
 
@@ -93,58 +74,58 @@ namespace TagDocx
             timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
             timer.Start();
 
-           
-            
+
+
 
 
             Console.WriteLine("Press Enter to exit");
             Console.ReadLine();
-            
+
             //시작하고 변수들 초기화
             InitializeComponent();
 
 
-
-            DataContext = this;
-
-            _bgWorker.DoWork += (s, e) =>
-            {
-                /*
-                for (int i = 0; i <= 10000; i++) {
-                    System.Threading.Thread.Sleep(1000);
-                    Console.WriteLine(i);
-                }*/
-
-                LookforDoc();
-                GetItems();
-                MessageBox.Show("Workisdone");
-            };
-
-            _bgWorker.RunWorkerAsync();
-
-            moved = 0;
-            for(int i = 0; i < 10; i++)
-            {
-                fileList[i] = "";
-            }
-            //FileSystemWatcher fsw = new FileSystemWatcher("C:\\AutomaticDocumentClassificationService\\Dataset\\한글\\기사\\IT과학\\");
-            Console.WriteLine(Directory.GetCurrentDirectory()); // = TagDocx\bin\debug 
-                                                                // dataset 상대경로
-                                                                //string path = System.IO.Path.GetFullPath(System.IO.Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\..\..\Dataset\"));
-
-            
-
-            
-
-            Console.WriteLine("!!!!");
             MainHome.Content = new MainPage();
         }
 
+
+
+
+        //타이머할일
+        static void timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            Console.WriteLine("timer!");   // <- 여기다가 하고싶은 작업 넣으면 됨!
+        }
+
+        private void GridBarTitle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+        private void Maximize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = (this.WindowState == WindowState.Normal) ? WindowState.Maximized : WindowState.Normal;
+        }
+
+        private void Mimimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+
+        private void CloseButtonFechar_Click(object sender, RoutedEventArgs e)
+        {
+            //Application.Current.Shutdown();
+            this.Visibility = Visibility.Hidden;
+
+        }
         private void LookforDoc()
         {
-            string dirPath,  selectedFolder, docuname;
+            //string dirPath,  selectedFolder, docuname;
+            //this.itemslist = new List<Items>();
+            string dirPath = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\testData";
+            //string dirPath, string selectedFolder, string docuname
             this.itemslist = new List<Items>();
-            dirPath = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\testData";
+            //string dirPath = @"C:\AutomaticDocumentClassificationService\Dataset\한글\기사\경제";
             string filename;
             MySqlConnection connection = new MySqlConnection(db_information);
             List<Items> itemslist = new List<Items>();
@@ -350,34 +331,8 @@ namespace TagDocx
         }
 
 
-        //타이머할일
-        static void timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            Console.WriteLine("timer!");   // <- 여기다가 하고싶은 작업 넣으면 됨!
-        }
-
-        private void GridBarTitle_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-        private void Maximize_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = (this.WindowState == WindowState.Normal) ? WindowState.Maximized : WindowState.Normal;
-        }
-
-        private void Mimimize_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
 
 
-        private void CloseButtonFechar_Click(object sender, RoutedEventArgs e)
-        {
-            //Application.Current.Shutdown();
-            this.Visibility = Visibility.Hidden;
-
-
-        }
     }
 
 }
