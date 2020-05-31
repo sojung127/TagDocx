@@ -132,30 +132,9 @@ namespace TagDocx
                                                                 // dataset 상대경로
                                                                 //string path = System.IO.Path.GetFullPath(System.IO.Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\..\..\Dataset\"));
 
-            // test용 경로
-            string testPath = @"C:\test\";
-            string TempPath = @"C:\Temp\";
-            FileSystemWatcher fsw = new FileSystemWatcher(testPath);
-            FileSystemWatcher fswTemp = new FileSystemWatcher(TempPath);
+            
 
-            fsw.EnableRaisingEvents = true;
-            fswTemp.EnableRaisingEvents = true;
-
-            //  Register a handler that gets called when a
-            //  file is created, changed, or deleted.
-            fsw.Changed += new FileSystemEventHandler(OnChanged);
-
-            fsw.Created += new FileSystemEventHandler(OnCreated);
-
-            fsw.Deleted += new FileSystemEventHandler(OnDeleted);
-
-            fswTemp.Changed += new FileSystemEventHandler(OnChanged);
-               
-            fswTemp.Created += new FileSystemEventHandler(OnCreated);
-               
-            fswTemp.Deleted += new FileSystemEventHandler(OnDeleted);
-
-            // fsw.Renamed += new FileSystemEventHandler(OnRenamed);
+            
 
             Console.WriteLine("!!!!");
             MainHome.Content = new MainPage();
@@ -163,9 +142,9 @@ namespace TagDocx
 
         private void LookforDoc()
         {
-            string dirPath, string selectedFolder, string docuname
+            string dirPath,  selectedFolder, docuname;
             this.itemslist = new List<Items>();
-            string dirPath = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Dataset\한글\기사\경제";
+            dirPath = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\testData";
             string filename;
             MySqlConnection connection = new MySqlConnection(db_information);
             List<Items> itemslist = new List<Items>();
@@ -243,6 +222,7 @@ namespace TagDocx
         {
             // Set working directory and create process
             var workingDirectory = System.IO.Path.GetFullPath("Scripts");
+            string workdirectory = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "../../resource/");
             var process = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -251,9 +231,7 @@ namespace TagDocx
                     RedirectStandardInput = true,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
-                    //WorkingDirectory = @"C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\Scoring\",
-                    WorkingDirectory = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\",
-                    //WorkingDirectory = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\",
+                    WorkingDirectory = workdirectory,
                     WindowStyle = ProcessWindowStyle.Hidden,
                     CreateNoWindow = true
                 }
@@ -266,18 +244,10 @@ namespace TagDocx
                 if (sw.BaseStream.CanWrite)
                 {
                     // Vital to activate Anaconda
-                    sw.WriteLine(@"C:\Temp\Anaconda3\Scripts\activate.bat");
-                    //sw.WriteLine(@"C:\Users\user\Anaconda3\Scripts\activate.bat");
-                    //sw.WriteLine(@"C:\ProgramData\Anaconda3\Scripts\activate.bat");
-                    //sw.WriteLine(@"C:\Users\pyj\Anaconda3\Scripts\activate.bat");
-                    // Activate your environment
-                    //sw.WriteLine("activate tensorflow");
-                    // Any other commands you want to run
-                    //sw.WriteLine("set KERAS_BACKEND=tensorflow");
-                    // run your script. You can also pass in arguments
-                    string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\test\modelTagging.py " + files;
-                    //string command = @"python C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\Tagging.py " + this.folderpath;
-                    sw.WriteLine(command);
+                    sw.WriteLine("test.exe " + files);
+                    
+                    //string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\test\modelTagging.py " + files;
+                    //sw.WriteLine(command);
 
                 }
             }
