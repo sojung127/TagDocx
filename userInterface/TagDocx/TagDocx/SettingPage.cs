@@ -18,9 +18,9 @@ namespace TagDocx
         {
             InitializeComponent();
             string getDir = Properties.Settings.Default.customerDir;
-            Console.WriteLine(getDir);
+            Console.WriteLine("=>"+getDir);
             string[] templi = null;
-            if (getDir != "")
+            if (getDir != null)
             {
                 templi = getDir.Split('<');
                 for (int i = 0; i < templi.Length; i++)
