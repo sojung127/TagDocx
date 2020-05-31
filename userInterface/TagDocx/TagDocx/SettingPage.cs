@@ -25,7 +25,10 @@ namespace TagDocx
                 templi = getDir.Split('<');
                 for (int i = 0; i < templi.Length; i++)
                 {
-                    flist.Items.Add(templi[i]);
+                    if (templi[i] != "")
+                    {  //스플릿 한것중 빈것이 아닐 때 만 항목에 추가 (split했을 때 빈 문자열 결과 방지)
+                        flist.Items.Add(templi[i]);
+                    }
                 }
             }
         }
@@ -73,11 +76,11 @@ namespace TagDocx
         }
 
 
-        //개빡치는 부분 고쳐야할 부분
+       
         private void flistSave()
         {
             string temp = null;
-
+            
             for (int i = 0; i < flist.Items.Count; i++)
             {
                 temp = temp + flist.Items[i].ToString() + "<";
