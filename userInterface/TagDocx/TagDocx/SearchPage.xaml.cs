@@ -45,7 +45,7 @@ namespace TagDocx
 
 
             string query_start = "select document.id, name, path, type_tag, c.content_tag, substring_index(document.name, '.', -1) as ext FROM document left join (select id,group_concat(content_tag) as content_tag from content";
-            string query_end = " group by id )as c on c.id = document.id where c.id = document.id union select document.id,name,path,null,null,substring_index(document.name, '.', -1) from document where document.id NOT IN (SELECT DISTINCT CONTENT.ID FROM CONTENT);";
+            string query_end = " group by id )as c on c.id = document.id where c.id = document.id;";
 
             string final_query = query_start + query_end;
             try
@@ -63,7 +63,7 @@ namespace TagDocx
             }
             catch (MySqlException ex)
             {
-                Debug.WriteLine(ex.ToString());
+                MessageBox.Show(ex.ToString());
             }
             finally
             {
@@ -100,7 +100,7 @@ namespace TagDocx
             }
 
 
-            string query_end = ") group by id )as c on c.id = document.id where c.id = document.id union select document.id,name,path,null,null,substring_index(document.name, '.', -1) from document where document.id NOT IN (SELECT DISTINCT CONTENT.ID FROM CONTENT);";
+            string query_end=") group by id )as c on c.id = document.id where c.id = document.id;";
 
             string final_query = query_start + select_content + select_docu + query_end;
             try
@@ -115,7 +115,7 @@ namespace TagDocx
                 SearchResult.DataContext = ds;
             }catch (MySqlException ex)
             {
-                Debug.WriteLine(ex.ToString());
+                MessageBox.Show(ex.ToString());
             }
             finally
             {
@@ -137,11 +137,7 @@ namespace TagDocx
                 selectedItems = SearchResult.SelectedItems.Count;
                 if (selectedItems > 100)
                 {
-                    //MessageBox.Show("최대 100개까지만 선택가능합니다.");
-                    Application.Current.Properties["TM_Msg"] = "최대 100개까지만 선택가능합니다.";
-
-                    Window Splash_Message = new ToastMessage();
-                    Splash_Message.Show();
+                    MessageBox.Show("최대 100개까지만 선택가능합니다.");
                 }
                 for(int i = 0; i < selectedItems; i++)
                 {
@@ -163,26 +159,11 @@ namespace TagDocx
         {
             if (selectedItems > 1)
             {
-                //MessageBox.Show("태그는 하나의 문서에 대해서만 수정가능합니다.");
-                Application.Current.Properties["TM_Msg"] = "태그는 하나의 문서에 대해서만 수정가능합니다.";
-
-                Window Splash_Message = new ToastMessage();
-                Splash_Message.Show();
-
-            }
-            else if (selectedItems == 1)
+                MessageBox.Show("태그는 하나의 문서에 대해서만 수정가능합니다.");
+            }else if (selectedItems == 1)
             {
-                if (!File.Exists(filePath[0])){
-                    showDeleteMessage();
-                    DeleteFromDB(0);
-
-                }
-                else
-                {
-                    Window win = new TagEditWindow(selectID[0],Search);
-                    win.Show();
-
-                }
+                Window win = new TagEditWindow(selectID[0],Search);
+                win.Show();
 
             }
         }
@@ -191,17 +172,8 @@ namespace TagDocx
         {
             Debug.WriteLine(filePath[0]);
             
-            if (filePath.Length != 0 && selectedItems == 1)
-            {
-                if(System.IO.File.Exists(filePath[0]))
-                    System.Diagnostics.Process.Start(filePath[0]);
-                else
-                {
-                    showDeleteMessage();
-                    DeleteFromDB(0);
-                }
-            }
-
+            if (filePath.Length != 0 && selectedItems==1)
+                System.Diagnostics.Process.Start(filePath[0]);
             
             filePath[0] = "";
         }
@@ -209,7 +181,7 @@ namespace TagDocx
         private void fileDelete(object sender, RoutedEventArgs e)
         {
             temp = selectedItems;
-            bool allFileExisted = true;
+
             try
             {
                 connection.Open();
@@ -223,21 +195,6 @@ namespace TagDocx
                          UIOption.AllDialogs,
                          RecycleOption.SendToRecycleBin
                     );
-                    }
-                    else
-                    {
-                        MySqlCommand cmd2 = new MySqlCommand("delete from content where id=" + selectID[i] + ";", connection);
-                        cmd2.ExecuteNonQuery();
-                        cmd2 = new MySqlCommand("delete from document where id=" + selectID[i] + ";", connection);
-                        cmd2.ExecuteNonQuery();
-                        allFileExisted = false;
-                        connection.Close();
-                        return;
-                    }
-                    // 파일 정보 DB에서 삭제
-                    if (!allFileExisted)
-                    {
-                        showDeleteMessage();
                     }
                     MySqlCommand cmd = new MySqlCommand("delete from content where id=" + selectID[i] + ";", connection);
                     cmd.ExecuteNonQuery();
@@ -265,7 +222,7 @@ namespace TagDocx
             
             temp = selectedItems;
             string folder="";
-            bool allfileexist = true;
+
             // 폴더 열기 다이얼로그 생성
             CommonOpenFileDialog fileDialog = new CommonOpenFileDialog();
             fileDialog.IsFolderPicker = true;
@@ -275,31 +232,21 @@ namespace TagDocx
                 folder=folder.Replace("\\","/");
                 try
                 {
+                    connection.Open();
                     for (int i = 0; i < temp; i++)
                     {
                             Debug.WriteLine("이동: " + filePath[i] + " to " + folder + "/" + fileName[i]);
                         if (System.IO.File.Exists(filePath[i]))
                         {
 
-                    connection.Open();
                             System.IO.File.Move(filePath[i], folder + "/" + fileName[i]);
-                            MySqlCommand cmd = new MySqlCommand("update document set path='" + folder + "/" + "' where id=" + selectID[i] + ";", connection);
-                            cmd.ExecuteNonQuery();
+
+                        }
+
+                        MySqlCommand cmd = new MySqlCommand("update document set path='"+folder+"/"+"' where id=" + selectID[i] + ";", connection);
+                        cmd.ExecuteNonQuery();
+                    }
                     connection.Close();
-
-                        }
-                        else
-                        {
-                            allfileexist = false;
-                            DeleteFromDB(i);
-                        }
-
-                       
-                    }
-                    if (!allfileexist)
-                    {
-                        showDeleteMessage();
-                    }
 
                 }
                 catch (System.IO.IOException ex)
@@ -324,42 +271,21 @@ namespace TagDocx
             temp = selectedItems;
 
             // 선택한 파일들 클립보드에 복사
-            bool allFileExist = true;
-            bool oneFileExist = false;
+
             StringCollection paths = new StringCollection();
             for (int i = 0; i < temp; i++)
             {
                 if (System.IO.File.Exists(filePath[i]))
                 {
                     paths.Add(filePath[i]);
-                    oneFileExist = true;
-                }
-                else
-                {
-                    DeleteFromDB(i);
-                    allFileExist = false;
                 }
 
             }
-            if (allFileExist)
-            {
                 Clipboard.SetFileDropList(paths);
-                Application.Current.Properties["TM_Msg"] = "클립보드에 파일이 복사되었습니다.";
+            Application.Current.Properties["TM_Msg"] = "클립보드에 파일이 복사되었습니다.";
 
-                Window Splash_Message = new ToastMessage();
-                Splash_Message.Show();
-
-            }else if (oneFileExist)
-            {
-                Application.Current.Properties["TM_Msg"] = "클립보드에 일부 파일이 복사되었습니다.";
-
-                Window Splash_Message = new ToastMessage();
-                Splash_Message.Show();
-            }
-            else
-            {
-                showDeleteMessage();
-            }
+            Window Splash_Message = new ToastMessage();
+            Splash_Message.Show();
             // 파일리스트 새로고침
             Search.Text += " ";
             Search.Text = Search.Text.ToString().TrimEnd();
@@ -415,42 +341,11 @@ namespace TagDocx
 
         private void filePathCopy(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine(filePath[0]);
 
-            if (System.IO.File.Exists(filePath[0]))
-            {
-                Clipboard.SetText(filePath[0]);
+            Clipboard.SetText(filePath[0]);
 
-                Application.Current.Properties["TM_Msg"] = "클립보드에 경로가 복사되었습니다.";
-                Window Splash_Message = new ToastMessage();
-                Splash_Message.Show();
-            }
-            else
-            {
-
-                showDeleteMessage();
-                
-                DeleteFromDB(0);
-            }
-            
-
-        }
-
-        void DeleteFromDB(int i)
-        {
-            
-            connection.Open();
-            MySqlCommand cmd = new MySqlCommand("delete from content where id=" + selectID[i] + ";", connection);
-            cmd.ExecuteNonQuery();
-            cmd = new MySqlCommand("delete from document where id=" + selectID[i] + ";", connection);
-            cmd.ExecuteNonQuery();
-            connection.Close();
-
-            Search.Text += " ";
-            Search.Text = Search.Text.ToString().TrimEnd();
-        }
-        void showDeleteMessage()
-        {
-            Application.Current.Properties["TM_Msg"] = "파일 경로가 변경되어 목록을 새로고침합니다.";
+            Application.Current.Properties["TM_Msg"] = "클립보드에 경로가 복사되었습니다.";
             Window Splash_Message = new ToastMessage();
             Splash_Message.Show();
 

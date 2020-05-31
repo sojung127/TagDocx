@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -52,7 +52,7 @@ namespace TagDocx
 
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        
+
         string []fileList = new string[10];
         List<string> notinDBfiles = new List<string>();
         List<Items> itemslist = new List<Items>();
@@ -74,17 +74,17 @@ namespace TagDocx
             timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
             timer.Start();
 
-           
-            
+
+
 
 
             Console.WriteLine("Press Enter to exit");
             Console.ReadLine();
-            
+
             //시작하고 변수들 초기화
             InitializeComponent();
 
-            
+
             MainHome.Content = new MainPage();
         }
 
