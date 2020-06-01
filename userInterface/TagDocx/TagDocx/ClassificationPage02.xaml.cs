@@ -201,7 +201,7 @@ namespace TagDocx
                 }*/
                 if (묶음0 == null)  //내용태그 결과가 없는경우 기존 뽑아놨던거 그대로 출력
                 {
-                    getdocpath(cd0);//문
+                    getdocpath(cd0, ltos(G0));//문
                     return 필터링후0;
                 }
                 else //아니면 내용태그까지 한 결과를 출력
@@ -210,7 +210,7 @@ namespace TagDocx
                     {
                         cd0 = 묶음0.CopyToDataTable();
                         cd0 = cd0.DefaultView.ToTable(true, "ID", "NAME","TYPE_TAG","CONTENT_TAG","PATH"); //중복ID제거
-                        getdocpath(cd0);//문
+                        getdocpath(cd0, ltos(G0));//문
                         return cd0;
                     }
                     catch (System.InvalidOperationException e)
@@ -267,7 +267,7 @@ namespace TagDocx
                 }
                 if (묶음1 == null)  //내용태그 결과가 없는경우 기존 뽑아놨던거 그대로 출력
                 {
-                    getdocpath(cd1);//문서옮기기
+                    getdocpath(cd1, ltos(G1));//문서옮기기
                     return 필터링후1;
                 }
                 else //아니면 내용태그까지 한 결과를 출력
@@ -276,7 +276,7 @@ namespace TagDocx
                     {
                         cd1 = 묶음1.CopyToDataTable();
                         cd1 = cd1.DefaultView.ToTable(true, "ID", "NAME", "TYPE_TAG", "CONTENT_TAG", "PATH"); //중복ID제거
-                        getdocpath(cd1);//문서옮기기
+                        getdocpath(cd1, ltos(G1));//문서옮기기
                         return cd1;
                     }
                     catch (System.InvalidOperationException e)
@@ -333,7 +333,7 @@ namespace TagDocx
                 {
                     if (묶음2 == null)  //내용태그 결과가 없는경우 기존 뽑아놨던거 그대로 출력
                     {
-                        getdocpath(cd2);//문서옮기기
+                        getdocpath(cd2, ltos(G2));//문서옮기기
                         return 필터링후2;
                     }
                     else //아니면 내용태그까지 한 결과를 출력
@@ -342,7 +342,7 @@ namespace TagDocx
                         {
                             cd2 = 묶음2.CopyToDataTable();
                             cd2 = cd2.DefaultView.ToTable(true, "ID", "NAME", "TYPE_TAG", "CONTENT_TAG", "PATH"); //중복ID제거
-                            getdocpath(cd2);//문서옮기기
+                            getdocpath(cd2, ltos(G2));//문서옮기기
                             return cd2;
                         }
                         catch (System.InvalidOperationException e)
@@ -379,21 +379,21 @@ namespace TagDocx
         
 
         //파일 문서 경로 바꾸기
-        private static void changePath(string filePath, string fileName)
+        private static void changePath(string filePath, string fileName, string nfn)
         {
             //filePath는 지금경로
-            string deskPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            string newPath = deskPath; //newPath는 바탕화면
+            Console.WriteLine(filePath);
+            Console.WriteLine(fileName);
             //fileName(확장자포함)
             string oldFile = filePath + "/" + fileName;   //파일이름포함한 기존경로  (NAME은 파일 타입 포함)
-            string newFile = newPath + "/" + fileName;    //새로운경로+파일이름 경로
+            string newFile = filePath + "/" +nfn+"/"+ fileName;    //새로운경로+파일이름 경로
 
             Console.WriteLine(oldFile + "->" + newFile);
 
             System.IO.File.Move(oldFile, newFile);
         }
 
-        private static void getdocpath(DataTable db)
+        private static void getdocpath(DataTable db,string newfilename)
         {
             string name=null;
             string path = null;
@@ -401,7 +401,7 @@ namespace TagDocx
             {
                 name = db.Rows[i][1].ToString();
                 path = db.Rows[i][4].ToString();
-                changePath(path, name);
+                changePath(path, name, newfilename);
             }
             Console.WriteLine(name+"->"+path);
         }
