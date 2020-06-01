@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
-using System.ComponentModel;
 
 namespace TagDocx
 {
@@ -16,19 +16,10 @@ namespace TagDocx
         private System.Windows.Forms.NotifyIcon _notifyIcon;
         private bool _isExit;
 
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-            MainWindow = new MainWindow();
-            MainWindow.Closing += MainWindow_Closing;
+        //protected override void OnStartup(StartupEventArgs e)
+        //{
 
-            _notifyIcon = new System.Windows.Forms.NotifyIcon();
-            _notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
-            _notifyIcon.Icon = TagDocx.Properties.Resources.trayicon;
-            _notifyIcon.Visible = true;
-
-            CreateContextMenu();
-        }
+        //}
 
         private void CreateContextMenu()
         {
@@ -69,6 +60,23 @@ namespace TagDocx
                 e.Cancel = true;
                 MainWindow.Hide(); // A hidden window can be shown again, a closed one not
             }
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            //base.OnStartup(e);
+            //base.OnStartup(e);
+            MainWindow = new MainWindow();
+            MainWindow.Closing += MainWindow_Closing;
+            MainWindow.Visibility = Visibility.Hidden;
+            //MainWindow.Close();
+
+            _notifyIcon = new System.Windows.Forms.NotifyIcon();
+            _notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
+            _notifyIcon.Icon = TagDocx.Properties.Resources.trayicon;
+            _notifyIcon.Visible = true;
+
+            CreateContextMenu();
         }
     }
 }

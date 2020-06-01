@@ -58,6 +58,21 @@ namespace TagDocx
         List<Items> itemslist = new List<Items>();
         static string db_information = @"Server=localhost;Database=adcs;Uid=godocx;Pwd=486;";
 
+        private BackgroundWorker _bgWorker = new BackgroundWorker();
+
+        private int _workerState;
+
+        public int WorkerState
+        {
+            get { return _workerState; }
+            set
+            {
+                _workerState = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("WorkerState"));
+            }
+        }
+
         #region INotifyPropertyChanged Member
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -84,6 +99,22 @@ namespace TagDocx
             //시작하고 변수들 초기화
             InitializeComponent();
 
+            DataContext = this;
+
+            _bgWorker.DoWork += (s, e) =>
+            {
+                /*
+                for (int i = 0; i <= 10000; i++) {
+                    System.Threading.Thread.Sleep(1000);
+                    Console.WriteLine(i);
+                }*/
+
+                LookforDoc();
+                GetItems();
+                MessageBox.Show("Workisdone");
+            };
+
+            _bgWorker.RunWorkerAsync();
 
             MainHome.Content = new MainPage();
         }
@@ -94,7 +125,7 @@ namespace TagDocx
         //타이머할일
         static void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Console.WriteLine("timer!");   // <- 여기다가 하고싶은 작업 넣으면 됨!
+            //Console.WriteLine("timer!");   // <- 여기다가 하고싶은 작업 넣으면 됨!
         }
 
         private void GridBarTitle_MouseDown(object sender, MouseButtonEventArgs e)
@@ -194,7 +225,8 @@ namespace TagDocx
             {
                 command += name + " ";
             }
-            //Console.WriteLine(command);
+            Console.WriteLine("  여기!!! ");
+            Console.WriteLine(command);
             GetTag(command);
 
         }
@@ -203,32 +235,34 @@ namespace TagDocx
         {
             // Set working directory and create process
             var workingDirectory = System.IO.Path.GetFullPath("Scripts");
-            string workdirectory = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "../../resource/");
+            //string workdirectory = System.IO.Path.Combine(Directory.GetCurrentDirectory(), @"..\..\resource");
+            //Console.WriteLine(workdirectory);
             var process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
                     FileName = "cmd.exe",
+                    //Arguments = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\modelTagging2.py " + files,
                     RedirectStandardInput = true,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
-                    WorkingDirectory = workdirectory,
-                    WindowStyle = ProcessWindowStyle.Hidden,
-                    CreateNoWindow = true
+                    WorkingDirectory = Directory.GetCurrentDirectory(),
+                    WindowStyle = ProcessWindowStyle.Normal,
+                    CreateNoWindow = false
                 }
             };
 
             process.Start();
-            // Pass multiple commands to cmd.exe
+            //Pass multiple commands to cmd.exe
             using (var sw = process.StandardInput)
             {
                 if (sw.BaseStream.CanWrite)
                 {
                     // Vital to activate Anaconda
-                    sw.WriteLine("test.exe " + files);
-                    
-                    //string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\test\modelTagging.py " + files;
-                    //sw.WriteLine(command);
+                    sw.WriteLine("tensorflow\\python.exe ");
+
+                    string command = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\modelTagging2.py " + files;
+                    sw.WriteLine(command);
 
                 }
             }
@@ -240,29 +274,29 @@ namespace TagDocx
             while (!process.StandardOutput.EndOfStream)
             {
                 var line = process.StandardOutput.ReadLine();
+                Console.WriteLine("결과: ");
+                Console.WriteLine(line);
 
-                //Console.WriteLine(line);
+                //Regex reg = new Regex(@"<GET.*?>");
+                //MatchCollection result = reg.Matches(line);
 
-                Regex reg = new Regex(@"<GET.*?>");
-                MatchCollection result = reg.Matches(line);
-
-                if (result.Count > 3)
-                {
-                    path = result[0].Groups[0].ToString().Substring(5);
-                    path = path.Substring(0, path.Length - 2);
-                    path = path.Replace("\\", "/");
-                    form = result[1].Groups[0].ToString().Substring(5);
-                    form = form.Substring(0, form.Length - 2);
-                    context = result[2].Groups[0].ToString().Substring(6);
-                    context = context.Substring(0, context.Length - 3);
-                    name = result[3].Groups[0].ToString().Substring(5);
-                    name = name.Substring(0, name.Length - 2);
-                    //Items.GetInstance().Add(new Items(count++, path, form, context, name));
-                    Items newitem = new Items(count++, path, form, context, name);
-                    this.itemslist.Add(newitem);
-                    //Console.WriteLine(path + " "+form+" "+context+" "+name+"\n");
-                }
-                //FileList.ItemsSource = Items.GetInstance();
+                //if (result.Count > 3)
+                //{
+                //    path = result[0].Groups[0].ToString().Substring(5);
+                //    path = path.Substring(0, path.Length - 2);
+                //    path = path.Replace("\\", "/");
+                //    form = result[1].Groups[0].ToString().Substring(5);
+                //    form = form.Substring(0, form.Length - 2);
+                //    context = result[2].Groups[0].ToString().Substring(6);
+                //    context = context.Substring(0, context.Length - 3);
+                //    name = result[3].Groups[0].ToString().Substring(5);
+                //    name = name.Substring(0, name.Length - 2);
+                //    //Items.GetInstance().Add(new Items(count++, path, form, context, name));
+                //    Items newitem = new Items(count++, path, form, context, name);
+                //    this.itemslist.Add(newitem);
+                //    //Console.WriteLine(path + " "+form+" "+context+" "+name+"\n");
+                //}
+                ////FileList.ItemsSource = Items.GetInstance();
             }
 
             FreeConsole();
@@ -284,47 +318,47 @@ namespace TagDocx
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(db_information))
-                {
-                    conn.Open();
-                    if (conn.State == System.Data.ConnectionState.Open)
-                        MessageBox.Show("서버에 연결");
+                //using (MySqlConnection conn = new MySqlConnection(db_information))
+                //{
+                //    conn.Open();
+                //    if (conn.State == System.Data.ConnectionState.Open)
+                //        MessageBox.Show("서버에 연결");
 
-                    DataSet tds = new DataSet();
-                    MySqlCommand cmd = new MySqlCommand("SELECT * FROM document;", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                    adp.Fill(tds);
+                //    DataSet tds = new DataSet();
+                //    MySqlCommand cmd = new MySqlCommand("SELECT * FROM document;", conn);
+                //    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                //    adp.Fill(tds);
 
-                    id = tds.Tables[0].Rows.Count;
+                //    id = tds.Tables[0].Rows.Count;
 
-                    foreach (Items a in this.itemslist)
-                    {
-                        path = a.Path;
-                        form = a.Form;
-                        context = a.Context;
-                        name = a.Name;
+                //    foreach (Items a in this.itemslist)
+                //    {
+                //        path = a.Path;
+                //        form = a.Form;
+                //        context = a.Context;
+                //        name = a.Name;
 
-                        sql1 = "insert into document values(" + id + ",\"" + name + "\",\"" + form + "\",\"" + path + "\")";
-                        cmd = new MySqlCommand(sql1, conn);
-                        cmd.ExecuteNonQuery();
+                //        sql1 = "insert into document values(" + id + ",\"" + name + "\",\"" + form + "\",\"" + path + "\")";
+                //        cmd = new MySqlCommand(sql1, conn);
+                //        cmd.ExecuteNonQuery();
 
-                        Regex reg = new Regex(@"\'.*?\'");
-                        MatchCollection result = reg.Matches(context);
-                        foreach (Match mm in result)
-                        {
-                            c = mm.Groups[0].ToString().Substring(1);
-                            c = c.Substring(0, c.Length - 1);
-                            //Console.WriteLine(c);
-                            sql2 = "insert into content values(" + id + ",\"" + c + "\")";
-                            cmd = new MySqlCommand(sql2, conn);
-                            cmd.ExecuteNonQuery();
-                        }
+                //        Regex reg = new Regex(@"\'.*?\'");
+                //        MatchCollection result = reg.Matches(context);
+                //        foreach (Match mm in result)
+                //        {
+                //            c = mm.Groups[0].ToString().Substring(1);
+                //            c = c.Substring(0, c.Length - 1);
+                //            //Console.WriteLine(c);
+                //            sql2 = "insert into content values(" + id + ",\"" + c + "\")";
+                //            cmd = new MySqlCommand(sql2, conn);
+                //            cmd.ExecuteNonQuery();
+                //        }
 
-                        //MessageBox.Show("입력 성공");
-                        id++;
-                    }
-                    conn.Close();
-                }
+                //        //MessageBox.Show("입력 성공");
+                //        id++;
+                //    }
+                //    conn.Close();
+                //}
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
