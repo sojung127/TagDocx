@@ -73,7 +73,7 @@ namespace TagDocx
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                Console.WriteLine(ex.ToString());
             }
             finally
             {

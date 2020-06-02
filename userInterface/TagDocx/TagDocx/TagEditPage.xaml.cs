@@ -171,18 +171,9 @@ namespace TagDocx
                 connection.Close();
             }
             //TextBox search = search;
-            try
-            {
-           
             string origing = search.Text;
-            search.Text = "";
-            search.Text = origing;
-
-            }
-            catch(Exception xe)
-            {
-                MessageBox.Show(xe.ToString());
-            }
+            search.Text += " ";
+            search.Text = search.Text.TrimEnd();
             Window.GetWindow(this).Close();
         }
     }

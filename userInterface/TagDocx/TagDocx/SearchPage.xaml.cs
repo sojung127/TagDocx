@@ -63,7 +63,7 @@ namespace TagDocx
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                Console.WriteLine(ex.ToString());
             }
             finally
             {
@@ -115,7 +115,7 @@ namespace TagDocx
                 SearchResult.DataContext = ds;
             }catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                Console.WriteLine(ex.ToString());
             }
             finally
             {
