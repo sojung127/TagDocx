@@ -9,33 +9,52 @@
       Title="MainPage">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="268*"/>
+            <RowDefinition Height="57"/>
+        </Grid.RowDefinitions>
 
-        <Image Source="/resource/태그독스로고.png" Margin="102,306,444,75.6"  />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Image Source="/resource/noticeicon.png" Margin="33,79,0,0" HorizontalAlignment="Left" Width="36" Height="37" VerticalAlignment="Top" />
+            <Label x:Name="notice" HorizontalContentAlignment="center" FontSize="20" Content="안녕하세요!" Margin="10,79,0,0" Background="White" Height="37" VerticalAlignment="Top" HorizontalAlignment="Left" Width="592"/>
+        </StackPanel>
 
-        <Image Source="/resource/noticeicon.png" Margin="63,79,0,0" HorizontalAlignment="Left" Width="36" Height="37" VerticalAlignment="Top" />
-        <Image Source="/resource/adcscute.png" Margin="118,110,0,0" Height="254" VerticalAlignment="Top" HorizontalAlignment="Left" Width="254"  />
+        <Grid  Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,0,30" Grid.Column="0"  Height="254" Width="310" >
+                <Image Source="/resource/adcscute.png"  Height="254" Width="254" Margin="10,-20"   />
+                <Image Source="/resource/태그독스로고.png" Height="100" Margin="0,-80"/>
 
-        <Button x:Name="searchDoc" Height="70" Click="ToSearch" Margin="457,171,0,0"  Background="#0f4c81" HorizontalAlignment="Left" Width="200" VerticalAlignment="Top">
-
-            <StackPanel Height="70" Width="200" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Source="/resource/adcs검색.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,-12,10,-7.6" />
-                <TextBlock Text="검색" Height="auto" Width="auto" VerticalAlignment="center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0,11,0,19.4" Foreground="#DDFFFFFF" />
             </StackPanel>
 
-        </Button>
-        <Button x:Name="categorizeDoc"  Background="#0f4c81" Click="BtnClassificateDocPage" Height="70" Margin="457,288,0,0" HorizontalAlignment="Left" Width="200" VerticalAlignment="Top" >
-
-            <StackPanel Height="70" Width="200" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Source="/resource/adcs분류.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,-12,10,-7.6"  />
-                <TextBlock Text="분류"  Foreground="#DDFFFFFF" Height="auto" Width="auto" VerticalAlignment="center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0,11,0,19.4" />
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,30" Grid.Column="1" Height="182" Width="200">
+                <Button x:Name="searchDoc" Height="70" Click="ToSearch" Margin="0,0"  Background="#0f4c81" HorizontalAlignment="Left" Width="200" VerticalAlignment="Top" Grid.Row="1">
+                    <StackPanel Height="70" Width="200" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Source="/resource/adcs검색.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,-12,10,-7.6" />
+                        <TextBlock Text="검색" Height="auto" Width="auto" VerticalAlignment="center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0,11,0,19.4" Foreground="#DDFFFFFF" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="categorizeDoc"  Background="#0f4c81" Click="BtnClassificateDocPage" Height="70" Margin="0,20,0,0" HorizontalAlignment="Left" Width="200" VerticalAlignment="Top" Grid.Row="1" >
+                    <StackPanel Height="70" Width="200" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Source="/resource/adcs분류.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,-12,10,-7.6"  />
+                        <TextBlock Text="분류"  Foreground="#DDFFFFFF" Height="auto" Width="auto" VerticalAlignment="center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0,11,0,19.4" />
+                    </StackPanel>
+                </Button>
             </StackPanel>
-
-        </Button>
-
-        <Label x:Name="notice" HorizontalContentAlignment="center" FontSize="20" Content="안녕하세요!" Margin="106,79,0,0" Background="White" Height="37" VerticalAlignment="Top" HorizontalAlignment="Left" Width="592"/>
-
-        <Button Content="즉시 태깅" Click="immeTag_Click" Width="99" Margin="0,0,10,9.6" Background="White" Foreground="#FF0F4C81" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-        <Button Content="주기적 태깅 대상 폴더 설정" Click="BtnSetting" Width="224" Margin="457,0,0,9.6" Background="White" Foreground="#FF0F4C81" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-
+        </Grid >
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" >
+                <Button Content="주기적 태깅 대상 폴더 설정" Click="BtnSetting" Width="224" Margin="0,0,0,9.6" Background="White" Foreground="#FF0F4C81" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                <Button Content="즉시 태깅" Click="immeTag_Click" Width="99" Margin="10,0,10,9.6" Background="White" Foreground="#FF0F4C81" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

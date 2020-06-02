@@ -164,7 +164,9 @@ namespace TagDocx
         {
             //string dirPath,  selectedFolder, docuname;
             //this.itemslist = new List<Items>();
-            string dirPath = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\testData";
+            //string dirPath = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\testData";
+            string dirPath = @"C:\\AutomaticDocumentClassificationService\\Scoring\\testData";
+
             //string dirPath, string selectedFolder, string docuname
             this.itemslist = new List<Items>();
             //string dirPath = @"C:\AutomaticDocumentClassificationService\Dataset\한글\기사\경제";
@@ -252,7 +254,8 @@ namespace TagDocx
                     RedirectStandardInput = true,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
-                    WorkingDirectory = "C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\",
+                   // WorkingDirectory = "C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\",
+                    WorkingDirectory = "C:\\AutomaticDocumentClassificationService\\Scoring\\",
                     WindowStyle = ProcessWindowStyle.Normal,
                     CreateNoWindow = true
                 }
@@ -265,7 +268,8 @@ namespace TagDocx
                 if (sw.BaseStream.CanWrite)
                 {
                     // Vital to activate Anaconda
-                    sw.WriteLine("C:\\Temp\\Anaconda3\\Scripts\\activate.bat");
+                    //sw.WriteLine("C:\\Temp\\Anaconda3\\Scripts\\activate.bat");
+                    sw.WriteLine("C:\\Users\\user\\Anaconda3\\Scriptsctivate.bat");
                     // Activate your environment
                     sw.WriteLine("activate tensorflow");       
                     // run your script. You can also pass in arguments
