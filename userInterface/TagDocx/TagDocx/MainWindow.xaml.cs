@@ -52,7 +52,8 @@ namespace TagDocx
 
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-
+        //여기에서 property에 있는거 가져와야 함
+        string folderpath = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Dataset\한글\기사\문화";
         static string db_information = @"Server=localhost;Database=adcs;Uid=godocx;Pwd=486;";
         string savingpath;
         List<string> folderlist = new List<string>(); //하위 폴더들 담을 리스트
@@ -100,25 +101,22 @@ namespace TagDocx
             timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
             timer.Start();
 
-
-
-
-
             Console.WriteLine("Press Enter to exit");
             Console.ReadLine();
 
             //시작하고 변수들 초기화
             InitializeComponent();
 
+            /* 백그라운드 워커
             DataContext = this;
 
             _bgWorker.DoWork += (s, e) =>
             {
-                /*
+                
                 for (int i = 0; i <= 10000; i++) {
                     System.Threading.Thread.Sleep(1000);
                     Console.WriteLine(i);
-                }*/
+                }
 
                 LookforDoc();
                 GetItems();
@@ -126,11 +124,117 @@ namespace TagDocx
             };
 
             _bgWorker.RunWorkerAsync();
-
+            */
             MainHome.Content = new MainPage();
+
+            StartPeriodicTagging();
         }
 
+        private void StartPeriodicTagging()
+        {
+            this.folderlist = new List<string>();
+            this.itemslist = new List<Items>();
+            string dirPath = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Dataset\한글\기사\문화";
+            string filelist = "";
 
+            //폴더 경로로 폴더에 있는 하위 폴더들 찾기
+            GetFolders(dirPath);
+
+            foreach (string name in this.folderlist)
+            {
+                GetFilesAndTag2(name);
+            }
+
+            foreach (string name in this.notinDBfiles)
+            {
+                filelist += "\""+name + "\" ";
+            }
+            Console.WriteLine("hello");
+            Console.WriteLine(filelist);
+            Console.WriteLine("hello");
+
+            GetTag(filelist);
+            GetItems();
+        }
+
+        private void GetFolders(string dirPath)
+        {
+            if (System.IO.Directory.Exists(dirPath))
+            {
+                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(dirPath);
+                foreach (var item in di.GetDirectories())
+                {
+
+                    GetFolders(dirPath + "\\" + item.Name);
+                    this.folderlist.Add(dirPath + "\\" + item.Name);
+                }
+            }
+            else
+            {
+                Console.WriteLine(dirPath + "를 찾을 수 없습니다");
+            }
+        }
+
+        private void GetFilesAndTag2(string dirPath)
+        {
+            this.filelist = new List<string>(); //파일 리스트 초기화
+
+            //폴더에 속한 문서들 불러옴
+            if (System.IO.Directory.Exists(dirPath))
+            {
+                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(dirPath);
+                foreach (System.IO.FileInfo File in di.GetFiles())
+                {
+                    this.filelist.Add(File.Name);
+                }
+            }
+            else
+            {
+                Console.WriteLine(dirPath + "를 찾을 수 없습니다");
+            }
+
+            MySqlConnection connection = new MySqlConnection(db_information);
+            //notinDBfiles = new List<string>(); //리스트 초기화
+
+            try
+            {
+                connection.Open();
+                DataSet tds = new DataSet();
+                string searchPath = dirPath.Replace("\\", "/"); //DB를 찾기 위해 경로를 \\를 /로 바꿔줌
+
+
+                foreach (string name in filelist)
+                {
+                    tds = new DataSet();
+
+                    MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='" + searchPath + "'and NAME='" + name + "'", connection);
+
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                    adp.Fill(tds);
+                    //Console.WriteLine(tds);
+                    if (tds.Tables[0].Rows.Count == 0) //비어있으면
+                    {
+                        //Console.WriteLine("없음");
+                        notinDBfiles.Add(dirPath + "\\" + name);
+                        //GetTag(dirPath, name);
+                    }
+                    else
+                    {
+                        //Console.WriteLine(name);
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                connection.Close();
+                //Console.WriteLine("안연결");
+            }
+            finally { connection.Close(); }
+            
+            //Console.WriteLine(command);
+
+            //GetTag(command);
+        }
 
 
         //타이머할일
@@ -243,7 +347,9 @@ namespace TagDocx
 
         public void GetTag(string files)
         {
-            
+            // Set working directory and create process
+            var workingDirectory = System.IO.Path.GetFullPath("Scripts");
+
             var process = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -252,9 +358,11 @@ namespace TagDocx
                     RedirectStandardInput = true,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
-                    WorkingDirectory = "C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\",
-                    WindowStyle = ProcessWindowStyle.Normal,
-                    CreateNoWindow = false
+                    WorkingDirectory = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\",
+                    //WorkingDirectory = "C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\",
+                    //WindowStyle = ProcessWindowStyle.Normal,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    CreateNoWindow = true
                 }
             };
 
@@ -267,9 +375,10 @@ namespace TagDocx
                     // Vital to activate Anaconda
                     sw.WriteLine("C:\\Temp\\Anaconda3\\Scripts\\activate.bat");
                     // Activate your environment
-                    sw.WriteLine("activate tensorflow");       
+                    sw.WriteLine("activate tensorflow");
                     // run your script. You can also pass in arguments
-                    string command = "python modelTagging2.py " + files;
+                    //string command = "python modelTagging2.py " + files;
+                    string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\test\modelTagging.py " + files;
                     sw.WriteLine(command);
 
                 }
@@ -282,7 +391,7 @@ namespace TagDocx
             while (!process.StandardOutput.EndOfStream)
             {
                 var line = process.StandardOutput.ReadLine();
-                Console.WriteLine(line);
+                //Console.WriteLine(line);
 
                 Regex reg = new Regex(@"<GET.*?>");
                 MatchCollection result = reg.Matches(line);
@@ -308,20 +417,20 @@ namespace TagDocx
 
             FreeConsole();
 
-
+            /*
             for (int i = 0; i < itemslist.Count; i++)
             {
                 Console.WriteLine(itemslist[i].Path);
                 string p = itemslist[i].Path.Replace("\\", "/");
                 Console.WriteLine(p);
-            }
+            }*/
 
 
         }
 
         void GetItems()
         {
-            int id;
+            int id=1;
             string path, form, context, c, name, sql1, sql2;
 
             try
@@ -337,8 +446,17 @@ namespace TagDocx
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     adp.Fill(tds);
 
+                    try
+                    {
+                        id = (int.Parse(tds.Tables[0].Rows[0][0].ToString())) + 1;
+                    }
+                    catch (Exception e) {
+                        Console.WriteLine(e.Message);
+                    }
+                    
+                    //Console.WriteLine(tds.Tables[0].Rows[0][0]);
                     // 삭제될 경우 대비해서 max count로 변경
-                    id = int.Parse(tds.Tables[0].Rows[0][0].ToString())+1;
+                    //id = int.Parse(tds.Tables[0].Rows[0][0].ToString())+1;
                     Console.WriteLine(id);
 
                     foreach (Items a in this.itemslist)
