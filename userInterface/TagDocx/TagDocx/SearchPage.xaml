@@ -32,7 +32,7 @@
         </Grid>
 
         <Grid Grid.Row="3" >
-            <DataGrid IsReadOnly="True" SelectionMode="Extended" Name="SearchResult" Margin="10" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="None" AutoGenerateColumns="False" MouseDoubleClick="ListDoubleClick" Height="auto">
+            <DataGrid IsReadOnly="True" SelectionMode="Extended" Name="SearchResult" Margin="10" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="Column" AutoGenerateColumns="False" MouseDoubleClick="ListDoubleClick" Height="auto" AutomationProperties.IsColumnHeader="True">
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="태그 수정" Click="menuitem_click"/>
@@ -46,9 +46,9 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding id}" Header="ID" Visibility="Hidden"/>
                     <DataGridTextColumn Binding="{Binding name}" Header="Name" />
-                    <DataGridTextColumn Binding="{Binding path}" Header="Path" />
                     <DataGridTextColumn Binding="{Binding type_tag}" Header="type" />
                     <DataGridTextColumn Binding="{Binding content_tag}" Header="tag" />
+                    <DataGridTextColumn Binding="{Binding path}" Header="Path" />
                     <DataGridTextColumn Binding="{Binding ext}"  Header="ext"/>
                 </DataGrid.Columns>
 
