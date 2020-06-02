@@ -5,6 +5,7 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System;
 
 namespace TagDocx
 {
@@ -46,6 +47,9 @@ namespace TagDocx
 
                 folderName.Text = dialog.FileName; // 테스트용, 폴더 선택이 완료되면 선택된 폴더를 label에 출력
                 selectedFolder = dialog.FileName; //선택된 폴더이름저장
+
+                //경로 구분자 수정
+                selectedFolder = selectedFolder.Replace("\\", "/");
             }
         }
         private void FindDoc()
@@ -59,7 +63,7 @@ namespace TagDocx
                 connection.Open();
                 //MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='" + selectedFolder + "'", connection);
 
-
+                Console.WriteLine("connected");
                 MySqlCommand cmd = new MySqlCommand("SELECT * FROM document inner join content on document.ID = content.ID where document.PATH='" + selectedFolder + "'", connection);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 // 윈도우 폼의 LoadDataBinding에 데이터 넣기
