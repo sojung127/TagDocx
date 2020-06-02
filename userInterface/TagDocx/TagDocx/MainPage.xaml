@@ -9,6 +9,8 @@
       Title="MainPage">
 
     <Grid>
+        <Image Source="/resource/noticIcon.png" Margin="95,31,0,0" Height="37" VerticalAlignment="Top" HorizontalAlignment="Left" Width="36" />
+
         <Image Source="/resource/adcs태깅.jpg" Width="254" HorizontalAlignment="Left" Margin="70,100,0,95.6"  />
         <Button x:Name="searchDoc" VerticalAlignment="Top" Width="300" Height="90" Click="ToSearch" Margin="352,116,148,0">
 
