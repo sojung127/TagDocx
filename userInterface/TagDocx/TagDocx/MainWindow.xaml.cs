@@ -52,10 +52,10 @@ namespace TagDocx
 
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        //여기에서 property에 있는거 가져와야 함
         string folderpath = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Dataset\한글\기사\문화";
         static string db_information = @"Server=localhost;Database=adcs;Uid=godocx;Pwd=486;";
         string savingpath;
+        List<string> regularTaggingfolder = new List<string>(); // 정기적 태깅 폴더 담을 리스트 
         List<string> folderlist = new List<string>(); //하위 폴더들 담을 리스트
         List<string> filelist = new List<string>(); //파일들 담을 리스트
         List<string> notinDBfiles = new List<string>(); // DB에 없는 파일들 담을 리스트
@@ -106,6 +106,7 @@ namespace TagDocx
 
             //시작하고 변수들 초기화
             InitializeComponent();
+            
 
             /* 백그라운드 워커
             DataContext = this;
@@ -127,33 +128,49 @@ namespace TagDocx
             */
             MainHome.Content = new MainPage();
 
-            StartPeriodicTagging();
+            //StartPeriodicTagging();
+        }
+        private void GetList() {
+            //여기에서 property에 있는거 가져와야 함
+            string customerDir = Properties.Settings.Default.customerDir;
+
+            string [] test = customerDir.Split('<');
+
+            for (int i = 0; i < test.Length-1; i++) {
+                this.regularTaggingfolder.Add(test[i]);
+            }
         }
 
-        private void StartPeriodicTagging()
+        public void StartPeriodicTagging()
         {
             this.folderlist = new List<string>();
             this.itemslist = new List<Items>();
-            string dirPath = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Dataset\한글\기사\문화";
+            
+            //string dirPath = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Dataset\한글\기사\문화";
             string filelist = "";
 
             //폴더 경로로 폴더에 있는 하위 폴더들 찾기
-            GetFolders(dirPath);
+            GetList();
+
+            foreach (string dirpath in this.regularTaggingfolder) {
+                GetFolders(dirpath);
+                this.folderlist.Add(dirpath);
+            }
 
             foreach (string name in this.folderlist)
             {
                 GetFilesAndTag2(name);
             }
 
+            WriteFile();
+
+            /*
             foreach (string name in this.notinDBfiles)
             {
                 filelist += "\""+name + "\" ";
-            }
-            Console.WriteLine("hello");
-            Console.WriteLine(filelist);
-            Console.WriteLine("hello");
-
-            GetTag(filelist);
+            }*/
+     
+            GetTag();
             GetItems();
         }
 
@@ -264,88 +281,19 @@ namespace TagDocx
             this.Visibility = Visibility.Hidden;
 
         }
-        private void LookforDoc()
-        {
-            //string dirPath,  selectedFolder, docuname;
-            //this.itemslist = new List<Items>();
-            string dirPath = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\testData";
-            //string dirPath, string selectedFolder, string docuname
-            this.itemslist = new List<Items>();
-            //string dirPath = @"C:\AutomaticDocumentClassificationService\Dataset\한글\기사\경제";
-            string filename;
-            MySqlConnection connection = new MySqlConnection(db_information);
-            List<Items> itemslist = new List<Items>();
-            List<string> filelist = new List<string>();
-            notinDBfiles = new List<string>();
-
-            if (System.IO.Directory.Exists(dirPath))
+       
+        private void WriteFile() {
+            using (StreamWriter outputFile = new StreamWriter(@"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\filelist.txt"))
             {
-                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(dirPath);
-                foreach (System.IO.FileInfo File in di.GetFiles())
+                foreach (string line in this.notinDBfiles)
                 {
-                    filename = File.Name;
-                    filelist.Add(filename);
+                    outputFile.WriteLine(line);
                 }
             }
-
-            /*
-            //폴더 이름 출력
-            Console.WriteLine("FOLDER NAME : " + File.Name);
-            //폴더내부 파일 개수 출력
-            Console.WriteLine("FILE COUNT IN FOLDER : " + item.GetFiles().Length);
-            //폴더 생성 날짜 출력
-            Console.WriteLine("CREATE DATE : " + item.CreationTime);
-            */
-            try
-            {
-                connection.Open();
-                DataSet tds = new DataSet();
-                string searchPath = dirPath.Replace("\\", "/");
-
-
-                foreach (string name in filelist)
-                {
-                    tds = new DataSet();
-
-                    MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='" + searchPath + "'and NAME='" + name + "'", connection);
-
-                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                    adp.Fill(tds);
-                    //Console.WriteLine(tds);
-                    if (tds.Tables[0].Rows.Count == 0) //비어있으면
-                    {
-                        //Console.WriteLine("없음");
-                        notinDBfiles.Add(name);
-                        //GetTag(dirPath, name);
-                    }
-                    else
-                    {
-                        //Console.WriteLine(name);
-                    }
-                }
-            }
-            catch (MySqlException ex)
-            {
-                connection.Close();
-                //Console.WriteLine("안연결");
-            }
-
-            finally
-            {
-                connection.Close();
-            }
-
-            string command = dirPath + " ";
-            foreach (string name in notinDBfiles)
-            {
-                command += name + " ";
-            }
-            Console.WriteLine(command);
-            GetTag(command);
-
         }
 
-        public void GetTag(string files)
+
+        public void GetTag()
         {
             // Set working directory and create process
             var workingDirectory = System.IO.Path.GetFullPath("Scripts");
@@ -378,7 +326,8 @@ namespace TagDocx
                     sw.WriteLine("activate tensorflow");
                     // run your script. You can also pass in arguments
                     //string command = "python modelTagging2.py " + files;
-                    string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\test\modelTagging.py " + files;
+                    //string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\test\modelTagging.py " + files;
+                    string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\test\modelTagging.py";
                     sw.WriteLine(command);
 
                 }

@@ -31,13 +31,9 @@
             </StackPanel>
         </Grid>
 
-<<<<<<< HEAD
-        <Grid Grid.Row="3" Margin="0,1.6,0,-1" >
-            <DataGrid IsReadOnly="True" SelectionMode="Extended" Name="SearchResult" Margin="10,0,10,10" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="None" AutoGenerateColumns="False" MouseDoubleClick="ListDoubleClick" Height="auto">
-=======
         <Grid Grid.Row="3" >
             <DataGrid IsReadOnly="True" SelectionMode="Extended" Name="SearchResult" Margin="10" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="Column" AutoGenerateColumns="False" MouseDoubleClick="ListDoubleClick" Height="auto" AutomationProperties.IsColumnHeader="True">
->>>>>>> a43ef4c16d522cb00f9c98fbae6bd97f29324550
+
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="태그 수정" Click="menuitem_click"/>

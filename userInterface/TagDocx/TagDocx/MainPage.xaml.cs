@@ -35,7 +35,8 @@ namespace TagDocx
                 notice.Content= "정기적 태깅 작업을 할 폴더를 지정해주세요. (추가 기능)";
             }
             else{//lastTagedTime 값을notice에 넣어 화면에 출력하기
-                string noticecontent = "최근 태깅 시간: " + Properties.Settings.Default.lastTagedTime;
+                 //string noticecontent = "최근 태깅 시간: " + Properties.Settings.Default.lastTagedTime;
+                string noticecontent = Properties.Settings.Default.customerDir;
                 notice.Content = noticecontent;
             }
         }
@@ -60,8 +61,11 @@ namespace TagDocx
             NavigationService.Navigate(page);
         }
 
+        //즉시 태깅 함수
         private void immeTag_Click(object sender, RoutedEventArgs e)
         {
+            ((MainWindow)System.Windows.Application.Current.MainWindow).StartPeriodicTagging();
+            
 
         }
 
