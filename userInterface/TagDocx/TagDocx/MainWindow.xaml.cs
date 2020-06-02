@@ -254,7 +254,7 @@ namespace TagDocx
                     RedirectStandardOutput = true,
                     WorkingDirectory = "C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\",
                     WindowStyle = ProcessWindowStyle.Normal,
-                    CreateNoWindow = false
+                    CreateNoWindow = true
                 }
             };
 
