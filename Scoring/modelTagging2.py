@@ -131,13 +131,13 @@ def run():
     #get_tag(folderpath, file_list[i+1])
     folderpath = argv_list[1]
 
-    for i in range(len(argv_list)-1):
+    for i in range(len(argv_list)):
         if i<2:
             pass
         else:
         #print(argv_list[i])
         #get_tag(folderpath, file_list[i])
-            get_tag(folderpath, argv_list[i+1])
+            get_tag(folderpath, argv_list[i])
 
 def test():
     argv_list = sys.argv
@@ -148,12 +148,8 @@ def test():
 from konlpy import jvm
 import jpype
 if __name__ == '__main__':
-    jvm.init_jvm()
-    if not jpype.isJVMStarted():
-        jpype.startJVM(jpype.getDefaultJVMPath(), "-ea")
-    jpype.java.lang.System.out.println("hello world")
     sys.exit(run())
-    jpype.shutdownJVM()
+
     #sys.exit(test())
 
 '''
