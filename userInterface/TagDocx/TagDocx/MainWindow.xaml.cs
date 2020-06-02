@@ -195,6 +195,19 @@ namespace TagDocx
         private void GetFilesAndTag2(string dirPath)
         {
             this.filelist = new List<string>(); //파일 리스트 초기화
+            //string dirPath,  selectedFolder, docuname;
+            //this.itemslist = new List<Items>();
+            //string dirPath = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\testData";
+            string dirPath = @"C:\\AutomaticDocumentClassificationService\\Scoring\\testData";
+
+            //string dirPath, string selectedFolder, string docuname
+            this.itemslist = new List<Items>();
+            //string dirPath = @"C:\AutomaticDocumentClassificationService\Dataset\한글\기사\경제";
+            string filename;
+            MySqlConnection connection = new MySqlConnection(db_information);
+            List<Items> itemslist = new List<Items>();
+            List<string> filelist = new List<string>();
+            notinDBfiles = new List<string>();
 
             //폴더에 속한 문서들 불러옴
             if (System.IO.Directory.Exists(dirPath))
@@ -310,6 +323,9 @@ namespace TagDocx
                     //WorkingDirectory = "C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\",
                     //WindowStyle = ProcessWindowStyle.Normal,
                     WindowStyle = ProcessWindowStyle.Hidden,
+                   // WorkingDirectory = "C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\",
+                    WorkingDirectory = "C:\\AutomaticDocumentClassificationService\\Scoring\\",
+                    WindowStyle = ProcessWindowStyle.Normal,
                     CreateNoWindow = true
                 }
             };
@@ -321,7 +337,8 @@ namespace TagDocx
                 if (sw.BaseStream.CanWrite)
                 {
                     // Vital to activate Anaconda
-                    sw.WriteLine("C:\\Temp\\Anaconda3\\Scripts\\activate.bat");
+                    //sw.WriteLine("C:\\Temp\\Anaconda3\\Scripts\\activate.bat");
+                    sw.WriteLine("C:\\Users\\user\\Anaconda3\\Scriptsctivate.bat");
                     // Activate your environment
                     sw.WriteLine("activate tensorflow");
                     // run your script. You can also pass in arguments

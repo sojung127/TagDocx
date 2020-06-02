@@ -102,18 +102,19 @@ def get_tag(filename):
     form_tag = form_tagging(int(index)) #string 값 반환
 
     content_tag =  ContentTagging.content_tagging(contents, path) #list 반환
-    print("<GET",result_path,"><GET",form_tag,"><GET",content_tag,"><GET",filename,">")
+    print("<GET",filename,"><GET",form_tag,"><GET",content_tag,"><GET",filename,">")
 
 
 def form_tagging(index):
     return {0: '공고', 1: '기사', 2: '논문', 3: '지원서'}.get(index, '기타')
 
+import time
 
 def run():
+    start = time.time()
     argv_list = sys.argv
 
     import pandas as pd
-    
 
     filename = './sgdClassifier.pkl'
     global model
@@ -130,6 +131,8 @@ def run():
     for i in range(1,len(argv_list)):
         get_tag(argv_list[i])
 
+    print("time: ", time.time() - start)
+
 def test():
     argv_list = sys.argv
     test_string = argv_list[1]
@@ -138,5 +141,6 @@ def test():
 
 from konlpy import jvm
 import jpype
+
 if __name__ == '__main__':
     sys.exit(run())
