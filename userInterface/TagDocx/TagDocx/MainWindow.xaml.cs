@@ -84,6 +84,15 @@ namespace TagDocx
 
         public MainWindow()
         {
+            //프로그램 처음 시작시 저장폴더를 만듬
+            string deskPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            DirectoryInfo di = new DirectoryInfo(deskPath + "/ADCSforder");
+
+            if(di.Exists == false)
+            {
+                di.Create();
+            }
+
             Timer timer = new System.Timers.Timer();
             timer.Interval = 1000; // 1 초
             timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
