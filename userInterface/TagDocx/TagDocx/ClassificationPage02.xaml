@@ -120,7 +120,7 @@
             </Label>
             <Button Content="삭제하기" HorizontalAlignment="Left" Height="34" Margin="114,91,0,0" VerticalAlignment="Top" Width="87" Click="ssdelete"/>
         </Grid>-->
-        <Button x:Name="문서분류종료" FontSize="20" Content="끝내기" Margin="649,0,10,9.6" Click="BtnEnd" Height="44" Grid.Row="2" VerticalAlignment="Bottom" />
+        <Button x:Name="문서분류종료"  Background="#0f4c81" FontSize="20" Content="끝내기" Margin="649,0,10,9.6" Click="BtnEnd" Height="44" Grid.Row="2" VerticalAlignment="Bottom" Foreground="#DDFFFFFF" />
 
     </Grid>
 

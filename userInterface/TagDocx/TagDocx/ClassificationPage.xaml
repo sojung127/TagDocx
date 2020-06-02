@@ -20,8 +20,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="gotoMain" FontSize="20" Content="이전단계" HorizontalAlignment="Left" Margin="10,0,0,9.6"  Width="130" Click="BtnPreStep" Grid.Row="2" VerticalAlignment="Bottom" Height="44" />
-        <Button x:Name="strartTag" FontSize="20" Content="다음단계"  Margin="0,0,10,9.6" Width="130" Click="BtnNextStep" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="44" />
+        <Button x:Name="gotoMain" Background="#0f4c81" FontSize="20" Content="홈으로" HorizontalAlignment="Left" Margin="10,0,0,9.6"  Width="130" Click="BtnPreStep" Grid.Row="2" VerticalAlignment="Bottom" Height="44" Foreground="#DDFFFFFF" />
+        <Button x:Name="strartTag" Background="#0f4c81" FontSize="20" Content="다음단계"  Margin="0,0,10,9.6" Width="130" Click="BtnNextStep" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="44" Foreground="#DDFFFFFF" />
 
 
         <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center"  >
@@ -29,9 +29,9 @@
             <TextBlock Text="문서 분류" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
 
-        <Label Content="문서를 분류하고자 하는 대상 폴더를 선택하세요. (하위 폴더 미포함) " HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30"/>
-        <Button Content="폴더 찾기" HorizontalAlignment="Left" Margin="525,43,0,0" Grid.Row="1" VerticalAlignment="Top" Width="135" Click="BtnFindFolder" FontSize="20" Height="35"/>
-        <TextBox x:Name="folderName" HorizontalAlignment="Left" Height="22" Margin="10,40,0,0" Grid.Row="1" TextWrapping="Wrap" Text="폴더 경로 직접 입력" VerticalAlignment="Top" Width="302"/>
+        <Label Content="문서를 분류하고자 하는 대상 폴더를 선택하세요. (하위 폴더 미포함) " FontSize="20px" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40"/>
+        <Button Content="폴더 찾기" Background="#0f4c81" HorizontalAlignment="Left" Margin="525,52,0,0" Grid.Row="1" VerticalAlignment="Top" Width="135" Click="BtnFindFolder" FontSize="20" Height="35" Foreground="#DDFFFFFF"/>
+        <TextBox x:Name="folderName" HorizontalAlignment="Left" Height="35" FontSize="15px" Margin="10,52,0,0" Grid.Row="1" TextWrapping="Wrap" Text="폴더 경로 직접 입력" VerticalAlignment="Top" Width="489"/>
         <!-->
         <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="53,175,0,24.6" Name="dataGridCustomers"
                  Width="678" ItemsSource="{Binding Path=LoadDataBinding}" CanUserResizeRows="False" Grid.Row="1">

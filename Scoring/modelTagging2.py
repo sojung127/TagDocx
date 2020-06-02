@@ -44,9 +44,9 @@ def convert_pdf_to_txt(path):
     return text
 
 from konlpy.tag import Kkma
-def get_tag(folderpath, filename):
+def get_tag(filename):
 
-    result_path = folderpath
+    #result_path = folderpath
     '''
     result_path = path
 
@@ -58,8 +58,8 @@ def get_tag(folderpath, filename):
     '''
     score = []
     
-    path = folderpath+"\\"+filename
-
+    path = filename
+    contents=''
     if path[-3:] == 'pdf':
         contents = convert_pdf_to_txt(path)
         shortword = re.compile("\n")
@@ -104,9 +104,6 @@ def get_tag(folderpath, filename):
     content_tag =  ContentTagging.content_tagging(contents, path) #list 반환
     print("<GET",result_path,"><GET",form_tag,"><GET",content_tag,"><GET",filename,">")
 
-            #print(form_tag,"+",content_tag)
-            #print(score)
-            #results.append((paths.index(p), score))
 
 def form_tagging(index):
     return {0: '공고', 1: '기사', 2: '논문', 3: '지원서'}.get(index, '기타')
@@ -130,11 +127,8 @@ def run():
     file_list=os.listdir(folderpath);
     folderpath = argv_list[1]
 
-    for i in range(len(argv_list)):
-        if i<2:
-            pass
-        else:
-            get_tag(folderpath, argv_list[i])
+    for i in range(1,len(argv_list)):
+        get_tag(argv_list[i])
 
 def test():
     argv_list = sys.argv

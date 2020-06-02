@@ -14,25 +14,30 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="47.2"/>
-            <RowDefinition Height="89.6"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="87.2"/>
+            <RowDefinition/>
 
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="2" Margin="10,6.8,10,9.6" >
+        <Grid Grid.Row="2" Margin="10,5.8,10,12.4" >
             <StackPanel>
-                <Grid Margin="10,10,0,10" HorizontalAlignment="left" >
-                    <Image Margin="0,3,710.6,7.4" Height="40" RenderSize="40,40"   Source="/resource/돋보기.png" />
-                    <Border BorderBrush="DarkGreen" Margin="60,0,164,0">
-                        <TextBox Name="Search" Background="WhiteSmoke"  VerticalAlignment="Center" Margin="30,0" TextWrapping="Wrap" TextChanged="TextBox_TextChanged" FontSize="15pt" Height="40"/>
+                <Grid Margin="10,10,0,10" HorizontalAlignment="left" Height="59" >
+                    <Image Margin="27,10,715.4,23.6" RenderSize="40,40"   Source="/resource/돋보기.png" />
+                    <Border BorderBrush="DarkGreen" Margin="60,0,164.4,16.6">
+                        <TextBox Name="Search" Background="WhiteSmoke" Margin="0,0,0.4,-0.2" TextWrapping="Wrap" TextChanged="TextBox_TextChanged" FontSize="15pt"/>
                     </Border>
-                    <Button FontSize="15pt" Content="태그 목록" Click="ShowTagList" VerticalAlignment="top" Height="44" Margin="624,1,-0.2,0" HorizontalAlignment="Left" Width="133"/>
+                    <Button FontSize="15pt" Content="태그 목록" Click="ShowTagList" VerticalAlignment="top" Height="44" Margin="624,1,-0.2,0" HorizontalAlignment="Left" Width="133" Background="#FF0F4C81" Foreground="#DDFFFFFF"/>
                 </Grid>
             </StackPanel>
         </Grid>
 
+<<<<<<< HEAD
+        <Grid Grid.Row="3" Margin="0,1.6,0,-1" >
+            <DataGrid IsReadOnly="True" SelectionMode="Extended" Name="SearchResult" Margin="10,0,10,10" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="None" AutoGenerateColumns="False" MouseDoubleClick="ListDoubleClick" Height="auto">
+=======
         <Grid Grid.Row="3" >
-            <DataGrid IsReadOnly="True" SelectionMode="Extended" Name="SearchResult" Margin="10" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="None" AutoGenerateColumns="False" MouseDoubleClick="ListDoubleClick" Height="auto">
+            <DataGrid IsReadOnly="True" SelectionMode="Extended" Name="SearchResult" Margin="10" ItemsSource="{Binding LoadDataBinding}" SelectionChanged="Listbox1_SelectionChanged" GridLinesVisibility="None" HeadersVisibility="Column" AutoGenerateColumns="False" MouseDoubleClick="ListDoubleClick" Height="auto" AutomationProperties.IsColumnHeader="True">
+>>>>>>> a43ef4c16d522cb00f9c98fbae6bd97f29324550
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="태그 수정" Click="menuitem_click"/>
@@ -46,16 +51,16 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding id}" Header="ID" Visibility="Hidden"/>
                     <DataGridTextColumn Binding="{Binding name}" Header="Name" />
-                    <DataGridTextColumn Binding="{Binding path}" Header="Path" />
                     <DataGridTextColumn Binding="{Binding type_tag}" Header="type" />
                     <DataGridTextColumn Binding="{Binding content_tag}" Header="tag" />
+                    <DataGridTextColumn Binding="{Binding path}" Header="Path" />
                     <DataGridTextColumn Binding="{Binding ext}"  Header="ext"/>
                 </DataGrid.Columns>
 
             </DataGrid>
 
         </Grid>
-        <Grid x:Name="GridBarTitle" Grid.Row="0" HorizontalAlignment="Left" Margin="0,0,0,0.2" Width="800">
+        <Grid x:Name="GridBarTitle" Grid.Row="0" HorizontalAlignment="Left" Width="800">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="367*"/>
                 <ColumnDefinition Width="434*"/>
@@ -64,13 +69,13 @@
 
         </Grid>
 
-        <Grid x:Name="TabMenu" Margin="10,31,10,0.2" Grid.RowSpan="2">
+        <Grid x:Name="TabMenu" Margin="10,1,10,0.2" Grid.Row="1">
             <StackPanel Orientation="Horizontal">
-                <Button Content="홈으로"  Click="BackToMainPage" Margin="10,5,5,5" Height="Auto" Width="Auto" HorizontalAlignment="right"/>
-                <Button Content="모두선택" Click="SelectAll_Exectued" Margin="5,5,5,4.6"  Height="Auto" HorizontalAlignment="Right" Width="95"/>
-                <Button Content="선택취소" Click="DeselectAll_Executed"   Margin="5,5,5,4.6" Height="Auto" HorizontalAlignment="Right" Width="96"/>
-                <Button Content="선택 삭제" Click="fileDelete"  Margin="5,5,5,4.6" Height="Auto" HorizontalAlignment="Right" Width="101"/>
-                <Button Content="파일 복사" Click="fileCopy" Margin="5,5,5,4.6" Height="Auto"  Width="101"/>
+                <Button Content="홈으로"  Click="BackToMainPage" Margin="10,5,5,5" Height="Auto" Width="Auto" HorizontalAlignment="right" Background="#FF0F4C81" Foreground="#DDFFFFFF"/>
+                <Button Content="모두선택" Click="SelectAll_Exectued" Margin="5,5,5,4.6"  Height="Auto" HorizontalAlignment="Right" Width="95" Background="#FF0F4C81" Foreground="#DDFFFFFF"/>
+                <Button Content="선택취소" Click="DeselectAll_Executed"   Margin="5,5,5,4.6" Height="Auto" HorizontalAlignment="Right" Width="96" Background="#FF0F4C81" Foreground="#DDFFFFFF"/>
+                <Button Content="선택 삭제" Click="fileDelete"  Margin="5,5,5,4.6" Height="Auto" HorizontalAlignment="Right" Width="101" Background="#FF0F4C81" Foreground="#DDFFFFFF"/>
+                <Button Content="파일 복사" Click="fileCopy" Margin="5,5,5,4.6" Height="Auto"  Width="101" Background="#FF0F4C81" Foreground="#DDFFFFFF"/>
 
             </StackPanel>
         </Grid>

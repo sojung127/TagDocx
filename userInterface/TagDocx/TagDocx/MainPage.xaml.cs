@@ -32,7 +32,7 @@ namespace TagDocx
             string customerDir = Properties.Settings.Default.customerDir;
             if (customerDir == "") //설정 전
             {
-                notice.Content="정기적 태깅 작업을 할 폴더를 지정해주세요.";
+                notice.Content= "정기적 태깅 작업을 할 폴더를 지정해주세요. (추가 기능)";
             }
             else{//lastTagedTime 값을notice에 넣어 화면에 출력하기
                 string noticecontent = "최근 태깅 시간: " + Properties.Settings.Default.lastTagedTime;
@@ -60,7 +60,12 @@ namespace TagDocx
             NavigationService.Navigate(page);
         }
 
-        private void immeTag_Click()
+        private void immeTag_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
         }
