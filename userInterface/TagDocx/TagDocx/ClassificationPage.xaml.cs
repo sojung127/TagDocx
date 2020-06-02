@@ -5,6 +5,7 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System;
 
 namespace TagDocx
 {
@@ -69,7 +70,7 @@ namespace TagDocx
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                Console.WriteLine(ex.ToString());
             }
             finally
             {
