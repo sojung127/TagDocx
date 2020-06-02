@@ -128,15 +128,12 @@ def run():
 
     folderpath = "./testData/"
     file_list=os.listdir(folderpath);
-    #get_tag(folderpath, file_list[i+1])
     folderpath = argv_list[1]
 
     for i in range(len(argv_list)):
         if i<2:
             pass
         else:
-        #print(argv_list[i])
-        #get_tag(folderpath, file_list[i])
             get_tag(folderpath, argv_list[i])
 
 def test():
@@ -149,13 +146,3 @@ from konlpy import jvm
 import jpype
 if __name__ == '__main__':
     sys.exit(run())
-
-    #sys.exit(test())
-
-'''
-filename = '/tmp/digits_classifier.joblib.pkl'
-
-model = joblib.load(filename)
-
-model.predict()
-'''
