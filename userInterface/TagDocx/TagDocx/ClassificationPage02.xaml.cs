@@ -7,7 +7,7 @@ using System.Collections.Generic; //List collection 써야하니까!
 using System.Linq; //리스트 중복제거 함수 쓰려고 추가
 using System;
 using Microsoft.VisualBasic.Logging;
-using System.IO.Packaging;
+using System.IO;
 
 namespace TagDocx
 {
@@ -385,10 +385,19 @@ namespace TagDocx
             Console.WriteLine(filePath);
             Console.WriteLine(fileName);
             //fileName(확장자포함)
+            string deskPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+
             string oldFile = filePath + "/" + fileName;   //파일이름포함한 기존경로  (NAME은 파일 타입 포함)
-            string newFile = filePath + "/" +nfn+"/"+ fileName;    //새로운경로+파일이름 경로
+            string newFile = deskPath + "/ADCSforder" + "/" +nfn+"/"+ fileName;    //새로운경로+파일이름 경로
 
             Console.WriteLine(oldFile + "->" + newFile);
+
+            DirectoryInfo di = new DirectoryInfo(deskPath + "/ADCSforder" + "/" + nfn);
+
+            if (di.Exists == false)
+            {
+                di.Create();
+            }
 
             System.IO.File.Move(oldFile, newFile);
         }

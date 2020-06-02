@@ -59,6 +59,11 @@ namespace TagDocx
             SettingPage page = new SettingPage();
             NavigationService.Navigate(page);
         }
+
+        private void immeTag_Click()
+        {
+
+        }
     }
 
 
