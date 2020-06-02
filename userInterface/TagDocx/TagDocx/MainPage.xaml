@@ -9,13 +9,22 @@
       Title="MainPage">
 
     <Grid>
-        <Image Source="/resource/noticIcon.png" Margin="95,31,0,0" Height="37" VerticalAlignment="Top" HorizontalAlignment="Left" Width="36" />
+        <Image Source="/resource/noticIcon.png" Margin="63,31,0,0" Height="37" VerticalAlignment="Top" HorizontalAlignment="Left" Width="36" />
+        <Image Source="/resource/adcscute.png" Width="254" HorizontalAlignment="Left" Margin="70,100,0,95.6"  />
 
-        <Image Source="/resource/adcs태깅.jpg" Width="254" HorizontalAlignment="Left" Margin="70,100,0,95.6"  />
-        <Button x:Name="searchDoc" VerticalAlignment="Top" Width="300" Height="90" Click="ToSearch" Margin="352,116,148,0">
+        <Button x:Name="immeTag" VerticalAlignment="Top" Width="300" Height="90" Click="immeTag_Click" Margin="352,100,148,0" >
 
             <StackPanel Height="auto" Width="300" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Source="/resource/adcs검색.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+                <Image Source="/resource/adcscute.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="10" />
+                <TextBlock Text="문서 태깅"  Height="auto" Width="auto" VerticalAlignment="center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30" FontWeight="Bold" Margin="10,20"/>
+            </StackPanel>
+
+        </Button>
+
+        <Button x:Name="searchDoc" VerticalAlignment="Top" Width="300" Height="90" Click="ToSearch" Margin="352,174,148,0">
+
+            <StackPanel Height="auto" Width="300" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="/resource/adcs검색.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" />
                 <TextBlock Text="문서 검색"  Height="auto" Width="auto" VerticalAlignment="center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30" FontWeight="Bold" Margin="10,20"/>
             </StackPanel>
 
@@ -23,7 +32,7 @@
         <Button x:Name="categorizeDoc" Click="BtnClassificateDocPage" Width="300" Height="90" Margin="352,0,148,112.6" VerticalAlignment="Bottom" >
 
             <StackPanel Height="auto" Width="300" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Source="/resource/adcs분류.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+                <Image Source="/resource/adcs분류.png" Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"  />
                 <TextBlock Text="문서 분류" Height="auto" Width="auto" VerticalAlignment="center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30" FontWeight="Bold" Margin="10,0,69.6,0"/>
             </StackPanel>
 
@@ -35,8 +44,9 @@
                 <TextBlock Text="Setting" FontSize="30" />
             </Button>
         </StackPanel>
-        <Label x:Name="notice" HorizontalContentAlignment="center" FontSize="20" Content="Hello!" Margin="136,31,148,381.6"/>
-
+        <Border BorderBrush="Black" BorderThickness="2" Margin="104,31,77,0" Height="37" VerticalAlignment="Top">
+            <Label x:Name="notice" HorizontalContentAlignment="center" FontSize="20" Content="Hello!"  BorderBrush="AliceBlue" Margin="-1.6,-1.6,-1.4,-1.8"/>
+        </Border>
 
     </Grid>
 </Page>
