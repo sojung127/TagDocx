@@ -385,8 +385,10 @@ namespace TagDocx
             Console.WriteLine(filePath);
             Console.WriteLine(fileName);
             //fileName(확장자포함)
+            string deskPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+
             string oldFile = filePath + "/" + fileName;   //파일이름포함한 기존경로  (NAME은 파일 타입 포함)
-            string newFile = filePath + "/" +nfn+"/"+ fileName;    //새로운경로+파일이름 경로
+            string newFile = deskPath + "/ADCSforder" + "/" +nfn+"/"+ fileName;    //새로운경로+파일이름 경로
 
             Console.WriteLine(oldFile + "->" + newFile);
 
