@@ -19,9 +19,9 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Frame x:Name="MainHome" Margin="0,0,0.333,0.334" Grid.RowSpan="2"/>
+        <Frame x:Name="MainHome" Margin="0,0,0.333,0.334" Grid.RowSpan="2" Background="#ededed"/>
 
-        <Grid x:Name="GridBarTitle" Grid.Row="0" Grid.ColumnSpan="2" Background="#00462a" MouseDown="GridBarTitle_MouseDown">
+        <Grid x:Name="GridBarTitle" Grid.Row="0" Background="#0f4c81" MouseDown="GridBarTitle_MouseDown" Margin="0,0,-0.4,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="367*"/>
                 <ColumnDefinition Width="434*"/>
