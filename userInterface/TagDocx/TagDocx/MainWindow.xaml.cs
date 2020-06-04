@@ -198,7 +198,7 @@ namespace TagDocx
             //string dirPath,  selectedFolder, docuname;
             //this.itemslist = new List<Items>();
             //string dirPath = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\testData";
-            string dirPath = @"C:\\AutomaticDocumentClassificationService\\Scoring\\testData";
+            //string dirPath = @"C:\\AutomaticDocumentClassificationService\\Scoring\\testData"; //?
 
             //string dirPath, string selectedFolder, string docuname
             this.itemslist = new List<Items>(); 
@@ -223,7 +223,7 @@ namespace TagDocx
                 Console.WriteLine(dirPath + "를 찾을 수 없습니다");
             }
 
-            MySqlConnection connection = new MySqlConnection(db_information);
+           // MySqlConnection connection = new MySqlConnection(db_information);
             //notinDBfiles = new List<string>(); //리스트 초기화
 
             try
@@ -296,7 +296,7 @@ namespace TagDocx
         }
        
         private void WriteFile() {
-            using (StreamWriter outputFile = new StreamWriter(@"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\filelist.txt"))
+            using (StreamWriter outputFile = new StreamWriter(@"C:\AutomaticDocumentClassificationService\filelist.txt"))
             {
                 foreach (string line in this.notinDBfiles)
                 {
@@ -319,13 +319,13 @@ namespace TagDocx
                     RedirectStandardInput = true,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
-                    WorkingDirectory = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\",
+                    //WorkingDirectory = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Scoring\",
                     //WorkingDirectory = "C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\",
                     //WindowStyle = ProcessWindowStyle.Normal,
                     WindowStyle = ProcessWindowStyle.Hidden,
                    // WorkingDirectory = "C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\",
                     WorkingDirectory = "C:\\AutomaticDocumentClassificationService\\Scoring\\",
-                    WindowStyle = ProcessWindowStyle.Normal,
+                    //WindowStyle = ProcessWindowStyle.Normal,
                     CreateNoWindow = true
                 }
             };
@@ -344,8 +344,10 @@ namespace TagDocx
                     // run your script. You can also pass in arguments
                     //string command = "python modelTagging2.py " + files;
                     //string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\test\modelTagging.py " + files;
-                    string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\test\modelTagging.py";
+                    // string command = @"python C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\test\modelTagging.py";
+                    string command = @"python C:\AutomaticDocumentClassificationService\test\modelTagging.py";
                     sw.WriteLine(command);
+
 
                 }
             }
