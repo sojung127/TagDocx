@@ -31,7 +31,7 @@
 
         <Label Content="문서를 분류하고자 하는 대상 폴더를 선택하세요. (하위 폴더 미포함) " FontSize="20px" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40"/>
         <Button Content="폴더 찾기" Background="#0f4c81" HorizontalAlignment="Left" Margin="525,52,0,0" Grid.Row="1" VerticalAlignment="Top" Width="135" Click="BtnFindFolder" FontSize="20" Height="35" Foreground="#DDFFFFFF"/>
-        <TextBox x:Name="folderName" HorizontalAlignment="Left" Height="35" FontSize="15px" Margin="10,52,0,0" Grid.Row="1" TextWrapping="Wrap" Text="폴더 경로 직접 입력" VerticalAlignment="Top" Width="489"/>
+        <TextBox x:Name="folderName" Background="white"  HorizontalAlignment="Left" Height="35" FontSize="15px" Margin="10,52,0,0" Grid.Row="1" TextWrapping="Wrap" Text="폴더 경로 직접 입력" VerticalAlignment="Top" Width="489"/>
         <!-->
         <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="53,175,0,24.6" Name="dataGridCustomers"
                  Width="678" ItemsSource="{Binding Path=LoadDataBinding}" CanUserResizeRows="False" Grid.Row="1">

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\userInterface\TagDocx\TagDocx\obj\Debug\
+C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\TagDocx\TagDocx\obj\Debug\
 TagDocx
 none
 false
 DEBUG;TRACE
-C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\userInterface\TagDocx\TagDocx\App.xaml
+C:\Users\pyj\MyWorks\AutomaticDocumentClassificationService\userInterface\TagDocx\TagDocx\App.xaml
 12-913231563
 
 161247094517
-1442083973134
+1441163129737
 SettingPage.xaml;ClassificationPage.xaml;ClassificationPage02.xaml;ClassificationPage01.xaml;MainPage.xaml;MainWindow.xaml;SearchPage.xaml;TagEditPage.xaml;TagEditWindow.xaml;TagListPage.xaml;TagListWindow.xaml;ToastMessage.xaml;
 
-False
+True
 

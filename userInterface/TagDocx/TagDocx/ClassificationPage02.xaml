@@ -48,7 +48,7 @@
                             <DataGridTextColumn Binding="{Binding Path=PATH}" Header="저장경로"  IsReadOnly="True" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label x:Name="묶음0태그들" Content="묶음 태그" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="303"/>
+                    <Label x:Name="묶음0태그들" Background="white" Content="묶음 태그" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="303"/>
                 </Grid>
             </TabItem>
             <TabItem>
@@ -67,7 +67,7 @@
                             <DataGridTextColumn Binding="{Binding Path=PATH}" Header="저장경로"  IsReadOnly="True" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label x:Name="묶음1태그들" Content="묶음태그" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="303"/>
+                    <Label x:Name="묶음1태그들" Content="묶음태그" Background="white" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="303"/>
                 </Grid>
 
             </TabItem>
@@ -87,7 +87,7 @@
                             <DataGridTextColumn Binding="{Binding Path=PATH}" Header="저장경로"  IsReadOnly="True" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label x:Name="묶음2태그들" Content="묶음태그" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="303"/>
+                    <Label x:Name="묶음2태그들" Content="묶음태그" Background="white" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="303"/>
                 </Grid>
             </TabItem>
 

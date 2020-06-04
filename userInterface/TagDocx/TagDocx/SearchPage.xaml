@@ -24,7 +24,7 @@
                 <Grid Margin="10,10,0,10" HorizontalAlignment="left" Height="59" >
                     <Image Margin="27,10,715.4,23.6" RenderSize="40,40"   Source="/resource/돋보기.png" />
                     <Border BorderBrush="DarkGreen" Margin="60,0,164.4,16.6">
-                        <TextBox Name="Search" Background="WhiteSmoke" Margin="0,0,0.4,-0.2" TextWrapping="Wrap" TextChanged="TextBox_TextChanged" FontSize="15pt"/>
+                        <TextBox Name="Search" Background="White" Margin="0,0,0.4,-0.2" TextWrapping="Wrap" TextChanged="TextBox_TextChanged" FontSize="15pt"/>
                     </Border>
                     <Button FontSize="15pt" Content="태그 목록" Click="ShowTagList" VerticalAlignment="top" Height="44" Margin="624,1,-0.2,0" HorizontalAlignment="Left" Width="133" Background="#FF0F4C81" Foreground="#DDFFFFFF"/>
                 </Grid>
