@@ -1,4 +1,5 @@
-# Automatic_Document_Classification_Service
+# TAGDOCX
+![태그독스로고](https://user-images.githubusercontent.com/29905149/83727296-cbe41000-a67f-11ea-954d-1382433f29a3.png)
 
 ## 1. 프로젝트 소개
 
