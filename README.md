@@ -86,7 +86,8 @@
 
 
   ### 4) 프로그램 기능 흐름도
-![전체흐름도뉴](https://user-images.githubusercontent.com/29905149/83730938-bae9cd80-a684-11ea-8528-585d347d2f42.png)
+![시스템플로우](https://user-images.githubusercontent.com/29905149/83735513-731a7480-a68b-11ea-8998-3a0718097daf.png)
+
 
 
 ## 4. 인터페이스
