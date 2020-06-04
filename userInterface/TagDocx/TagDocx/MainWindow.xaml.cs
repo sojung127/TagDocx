@@ -201,7 +201,7 @@ namespace TagDocx
             string dirPath = @"C:\\AutomaticDocumentClassificationService\\Scoring\\testData";
 
             //string dirPath, string selectedFolder, string docuname
-            this.itemslist = new List<Items>();
+            this.itemslist = new List<Items>(); 
             //string dirPath = @"C:\AutomaticDocumentClassificationService\Dataset\한글\기사\경제";
             string filename;
             MySqlConnection connection = new MySqlConnection(db_information);

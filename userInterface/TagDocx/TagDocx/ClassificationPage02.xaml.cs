@@ -398,8 +398,11 @@ namespace TagDocx
             {
                 di.Create();
             }
-
-            System.IO.File.Move(oldFile, newFile);
+            FileInfo oldfi = new FileInfo(oldFile);
+            if (oldfi.Exists)  //앞단계에서 이동이 안되었다면
+            {
+                System.IO.File.Move(oldFile, newFile);
+            }
         }
 
         private static void getdocpath(DataTable db,string newfilename)
