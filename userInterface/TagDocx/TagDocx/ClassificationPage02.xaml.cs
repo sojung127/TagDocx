@@ -263,6 +263,7 @@ namespace TagDocx
                     묶음1 = 필터링후1.Select("CONTENT_TAG in " + 쿼리형식1);
                     cd1 = 묶음1.CopyToDataTable();
                     cd1 = cd1.DefaultView.ToTable(true, "ID", "NAME", "TYPE_TAG", "CONTENT_TAG", "PATH"); //중복ID제거
+                    getdocpath(cd1, ltos(G1));//문서옮기기
                     return cd1;
                 }
                 if (묶음1 == null)  //내용태그 결과가 없는경우 기존 뽑아놨던거 그대로 출력
@@ -326,6 +327,7 @@ namespace TagDocx
                     묶음2 = 필터링후2.Select("CONTENT_TAG in " + 쿼리형식2);
                     cd2 = 묶음2.CopyToDataTable();
                     cd2 = cd2.DefaultView.ToTable(true, "ID", "NAME", "TYPE_TAG", "CONTENT_TAG", "PATH"); //중복ID제거
+                    getdocpath(cd2, ltos(G2));//문서옮기기
                     return cd2;
                 }
 
