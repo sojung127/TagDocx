@@ -144,6 +144,7 @@ namespace TagDocx
         public void StartPeriodicTagging()
         {
             this.folderlist = new List<string>();
+            this.filelist = new List<string>();
             this.itemslist = new List<Items>();
             
             //string dirPath = @"C:\Users\YooJin\Desktop\AutomaticDocumentClassificationService\Dataset\한글\기사\문화";
@@ -153,25 +154,29 @@ namespace TagDocx
             GetList();
 
             foreach (string dirpath in this.regularTaggingfolder) {
+                
                 GetFolders(dirpath);
                 this.folderlist.Add(dirpath);
             }
-
+            
             foreach (string name in this.folderlist)
             {
                 GetFilesAndTag2(name);
             }
-
+            
+            Console.WriteLine("hello");
             WriteFile();
+            Console.WriteLine("hello");
 
             /*
             foreach (string name in this.notinDBfiles)
             {
                 filelist += "\""+name + "\" ";
-            }*/
-     
+            }
+            */
             GetTag();
             GetItems();
+            
         }
 
         private void GetFolders(string dirPath)
@@ -181,7 +186,6 @@ namespace TagDocx
                 System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(dirPath);
                 foreach (var item in di.GetDirectories())
                 {
-
                     GetFolders(dirPath + "\\" + item.Name);
                     this.folderlist.Add(dirPath + "\\" + item.Name);
                 }
@@ -194,19 +198,9 @@ namespace TagDocx
 
         private void GetFilesAndTag2(string dirPath)
         {
-            this.filelist = new List<string>(); //파일 리스트 초기화
-            //string dirPath,  selectedFolder, docuname;
-            //this.itemslist = new List<Items>();
-            //string dirPath = @"C:\Users\소정\Desktop\졸업프로젝트\AutomaticDocumentClassificationService\Scoring\testData";
-            string dirPath = @"C:\\AutomaticDocumentClassificationService\\Scoring\\testData";
-
-            //string dirPath, string selectedFolder, string docuname
-            this.itemslist = new List<Items>();
-            //string dirPath = @"C:\AutomaticDocumentClassificationService\Dataset\한글\기사\경제";
-            string filename;
+            this.filelist = new List<string>();
             MySqlConnection connection = new MySqlConnection(db_information);
             List<Items> itemslist = new List<Items>();
-            List<string> filelist = new List<string>();
             notinDBfiles = new List<string>();
 
             //폴더에 속한 문서들 불러옴
@@ -215,6 +209,7 @@ namespace TagDocx
                 System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(dirPath);
                 foreach (System.IO.FileInfo File in di.GetFiles())
                 {
+                    //Console.WriteLine(File.Name);
                     this.filelist.Add(File.Name);
                 }
             }
@@ -222,8 +217,7 @@ namespace TagDocx
             {
                 Console.WriteLine(dirPath + "를 찾을 수 없습니다");
             }
-
-            MySqlConnection connection = new MySqlConnection(db_information);
+            
             //notinDBfiles = new List<string>(); //리스트 초기화
 
             try
@@ -235,22 +229,22 @@ namespace TagDocx
 
                 foreach (string name in filelist)
                 {
+                    //Console.WriteLine("지금 여기입니다. "+name);
                     tds = new DataSet();
 
                     MySqlCommand cmd = new MySqlCommand("SELECT * FROM document WHERE PATH='" + searchPath + "'and NAME='" + name + "'", connection);
-
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     adp.Fill(tds);
                     //Console.WriteLine(tds);
                     if (tds.Tables[0].Rows.Count == 0) //비어있으면
                     {
-                        //Console.WriteLine("없음");
+                        //Console.WriteLine(name);
                         notinDBfiles.Add(dirPath + "\\" + name);
                         //GetTag(dirPath, name);
                     }
                     else
                     {
-                        //Console.WriteLine(name);
+                        Console.WriteLine("안 비어있음");
                     }
                 }
             }
@@ -300,6 +294,7 @@ namespace TagDocx
             {
                 foreach (string line in this.notinDBfiles)
                 {
+                    //Console.WriteLine(line);
                     outputFile.WriteLine(line);
                 }
             }
@@ -324,8 +319,7 @@ namespace TagDocx
                     //WindowStyle = ProcessWindowStyle.Normal,
                     WindowStyle = ProcessWindowStyle.Hidden,
                    // WorkingDirectory = "C:\\Users\\소정\\Desktop\\졸업프로젝트\\AutomaticDocumentClassificationService\\Scoring\\",
-                    WorkingDirectory = "C:\\AutomaticDocumentClassificationService\\Scoring\\",
-                    WindowStyle = ProcessWindowStyle.Normal,
+                    //WorkingDirectory = "C:\\AutomaticDocumentClassificationService\\Scoring\\",
                     CreateNoWindow = true
                 }
             };
