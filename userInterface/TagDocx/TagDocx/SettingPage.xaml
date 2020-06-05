@@ -28,7 +28,7 @@
 
         <Label Content="주기적 태깅 작업을 할 폴더를 선택하여 추가하세요." FontSize="20" HorizontalAlignment="Right" Margin="0,10,140,0" Grid.Row="1" VerticalAlignment="Top" Height="38" Width="590"/>
         <Button Content="폴더 찾기" HorizontalAlignment="Left" Margin="525,53,0,0" Grid.Row="1" VerticalAlignment="Top" Width="135" Click="BtnFindFolder" FontSize="20" Height="35" Background="#FF0F4C81" Foreground="#DDFFFFFF"/>
-        <TextBox x:Name="folderName" FontSize="20" HorizontalAlignment="Left" Height="35" Margin="70,53,0,0" Grid.Row="1" TextWrapping="Wrap" Text="폴더 경로 직접 입력" VerticalAlignment="Top" Width="436"/>
+        <TextBox x:Name="folderName" Background="white" FontSize="20" HorizontalAlignment="Left" Height="35" Margin="70,53,0,0" Grid.Row="1" TextWrapping="Wrap" Text="폴더 경로 직접 입력" VerticalAlignment="Top" Width="436"/>
         <Border BorderThickness="2" Background="White" Margin="10,93,10,9.6" Grid.Row="1">
             <ListBox x:Name="flist" Margin="-1.6,-1.6,-1.6,-1.4" Grid.Row="1"/>
         </Border>

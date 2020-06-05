@@ -15,9 +15,9 @@
             <RowDefinition Height="57"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,0,10,267.8" Grid.RowSpan="2" Width="780">
             <Image Source="/resource/noticeicon.png" Margin="33,79,0,0" HorizontalAlignment="Left" Width="36" Height="37" VerticalAlignment="Top" />
-            <Label x:Name="notice" HorizontalContentAlignment="center" FontSize="20" Content="안녕하세요!" Margin="10,79,0,0" Background="White" Height="37" VerticalAlignment="Top" HorizontalAlignment="Left" Width="592"/>
+            <Label x:Name="notice" HorizontalContentAlignment="center" FontSize="20" Content="안녕하세요!" Margin="10,79,0,0" Background="White" Height="37" VerticalAlignment="Top" HorizontalAlignment="Left" Width="634"/>
         </StackPanel>
 
         <Grid  Grid.Row="1">
@@ -52,8 +52,8 @@
                 <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Column="1" >
-                <Button Content="주기적 태깅 대상 폴더 설정" Click="BtnSetting" Width="224" Margin="0,0,0,9.6" Background="White" Foreground="#FF0F4C81" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                <Button Content="즉시 태깅" Click="immeTag_Click" Width="99" Margin="10,0,10,9.6" Background="White" Foreground="#FF0F4C81" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                <Button Content="주기적 태깅 대상 폴더 설정" Click="BtnSetting" Width="224" Margin="40,0,0,9.6" Background="White" Foreground="#FF0F4C81" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                <Button Content="즉시 태깅" Click="immeTag_Click" Width="104" Margin="50,0,10,9.8" Background="White" Foreground="#FF0F4C81" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             </StackPanel>
         </Grid>
     </Grid>
