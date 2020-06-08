@@ -83,8 +83,8 @@
 에서 제공하는 토픽별, 단어별 대표성을 나타낼 수 있는 가중치를 이용하여 토픽마다 가장 대표성이 높다
 고 설정된 단어 한 개씩 총 다섯 단어와, 토픽 중 가장 대표성이 높은 토픽의 다섯 단어를 포함하여 총 중복
 처리를 한 후 추출하였다.
-<img src="https://user-images.githubusercontent.com/29905149/83731601-c5589700-a685-11ea-8052-43179efe0033.png" height="50%" width="50%">
-<img src="https://user-images.githubusercontent.com/29905149/83731617-cdb0d200-a685-11ea-9260-4786d4447e1d.png" height="50%" width="50%">
+<img src="https://user-images.githubusercontent.com/29905149/83731601-c5589700-a685-11ea-8052-43179efe0033.png" height="70%" width="70%">
+<img src="https://user-images.githubusercontent.com/29905149/83731617-cdb0d200-a685-11ea-9260-4786d4447e1d.png" height="70%" width="70%">
 
 
   ### 4) 프로그램 기능 흐름도
@@ -100,32 +100,7 @@
 |분류할 폴더 선택<br><img src="https://user-images.githubusercontent.com/29905149/83731040-d94fc900-a684-11ea-8fe5-674b4c13a491.JPG" height="300" width="450">|분류 묶음 설정<br><img src="https://user-images.githubusercontent.com/29905149/83731038-d94fc900-a684-11ea-95cf-884d07605bd3.JPG" height="300" width="450">|
 |분류 결과<br><img src="https://user-images.githubusercontent.com/29905149/83731036-d8b73280-a684-11ea-93e0-11081b03dada.JPG" height="300" width="450">|문서 검색<br><img src="https://user-images.githubusercontent.com/29905149/83731029-d6ed6f00-a684-11ea-91e3-ddb4413565cf.JPG" height="300" width="450">|
 |검색 후 문서 작업<br><img src="https://user-images.githubusercontent.com/29905149/83731030-d81e9c00-a684-11ea-920b-676e0d26f155.JPG" height="300" width="450">||
-### 메인 화면
-![메인화면](https://user-images.githubusercontent.com/29905149/83731115-ea98d580-a684-11ea-9b00-5ea0652c1276.jpg)
-### 주기적 태깅 대상 폴더 설정
-![태깅  폴더 선택](https://user-images.githubusercontent.com/29905149/83731043-d9e85f80-a684-11ea-81d9-4946709ba406.JPG)
-### 분류할 폴더 선택
-![분류  폴더 선택](https://user-images.githubusercontent.com/29905149/83731040-d94fc900-a684-11ea-8fe5-674b4c13a491.JPG)
-### 분류 묶음 설정
-![분류  태그 선택](https://user-images.githubusercontent.com/29905149/83731038-d94fc900-a684-11ea-95cf-884d07605bd3.JPG)
-### 분류 결과
-![분류  분류 결과](https://user-images.githubusercontent.com/29905149/83731036-d8b73280-a684-11ea-93e0-11081b03dada.JPG)
-### 문서 검색
-![검색  검색어 입력](https://user-images.githubusercontent.com/29905149/83731029-d6ed6f00-a684-11ea-91e3-ddb4413565cf.JPG)
-### 검색 후 문서 작업
-![검색  우클릭](https://user-images.githubusercontent.com/29905149/83731030-d81e9c00-a684-11ea-920b-676e0d26f155.JPG)
-  
-
-
-
   
 ## 5. 구현 영상
-
-
-
-
-
-
-
 
 
