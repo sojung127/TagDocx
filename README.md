@@ -12,7 +12,7 @@
 |정유진|[Yoojin99](https://github.com/Yoojin99)|
 |장소정|[sojung127](https://github.com/sojung127)|
 |조예은|[yjo5252](https://github.com/yjo5252)|
-|박유진|[Yoojin99](https://github.com/Yoojin99)|
+|박유진|[jinee525](https://github.com/jinee525)|
 
 
 :bookmark: 1. TAGDOCX 소개 :bookmark:
