@@ -94,6 +94,8 @@
 
 ## 4. 인터페이스
 
+|Member|Github-link|
+|---|---|
 |메인화면<br><img src="https://user-images.githubusercontent.com/29905149/83731115-ea98d580-a684-11ea-9b00-5ea0652c1276.jpg" height="50%" width="50%">|주기적 태깅 대상 폴더 설정<br>|
 |분류할 폴더 선택<br>|분휴 묶음 설정<br>|
 |분류 묶음 설정<br>|분류 결과<br>|
