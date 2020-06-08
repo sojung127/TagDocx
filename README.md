@@ -1,6 +1,6 @@
-<img src="https://user-images.githubusercontent.com/29905149/83727296-cbe41000-a67f-11ea-954d-1382433f29a3.png" height="10%" width="10%">:bookmark_tabs: TagDocx :bookmark_tabs:
+<img src="https://user-images.githubusercontent.com/29905149/83727296-cbe41000-a67f-11ea-954d-1382433f29a3.png" height="10%" width="10%">TagDocx :bookmark_tabs:
 =======================================
-<p align="center"><img src="https://user-images.githubusercontent.com/29905149/83727296-cbe41000-a67f-11ea-954d-1382433f29a3.png" height="100%" width="100%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/29905149/83727296-cbe41000-a67f-11ea-954d-1382433f29a3.png" height="70%" width="70%"></p>
 
 
 :family: 0. 팀 소개
