@@ -1,5 +1,6 @@
-<img src="https://user-images.githubusercontent.com/29905149/83727296-cbe41000-a67f-11ea-954d-1382433f29a3.png" height="20%" width="20%">TagDocx
+TagDocx<img src="https://user-images.githubusercontent.com/29905149/83727296-cbe41000-a67f-11ea-954d-1382433f29a3.png" height="20%" width="20%">
 =======================================
+
 
 :family: 0. 팀 소개
 -------------------
