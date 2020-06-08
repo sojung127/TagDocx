@@ -66,8 +66,7 @@
   분류할 수 있는 형식으로는 논문, 기사, 공고문, 지원서로 총 4개의 항목을 두었다. 형식별로 학습 데이터를
   200개씩 수집하였고 테스트 데이터로 다른 데이터를 형식별로 100개씩 수집하였다. 문서를 분석하여 생성
   된 벡터값을 입력값으로 하고, 출력 값으로는 가장 유력한 문서의 형식이 될 수 있도록 하였다.
-  
-  ![형식태그방법](https://user-images.githubusercontent.com/29905149/83731598-c4276a00-a685-11ea-863b-5eb5d2e71bb5.png)
+  <img src="https://user-images.githubusercontent.com/29905149/83731598-c4276a00-a685-11ea-863b-5eb5d2e71bb5.png" height="50%" width="50%">
   
   #### 내용 태그 할당
   > 내용 태그 추출을 위해 문서를 분석하기에 앞서, 문서의 제목이 가장 핵심적인 내용을 담는다고 생각했기
@@ -84,18 +83,21 @@
 에서 제공하는 토픽별, 단어별 대표성을 나타낼 수 있는 가중치를 이용하여 토픽마다 가장 대표성이 높다
 고 설정된 단어 한 개씩 총 다섯 단어와, 토픽 중 가장 대표성이 높은 토픽의 다섯 단어를 포함하여 총 중복
 처리를 한 후 추출하였다.
-
-![내용태그방법](https://user-images.githubusercontent.com/29905149/83731601-c5589700-a685-11ea-8052-43179efe0033.png)
-![예시](https://user-images.githubusercontent.com/29905149/83731617-cdb0d200-a685-11ea-9260-4786d4447e1d.png)
+<img src="https://user-images.githubusercontent.com/29905149/83731601-c5589700-a685-11ea-8052-43179efe0033.png" height="50%" width="50%">
+<img src="https://user-images.githubusercontent.com/29905149/83731617-cdb0d200-a685-11ea-9260-4786d4447e1d.png" height="50%" width="50%">
 
 
   ### 4) 프로그램 기능 흐름도
-![시스템플로우](https://user-images.githubusercontent.com/29905149/83735513-731a7480-a68b-11ea-8998-3a0718097daf.png)
+ <img src="https://user-images.githubusercontent.com/29905149/83735513-731a7480-a68b-11ea-8998-3a0718097daf.png" height="50%" width="50%">
 
 
 
 ## 4. 인터페이스
 
+|메인화면<br><img src="https://user-images.githubusercontent.com/29905149/83731115-ea98d580-a684-11ea-9b00-5ea0652c1276.jpg" height="50%" width="50%">|주기적 태깅 대상 폴더 설정<br>|
+|분류할 폴더 선택<br>|분휴 묶음 설정<br>|
+|분류 묶음 설정<br>|분류 결과<br>|
+|문서 검색<br>|검색 후 문서 작업<br>|
 ### 메인 화면
 ![메인화면](https://user-images.githubusercontent.com/29905149/83731115-ea98d580-a684-11ea-9b00-5ea0652c1276.jpg)
 ### 주기적 태깅 대상 폴더 설정
