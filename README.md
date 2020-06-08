@@ -96,7 +96,7 @@
 
 |Member|Github-link|
 |---|---|
-|메인화면<br><img src="https://user-images.githubusercontent.com/29905149/83731115-ea98d580-a684-11ea-9b00-5ea0652c1276.jpg" height="50%" width="50%">|주기적 태깅 대상 폴더 설정<br><img src="https://user-images.githubusercontent.com/29905149/83731043-d9e85f80-a684-11ea-81d9-4946709ba406.JPG" height="50%" width="50%">|
+|메인화면<br><img src="https://user-images.githubusercontent.com/29905149/83731115-ea98d580-a684-11ea-9b00-5ea0652c1276.jpg" height="300" width="450">|주기적 태깅 대상 폴더 설정<br><img src="https://user-images.githubusercontent.com/29905149/83731043-d9e85f80-a684-11ea-81d9-4946709ba406.JPG" height="50%" width="50%">|
 |분류할 폴더 선택<br><img src="https://user-images.githubusercontent.com/29905149/83731040-d94fc900-a684-11ea-8fe5-674b4c13a491.JPG" height="50%" width="50%">|분류 묶음 설정<br><img src="https://user-images.githubusercontent.com/29905149/83731038-d94fc900-a684-11ea-95cf-884d07605bd3.JPG" height="50%" width="50%">|
 |분류 결과<br><img src="https://user-images.githubusercontent.com/29905149/83731036-d8b73280-a684-11ea-93e0-11081b03dada.JPG" height="50%" width="50%">|문서 검색<br><img src="https://user-images.githubusercontent.com/29905149/83731029-d6ed6f00-a684-11ea-91e3-ddb4413565cf.JPG" height="50%" width="50%">|
 |검색 후 문서 작업<br><img src="https://user-images.githubusercontent.com/29905149/83731030-d81e9c00-a684-11ea-920b-676e0d26f155.JPG" height="50%" width="50%">||
