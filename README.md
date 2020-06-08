@@ -1,5 +1,6 @@
-:bookmark_tabs: TagDocx :bookmark_tabs:
+<img src="https://user-images.githubusercontent.com/29905149/83727296-cbe41000-a67f-11ea-954d-1382433f29a3.png" height="100" width="100">:bookmark_tabs: TagDocx :bookmark_tabs:
 =======================================
+<p align="center"><img src="https://user-images.githubusercontent.com/29905149/83727296-cbe41000-a67f-11ea-954d-1382433f29a3.png" height="100%" width="100%"></p>
 ![태그독스로고](https://user-images.githubusercontent.com/29905149/83727296-cbe41000-a67f-11ea-954d-1382433f29a3.png)
 
 
@@ -50,7 +51,6 @@
 
   ### 2) 개발환경
   <img src="https://user-images.githubusercontent.com/29905149/83729137-339b5a80-a682-11ea-960c-ca48abd75dd8.png" height="50%" width="50%">
-![플랫폼들](https://user-images.githubusercontent.com/29905149/83729137-339b5a80-a682-11ea-960c-ca48abd75dd8.png){: width="300" height="500"}
 
   ### 3) 구체적인 기능 구현 방법
   
