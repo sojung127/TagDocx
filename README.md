@@ -49,7 +49,7 @@
 - 후에 웹 어플리케이션, 앱으로 제작할 것을 고려
 
   ### 2) 개발환경
-![플랫폼들](https://user-images.githubusercontent.com/29905149/83729137-339b5a80-a682-11ea-960c-ca48abd75dd8.png){: width="50%" height="50%"}
+![플랫폼들](https://user-images.githubusercontent.com/29905149/83729137-339b5a80-a682-11ea-960c-ca48abd75dd8.png){: width="300" height="500"}
 
   ### 3) 구체적인 기능 구현 방법
   
