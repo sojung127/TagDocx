@@ -94,7 +94,7 @@
 
 ## 4. 인터페이스
 
-|Member|Github-link|
+|||
 |---|---|
 |메인화면<br><img src="https://user-images.githubusercontent.com/29905149/83731115-ea98d580-a684-11ea-9b00-5ea0652c1276.jpg" height="300" width="450">|주기적 태깅 대상 폴더 설정<br><img src="https://user-images.githubusercontent.com/29905149/83731043-d9e85f80-a684-11ea-81d9-4946709ba406.JPG" height="300" width="450">|
 |분류할 폴더 선택<br><img src="https://user-images.githubusercontent.com/29905149/83731040-d94fc900-a684-11ea-8fe5-674b4c13a491.JPG" height="300" width="450">|분류 묶음 설정<br><img src="https://user-images.githubusercontent.com/29905149/83731038-d94fc900-a684-11ea-95cf-884d07605bd3.JPG" height="300" width="450">|
